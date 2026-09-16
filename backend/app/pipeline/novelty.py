@@ -100,10 +100,12 @@ novel/no meaningful prior art found, 0.0 = already fully anticipated).
 additions the inventor could make to their idea to distinguish it from the closest \
 matches found (reference specific technical elements from the closest candidates, not \
 generic advice like "make it more innovative").
-4. Produce "citations": every non-obvious factual claim you made above (in \
-overlapping_elements, differences, or differentiation_suggestions) should have a \
-corresponding entry here as {{"claim": "<short paraphrase of the claim>", "result_id": \
-"<id it's based on>"}}. Use ids from the candidate or market list only.
+4. Produce "citations": ONE citation per candidate assessment (pick its single most \
+important overlapping element or difference) plus ONE citation per differentiation \
+suggestion that was inspired by a specific candidate — not one per individual bullet \
+point. Each entry is {{"claim": "<short paraphrase of the claim>", "result_id": \
+"<id it's based on>"}}. Use ids from the candidate or market list only. Keep the total \
+citation count roughly equal to the number of candidates plus suggestions, not larger.
 
 Respond with a single JSON object of this exact shape:
 {{
