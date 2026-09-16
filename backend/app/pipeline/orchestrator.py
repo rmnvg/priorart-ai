@@ -56,6 +56,11 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             message=f"Searching patents across {len(query_result.queries)} query angles...",
         )
         bundles = await asyncio.to_thread(run_patent_scholar_search, query_result)
+        # The major_markets query is the most precisely-targeted one, so its
+        # assignee breakdown (from SerpApi's clustered=true summary — no
+        # extra API call) is the most meaningful "who owns this space" view.
+        major_markets_bundle = next((b for b in bundles if b.query_type == "major_markets"), None)
+        top_assignees = major_markets_bundle.assignee_stats if major_markets_bundle else []
 
         yield ProgressEvent(
             stage="searching_scholar",
@@ -119,6 +124,7 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             citations=novelty_result.citations,
             india_status=india_status,
             claim_chart=claim_chart,
+            top_assignees=top_assignees,
         )
 
         yield ProgressEvent(stage="done", message="Analysis complete.")

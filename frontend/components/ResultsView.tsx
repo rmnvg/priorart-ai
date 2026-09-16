@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ClaimChartView from "@/components/ClaimChart";
+import CompetitorLandscape from "@/components/CompetitorLandscape";
 import LandscapeGraph from "@/components/LandscapeGraph";
 import type { AnalysisResult, NoveltyVerdict, SourceType } from "@/types/analysis";
 
@@ -53,6 +54,13 @@ function ResultCard({
       </div>
       <h3 className="mt-2 font-medium text-neutral-900">{result.title}</h3>
       <p className="mt-1 text-sm text-neutral-500 line-clamp-2">{result.snippet}</p>
+      {(result.assignee || result.priority_date) && (
+        <p className="mt-1 text-xs text-neutral-400">
+          {result.assignee}
+          {result.assignee && result.priority_date && " · "}
+          {result.priority_date && `filed ${result.priority_date}`}
+        </p>
+      )}
       <button
         onClick={() => setExpanded((v) => !v)}
         className="mt-2 text-sm text-neutral-500 underline hover:text-neutral-900"
@@ -73,15 +81,51 @@ function ResultCard({
   );
 }
 
-export default function ResultsView({ result }: { result: AnalysisResult }) {
+interface ResultsViewProps {
+  result: AnalysisResult;
+  onApplySuggestion?: (suggestion: string) => void;
+  previousConfidence?: number | null;
+  appliedSuggestion?: string | null;
+}
+
+export default function ResultsView({
+  result,
+  onApplySuggestion,
+  previousConfidence,
+  appliedSuggestion,
+}: ResultsViewProps) {
   const verdictByResultId = new Map(
     result.candidate_assessments.map((a) => [a.result_id, a.verdict])
   );
 
   const confidencePct = Math.round(result.overall_novelty_confidence * 100);
+  const previousPct = previousConfidence != null ? Math.round(previousConfidence * 100) : null;
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-8">
+      {previousPct !== null && (
+        <div className="rounded-lg border border-blue-200 bg-blue-50 p-5">
+          <h2 className="font-semibold text-blue-900">Re-check result</h2>
+          <p className="mt-1 text-sm text-blue-800">
+            After applying: <span className="italic">&ldquo;{appliedSuggestion}&rdquo;</span>
+          </p>
+          <div className="mt-3 flex items-center gap-3">
+            <span className="text-2xl font-bold text-neutral-400">{previousPct}%</span>
+            <span className="text-xl text-blue-400">→</span>
+            <span
+              className={`text-2xl font-bold ${confidencePct > previousPct ? "text-green-600" : "text-neutral-900"}`}
+            >
+              {confidencePct}%
+            </span>
+            {confidencePct > previousPct && (
+              <span className="text-sm font-medium text-green-600">
+                +{confidencePct - previousPct} points more novel
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
       <div>
         <h2 className="text-2xl font-bold text-neutral-900">Novelty confidence</h2>
         <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-neutral-200">
@@ -111,6 +155,8 @@ export default function ResultsView({ result }: { result: AnalysisResult }) {
         </div>
       </div>
 
+      <CompetitorLandscape assignees={result.top_assignees} />
+
       <div className="rounded-lg border border-orange-200 bg-orange-50 p-5">
         <h2 className="font-semibold text-orange-900">India patentability signal</h2>
         <div className="mt-3 grid grid-cols-2 gap-4">
@@ -133,9 +179,19 @@ export default function ResultsView({ result }: { result: AnalysisResult }) {
         <h2 className="font-semibold text-green-900">How to differentiate your idea</h2>
         <ul className="mt-3 space-y-2">
           {result.differentiation_suggestions.map((suggestion, i) => (
-            <li key={i} className="flex gap-2 text-sm text-green-900">
-              <span className="text-green-600">→</span>
-              <span>{suggestion}</span>
+            <li key={i} className="flex items-start justify-between gap-3 text-sm text-green-900">
+              <span className="flex gap-2">
+                <span className="text-green-600">→</span>
+                <span>{suggestion}</span>
+              </span>
+              {onApplySuggestion && (
+                <button
+                  onClick={() => onApplySuggestion(suggestion)}
+                  className="shrink-0 whitespace-nowrap rounded border border-green-600 px-2 py-1 text-xs font-medium text-green-700 transition hover:bg-green-600 hover:text-white"
+                >
+                  Apply & re-check →
+                </button>
+              )}
             </li>
           ))}
         </ul>

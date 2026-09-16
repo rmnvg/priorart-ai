@@ -51,10 +51,16 @@ class ProductResult(BaseModel):
 SearchResult = PatentResult | ScholarResult | ProductResult
 
 
+class AssigneeStat(BaseModel):
+    name: str
+    percentage: float
+
+
 class QueryBundle(BaseModel):
     query_type: str
     query: str
     results: list[SearchResult]
+    assignee_stats: list[AssigneeStat] = []
 
 
 class SearchLayerResult(BaseModel):
@@ -87,21 +93,37 @@ def _parse_patents_organic_result(raw: dict) -> SearchResult | None:
     return None
 
 
-def search_patents_for_query(query: str) -> list[SearchResult]:
-    """Call google_patents for a single query, returning normalized results."""
+def _parse_assignee_stats(raw_response: dict, top_n: int = 6) -> list[AssigneeStat]:
+    """Reads the clustered-search assignee breakdown SerpApi already returns
+    (query-level stats over the full matching set, not just the returned
+    page) — zero extra API calls. Skips the "Total" (100%) row."""
+    raw_assignees = raw_response.get("summary", {}).get("assignee", []) or []
+    stats = [
+        AssigneeStat(name=a["key"], percentage=a["percentage"])
+        for a in raw_assignees
+        if a.get("key") and a.get("key") != "Total"
+    ]
+    stats.sort(key=lambda a: a.percentage, reverse=True)
+    return stats[:top_n]
+
+
+def search_patents_for_query(query: str) -> tuple[list[SearchResult], list[AssigneeStat]]:
+    """Call google_patents for a single query, returning normalized results
+    plus the query-level assignee breakdown."""
     response = _client.search(
         engine="google_patents",
         q=query,
         scholar=True,
         clustered=True,
     )
-    raw_results = dict(response).get("organic_results", []) or []
+    raw_response = dict(response)
+    raw_results = raw_response.get("organic_results", []) or []
     results = []
     for raw in raw_results:
         parsed = _parse_patents_organic_result(raw)
         if parsed is not None:
             results.append(parsed)
-    return results
+    return results, _parse_assignee_stats(raw_response)
 
 
 def search_market_availability(query: str) -> list[ProductResult]:
@@ -131,10 +153,12 @@ def run_patent_scholar_search(query_result: QueryGenerationResult) -> list[Query
     bundles: list[QueryBundle] = []
     for gq in query_result.queries:
         try:
-            results = search_patents_for_query(gq.query)
+            results, assignee_stats = search_patents_for_query(gq.query)
         except Exception:
-            results = []
-        bundles.append(QueryBundle(query_type=gq.type, query=gq.query, results=results))
+            results, assignee_stats = [], []
+        bundles.append(
+            QueryBundle(query_type=gq.type, query=gq.query, results=results, assignee_stats=assignee_stats)
+        )
     return bundles
 
 

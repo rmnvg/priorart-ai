@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from app.pipeline.india_status import IndiaStatus
 from app.pipeline.novelty import CandidateAssessment, Citation, ClaimChartPair
 from app.pipeline.rank import RankedResult
+from app.pipeline.search import AssigneeStat
 
 PipelineStage = Literal[
     "generating_queries",
@@ -43,6 +44,7 @@ class AnalysisResult(BaseModel):
     citations: list[Citation]
     india_status: IndiaStatus
     claim_chart: ClaimChart | None = None
+    top_assignees: list[AssigneeStat] = []
 
 
 class ResultEvent(BaseModel):

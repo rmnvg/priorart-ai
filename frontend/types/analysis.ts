@@ -29,6 +29,8 @@ export interface RankedResult {
   cpc_description?: string | null;
   country_status?: Record<string, string>; // e.g. { US: "ACTIVE", IN: "UNKNOWN" }
   query_types?: string[]; // which generated queries surfaced this result
+  assignee?: string | null;
+  priority_date?: string | null;
 }
 
 export type NoveltyVerdict = "blocking" | "partially_overlapping" | "not_relevant";
@@ -68,6 +70,11 @@ export interface ClaimChart {
   pairs: ClaimChartPair[];
 }
 
+export interface AssigneeStat {
+  name: string;
+  percentage: number;
+}
+
 export interface AnalysisResult {
   idea_text: string;
   ranked_results: RankedResult[];
@@ -77,6 +84,7 @@ export interface AnalysisResult {
   citations: Citation[];
   india_status: IndiaStatus;
   claim_chart: ClaimChart | null;
+  top_assignees: AssigneeStat[];
 }
 
 export interface ResultEvent {

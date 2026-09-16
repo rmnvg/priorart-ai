@@ -31,6 +31,8 @@ class RankedResult(BaseModel):
     cpc_description: str | None = None
     country_status: dict[str, str] = {}
     query_types: list[str] = []
+    assignee: str | None = None
+    priority_date: str | None = None
 
 
 def _dedupe(search_result: SearchLayerResult) -> list[tuple[SearchResult, list[str]]]:
@@ -83,6 +85,8 @@ def rank_and_dedupe(search_result: SearchLayerResult, idea_text: str) -> list[Ra
             common["cpc_code"] = result.cpc_code
             common["cpc_description"] = result.cpc_description
             common["country_status"] = result.country_status
+            common["assignee"] = result.assignee
+            common["priority_date"] = result.priority_date
         ranked.append(RankedResult(**common))
 
     ranked.sort(key=lambda r: r.relevance_score, reverse=True)

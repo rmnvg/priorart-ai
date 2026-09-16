@@ -14,9 +14,11 @@ export default function Home() {
   const [currentStage, setCurrentStage] = useState<PipelineStage | null>(null);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [previousConfidence, setPreviousConfidence] = useState<number | null>(null);
+  const [appliedSuggestion, setAppliedSuggestion] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
-  async function handleSubmit(ideaText: string) {
+  async function runAnalysis(ideaText: string) {
     setViewState("loading");
     setCurrentStage(null);
     setResult(null);
@@ -47,12 +49,27 @@ export default function Home() {
     }
   }
 
+  function handleSubmit(ideaText: string) {
+    setPreviousConfidence(null);
+    setAppliedSuggestion(null);
+    runAnalysis(ideaText);
+  }
+
+  function handleApplySuggestion(suggestion: string) {
+    if (!result) return;
+    setPreviousConfidence(result.overall_novelty_confidence);
+    setAppliedSuggestion(suggestion);
+    runAnalysis(`${result.idea_text} Additionally, ${suggestion}`);
+  }
+
   function handleReset() {
     abortRef.current?.abort();
     setViewState("idle");
     setCurrentStage(null);
     setResult(null);
     setErrorMessage(null);
+    setPreviousConfidence(null);
+    setAppliedSuggestion(null);
   }
 
   return (
@@ -61,7 +78,9 @@ export default function Home() {
 
       {viewState === "loading" && (
         <div className="flex flex-col items-center gap-8">
-          <p className="text-neutral-500">Analyzing your idea...</p>
+          <p className="text-neutral-500">
+            {appliedSuggestion ? "Re-checking your idea..." : "Analyzing your idea..."}
+          </p>
           <ProgressChecklist currentStage={currentStage} isComplete={false} />
         </div>
       )}
@@ -88,7 +107,12 @@ export default function Home() {
               Analyze another idea
             </button>
           </div>
-          <ResultsView result={result} />
+          <ResultsView
+            result={result}
+            onApplySuggestion={handleApplySuggestion}
+            previousConfidence={previousConfidence}
+            appliedSuggestion={appliedSuggestion}
+          />
         </div>
       )}
     </main>
