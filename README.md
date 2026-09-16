@@ -198,10 +198,27 @@ multi-step pipeline is visibly real, not a single spinner:
 
 ![Staged progress](docs/screenshots/staged-progress.png)
 
+**Novelty verdict** — the headline answer, with a severity-coded meter and the
+counts behind it:
+
+![Novelty verdict](docs/screenshots/results-hero.png)
+
 **Patent-landscape graph** — nodes are search results, sized and pulled closer to
 the idea node by relevance, colored by CPC patent classification:
 
 ![Landscape graph](docs/screenshots/landscape-graph.png)
+
+**Who owns this space** — assignee concentration from SerpApi's clustered search
+summary, with an explicit note when the field is too fragmented for any holder to
+dominate:
+
+![Competitor landscape](docs/screenshots/competitor-landscape.png)
+
+**Differentiation suggestions** — concrete, cited changes that would move the idea
+away from its closest matches. "Apply & re-check" folds a suggestion into the idea
+and re-runs the whole pipeline, showing the verdict shift:
+
+![Differentiation](docs/screenshots/differentiation.png)
 
 **Claim chart** — a side-by-side comparison of the idea against its closest match,
 with matching colors marking the same technical concept in both texts (the

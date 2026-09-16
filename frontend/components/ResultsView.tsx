@@ -2,7 +2,22 @@ import { useState } from "react";
 import ClaimChartView from "@/components/ClaimChart";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
 import LandscapeGraph from "@/components/LandscapeGraph";
-import type { AnalysisResult, NoveltyVerdict, SourceType } from "@/types/analysis";
+import NoveltyVerdict from "@/components/NoveltyVerdict";
+import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/types/analysis";
+
+// How many prior-art cards to show before collapsing. A full run returns
+// 30-40 results; rendering them all buries the analysis under an endless
+// scroll, so the rest sit behind an expander.
+const VISIBLE_RESULTS = 6;
+
+function StatTile({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
+      <div className="text-2xl font-semibold text-neutral-900">{value}</div>
+      <div className="mt-0.5 text-xs text-neutral-500">{label}</div>
+    </div>
+  );
+}
 
 const SOURCE_LABELS: Record<SourceType, string> = {
   patent: "Patent",
@@ -16,13 +31,13 @@ const SOURCE_STYLES: Record<SourceType, string> = {
   product: "bg-amber-100 text-amber-800",
 };
 
-const VERDICT_LABELS: Record<NoveltyVerdict, string> = {
+const VERDICT_LABELS: Record<Verdict, string> = {
   blocking: "Blocking",
   partially_overlapping: "Partially overlapping",
   not_relevant: "Not relevant",
 };
 
-const VERDICT_STYLES: Record<NoveltyVerdict, string> = {
+const VERDICT_STYLES: Record<Verdict, string> = {
   blocking: "bg-red-100 text-red-800",
   partially_overlapping: "bg-yellow-100 text-yellow-800",
   not_relevant: "bg-neutral-100 text-neutral-600",
@@ -33,7 +48,7 @@ function ResultCard({
   verdict,
 }: {
   result: AnalysisResult["ranked_results"][number];
-  verdict: NoveltyVerdict | null;
+  verdict: Verdict | null;
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -94,6 +109,8 @@ export default function ResultsView({
   previousConfidence,
   appliedSuggestion,
 }: ResultsViewProps) {
+  const [showAllResults, setShowAllResults] = useState(false);
+
   const verdictByResultId = new Map(
     result.candidate_assessments.map((a) => [a.result_id, a.verdict])
   );
@@ -101,46 +118,62 @@ export default function ResultsView({
   const confidencePct = Math.round(result.overall_novelty_confidence * 100);
   const previousPct = previousConfidence != null ? Math.round(previousConfidence * 100) : null;
 
+  const visibleResults = showAllResults
+    ? result.ranked_results
+    : result.ranked_results.slice(0, VISIBLE_RESULTS);
+  // Based on the total, not the currently-hidden count — otherwise expanding
+  // drops the count to zero and the collapse control disappears with it.
+  const isCollapsible = result.ranked_results.length > VISIBLE_RESULTS;
+
   return (
     <div className="mx-auto w-full max-w-4xl space-y-8">
       {previousPct !== null && (
-        <div className="rounded-lg border border-blue-200 bg-blue-50 p-5">
-          <h2 className="font-semibold text-blue-900">Re-check result</h2>
-          <p className="mt-1 text-sm text-blue-800">
-            After applying: <span className="italic">&ldquo;{appliedSuggestion}&rdquo;</span>
+        <div className="rounded-xl border border-blue-200 bg-blue-50/70 p-5 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wider text-blue-500">
+            Re-checked after your change
           </p>
-          <div className="mt-3 flex items-center gap-3">
-            <span className="text-2xl font-bold text-neutral-400">{previousPct}%</span>
-            <span className="text-xl text-blue-400">→</span>
+          <p className="mt-2 text-sm italic text-blue-900">&ldquo;{appliedSuggestion}&rdquo;</p>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <span className="text-3xl font-semibold text-neutral-400 line-through decoration-neutral-300">
+              {previousPct}%
+            </span>
+            <span className="text-2xl text-blue-400">→</span>
             <span
-              className={`text-2xl font-bold ${confidencePct > previousPct ? "text-green-600" : "text-neutral-900"}`}
+              className={`text-3xl font-semibold ${confidencePct > previousPct ? "text-green-600" : "text-neutral-900"}`}
             >
               {confidencePct}%
             </span>
-            {confidencePct > previousPct && (
-              <span className="text-sm font-medium text-green-600">
-                +{confidencePct - previousPct} points more novel
-              </span>
-            )}
+            <span
+              className={`rounded-full px-2.5 py-1 text-sm font-medium ${
+                confidencePct > previousPct
+                  ? "bg-green-100 text-green-700"
+                  : confidencePct < previousPct
+                    ? "bg-neutral-200 text-neutral-600"
+                    : "bg-neutral-100 text-neutral-500"
+              }`}
+            >
+              {confidencePct > previousPct
+                ? `+${confidencePct - previousPct} points more novel`
+                : confidencePct < previousPct
+                  ? `${confidencePct - previousPct} points — this change overlaps more prior art`
+                  : "No change"}
+            </span>
           </div>
         </div>
       )}
 
-      <div>
-        <h2 className="text-2xl font-bold text-neutral-900">Novelty confidence</h2>
-        <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-neutral-200">
-          <div
-            className="h-full rounded-full bg-neutral-900 transition-all"
-            style={{ width: `${confidencePct}%` }}
-          />
-        </div>
-        <p className="mt-2 text-sm text-neutral-500">
-          {confidencePct}% — {confidencePct >= 70
-            ? "This idea looks largely novel against what we found."
-            : confidencePct >= 40
-              ? "This idea has meaningful overlap with existing prior art."
-              : "This idea closely overlaps with existing prior art."}
-        </p>
+      <NoveltyVerdict confidence={result.overall_novelty_confidence} />
+
+      <div className="grid grid-cols-3 gap-3">
+        <StatTile label="Results analyzed" value={result.ranked_results.length} />
+        <StatTile
+          label="Assessed in depth"
+          value={result.candidate_assessments.length}
+        />
+        <StatTile
+          label="Blocking in India"
+          value={result.india_status.blocking_in_india}
+        />
       </div>
 
       <div>
@@ -157,37 +190,54 @@ export default function ResultsView({
 
       <CompetitorLandscape assignees={result.top_assignees} />
 
-      <div className="rounded-lg border border-orange-200 bg-orange-50 p-5">
-        <h2 className="font-semibold text-orange-900">India patentability signal</h2>
-        <div className="mt-3 grid grid-cols-2 gap-4">
-          <div>
-            <div className="text-2xl font-bold text-orange-900">
-              {result.india_status.blocking_in_india}
+      <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm">
+        <div className="border-l-4 border-orange-400 p-5">
+          <h2 className="font-semibold text-neutral-900">India patentability signal</h2>
+          <p className="mt-1 text-sm text-neutral-500">
+            Whether the closest matches are actually in force in India, or only protected
+            elsewhere — where the same idea may still be open.
+          </p>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <div className="rounded-lg bg-orange-50 p-3">
+              <div className="text-2xl font-semibold text-orange-900">
+                {result.india_status.blocking_in_india}
+              </div>
+              <div className="text-sm text-orange-800">Active &amp; blocking in India</div>
             </div>
-            <div className="text-sm text-orange-800">Active & blocking in India</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-orange-900">
-              {result.india_status.active_elsewhere_only}
+            <div className="rounded-lg bg-neutral-50 p-3">
+              <div className="text-2xl font-semibold text-neutral-900">
+                {result.india_status.active_elsewhere_only}
+              </div>
+              <div className="text-sm text-neutral-600">Active elsewhere, not in India</div>
             </div>
-            <div className="text-sm text-orange-800">Active elsewhere, not in India</div>
           </div>
+          <p className="mt-3 text-xs text-neutral-400">
+            Google Patents reports Indian legal status as unknown more often than not, so
+            treat this as a conservative floor rather than a complete picture.
+          </p>
         </div>
       </div>
 
-      <div className="rounded-lg border border-green-200 bg-green-50 p-5">
-        <h2 className="font-semibold text-green-900">How to differentiate your idea</h2>
-        <ul className="mt-3 space-y-2">
+      <div className="rounded-xl border border-green-200 bg-green-50/60 p-5 shadow-sm">
+        <h2 className="text-lg font-semibold text-green-900">How to differentiate your idea</h2>
+        <p className="mt-1 text-sm text-green-800/80">
+          Specific changes that would move this idea away from its closest matches. Apply one
+          to re-run the analysis and watch the verdict move.
+        </p>
+        <ul className="mt-4 space-y-2">
           {result.differentiation_suggestions.map((suggestion, i) => (
-            <li key={i} className="flex items-start justify-between gap-3 text-sm text-green-900">
-              <span className="flex gap-2">
-                <span className="text-green-600">→</span>
+            <li
+              key={i}
+              className="flex items-start justify-between gap-3 rounded-lg bg-white/70 p-3 text-sm text-green-900"
+            >
+              <span className="flex gap-2.5">
+                <span className="font-semibold text-green-600">{i + 1}</span>
                 <span>{suggestion}</span>
               </span>
               {onApplySuggestion && (
                 <button
                   onClick={() => onApplySuggestion(suggestion)}
-                  className="shrink-0 whitespace-nowrap rounded border border-green-600 px-2 py-1 text-xs font-medium text-green-700 transition hover:bg-green-600 hover:text-white"
+                  className="shrink-0 whitespace-nowrap rounded-md bg-green-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800"
                 >
                   Apply & re-check →
                 </button>
@@ -217,12 +267,23 @@ export default function ResultsView({
       )}
 
       <div>
-        <h2 className="text-xl font-bold text-neutral-900">Prior art & related results</h2>
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-xl font-bold text-neutral-900">Prior art & related results</h2>
+          <span className="text-sm text-neutral-400">{result.ranked_results.length} found</span>
+        </div>
         <div className="mt-4 space-y-3">
-          {result.ranked_results.map((r) => (
+          {visibleResults.map((r) => (
             <ResultCard key={r.id} result={r} verdict={verdictByResultId.get(r.id) ?? null} />
           ))}
         </div>
+        {isCollapsible && (
+          <button
+            onClick={() => setShowAllResults((v) => !v)}
+            className="mt-4 w-full rounded-lg border border-neutral-300 bg-white py-2.5 text-sm font-medium text-neutral-700 shadow-sm transition hover:bg-neutral-50"
+          >
+            {showAllResults ? "Show fewer results" : `Show all ${result.ranked_results.length} results`}
+          </button>
+        )}
       </div>
     </div>
   );
