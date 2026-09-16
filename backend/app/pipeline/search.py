@@ -124,10 +124,10 @@ def _build_market_query(query_result: QueryGenerationResult) -> str:
     return " ".join(query_result.core_concepts[:4])
 
 
-def run_search_layer(query_result: QueryGenerationResult) -> SearchLayerResult:
-    """Run all generated patent/scholar queries plus one market-availability
-    query. Never raises on a single failed query — a bad query shouldn't
-    kill the whole search stage; it just contributes an empty bundle."""
+def run_patent_scholar_search(query_result: QueryGenerationResult) -> list[QueryBundle]:
+    """Run all generated queries against google_patents. Never raises on a
+    single failed query — a bad query shouldn't kill the whole search stage;
+    it just contributes an empty bundle."""
     bundles: list[QueryBundle] = []
     for gq in query_result.queries:
         try:
@@ -135,10 +135,20 @@ def run_search_layer(query_result: QueryGenerationResult) -> SearchLayerResult:
         except Exception:
             results = []
         bundles.append(QueryBundle(query_type=gq.type, query=gq.query, results=results))
+    return bundles
 
+
+def run_market_search(query_result: QueryGenerationResult) -> list[ProductResult]:
     try:
-        market_results = search_market_availability(_build_market_query(query_result))
+        return search_market_availability(_build_market_query(query_result))
     except Exception:
-        market_results = []
+        return []
 
+
+def run_search_layer(query_result: QueryGenerationResult) -> SearchLayerResult:
+    """Convenience wrapper running both phases in sequence — used by direct
+    pipeline tests. The orchestrator calls the two phases separately so it
+    can emit progress events between them."""
+    bundles = run_patent_scholar_search(query_result)
+    market_results = run_market_search(query_result)
     return SearchLayerResult(query_bundles=bundles, market_results=market_results)

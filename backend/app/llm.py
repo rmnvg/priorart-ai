@@ -6,7 +6,7 @@ one file.
 """
 import json
 
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 
 from app.config import GROQ_API_KEY, GROQ_MODEL
 
@@ -30,19 +30,26 @@ def complete(prompt: str, system: str | None = None, temperature: float = 0.2) -
 
 def complete_json(prompt: str, system: str | None = None, temperature: float = 0.2) -> dict:
     """Completion constrained to JSON output. Raises ValueError if the model
-    doesn't return parseable JSON — callers should catch and retry/fallback,
-    since open-weight models are less reliable at this than Claude."""
+    doesn't return parseable JSON, including when the provider itself rejects
+    the generation as invalid JSON (Groq surfaces this as an API error rather
+    than just returning malformed text) — callers should catch ValueError and
+    retry/fallback, since open-weight models are less reliable at this than
+    Claude."""
     messages = []
     if system:
         messages.append({"role": "system", "content": system})
     messages.append({"role": "user", "content": prompt})
 
-    response = _client.chat.completions.create(
-        model=GROQ_MODEL,
-        messages=messages,
-        temperature=temperature,
-        response_format={"type": "json_object"},
-    )
+    try:
+        response = _client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=messages,
+            temperature=temperature,
+            response_format={"type": "json_object"},
+        )
+    except OpenAIError as e:
+        raise ValueError(f"LLM provider rejected the request: {e}") from e
+
     raw = response.choices[0].message.content or ""
     try:
         return json.loads(raw)
