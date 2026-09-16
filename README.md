@@ -75,9 +75,9 @@ priorart-ai/
 │   ├── app/
 │   │   ├── main.py              # FastAPI app, POST /analyze SSE endpoint
 │   │   ├── llm.py                # Groq LLM wrapper (all model calls go through here)
-│   │   ├── cache.py              # in-memory cache keyed on idea text
+│   │   ├── cache.py              # memory + on-disk cache keyed on idea text
 │   │   ├── models.py             # SSE event / result Pydantic models
-│   │   ├── serpapi_client.py     # shared SerpApi client
+│   │   ├── serpapi_client.py     # shared SerpApi client (+ API-key redaction)
 │   │   └── pipeline/
 │   │       ├── query_generator.py    # 1.1
 │   │       ├── search.py             # 1.2
@@ -86,11 +86,13 @@ priorart-ai/
 │   │       ├── novelty.py            # 1.5 (+ claim chart)
 │   │       ├── india_status.py       # 1.6
 │   │       └── orchestrator.py       # 1.7 — wires it all together
+│   ├── tests/test_pipeline.py    # pure-logic tests (no keys/network needed)
+│   ├── .cache/                   # persisted analyses — survives restarts
 │   └── requirements.txt
 └── frontend/
     ├── app/page.tsx               # top-level view state machine
     ├── components/                # IdeaForm, ProgressChecklist, ResultsView,
-    │                               # LandscapeGraph, ClaimChart
+    │                               # LandscapeGraph, ClaimChart, CompetitorLandscape
     ├── lib/                       # analyzeStream.ts (SSE client), landscapeGraph.ts,
     │                               # highlightText.tsx
     └── types/analysis.ts          # shared contract with the backend
@@ -154,6 +156,34 @@ npm run dev
 
 Open the printed local URL (defaults to `http://localhost:3000`, or the next free
 port if that one's taken) and paste in an invention idea.
+
+### API quota and caching
+
+A single analysis costs **4-12 SerpApi searches** (3 patent queries + 1 market
+query + up to 8 claim lookups). SerpApi's free tier allows 250/month, so roughly
+20-60 analyses.
+
+Because of that, every completed analysis is cached to `backend/.cache/`, keyed on
+a hash of the idea text. The cache is **persistent across restarts** — re-running
+the same idea replays the saved result instantly and costs nothing, which is what
+makes a demo reproducible without live quota. Delete a file from `backend/.cache/`
+to force a fresh run of that idea.
+
+If the search quota runs out, the app says so explicitly rather than reporting
+"no results found" — an empty result and a failed search are reported differently
+on purpose.
+
+### Running the tests
+
+```bash
+cd backend
+source venv/bin/activate
+python -m pytest tests/ -q
+```
+
+The suite covers the pipeline's pure logic — dedupe/merge rules, the India status
+tally, LLM-output validation guards, claim truncation, and cache persistence. It
+needs no API keys and no network, and runs in a few seconds.
 
 ---
 

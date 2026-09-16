@@ -84,10 +84,21 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
         ranked = await asyncio.to_thread(rank_and_dedupe, search_result, idea_text)
 
         if not ranked:
-            yield ErrorEvent(
-                message="No related patents, papers, or products were found for this idea. "
-                "Try describing it with more specific technical detail."
-            )
+            # Distinguish "the search worked and found nothing" from "the
+            # search never ran" (quota exhausted, network, auth). Telling a
+            # user to reword their idea when the provider is down sends them
+            # chasing a problem that isn't theirs.
+            if bundles and all(b.search_failed for b in bundles):
+                logger.error("All patent searches failed — provider unavailable or out of quota")
+                yield ErrorEvent(
+                    message="The patent search service is currently unavailable — this is a "
+                    "problem on our side, not with your idea. Please try again shortly."
+                )
+            else:
+                yield ErrorEvent(
+                    message="No related patents, papers, or products were found for this idea. "
+                    "Try describing it with more specific technical detail."
+                )
             return
 
         yield ProgressEvent(

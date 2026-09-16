@@ -9,10 +9,15 @@ landscape graph later.
 """
 from typing import Literal
 
+import logging
+
 from pydantic import BaseModel
 
 from app.pipeline.query_generator import QueryGenerationResult
 from app.serpapi_client import client as _client
+from app.serpapi_client import redact
+
+logger = logging.getLogger(__name__)
 
 SourceType = Literal["patent", "scholar", "product"]
 
@@ -61,6 +66,11 @@ class QueryBundle(BaseModel):
     query: str
     results: list[SearchResult]
     assignee_stats: list[AssigneeStat] = []
+    # True when the search call itself raised (quota exhausted, network,
+    # auth) rather than simply matching nothing. The orchestrator needs the
+    # difference: "no prior art exists" and "we couldn't search" are very
+    # different things to tell a user.
+    search_failed: bool = False
 
 
 class SearchLayerResult(BaseModel):
@@ -152,12 +162,20 @@ def run_patent_scholar_search(query_result: QueryGenerationResult) -> list[Query
     it just contributes an empty bundle."""
     bundles: list[QueryBundle] = []
     for gq in query_result.queries:
+        search_failed = False
         try:
             results, assignee_stats = search_patents_for_query(gq.query)
-        except Exception:
-            results, assignee_stats = [], []
+        except Exception as e:
+            logger.warning("Patent search failed for %s query: %s", gq.type, redact(e))
+            results, assignee_stats, search_failed = [], [], True
         bundles.append(
-            QueryBundle(query_type=gq.type, query=gq.query, results=results, assignee_stats=assignee_stats)
+            QueryBundle(
+                query_type=gq.type,
+                query=gq.query,
+                results=results,
+                assignee_stats=assignee_stats,
+                search_failed=search_failed,
+            )
         )
     return bundles
 

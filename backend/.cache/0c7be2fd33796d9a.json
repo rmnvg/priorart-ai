@@ -1,0 +1,1052 @@
+{
+  "idea_text": "A collapsible kayak paddle that splits into four interlocking segments, each hollow and buoyant, so the whole paddle also serves as an emergency flotation device when disassembled. Additionally, Integrate an internal pressurizable bladder within each segment to provide adjustable buoyancy beyond the inherent hollow buoyancy.",
+  "events": [
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Extracting core concepts and generating search queries..."
+    },
+    {
+      "type": "progress",
+      "stage": "searching_patents",
+      "message": "Searching patents across 3 query angles..."
+    },
+    {
+      "type": "progress",
+      "stage": "searching_scholar",
+      "message": "Reviewing academic literature matches..."
+    },
+    {
+      "type": "progress",
+      "stage": "checking_market_availability",
+      "message": "Checking whether a similar product already exists commercially..."
+    },
+    {
+      "type": "progress",
+      "stage": "ranking_results",
+      "message": "Ranking and deduplicating results by relevance to your idea..."
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Pulling full claims for top candidates and scoring novelty..."
+    },
+    {
+      "type": "progress",
+      "stage": "done",
+      "message": "Analysis complete."
+    },
+    {
+      "type": "result",
+      "data": {
+        "idea_text": "A collapsible kayak paddle that splits into four interlocking segments, each hollow and buoyant, so the whole paddle also serves as an emergency flotation device when disassembled. Additionally, Integrate an internal pressurizable bladder within each segment to provide adjustable buoyancy beyond the inherent hollow buoyancy.",
+        "ranked_results": [
+          {
+            "id": "https://www.walmart.com/ip/Inflatable-Kayak-Paddle-Paddle-Four-Sections-Detachable-Adjustable-Kayak-Paddles-Aluminum-Alloy-Shaft-Paddle-Double-Head-Paddle/20127123804",
+            "source_type": "product",
+            "title": "Inflatable Kayak Paddle Paddle Four Sections Detachable ...",
+            "snippet": "The paddle is with 3 locking positions for different kayaking angle preference. This double-headed aluminum alloy paddle features an arc design, ...",
+            "link": "https://www.walmart.com/ip/Inflatable-Kayak-Paddle-Paddle-Four-Sections-Detachable-Adjustable-Kayak-Paddles-Aluminum-Alloy-Shaft-Paddle-Double-Head-Paddle/20127123804",
+            "relevance_score": 0.6566101312637329,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US5964178A/en",
+            "source_type": "patent",
+            "title": "Collapsible boat with enhanced rigidity and multi-function chair",
+            "snippet": "A collapsible portable boat with enhanced rigidity, comprising a main skeleton frame and hull, including an end stem section and gunwales connected to each other by a gunwale connecting means, further characterized in that the hull is of flexible material, a floor section affixed to that portion \u2026",
+            "link": "https://patents.google.com/patent/US5964178A/en",
+            "relevance_score": 0.6223478317260742,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "AU": "NOT_ACTIVE",
+              "CA": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Gonda; Raymond M.",
+            "priority_date": "1995-06-06"
+          },
+          {
+            "id": "patent/US5615634A/en",
+            "source_type": "patent",
+            "title": "Collapsible boat with enhanced rigidity",
+            "snippet": "A collapsible portable boat with enhanced rigidity includes main skeleton frame and hull, including an end stem section and gunwales connected to each other by a gunwale connector. The hull is made of flexible material, and has a floor section affixed to that portion of the hull section which \u2026",
+            "link": "https://patents.google.com/patent/US5615634A/en",
+            "relevance_score": 0.6116684079170227,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Gonda; Raymond M.",
+            "priority_date": "1995-06-06"
+          },
+          {
+            "id": "https://www.ebay.com/itm/306899522254",
+            "source_type": "product",
+            "title": "Collapsible Kayak Paddle Adjustable Aluminum Shaft ...",
+            "snippet": "This telescopic paddle changes size with just a simple twist. Expanding from 21\u201d to 41\u201d adult sizethis durable boat paddle has a corrosion resistant aluminum ...",
+            "link": "https://www.ebay.com/itm/306899522254",
+            "relevance_score": 0.6014106273651123,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN108750041A/en",
+            "source_type": "patent",
+            "title": "A kind of inflatable flotation gear",
+            "snippet": "\u2026 by the invention promotes the structural schematic diagrams such as paddle cover\uff1b Structural schematic diagram when attached drawing 19 is foldable propulsion paddle and/or the folding of foldable propulsion paddle cover in Figure 18 Wherein:1- airbag bodies, 1A- upper chamber, 1B- lower chambers\uff1b2 \u2026",
+            "link": "https://patents.google.com/patent/CN108750041A/en",
+            "relevance_score": 0.580909788608551,
+            "cpc_code": "B63B34/50",
+            "cpc_description": "Body-supporting buoyant devices, e.g. bathing boats or water cycles",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "\u7fc1\u6587\u704f",
+            "priority_date": "2018-01-24"
+          },
+          {
+            "id": "patent/DE102018003227A1/en",
+            "source_type": "patent",
+            "title": "Inflatable watercraft, with process for its manufacture and adhesive table",
+            "snippet": "Disclosed is a collapsible, inflatable watercraft, in particular board (stand up paddleboard, windsurfboard, kitesurfboard, foil board, wave riding board), which has a maximum longitudinal stiffness and the inflatable area is at least partially made of drop stitch material and at least two parts, \u2026",
+            "link": "https://patents.google.com/patent/DE102018003227A1/en",
+            "relevance_score": 0.5774556398391724,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "CA": "ACTIVE",
+              "DE": "NOT_ACTIVE",
+              "ES": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Ernstfried Prade",
+            "priority_date": "2017-07-29"
+          },
+          {
+            "id": "https://www.crowwing.com/Collapsible-Kayak-Oar-Orange-Aluminum-25-982711",
+            "source_type": "product",
+            "title": "Collapsible Kayak Oar, Orange Aluminum, 25",
+            "snippet": "So this is a telescoping emergency paddle \u2013 collapses down for storage, expands from 25 inches up to 54 inches. Diving Kayak Paddles: Telescoping, ...",
+            "link": "https://www.crowwing.com/Collapsible-Kayak-Oar-Orange-Aluminum-25-982711",
+            "relevance_score": 0.570466160774231,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://us.amazon.com/gp/new-releases/sporting-goods/3414061",
+            "source_type": "product",
+            "title": "The best-selling new & future releases in Kayak Paddles",
+            "snippet": "iTAOSTAR Adjustable Kayak Paddle, Aluminum Shaft and PP Blade, Floating Kayaking Oars with Anti-Freeze Grip & Drip Rings, 2-Piece Lightweight Oar for Kayak ...",
+            "link": "https://us.amazon.com/gp/new-releases/sporting-goods/3414061",
+            "relevance_score": 0.5620008707046509,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.angleoar.com/adaptive-kayak-paddle-versa?srsltid=AU7gw4UidSBKHjeyum99_AKWkMFatn6quEBo3MSmG3PjQ-ts9vD4Mcaw",
+            "source_type": "product",
+            "title": "Adaptive Kayak Paddle \u2013 Versa Paddle System",
+            "snippet": "The Versa Paddle System is a mount-supported adaptive kayak paddle designed to reduce shoulder strain and support paddlers with disabilities or limited ...",
+            "link": "https://www.angleoar.com/adaptive-kayak-paddle-versa?srsltid=AU7gw4UidSBKHjeyum99_AKWkMFatn6quEBo3MSmG3PjQ-ts9vD4Mcaw",
+            "relevance_score": 0.5478641986846924,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US20210316820A1/en",
+            "source_type": "patent",
+            "title": "Modular Floatation Device",
+            "snippet": "A modular flotation device comprises a first elongated rigid pontoon module comprising a first pontoon section and a second pontoon section, a second elongated rigid pontoon module comprising a third pontoon section and a fourth pontoon section, and an intermediate frame module comprising \u2026",
+            "link": "https://patents.google.com/patent/US20210316820A1/en",
+            "relevance_score": 0.5321665406227112,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Tillicum International, Inc. Dba Venture Outdoors",
+            "priority_date": "2020-04-14"
+          },
+          {
+            "id": "https://www.youtube.com/watch?v=5UOv9hXONjc",
+            "source_type": "product",
+            "title": "A closer look at the Oru 4 Part Adjustable Kayak Paddle",
+            "snippet": "In this video, we take a look at the Oru 4 Part Adjustable Kayak Paddle. It features a lightweight fiberglass shaft, durable ABS blades, and ...",
+            "link": "https://www.youtube.com/watch?v=5UOv9hXONjc",
+            "relevance_score": 0.5126588344573975,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/EP2768723B1/en",
+            "source_type": "patent",
+            "title": "Inflatable hull and buoyant vehicle, in particular a dinghy",
+            "snippet": "Floating vessel comprising at least one inflatable hull (1, 1') comprising at least one pneumatic casing (2, 2') with two walls (2 c , 2 d ) placed one over the other, said walls (2 c , 2 d ) each comprising a fabric sheet and being connected to each other by a multitude of connecting wires (2 f ) \u2026",
+            "link": "https://patents.google.com/patent/EP2768723B1/en",
+            "relevance_score": 0.5027667284011841,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "ES": "ACTIVE",
+              "FR": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "Sas Tiwal",
+            "priority_date": "2011-10-21"
+          },
+          {
+            "id": "patent/US9783264B2/en",
+            "source_type": "patent",
+            "title": "Multi-hull variable aspect surf rescue boat",
+            "snippet": "3. The multi-hull variable aspect surf rescue boat as recited in claim 1 , wherein the telescoping tubular struts are constructed in the form of an arch that may be extended or retracted independently to change the boat's OAR, overall length, and/or beam on center. 4. The multi-hull variable aspect \u2026",
+            "link": "https://patents.google.com/patent/US9783264B2/en",
+            "relevance_score": 0.4953250586986542,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Ben D. deVries",
+            "priority_date": "2015-06-15"
+          },
+          {
+            "id": "patent/US20080236467A1/en",
+            "source_type": "patent",
+            "title": "Modular Watercraft Assembly",
+            "snippet": "A modular watercraft assembly and apparatus. In one embodiment, the watercraft assembly includes a divided floatation support member that provides buoyant support. The divided floatation support member includes a first pontoon and a second pontoon that are both longitudinally extensible pontoons.",
+            "link": "https://patents.google.com/patent/US20080236467A1/en",
+            "relevance_score": 0.4863581657409668,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Wyman Dennis G",
+            "priority_date": "2007-03-30"
+          },
+          {
+            "id": "patent/CN111670140B/en",
+            "source_type": "patent",
+            "title": "Boat device with hydrofoil and electric propeller system",
+            "snippet": "A method and system for providing a watercraft device is disclosed. The boat apparatus includes a board, a throttle valve coupled to a top surface of the board, a hydrofoil coupled to a bottom surface of the board, and an electric propeller system coupled to the hydrofoil. The hydrofoil includes a \u2026",
+            "link": "https://patents.google.com/patent/CN111670140B/en",
+            "relevance_score": 0.47487664222717285,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "ACTIVE",
+              "ES": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "\u51ef\u6982\u5ff5\u6709\u9650\u8d23\u4efb\u516c\u53f8",
+            "priority_date": "2016-09-12"
+          },
+          {
+            "id": "patent/US7513808B1/en",
+            "source_type": "patent",
+            "title": "Lever powered watercraft",
+            "snippet": "Embodiments of the disclosure include a flotation device or watercraft propelled through the water using a (ever powered propulsion system. The lever powered propulsion system includes human powered actuating levers operably connected to a reciprocating propulsion device. As a rider powers the \u2026",
+            "link": "https://patents.google.com/patent/US7513808B1/en",
+            "relevance_score": 0.47054463624954224,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Stephen Christopher Murphy",
+            "priority_date": "2005-03-23"
+          },
+          {
+            "id": "patent/US20200391830A1/en",
+            "source_type": "patent",
+            "title": "Drive module for a boat-like buoyancy body, and buoyancy body equipped therewith",
+            "snippet": "15 . A drive module for a buoyancy body, comprising: a body having air chambers inflatable therein, said body including a seat and a shaft extending in a direction transverse to a longitudinal direction of said buoyancy body; lateral paddle wheels mounted on end portions of said shaft; a profile \u2026",
+            "link": "https://patents.google.com/patent/US20200391830A1/en",
+            "relevance_score": 0.44732385873794556,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CH": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Inventra Ag",
+            "priority_date": "2017-10-13"
+          },
+          {
+            "id": "patent/CN103958340A/en",
+            "source_type": "patent",
+            "title": "Inflatable hulls and especially pontoons of the boat type with centerboards",
+            "snippet": "2. inflatable hull according to claim 1 (1,1 '), is characterized in that, described rivel is included in the folding part (2p) of described wall (2c) formation of the inner side that is arranged in described warp architecture. 3. inflatable hull according to claim 2 (1,1 '), is characterized in \u2026",
+            "link": "https://patents.google.com/patent/CN103958340A/en",
+            "relevance_score": 0.44476741552352905,
+            "cpc_code": "B63B7/082",
+            "cpc_description": "Inflatable having parts of rigid material",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "ES": "ACTIVE",
+              "FR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u7279\u6c83\u7b80\u6613\u80a1\u4efd\u516c\u53f8",
+            "priority_date": "2011-10-21"
+          },
+          {
+            "id": "patent/US20110232557A1/en",
+            "source_type": "patent",
+            "title": "Bouyant hull extension providing lateral and longitudinal control for \u2026",
+            "snippet": "An improved stern design for many types of small watercraft to eliminate \u201ctail dragging\u201d, porpoising, oversteer and \u201cslide out\u201d, improve longitudinal tracking, and provide faster planing at lower speeds. This hull extension, consisting of two buoyant sponsons extending astern of the motor output, \u2026",
+            "link": "https://patents.google.com/patent/US20110232557A1/en",
+            "relevance_score": 0.44046449661254883,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Scott Armstrong Kilgore",
+            "priority_date": "2010-03-25"
+          },
+          {
+            "id": "patent/US9516949B2/en",
+            "source_type": "patent",
+            "title": "Inflatable crafts with an integral underwater viewing window",
+            "snippet": "An inflatable water craft for underwater observation, the craft incorporating an integral underwater viewing window which includes a top and bottom transparent lens sonic welded to the craft intermediate a cavity which passes through the top and bottom of the craft forming a viewing port.",
+            "link": "https://patents.google.com/patent/US9516949B2/en",
+            "relevance_score": 0.43764275312423706,
+            "cpc_code": "B63B34/50",
+            "cpc_description": "Body-supporting buoyant devices, e.g. bathing boats or water cycles",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "Kenneth Troy Harkrider",
+            "priority_date": "2014-10-06"
+          },
+          {
+            "id": "patent/US10913518B2/en",
+            "source_type": "patent",
+            "title": "Inflatable watercraft and method for the production thereof",
+            "snippet": "The invention relates to an inflatable watercraft which consists of at least two inflatable parts that are joined together by means of holding strips or the like under preload. The invention also relates to a method for producing said inflatable watercraft and a gluing table that can be used in \u2026",
+            "link": "https://patents.google.com/patent/US10913518B2/en",
+            "relevance_score": 0.43642911314964294,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "CA": "ACTIVE",
+              "DE": "NOT_ACTIVE",
+              "ES": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "Ernstfried Prade",
+            "priority_date": "2017-07-29"
+          },
+          {
+            "id": "https://www.youtube.com/watch?v=LekI0mq7hQ4",
+            "source_type": "product",
+            "title": "The Ultimate Kayak Paddle isn't the Most Expensive?!",
+            "snippet": "What's the ultimate kayak paddle? After 35 years of paddling, my answer might surprise you \u2014 because I don't think it's one of the $600 ...",
+            "link": "https://www.youtube.com/watch?v=LekI0mq7hQ4",
+            "relevance_score": 0.4330371022224426,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US20190112006A1/en",
+            "source_type": "patent",
+            "title": "Shapeshifting multi-mode personal watercraft",
+            "snippet": ". A watercraft comprising: a first section; a second section; and a connecting element joining the first section to the second section, wherein the connecting element has a first unextended state and a second extended state, and wherein the connecting element can be moved between the first and \u2026",
+            "link": "https://patents.google.com/patent/US20190112006A1/en",
+            "relevance_score": 0.4222312569618225,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "CA": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Derek Whitaker",
+            "priority_date": "2016-03-31"
+          },
+          {
+            "id": "patent/US6131532A/en",
+            "source_type": "patent",
+            "title": "Inflatable sailboat",
+            "snippet": "An inflatable sailboard consisting of an inflatable hull, a mast, a boom, and a sail, and optionally comprising a removable rigid deck and auxiliary devices such as mast supports and center boards attached to the hull by through-hull fittings. The hull of the invention consists of a plurality of \u2026",
+            "link": "https://patents.google.com/patent/US6131532A/en",
+            "relevance_score": 0.4119006395339966,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "EP": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Winner; William K.",
+            "priority_date": "1997-09-08"
+          },
+          {
+            "id": "https://www.orukayak.com/products/oru-paddle",
+            "source_type": "product",
+            "title": "Oru Paddle",
+            "snippet": "It's fully customizable, with a quick-clamp connector that lets you adjust both the paddle length (220--240 cm) and the feather angles of the blades for your ...",
+            "link": "https://www.orukayak.com/products/oru-paddle",
+            "relevance_score": 0.4079028367996216,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US10479449B2/en",
+            "source_type": "patent",
+            "title": "Inflatable watercraft and method of making same",
+            "snippet": "the first inflatable member includes an open space extending from the aft end towards the forward end, and together with a portion of the open space of the second inflatable member defining an engine well. 2. The inflatable watercraft of claim 1 , wherein the first and second inflatable members are \u2026",
+            "link": "https://patents.google.com/patent/US10479449B2/en",
+            "relevance_score": 0.4067568778991699,
+            "cpc_code": "B63B7/082",
+            "cpc_description": "Inflatable having parts of rigid material",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Bote, Llc",
+            "priority_date": "2018-02-26"
+          },
+          {
+            "id": "patent/US20240343348A1/en",
+            "source_type": "patent",
+            "title": "Inflatable watercraft",
+            "snippet": "8 . The inflatable watercraft of claim 1 , further comprising a plate disposed at the bow and connected between the starboard side freeboard panel and the port side freeboard panel, and extending from a gunwale of the bow to at least the waterline of the watercraft. 9 . The inflatable watercraft of \u2026",
+            "link": "https://patents.google.com/patent/US20240343348A1/en",
+            "relevance_score": 0.39535707235336304,
+            "cpc_code": "B63B7/082",
+            "cpc_description": "Inflatable having parts of rigid material",
+            "country_status": {
+              "EP": "ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Bote, Llc",
+            "priority_date": "2019-07-03"
+          },
+          {
+            "id": "patent/US9120547B2/en",
+            "source_type": "patent",
+            "title": "Inflatable watercraft with motorized cassette",
+            "snippet": "What is claimed is: 1. An inflatable watercraft having at least an inflated configuration and a deflated configuration, the watercraft comprising: a motorized cassette comprising a watercraft drive system contained in a housing, the watercraft drive system comprising: a pump, a motor, and an \u2026",
+            "link": "https://patents.google.com/patent/US9120547B2/en",
+            "relevance_score": 0.3875007927417755,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "TW": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Boomerboard, Llc",
+            "priority_date": "2011-09-07"
+          },
+          {
+            "id": "patent/CN102530187B/en",
+            "source_type": "patent",
+            "title": "The high-speed double-head ship that the dead beat rudder that do not sink tune \u2026",
+            "snippet": "The high-speed double-head ship that the dead beat rudder that do not sink tune energy left and right displacement is walked crosswise, is made up of double end hull, the Power Vessel wing be arranged under the floating line of double end hull both sides, balance ship wing, the gasbag chamber that \u2026",
+            "link": "https://patents.google.com/patent/CN102530187B/en",
+            "relevance_score": 0.3679268956184387,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u4f59\u535a",
+            "priority_date": "2011-08-08"
+          },
+          {
+            "id": "patent/US20230278676A1/en",
+            "source_type": "patent",
+            "title": "Drop stitch inflatable seat",
+            "snippet": "1 . A seat for use with a watercraft having an upper surface, comprising: a bottom panel made of inflatable drop stitch material including an upper surface and a lower surface and a peripheral sidewall; a back panel made of inflatable drop stitch material including a first surface and a rear surface \u2026",
+            "link": "https://patents.google.com/patent/US20230278676A1/en",
+            "relevance_score": 0.3649347126483917,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Bote, Llc",
+            "priority_date": "2021-02-02"
+          },
+          {
+            "id": "patent/CN102658858B/en",
+            "source_type": "patent",
+            "title": "Carriers, ships, submarines, and offshore platforms with high-efficiency load- \u2026",
+            "snippet": "The invention provides a plurality of aircraft carriers, ships, submarines and offshore platforms with efficient load elimination, swing stopping and overturn resisting correction devices, which are characterized in that a load elimination self-balancing swing reducing device, a load elimination \u2026",
+            "link": "https://patents.google.com/patent/CN102658858B/en",
+            "relevance_score": 0.35075899958610535,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "\u8d75\u51e4\u94f6",
+            "priority_date": "2012-05-10"
+          },
+          {
+            "id": "patent/US9193304B2/en",
+            "source_type": "patent",
+            "title": "Sports equipment vehicle rack",
+            "snippet": "A sports equipment vehicle for transporting sporting equipment is disclosed. The rack comprises of a plurality of support sections that allow the equipment carrying member to translate from the top of the vehicle roof to the side of the vehicle. Each support section has a bottom member, top \u2026",
+            "link": "https://patents.google.com/patent/US9193304B2/en",
+            "relevance_score": 0.3263038694858551,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Outdoor Girl LLC",
+            "priority_date": "2013-01-18"
+          },
+          {
+            "id": "patent/US8079916B2/en",
+            "source_type": "patent",
+            "title": "Themed amusement river ride system",
+            "snippet": "A water transportation system and method are described, generally related to water amusement attractions and rides. Further, the disclosure generally relates to water-powered rides and to a system and method in which participants may be actively involved in a water attraction. This transportation \u2026",
+            "link": "https://patents.google.com/patent/US8079916B2/en",
+            "relevance_score": 0.31582072377204895,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "Water Ride Concepts, Inc.",
+            "priority_date": "2008-12-18"
+          },
+          {
+            "id": "patent/CN102756625A/en",
+            "source_type": "patent",
+            "title": "Slurry and flood current overhead-hoisting rescue method and amphibious medical \u2026",
+            "snippet": "The invention adopts a large-diameter main culvert coaxial counter-rotating dual-rotor or a fan body to bear the main hoisting force, wherein multiple small-diameter auxiliary culvert rotors or fans are horizontally and symmetrically arranged at the periphery of the dual-rotor or the fan body;",
+            "link": "https://patents.google.com/patent/CN102756625A/en",
+            "relevance_score": 0.2944308817386627,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u90d1\u9e4f",
+            "priority_date": "2011-03-29"
+          },
+          {
+            "id": "scholar/11094306373008561336",
+            "source_type": "scholar",
+            "title": "Squanto: A native odyssey",
+            "snippet": "\u2026 The question of how language shapes culture and vice versa is a knotty problem: linguists \u2026 to swim long distances, or handed him an oar, expecting him to join in the strenuous paddling \u2026",
+            "link": "https://patents.google.com/scholar/11094306373008561336",
+            "relevance_score": 0.2278318703174591,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/DK177547B1/en",
+            "source_type": "patent",
+            "title": "Process and system for well and reservoir management in open-zone developments \u2026",
+            "snippet": "According to the method for well and reservoir management in open hole completions, a data acquisition module (100) is advanced through the wellbore and acquires data providing information revealing fractures in the wall of the weilbore, and at Least one blocking system (1002, 3000), on the basis \u2026",
+            "link": "https://patents.google.com/patent/DK177547B1/en",
+            "relevance_score": 0.13734664022922516,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "BR": "NOT_ACTIVE",
+              "DK": "NOT_ACTIVE",
+              "GB": "ACTIVE",
+              "MX": "ACTIVE",
+              "NO": "UNKNOWN"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "Maersk Olie &amp; Gas",
+            "priority_date": "2011-03-04"
+          },
+          {
+            "id": "patent/EP3253911B1/en",
+            "source_type": "patent",
+            "title": "Methods and devices for analyzing particles",
+            "snippet": "A Method for generating indexed single cell sequencing libraries from a cell population, comprising, distributing individual cells and/or individual nuclei from a cell suspension into a plurality of containers; and creating indexed single cell sequencing libraries from the single cells and/or the \u2026",
+            "link": "https://patents.google.com/patent/EP3253911B1/en",
+            "relevance_score": 0.09964382648468018,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CA": "ACTIVE",
+              "DK": "ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "The University Of British Columbia",
+            "priority_date": "2015-02-04"
+          },
+          {
+            "id": "patent/WO2023147893A1/en",
+            "source_type": "patent",
+            "title": "Windmill",
+            "snippet": "Windmolen, is the principle of rotation of primarily cross-axial turbine rotors for which rotation is obtained by shielding the Return blades section partially by a single vane, Defining the return blade section and push blade section, intake and exhaust by placing a single vanes, or completely \u2026",
+            "link": "https://patents.google.com/patent/WO2023147893A1/en",
+            "relevance_score": 0.08035427331924438,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "india_specific"
+            ],
+            "assignee": "Jitbahadoer Sharma",
+            "priority_date": "2022-02-03"
+          }
+        ],
+        "candidate_assessments": [
+          {
+            "result_id": "patent/US5964178A/en",
+            "title": "Collapsible boat with enhanced rigidity and multi-function chair",
+            "link": "https://patents.google.com/patent/US5964178A/en",
+            "overlapping_elements": [
+              "affixed to one another"
+            ],
+            "differences": [
+              "paddle vs boat hull",
+              "four interlocking segments for a paddle",
+              "internal pressurizable bladder",
+              "buoyancy as emergency flotation device"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/US5615634A/en",
+            "title": "Collapsible boat with enhanced rigidity",
+            "link": "https://patents.google.com/patent/US5615634A/en",
+            "overlapping_elements": [
+              "short sectional support elements",
+              "affixed to one another"
+            ],
+            "differences": [
+              "paddle function",
+              "four hollow segments",
+              "pressurizable bladder",
+              "emergency flotation purpose"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/CN108750041A/en",
+            "title": "A kind of inflatable flotation gear",
+            "link": "https://patents.google.com/patent/CN108750041A/en",
+            "overlapping_elements": [
+              "inflatable flotation gear",
+              "air inlet",
+              "rapid inflation/deflation"
+            ],
+            "differences": [
+              "solid hollow paddle segments",
+              "pressurizable bladder inside each segment",
+              "interlocking paddle geometry"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/DE102018003227A1/en",
+            "title": "Inflatable watercraft, with process for its manufacture and adhesive table",
+            "link": "https://patents.google.com/patent/DE102018003227A1/en",
+            "overlapping_elements": [
+              "collapsible",
+              "inflatable watercraft",
+              "sealed air chamber"
+            ],
+            "differences": [
+              "paddle rather than board",
+              "four interlocking segments",
+              "internal bladder for adjustable buoyancy"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/US20210316820A1/en",
+            "title": "Modular Floatation Device",
+            "link": "https://patents.google.com/patent/US20210316820A1/en",
+            "overlapping_elements": [
+              "modular flotation device",
+              "interchangeable sections"
+            ],
+            "differences": [
+              "paddle application",
+              "four hollow buoyant segments",
+              "pressurizable bladder per segment"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/EP2768723B1/en",
+            "title": "Inflatable hull and buoyant vehicle, in particular a dinghy",
+            "link": "https://patents.google.com/patent/EP2768723B1/en",
+            "overlapping_elements": [
+              "inflatable hull",
+              "buoyancy",
+              "pneumatic casing"
+            ],
+            "differences": [
+              "paddle shape",
+              "segment interlock",
+              "adjustable internal bladder"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/US9783264B2/en",
+            "title": "Multi-hull variable aspect surf rescue boat",
+            "link": "https://patents.google.com/patent/US9783264B2/en",
+            "overlapping_elements": [
+              "telescoping",
+              "extendable",
+              "collapsible"
+            ],
+            "differences": [
+              "paddle vs multi\u2011hull boat",
+              "four buoyant segments",
+              "internal pressurizable bladder"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "patent/US20080236467A1/en",
+            "title": "Modular Watercraft Assembly",
+            "link": "https://patents.google.com/patent/US20080236467A1/en",
+            "overlapping_elements": [
+              "modular watercraft",
+              "telescopically extensible",
+              "collapsible"
+            ],
+            "differences": [
+              "paddle function",
+              "four interlocking hollow sections",
+              "adjustable buoyancy bladder"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "https://www.walmart.com/ip/Inflatable-Kayak-Paddle-Paddle-Four-Sections-Detachable-Adjustable-Kayak-Paddles-Aluminum-Alloy-Shaft-Paddle-Double-Head-Paddle/20127123804",
+            "title": "Inflatable Kayak Paddle Paddle Four Sections Detachable ...",
+            "link": "https://www.walmart.com/ip/Inflatable-Kayak-Paddle-Paddle-Four-Sections-Detachable-Adjustable-Kayak-Paddles-Aluminum-Alloy-Shaft-Paddle-Double-Head-Paddle/20127123804",
+            "overlapping_elements": [
+              "four sections",
+              "detachable",
+              "adjustable"
+            ],
+            "differences": [
+              "integrated pressurizable bladder for buoyancy",
+              "hollow buoyant construction for flotation",
+              "emergency flotation device function"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "https://www.ebay.com/itm/306899522254",
+            "title": "Collapsible Kayak Paddle Adjustable Aluminum Shaft ...",
+            "link": "https://www.ebay.com/itm/306899522254",
+            "overlapping_elements": [
+              "collapsible",
+              "telescopic",
+              "adjustable length"
+            ],
+            "differences": [
+              "buoyancy via hollow segments",
+              "pressurizable bladder",
+              "dual\u2011use as flotation device"
+            ],
+            "verdict": "partially_overlapping"
+          },
+          {
+            "result_id": "https://www.crowwing.com/Collapsible-Kayak-Oar-Orange-Aluminum-25-982711",
+            "title": "Collapsible Kayak Oar, Orange Aluminum, 25",
+            "link": "https://www.crowwing.com/Collapsible-Kayak-Oar-Orange-Aluminum-25-982711",
+            "overlapping_elements": [
+              "collapsible",
+              "emergency paddle"
+            ],
+            "differences": [
+              "four interlocking hollow segments",
+              "internal pressurizable bladder",
+              "adjustable buoyancy beyond inherent hollow buoyancy"
+            ],
+            "verdict": "partially_overlapping"
+          }
+        ],
+        "overall_novelty_confidence": 0.32,
+        "differentiation_suggestions": [
+          "Add a quick\u2011release locking mechanism that mates with a unique key\u2011profile distinct from the simple telescopic pins used in existing collapsible paddles.",
+          "Incorporate a one\u2011way inflation valve with a pressure\u2011release regulator inside each segment to allow precise buoyancy control, a feature absent from the cited modular flotation devices.",
+          "Use a composite sandwich construction (e.g., carbon\u2011fiber skins over a foam core) for the hollow segments to provide rigidity while remaining buoyant, differentiating from the all\u2011metal or pure\u2011inflatable designs in the market.",
+          "Integrate a low\u2011power electronic buoyancy sensor that displays segment pressure on a small waterproof display, a capability not disclosed in any prior art."
+        ],
+        "citations": [
+          {
+            "claim": "affixed to one another",
+            "result_id": "patent/US5964178A/en",
+            "title": "Collapsible boat with enhanced rigidity and multi-function chair",
+            "link": "https://patents.google.com/patent/US5964178A/en"
+          },
+          {
+            "claim": "inflatable flotation gear",
+            "result_id": "patent/CN108750041A/en",
+            "title": "A kind of inflatable flotation gear",
+            "link": "https://patents.google.com/patent/CN108750041A/en"
+          },
+          {
+            "claim": "modular flotation device",
+            "result_id": "patent/US20210316820A1/en",
+            "title": "Modular Floatation Device",
+            "link": "https://patents.google.com/patent/US20210316820A1/en"
+          },
+          {
+            "claim": "quick\u2011release locking mechanism",
+            "result_id": "https://www.walmart.com/ip/Inflatable-Kayak-Paddle-Paddle-Four-Sections-Detachable-Adjustable-Kayak-Paddles-Aluminum-Alloy-Shaft-Paddle-Double-Head-Paddle/20127123804",
+            "title": "Inflatable Kayak Paddle Paddle Four Sections Detachable ...",
+            "link": "https://www.walmart.com/ip/Inflatable-Kayak-Paddle-Paddle-Four-Sections-Detachable-Adjustable-Kayak-Paddles-Aluminum-Alloy-Shaft-Paddle-Double-Head-Paddle/20127123804"
+          },
+          {
+            "claim": "one\u2011way inflation valve with pressure\u2011release regulator",
+            "result_id": "patent/DE102018003227A1/en",
+            "title": "Inflatable watercraft, with process for its manufacture and adhesive table",
+            "link": "https://patents.google.com/patent/DE102018003227A1/en"
+          },
+          {
+            "claim": "composite sandwich construction",
+            "result_id": "patent/US9783264B2/en",
+            "title": "Multi-hull variable aspect surf rescue boat",
+            "link": "https://patents.google.com/patent/US9783264B2/en"
+          },
+          {
+            "claim": "electronic buoyancy sensor",
+            "result_id": "patent/US20080236467A1/en",
+            "title": "Modular Watercraft Assembly",
+            "link": "https://patents.google.com/patent/US20080236467A1/en"
+          }
+        ],
+        "india_status": {
+          "blocking_in_india": 0,
+          "active_elsewhere_only": 5
+        },
+        "claim_chart": {
+          "candidate_result_id": "patent/US5964178A/en",
+          "candidate_title": "Collapsible boat with enhanced rigidity and multi-function chair",
+          "candidate_link": "https://patents.google.com/patent/US5964178A/en",
+          "candidate_text": "A collapsible portable boat with enhanced rigidity, comprising a main skeleton frame and hull, including an end stem section and gunwales connected to each other by a gunwale connecting means, further characterized in that the hull is of flexible material, a floor section affixed to that portion of the hull section which defines the bottom of the boat and which is disposed between the stringers and the flexible material of the hull, characterized in that the skeleton frame comprises a plurality of support stringers running the length of the boat along the bottom and sides of said boat, including support formers arranged transverse to said lengthwise support stringers, characterized in that the support stringers themselves comprise a plurality of short sectional support elements which are affixed to one another by means for maintaining tension between said short sections, and a means for developing tension between said skeleton structure and the outer flexible hull positioned between the flexible material of the hull and the skeleton, characterized in that the tension substantially prevents longitudinal hull flex. Claim 1: 1. A collapsible portable boat with enhanced longitudinal...",
+          "pairs": [
+            {
+              "concept": "interlocking support elements",
+              "idea_span": "splits into four interlocking segments",
+              "candidate_span": "short sectional support elements which are affixed to one another"
+            },
+            {
+              "concept": "hollow buoyant structure",
+              "idea_span": "each hollow and buoyant",
+              "candidate_span": "inflatable watercraft ... sealed air chamber"
+            },
+            {
+              "concept": "adjustable buoyancy",
+              "idea_span": "internal pressurizable bladder within each segment",
+              "candidate_span": "pressurizable bladder ... rapid inflation/deflation"
+            }
+          ]
+        },
+        "top_assignees": [
+          {
+            "name": "Jmf Watercraft Design Llc",
+            "percentage": 7.1
+          },
+          {
+            "name": "Gonda; Raymond M.",
+            "percentage": 7.1
+          },
+          {
+            "name": "\ud5e8\ub9ac \ucf00\uc774 \uc624\ubca0\ub974\uba54\uc774\uc5b4",
+            "percentage": 3.5
+          },
+          {
+            "name": "\u4f59\u535a",
+            "percentage": 3.5
+          },
+          {
+            "name": "Scott Armstrong Kilgore",
+            "percentage": 3.5
+          },
+          {
+            "name": "Richard Bernhard Richardson",
+            "percentage": 3.5
+          }
+        ]
+      }
+    }
+  ]
+}
