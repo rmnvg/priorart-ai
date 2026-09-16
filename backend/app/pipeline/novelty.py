@@ -38,11 +38,18 @@ class Citation(BaseModel):
     link: str
 
 
+class ClaimChartPair(BaseModel):
+    concept: str
+    idea_span: str
+    candidate_span: str
+
+
 class NoveltyAssessment(BaseModel):
     candidate_assessments: list[CandidateAssessment]
     overall_novelty_confidence: float
     differentiation_suggestions: list[str]
     citations: list[Citation]
+    claim_chart_pairs: list[ClaimChartPair]
 
 
 class _RawCandidateAssessment(BaseModel):
@@ -62,6 +69,7 @@ class _RawNoveltyAssessment(BaseModel):
     overall_novelty_confidence: float
     differentiation_suggestions: list[str]
     citations: list[_RawCitation]
+    claim_chart_pairs: list[ClaimChartPair] = []
 
 
 SYSTEM_PROMPT = """You are a patent analyst assessing the novelty of an inventor's idea \
@@ -106,6 +114,16 @@ suggestion that was inspired by a specific candidate — not one per individual 
 point. Each entry is {{"claim": "<short paraphrase of the claim>", "result_id": \
 "<id it's based on>"}}. Use ids from the candidate or market list only. Keep the total \
 citation count roughly equal to the number of candidates plus suggestions, not larger.
+5. Produce "claim_chart_pairs": a patent "claim chart" comparing the idea specifically \
+against the FIRST candidate listed above (the closest match). Give 3-6 pairs, each \
+{{"concept": "<short label for the shared technical concept>", "idea_span": \
+"<verbatim excerpt, 3-12 words, COPIED EXACTLY from the invention idea text above>", \
+"candidate_span": "<verbatim excerpt, 3-12 words, COPIED EXACTLY from that candidate's \
+summary text>"}}. Both spans MUST be exact substrings (same words, same order, same \
+casing) of their source text — do not paraphrase or summarize them, they will be \
+located and highlighted by exact text match. If you cannot find genuine overlapping \
+concepts with real verbatim spans, return an empty list rather than inventing spans \
+that don't exist in the source text.
 
 Respond with a single JSON object of this exact shape:
 {{
@@ -116,6 +134,9 @@ Respond with a single JSON object of this exact shape:
   "differentiation_suggestions": ["..."],
   "citations": [
     {{"claim": "...", "result_id": "..."}}
+  ],
+  "claim_chart_pairs": [
+    {{"concept": "...", "idea_span": "...", "candidate_span": "..."}}
   ]
 }}
 """
@@ -194,13 +215,18 @@ def assess_novelty(
     last_error: Exception | None = None
     for _ in range(max_retries + 1):
         try:
-            raw = complete_json(prompt, system=SYSTEM_PROMPT, temperature=0.2)
+            # Lower than the query-generation stage's temperature: this call
+            # also has to copy claim-chart spans verbatim, and lower
+            # temperature measurably improves exact-copy fidelity without
+            # hurting verdict/suggestion quality.
+            raw = complete_json(prompt, system=SYSTEM_PROMPT, temperature=0.1)
             parsed = _RawNoveltyAssessment.model_validate(raw)
             return NoveltyAssessment(
                 candidate_assessments=_resolve_assessments(parsed.candidate_assessments, lookup),
                 overall_novelty_confidence=max(0.0, min(1.0, parsed.overall_novelty_confidence)),
                 differentiation_suggestions=parsed.differentiation_suggestions,
                 citations=_resolve_citations(parsed.citations, lookup),
+                claim_chart_pairs=parsed.claim_chart_pairs,
             )
         except (ValueError, ValidationError) as e:
             last_error = e

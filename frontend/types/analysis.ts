@@ -54,6 +54,20 @@ export interface Citation {
   link: string;
 }
 
+export interface ClaimChartPair {
+  concept: string;
+  idea_span: string;
+  candidate_span: string;
+}
+
+export interface ClaimChart {
+  candidate_result_id: string;
+  candidate_title: string;
+  candidate_link: string;
+  candidate_text: string;
+  pairs: ClaimChartPair[];
+}
+
 export interface AnalysisResult {
   idea_text: string;
   ranked_results: RankedResult[];
@@ -62,6 +76,7 @@ export interface AnalysisResult {
   differentiation_suggestions: string[];
   citations: Citation[];
   india_status: IndiaStatus;
+  claim_chart: ClaimChart | null;
 }
 
 export interface ResultEvent {

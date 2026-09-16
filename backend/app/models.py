@@ -6,7 +6,7 @@ from typing import Literal
 from pydantic import BaseModel
 
 from app.pipeline.india_status import IndiaStatus
-from app.pipeline.novelty import CandidateAssessment, Citation
+from app.pipeline.novelty import CandidateAssessment, Citation, ClaimChartPair
 from app.pipeline.rank import RankedResult
 
 PipelineStage = Literal[
@@ -26,6 +26,14 @@ class ProgressEvent(BaseModel):
     message: str
 
 
+class ClaimChart(BaseModel):
+    candidate_result_id: str
+    candidate_title: str
+    candidate_link: str
+    candidate_text: str
+    pairs: list[ClaimChartPair]
+
+
 class AnalysisResult(BaseModel):
     idea_text: str
     ranked_results: list[RankedResult]
@@ -34,6 +42,7 @@ class AnalysisResult(BaseModel):
     differentiation_suggestions: list[str]
     citations: list[Citation]
     india_status: IndiaStatus
+    claim_chart: ClaimChart | None = None
 
 
 class ResultEvent(BaseModel):

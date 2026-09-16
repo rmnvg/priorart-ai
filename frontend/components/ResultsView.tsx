@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ClaimChartView from "@/components/ClaimChart";
 import LandscapeGraph from "@/components/LandscapeGraph";
 import type { AnalysisResult, NoveltyVerdict, SourceType } from "@/types/analysis";
 
@@ -154,6 +155,10 @@ export default function ResultsView({ result }: { result: AnalysisResult }) {
           </div>
         )}
       </div>
+
+      {result.claim_chart && (
+        <ClaimChartView claimChart={result.claim_chart} ideaText={result.idea_text} />
+      )}
 
       <div>
         <h2 className="text-xl font-bold text-neutral-900">Prior art & related results</h2>

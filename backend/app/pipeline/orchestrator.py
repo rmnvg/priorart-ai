@@ -9,7 +9,14 @@ stays free to flush progress events promptly.
 import asyncio
 from collections.abc import AsyncGenerator
 
-from app.models import AnalysisResult, AnalyzeStreamEvent, ErrorEvent, ProgressEvent, ResultEvent
+from app.models import (
+    AnalysisResult,
+    AnalyzeStreamEvent,
+    ClaimChart,
+    ErrorEvent,
+    ProgressEvent,
+    ResultEvent,
+)
 from app.pipeline.deepdive import deep_dive
 from app.pipeline.india_status import compute_india_status
 from app.pipeline.novelty import assess_novelty
@@ -83,6 +90,20 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
         )
         india_status = compute_india_status(ranked, DEEP_DIVE_TOP_N)
 
+        # The claim chart always compares against the top deep-dived
+        # candidate (the closest match) — the novelty prompt was instructed
+        # to target that same candidate, so no id resolution is needed here.
+        claim_chart = None
+        if top_candidates and novelty_result.claim_chart_pairs:
+            top = top_candidates[0]
+            claim_chart = ClaimChart(
+                candidate_result_id=top.id,
+                candidate_title=top.title,
+                candidate_link=top.link,
+                candidate_text=top.summary_text,
+                pairs=novelty_result.claim_chart_pairs,
+            )
+
         result = AnalysisResult(
             idea_text=idea_text,
             ranked_results=ranked,
@@ -91,6 +112,7 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             differentiation_suggestions=novelty_result.differentiation_suggestions,
             citations=novelty_result.citations,
             india_status=india_status,
+            claim_chart=claim_chart,
         )
 
         yield ProgressEvent(stage="done", message="Analysis complete.")
