@@ -9,13 +9,10 @@ landscape graph later.
 """
 from typing import Literal
 
-import serpapi
 from pydantic import BaseModel
 
-from app.config import SERPAPI_API_KEY
-from app.pipeline.query_generator import GeneratedQuery, QueryGenerationResult
-
-_client = serpapi.Client(api_key=SERPAPI_API_KEY)
+from app.pipeline.query_generator import QueryGenerationResult
+from app.serpapi_client import client as _client
 
 SourceType = Literal["patent", "scholar", "product"]
 
