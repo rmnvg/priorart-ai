@@ -7,6 +7,7 @@ Each blocking pipeline call is run via asyncio.to_thread so the event loop
 stays free to flush progress events promptly.
 """
 import asyncio
+import logging
 from collections.abc import AsyncGenerator
 
 from app.models import (
@@ -24,7 +25,10 @@ from app.pipeline.query_generator import generate_queries
 from app.pipeline.rank import rank_and_dedupe
 from app.pipeline.search import SearchLayerResult, run_market_search, run_patent_scholar_search
 
+logger = logging.getLogger(__name__)
+
 MIN_IDEA_LENGTH = 10
+MAX_IDEA_LENGTH = 6000  # generous multi-paragraph allowance; guards against pathological pastes
 DEEP_DIVE_TOP_N = 8
 MARKET_CONTEXT_TOP_N = 3
 
@@ -37,6 +41,8 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             "(at least a sentence or two)."
         )
         return
+    if len(idea_text) > MAX_IDEA_LENGTH:
+        idea_text = idea_text[:MAX_IDEA_LENGTH]
 
     try:
         yield ProgressEvent(
@@ -119,4 +125,14 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
         yield ResultEvent(data=result)
 
     except Exception as e:
-        yield ErrorEvent(message=f"Something went wrong while analyzing your idea: {e}")
+        # Never echo the raw exception to the client: SerpApi's own errors
+        # embed the API key in the request URL (it's a query param), and any
+        # future code path that reaches this top-level handler unwrapped
+        # would otherwise leak it into a user-visible message. Log server-side,
+        # show a generic message.
+        logger.exception("Pipeline failed for idea_text=%r", idea_text)
+        yield ErrorEvent(
+            message="Something went wrong while analyzing your idea. Please try again "
+            "in a moment — if it keeps happening, the search or AI provider may be "
+            "temporarily unavailable."
+        )
