@@ -19,21 +19,24 @@ export interface ProgressEvent {
 export type SourceType = "patent" | "scholar" | "product";
 
 export interface RankedResult {
-  id: string; // patent_id / scholar_id / product url hash
+  id: string; // patent_id / scholar_id / product url
   source_type: SourceType;
   title: string;
   snippet: string;
   link: string;
   relevance_score: number; // 0-1
-  cpc_code?: string;
-  cpc_description?: string;
-  country_status?: Record<string, string>; // e.g. { US: "ACTIVE", IN: "EXPIRED" }
+  cpc_code?: string | null;
+  cpc_description?: string | null;
+  country_status?: Record<string, string>; // e.g. { US: "ACTIVE", IN: "UNKNOWN" }
+  query_types?: string[]; // which generated queries surfaced this result
 }
 
 export type NoveltyVerdict = "blocking" | "partially_overlapping" | "not_relevant";
 
 export interface CandidateNoveltyAssessment {
   result_id: string;
+  title: string;
+  link: string;
   overlapping_elements: string[];
   differences: string[];
   verdict: NoveltyVerdict;
@@ -47,6 +50,7 @@ export interface IndiaStatus {
 export interface Citation {
   claim: string;
   result_id: string;
+  title: string;
   link: string;
 }
 
