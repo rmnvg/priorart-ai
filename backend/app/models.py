@@ -7,6 +7,7 @@ from pydantic import BaseModel
 
 from app.pipeline.india_status import IndiaStatus
 from app.pipeline.novelty import CandidateAssessment, Citation, ClaimChartPair
+from app.pipeline.public_domain import PublicDomainSummary
 from app.pipeline.rank import RankedResult
 from app.pipeline.search import AssigneeStat
 
@@ -45,6 +46,7 @@ class AnalysisResult(BaseModel):
     india_status: IndiaStatus
     claim_chart: ClaimChart | None = None
     top_assignees: list[AssigneeStat] = []
+    public_domain: PublicDomainSummary | None = None
 
 
 class ResultEvent(BaseModel):

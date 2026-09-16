@@ -3,6 +3,7 @@ import ClaimChartView from "@/components/ClaimChart";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
 import LandscapeGraph from "@/components/LandscapeGraph";
 import NoveltyVerdict from "@/components/NoveltyVerdict";
+import PublicDomain from "@/components/PublicDomain";
 import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/types/analysis";
 
 // How many prior-art cards to show before collapsing. A full run returns
@@ -10,11 +11,29 @@ import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/ty
 // scroll, so the rest sit behind an expander.
 const VISIBLE_RESULTS = 6;
 
-function StatTile({ label, value }: { label: string; value: number }) {
+function StatTile({
+  label,
+  value,
+  accent,
+}: {
+  label: string;
+  value: number;
+  accent?: boolean;
+}) {
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
-      <div className="text-2xl font-semibold text-neutral-900">{value}</div>
-      <div className="mt-0.5 text-xs text-neutral-500">{label}</div>
+    <div
+      className={`rounded-xl border p-4 shadow-sm ${
+        accent ? "border-emerald-200 bg-emerald-50" : "border-neutral-200 bg-white"
+      }`}
+    >
+      <div
+        className={`text-2xl font-semibold ${accent ? "text-emerald-700" : "text-neutral-900"}`}
+      >
+        {value}
+      </div>
+      <div className={`mt-0.5 text-xs ${accent ? "text-emerald-800" : "text-neutral-500"}`}>
+        {label}
+      </div>
     </div>
   );
 }
@@ -164,17 +183,18 @@ export default function ResultsView({
 
       <NoveltyVerdict confidence={result.overall_novelty_confidence} />
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label="Results analyzed" value={result.ranked_results.length} />
+        <StatTile label="Assessed in depth" value={result.candidate_assessments.length} />
         <StatTile
-          label="Assessed in depth"
-          value={result.candidate_assessments.length}
+          label="Free to build on"
+          value={result.public_domain?.count ?? 0}
+          accent
         />
-        <StatTile
-          label="Blocking in India"
-          value={result.india_status.blocking_in_india}
-        />
+        <StatTile label="Blocking in India" value={result.india_status.blocking_in_india} />
       </div>
+
+      {result.public_domain && <PublicDomain summary={result.public_domain} />}
 
       <div>
         <h2 className="text-xl font-bold text-neutral-900">Patent landscape</h2>

@@ -21,6 +21,7 @@ from app.models import (
 from app.pipeline.deepdive import deep_dive
 from app.pipeline.india_status import compute_india_status
 from app.pipeline.novelty import assess_novelty
+from app.pipeline.public_domain import find_public_domain
 from app.pipeline.query_generator import generate_queries
 from app.pipeline.rank import rank_and_dedupe
 from app.pipeline.search import SearchLayerResult, run_market_search, run_patent_scholar_search
@@ -111,6 +112,9 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             assess_novelty, idea_text, top_candidates, top_products
         )
         india_status = compute_india_status(ranked, DEEP_DIVE_TOP_N)
+        # Prior art whose protection has ended — free to build on, and the
+        # most actionable part of the report for an independent inventor.
+        public_domain = find_public_domain(ranked)
 
         # The claim chart always compares against the top deep-dived
         # candidate (the closest match) — the novelty prompt was instructed
@@ -136,6 +140,7 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             india_status=india_status,
             claim_chart=claim_chart,
             top_assignees=top_assignees,
+            public_domain=public_domain,
         )
 
         yield ProgressEvent(stage="done", message="Analysis complete.")

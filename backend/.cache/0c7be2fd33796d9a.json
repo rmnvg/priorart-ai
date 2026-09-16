@@ -1045,7 +1045,111 @@
             "name": "Richard Bernhard Richardson",
             "percentage": 3.5
           }
-        ]
+        ],
+        "public_domain": {
+          "count": 7,
+          "patents_considered": 29,
+          "entries": [
+            {
+              "id": "patent/US5964178A/en",
+              "title": "Collapsible boat with enhanced rigidity and multi-function chair",
+              "link": "https://patents.google.com/patent/US5964178A/en",
+              "priority_date": "1995-06-06",
+              "assignee": "Gonda; Raymond M.",
+              "relevance_score": 0.6223478317260742,
+              "lapsed_in": [
+                "AU",
+                "CA",
+                "US",
+                "WO"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 31
+            },
+            {
+              "id": "patent/US5615634A/en",
+              "title": "Collapsible boat with enhanced rigidity",
+              "link": "https://patents.google.com/patent/US5615634A/en",
+              "priority_date": "1995-06-06",
+              "assignee": "Gonda; Raymond M.",
+              "relevance_score": 0.6116684079170227,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 31
+            },
+            {
+              "id": "patent/US20080236467A1/en",
+              "title": "Modular Watercraft Assembly",
+              "link": "https://patents.google.com/patent/US20080236467A1/en",
+              "priority_date": "2007-03-30",
+              "assignee": "Wyman Dennis G",
+              "relevance_score": 0.4863581657409668,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 19
+            },
+            {
+              "id": "patent/US7513808B1/en",
+              "title": "Lever powered watercraft",
+              "link": "https://patents.google.com/patent/US7513808B1/en",
+              "priority_date": "2005-03-23",
+              "assignee": "Stephen Christopher Murphy",
+              "relevance_score": 0.47054463624954224,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 21
+            },
+            {
+              "id": "patent/US20200391830A1/en",
+              "title": "Drive module for a boat-like buoyancy body, and buoyancy body equipped therewith",
+              "link": "https://patents.google.com/patent/US20200391830A1/en",
+              "priority_date": "2017-10-13",
+              "assignee": "Inventra Ag",
+              "relevance_score": 0.44732385873794556,
+              "lapsed_in": [
+                "CH",
+                "EP",
+                "US",
+                "WO"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 8
+            },
+            {
+              "id": "patent/US6131532A/en",
+              "title": "Inflatable sailboat",
+              "link": "https://patents.google.com/patent/US6131532A/en",
+              "priority_date": "1997-09-08",
+              "assignee": "Winner; William K.",
+              "relevance_score": 0.4119006395339966,
+              "lapsed_in": [
+                "EP",
+                "US"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 29
+            },
+            {
+              "id": "patent/WO2023147893A1/en",
+              "title": "Windmill",
+              "link": "https://patents.google.com/patent/WO2023147893A1/en",
+              "priority_date": "2022-02-03",
+              "assignee": "Jitbahadoer Sharma",
+              "relevance_score": 0.08035427331924438,
+              "lapsed_in": [
+                "WO"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 4
+            }
+          ]
+        }
       }
     }
   ]

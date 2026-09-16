@@ -290,3 +290,74 @@ def test_cache_payload_is_json_serializable(temp_cache, tmp_path):
     payload = json.loads(written.read_text())
     assert payload["idea_text"] == "idea"
     assert payload["events"][0]["stage"] == "done"
+
+
+# --- Public domain finder --------------------------------------------------
+
+
+def test_public_domain_requires_positive_evidence_of_lapse():
+    """All-UNKNOWN means we don't know, which is NOT the same as free. Calling
+    an unknown-status patent public domain would be actively dangerous advice."""
+    from app.pipeline.public_domain import find_public_domain
+
+    unknown_only = patent(id="u", country_status={"IN": "UNKNOWN", "US": "UNKNOWN"})
+    assert find_public_domain([unknown_only]).count == 0
+
+
+def test_public_domain_excludes_anything_still_active():
+    from app.pipeline.public_domain import find_public_domain
+
+    mixed = patent(id="m", country_status={"US": "NOT_ACTIVE", "EP": "ACTIVE"})
+    assert find_public_domain([mixed]).count == 0
+
+
+def test_public_domain_includes_fully_lapsed():
+    from app.pipeline.public_domain import find_public_domain
+
+    lapsed = patent(id="l", country_status={"US": "NOT_ACTIVE", "WO": "NOT_ACTIVE"})
+    summary = find_public_domain([lapsed])
+    assert summary.count == 1
+    assert summary.entries[0].lapsed_in == ["US", "WO"]
+
+
+def test_public_domain_separates_term_expiry_from_early_lapse():
+    """A patent past its 20-year term is safely dead; one abandoned early can
+    sometimes be revived, so the two are labelled differently."""
+    from app.pipeline.public_domain import find_public_domain
+
+    old = patent(id="old", country_status={"US": "NOT_ACTIVE"})
+    old.priority_date = "1995-01-01"
+    recent = patent(id="recent", country_status={"US": "NOT_ACTIVE"})
+    recent.priority_date = "2015-01-01"
+
+    by_id = {e.id: e for e in find_public_domain([old, recent]).entries}
+    assert by_id["old"].reason == "term_expired"
+    assert by_id["recent"].reason == "lapsed_early"
+
+
+def test_public_domain_handles_missing_or_malformed_dates():
+    from app.pipeline.public_domain import find_public_domain
+
+    p = patent(id="nodate", country_status={"US": "NOT_ACTIVE"})
+    p.priority_date = None
+    q = patent(id="baddate", country_status={"US": "NOT_ACTIVE"})
+    q.priority_date = "not-a-date"
+
+    summary = find_public_domain([p, q])
+    assert summary.count == 2
+    # Unknown age can't be claimed as term-expired.
+    assert all(e.reason == "lapsed_early" for e in summary.entries)
+
+
+def test_public_domain_ignores_non_patents():
+    from app.pipeline.public_domain import find_public_domain
+
+    product = RankedResult(
+        id="https://shop",
+        source_type="product",
+        title="A product",
+        snippet="",
+        link="https://shop",
+        relevance_score=0.9,
+    )
+    assert find_public_domain([product]).count == 0

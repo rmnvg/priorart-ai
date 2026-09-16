@@ -75,6 +75,26 @@ export interface AssigneeStat {
   percentage: number;
 }
 
+export type LapseReason = "term_expired" | "lapsed_early";
+
+export interface PublicDomainEntry {
+  id: string;
+  title: string;
+  link: string;
+  priority_date?: string | null;
+  assignee?: string | null;
+  relevance_score: number;
+  lapsed_in: string[];
+  reason: LapseReason;
+  years_since_filing?: number | null;
+}
+
+export interface PublicDomainSummary {
+  count: number;
+  patents_considered: number;
+  entries: PublicDomainEntry[];
+}
+
 export interface AnalysisResult {
   idea_text: string;
   ranked_results: RankedResult[];
@@ -85,6 +105,7 @@ export interface AnalysisResult {
   india_status: IndiaStatus;
   claim_chart: ClaimChart | null;
   top_assignees: AssigneeStat[];
+  public_domain: PublicDomainSummary | null;
 }
 
 export interface ResultEvent {

@@ -6,6 +6,11 @@ products), a novelty verdict with reasoning and citations, an interactive
 patent-landscape graph, and concrete suggestions for how to differentiate your idea
 from what already exists.
 
+It also does the inverse, which most prior-art tools don't: it identifies the patents
+in your space whose **protection has already expired**. Those aren't obstacles — they're
+published technology that has passed into the public domain, free for anyone to build
+on. In testing, a typical search surfaced 10 such patents out of 26.
+
 It's built for independent inventors, students, and early-stage founders who want a
 first read on "has this already been done?" before spending money on a formal patent
 search — patent search tools built for law firms are expensive and not designed for
@@ -15,7 +20,9 @@ someone doing a first-pass sanity check on a raw idea.
 Patent information is public data that is locked behind expensive, jargon-heavy tools;
 this project makes that knowledge accessible to anyone who can describe an idea in
 plain English, which is squarely a "public interest" use of freely searchable
-government/patent-office data.
+government/patent-office data. The public-domain finder pushes that further: the
+patent bargain is that inventions become public once protection lapses, but in
+practice almost nobody can find out *which* ones have. This surfaces them.
 
 ---
 
@@ -42,8 +49,9 @@ government/patent-office data.
         │                          + differentiation suggestions + citations +
         │                          claim-chart spans, all in a single response
         ▼
- 6. India Patentability Signal   → computed directly from country_status data
-        │                          already pulled in step 2 (no extra API call)
+ 6. India Signal + Public Domain → both computed directly from country_status and
+        │                          priority_date already pulled in step 2, so neither
+        │                          costs an extra API call
         ▼
  7. Orchestrator                 → async generator yielding staged progress events,
                                     ending in one structured result
@@ -85,6 +93,7 @@ priorart-ai/
 │   │       ├── deepdive.py           # 1.4
 │   │       ├── novelty.py            # 1.5 (+ claim chart)
 │   │       ├── india_status.py       # 1.6
+│   │       ├── public_domain.py      # expired-patent finder
 │   │       └── orchestrator.py       # 1.7 — wires it all together
 │   ├── tests/test_pipeline.py    # pure-logic tests (no keys/network needed)
 │   ├── .cache/                   # persisted analyses — survives restarts
@@ -203,6 +212,11 @@ counts behind it:
 
 ![Novelty verdict](docs/screenshots/results-hero.png)
 
+**Free to build on** — prior art whose protection has lapsed, separated into patents
+past the 20-year term and those abandoned early:
+
+![Public domain](docs/screenshots/public-domain.png)
+
 **Patent-landscape graph** — nodes are search results, sized and pulled closer to
 the idea node by relevance, colored by CPC patent classification:
 
@@ -234,6 +248,12 @@ technique patent professionals call "claim charting"):
   Patent Office is often `UNKNOWN` rather than `ACTIVE`/`NOT_ACTIVE` — a real gap in
   Google's own data coverage, not a bug in this tool. The India signal is accurate
   to what Google Patents reports, which is sometimes incomplete for `IN` filings.
+- **Public-domain status is indicative, not legal advice.** It relies on the legal
+  status Google Patents reports, which is incomplete for some jurisdictions, and a
+  patent lapsed early for unpaid fees can occasionally be revived. The tool
+  deliberately requires positive evidence of lapse (never treating "unknown" as
+  free) and labels the two cases differently, but verify with an attorney before
+  relying on it commercially.
 - **Novelty confidence reflects textual/conceptual overlap**, not scientific or
   technical plausibility — it can't tell you an idea is implausible, only that it
   does or doesn't textually overlap with what search turned up.

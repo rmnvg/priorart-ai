@@ -916,7 +916,119 @@
             "name": "Beta Air Llc",
             "percentage": 0.5
           }
-        ]
+        ],
+        "public_domain": {
+          "count": 10,
+          "patents_considered": 26,
+          "entries": [
+            {
+              "id": "patent/US20130059493A1/en",
+              "title": "Paddle shaft flotation device",
+              "link": "https://patents.google.com/patent/US20130059493A1/en",
+              "priority_date": "2011-09-04",
+              "assignee": "Gary Downing, JR.",
+              "relevance_score": 0.5786049365997314,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 15
+            },
+            {
+              "id": "patent/US20140105742A1/en",
+              "title": "Emergency inflation Kayak, Canoe paddle",
+              "link": "https://patents.google.com/patent/US20140105742A1/en",
+              "priority_date": "2012-10-15",
+              "assignee": "Stewart Nelson Pollin",
+              "relevance_score": 0.565708339214325,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 13
+            },
+            {
+              "id": "patent/US6615762B1/en",
+              "title": "Foldable boat with light weight hull construction system",
+              "link": "https://patents.google.com/patent/US6615762B1/en",
+              "priority_date": "2001-08-23",
+              "assignee": "William S. Scott",
+              "relevance_score": 0.5419634580612183,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 25
+            },
+            {
+              "id": "patent/US5615634A/en",
+              "title": "Collapsible boat with enhanced rigidity",
+              "link": "https://patents.google.com/patent/US5615634A/en",
+              "priority_date": "1995-06-06",
+              "assignee": "Gonda; Raymond M.",
+              "relevance_score": 0.5361047983169556,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 31
+            },
+            {
+              "id": "patent/US5590616A/en",
+              "title": "Surf-boat",
+              "link": "https://patents.google.com/patent/US5590616A/en",
+              "priority_date": "1995-01-06",
+              "assignee": "Vera; Daniel",
+              "relevance_score": 0.5307115316390991,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 31
+            },
+            {
+              "id": "patent/CN204726642U/en",
+              "title": "A kind of Lifesaving chair peculiar to vessel",
+              "link": "https://patents.google.com/patent/CN204726642U/en",
+              "priority_date": "2015-05-14",
+              "assignee": "\u6d59\u6c5f\u6d77\u6d0b\u5b66\u9662",
+              "relevance_score": 0.4329279661178589,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 11
+            },
+            {
+              "id": "patent/US20050268833A1/en",
+              "title": "Portable personal watercraft",
+              "link": "https://patents.google.com/patent/US20050268833A1/en",
+              "priority_date": "2002-10-01",
+              "assignee": "Conrad Wayne E",
+              "relevance_score": 0.43040961027145386,
+              "lapsed_in": [
+                "AU",
+                "US",
+                "WO"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 23
+            },
+            {
+              "id": "patent/GB2562756A/en",
+              "title": "A safety device",
+              "link": "https://patents.google.com/patent/GB2562756A/en",
+              "priority_date": "2017-05-24",
+              "assignee": "James Maguire Noel",
+              "relevance_score": 0.3813976049423218,
+              "lapsed_in": [
+                "GB"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 9
+            }
+          ]
+        }
       }
     }
   ]
