@@ -28,41 +28,40 @@ practice almost nobody can find out *which* ones have. This surfaces them.
 
 ## How it works
 
-```
- idea text (plain English)
-        │
-        ▼
- 1. Query Generator (LLM)        → 2-4 Google Patents boolean queries
-        │                          (major markets / India-specific / broad recall)
-        ▼
- 2. Search Layer (SerpApi)       → google_patents (patents + scholar) per query
-        │                          + one plain google query (market availability)
-        ▼
- 3. Rank & Dedupe                → merge, dedupe by id, score relevance to the
-        │                          idea via sentence-transformer embeddings
-        ▼
- 4. Deep-Dive (SerpApi)          → full claims/abstract for the top 5-8 candidates
-        │                          via google_patents_details, truncated/condensed
-        ▼
- 5. Novelty Verdict (LLM)        → one richer LLM call: per-candidate overlap/
-        │                          differences/verdict + overall novelty confidence
-        │                          + differentiation suggestions + citations +
-        │                          claim-chart spans, all in a single response
-        ▼
- 6. India Signal + Public Domain → both computed directly from country_status and
-        │                          priority_date already pulled in step 2, so neither
-        │                          costs an extra API call
-        ▼
- 7. Orchestrator                 → async generator yielding staged progress events,
-                                    ending in one structured result
-        │
-        ▼
- FastAPI POST /analyze (SSE)  ──────────────►  Next.js frontend
-                                                 - staged progress checklist
-                                                 - ranked result cards
-                                                 - India signal + differentiation
-                                                 - force-directed landscape graph
-                                                 - claim-chart highlighting
+```mermaid
+flowchart TD
+    idea(["💡 Idea text<br/><i>plain English</i>"])
+
+    subgraph pipeline [" "]
+        direction TB
+        q["<b>1 · Query Generator</b> — LLM<br/>2-4 Google Patents boolean queries<br/><span style='font-size:11px'>major markets · India-specific · broad recall</span>"]
+        s["<b>2 · Search Layer</b> — SerpApi<br/>google_patents (patents + scholar) per query<br/><span style='font-size:11px'>+ one plain google query for market availability</span>"]
+        r["<b>3 · Rank & Dedupe</b><br/>merge, dedupe by id<br/><span style='font-size:11px'>score relevance via sentence-transformer embeddings</span>"]
+        d["<b>4 · Deep-Dive</b> — SerpApi<br/>full claims/abstract for top 5-8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
+        n["<b>5 · Novelty Verdict</b> — LLM<br/>overlap/differences/verdict per candidate<br/><span style='font-size:11px'>+ confidence + differentiation + citations + claim spans</span>"]
+        i["<b>6 · India Signal + Public Domain</b><br/><span style='font-size:11px'>computed from data already pulled in step 2 — no extra API calls</span>"]
+        o["<b>7 · Orchestrator</b><br/><span style='font-size:11px'>async generator → staged progress events → one structured result</span>"]
+
+        q --> s --> r --> d --> n --> i --> o
+    end
+
+    api{{"⚡ FastAPI · POST /analyze<br/><i>Server-Sent Events</i>"}}
+
+    fe["🖥️ <b>Next.js frontend</b><br/>staged progress checklist<br/>ranked result cards<br/>India signal + differentiation<br/>force-directed landscape graph<br/>claim-chart highlighting"]
+
+    idea --> q
+    o --> api --> fe
+
+    classDef stage fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#1e1b4b,text-align:left
+    classDef endpoint fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#451a03
+    classDef terminus fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#064e3b
+    classDef ideaNode fill:#fce7f3,stroke:#db2777,stroke-width:1.5px,color:#500724
+
+    class q,s,r,d,n,i,o stage
+    class api endpoint
+    class fe terminus
+    class idea ideaNode
+    style pipeline fill:none,stroke:none
 ```
 
 **Backend:** Python, FastAPI, Server-Sent Events for streaming progress.
