@@ -2,7 +2,12 @@
 
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { buildLandscapeGraph, type GraphLink, type GraphNode } from "@/lib/landscapeGraph";
+import {
+  buildLandscapeGraph,
+  CITATION_LINK_COLOR,
+  type GraphLink,
+  type GraphNode,
+} from "@/lib/landscapeGraph";
 import type { AnalysisResult } from "@/types/analysis";
 
 // react-force-graph-2d renders to an HTML canvas and reaches for `window` at
@@ -77,10 +82,16 @@ export default function LandscapeGraph({ result }: { result: AnalysisResult }) {
       <div className="absolute left-4 top-4 z-10 rounded-md border border-neutral-200 bg-white/90 p-3 text-xs shadow-sm backdrop-blur">
         {legend.map((entry) => (
           <div key={entry.label} className="flex items-center gap-2 py-0.5">
-            <span
-              className="inline-block h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: entry.color }}
-            />
+            {entry.shape === "dot" ? (
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: entry.color }}
+              />
+            ) : (
+              <span className="inline-block w-2.5 text-center leading-none" style={{ color: entry.color }}>
+                →
+              </span>
+            )}
             <span className="text-neutral-700">{entry.label}</span>
           </div>
         ))}
@@ -108,8 +119,12 @@ export default function LandscapeGraph({ result }: { result: AnalysisResult }) {
             const verdict = n.verdict ? ` · ${n.verdict.replace(/_/g, " ")}` : "";
             return `${n.label}${pct !== null ? ` (${pct}% match${verdict})` : ""}`;
           }}
-          linkWidth={1}
-          linkColor={() => "rgba(11,11,11,0.12)"}
+          linkWidth={(link) => ((link as GraphLink).kind === "citation" ? 1.5 : 1)}
+          linkColor={(link) =>
+            (link as GraphLink).kind === "citation" ? CITATION_LINK_COLOR : "rgba(11,11,11,0.12)"
+          }
+          linkDirectionalArrowLength={(link) => ((link as GraphLink).kind === "citation" ? 5 : 0)}
+          linkDirectionalArrowRelPos={0.85}
           onNodeClick={(node) => {
             const n = node as GraphNode;
             if (!n.isIdea && n.link) window.open(n.link, "_blank", "noopener,noreferrer");

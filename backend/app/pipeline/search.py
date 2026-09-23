@@ -7,13 +7,13 @@ scholar_id/is_scholar) plus one plain `google` query for a market-availability
 check. Keeps the query-to-result mapping intact for debugging and for the
 landscape graph later.
 """
-from typing import Literal
-
 import logging
+from concurrent.futures import ThreadPoolExecutor
+from typing import Literal
 
 from pydantic import BaseModel
 
-from app.pipeline.query_generator import QueryGenerationResult
+from app.pipeline.query_generator import GeneratedQuery, QueryGenerationResult
 from app.serpapi_client import client as _client
 from app.serpapi_client import redact
 
@@ -64,6 +64,7 @@ class AssigneeStat(BaseModel):
 class QueryBundle(BaseModel):
     query_type: str
     query: str
+    country: str | None = None
     results: list[SearchResult]
     assignee_stats: list[AssigneeStat] = []
     # True when the search call itself raised (quota exhausted, network,
@@ -117,15 +118,22 @@ def _parse_assignee_stats(raw_response: dict, top_n: int = 6) -> list[AssigneeSt
     return stats[:top_n]
 
 
-def search_patents_for_query(query: str) -> tuple[list[SearchResult], list[AssigneeStat]]:
+# The India-specific query is restricted to Indian Patent Office filings at
+# the API level. Asking the LLM to "phrase it to catch IN filings" (the
+# original approach) has no actual effect on what Google Patents returns —
+# only the country filter does.
+QUERY_COUNTRY_FILTERS: dict[str, str] = {"india_specific": "IN"}
+
+
+def search_patents_for_query(
+    query: str, country: str | None = None
+) -> tuple[list[SearchResult], list[AssigneeStat]]:
     """Call google_patents for a single query, returning normalized results
     plus the query-level assignee breakdown."""
-    response = _client.search(
-        engine="google_patents",
-        q=query,
-        scholar=True,
-        clustered=True,
-    )
+    params = dict(engine="google_patents", q=query, scholar=True, clustered=True)
+    if country:
+        params["country"] = country
+    response = _client.search(**params)
     raw_response = dict(response)
     raw_results = raw_response.get("organic_results", []) or []
     results = []
@@ -152,37 +160,43 @@ def search_market_availability(query: str) -> list[ProductResult]:
     ]
 
 
-def _build_market_query(query_result: QueryGenerationResult) -> str:
+def build_market_query(query_result: QueryGenerationResult) -> str:
     return " ".join(query_result.core_concepts[:4])
 
 
+def _run_one_query(gq: GeneratedQuery) -> QueryBundle:
+    country = QUERY_COUNTRY_FILTERS.get(gq.type)
+    search_failed = False
+    try:
+        results, assignee_stats = search_patents_for_query(gq.query, country)
+    except Exception as e:
+        logger.warning("Patent search failed for %s query: %s", gq.type, redact(e))
+        results, assignee_stats, search_failed = [], [], True
+    return QueryBundle(
+        query_type=gq.type,
+        query=gq.query,
+        country=country,
+        results=results,
+        assignee_stats=assignee_stats,
+        search_failed=search_failed,
+    )
+
+
 def run_patent_scholar_search(query_result: QueryGenerationResult) -> list[QueryBundle]:
-    """Run all generated queries against google_patents. Never raises on a
-    single failed query — a bad query shouldn't kill the whole search stage;
-    it just contributes an empty bundle."""
-    bundles: list[QueryBundle] = []
-    for gq in query_result.queries:
-        search_failed = False
-        try:
-            results, assignee_stats = search_patents_for_query(gq.query)
-        except Exception as e:
-            logger.warning("Patent search failed for %s query: %s", gq.type, redact(e))
-            results, assignee_stats, search_failed = [], [], True
-        bundles.append(
-            QueryBundle(
-                query_type=gq.type,
-                query=gq.query,
-                results=results,
-                assignee_stats=assignee_stats,
-                search_failed=search_failed,
-            )
-        )
-    return bundles
+    """Run all generated queries against google_patents, concurrently — the
+    calls are independent and each is a few seconds of network wait. Never
+    raises on a single failed query — a bad query shouldn't kill the whole
+    search stage; it just contributes an empty bundle. Bundle order matches
+    query order regardless of which call finishes first."""
+    if not query_result.queries:
+        return []
+    with ThreadPoolExecutor(max_workers=len(query_result.queries)) as pool:
+        return list(pool.map(_run_one_query, query_result.queries))
 
 
 def run_market_search(query_result: QueryGenerationResult) -> list[ProductResult]:
     try:
-        return search_market_availability(_build_market_query(query_result))
+        return search_market_availability(build_market_query(query_result))
     except Exception:
         return []
 

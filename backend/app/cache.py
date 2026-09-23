@@ -13,6 +13,7 @@ staged-progress UI identically. Only successful runs are cached by the caller.
 import hashlib
 import json
 import logging
+import re
 from pathlib import Path
 
 from app.models import AnalyzeStreamEvent, ErrorEvent, ProgressEvent, ResultEvent
@@ -23,12 +24,14 @@ CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
 
 _memory: dict[str, list[AnalyzeStreamEvent]] = {}
 
+_KEY_PATTERN = re.compile(r"[0-9a-f]{16}")
+
 
 def _normalize(idea_text: str) -> str:
     return " ".join(idea_text.strip().lower().split())
 
 
-def _cache_key(idea_text: str) -> str:
+def cache_key(idea_text: str) -> str:
     return hashlib.sha256(_normalize(idea_text).encode()).hexdigest()[:16]
 
 
@@ -48,7 +51,19 @@ def _deserialize_event(raw: dict) -> AnalyzeStreamEvent | None:
 
 
 def get_cached(idea_text: str) -> list[AnalyzeStreamEvent] | None:
-    key = _cache_key(idea_text)
+    return get_cached_by_key(cache_key(idea_text))
+
+
+def is_valid_key(key: str) -> bool:
+    """Keys arrive from report URLs, so they're untrusted — anything but the
+    exact 16-hex-char shape we generate is rejected before it can become a
+    file path."""
+    return _KEY_PATTERN.fullmatch(key) is not None
+
+
+def get_cached_by_key(key: str) -> list[AnalyzeStreamEvent] | None:
+    if not is_valid_key(key):
+        return None
     if key in _memory:
         return _memory[key]
 
@@ -73,7 +88,7 @@ def get_cached(idea_text: str) -> list[AnalyzeStreamEvent] | None:
 
 
 def set_cached(idea_text: str, events: list[AnalyzeStreamEvent]) -> None:
-    key = _cache_key(idea_text)
+    key = cache_key(idea_text)
     _memory[key] = events
 
     # Disk persistence is best-effort: if it fails, the in-memory cache still

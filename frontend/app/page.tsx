@@ -1,13 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import IdeaForm from "@/components/IdeaForm";
 import ProgressChecklist from "@/components/ProgressChecklist";
 import ResultsView from "@/components/ResultsView";
-import { streamAnalysis } from "@/lib/analyzeStream";
+import { fetchReport, streamAnalysis } from "@/lib/analyzeStream";
 import type { AnalysisResult, PipelineStage } from "@/types/analysis";
 
 type ViewState = "idle" | "loading" | "results" | "error";
+
+// Keeps the address bar pointing at the current report, so the URL a user
+// copies (or bookmarks) always reopens what they're looking at.
+function setReportInUrl(reportId: string | null) {
+  const url = new URL(window.location.href);
+  if (reportId) url.searchParams.set("report", reportId);
+  else url.searchParams.delete("report");
+  window.history.replaceState(null, "", url);
+}
 
 export default function Home() {
   const [viewState, setViewState] = useState<ViewState>("idle");
@@ -16,7 +25,34 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [previousConfidence, setPreviousConfidence] = useState<number | null>(null);
   const [appliedSuggestion, setAppliedSuggestion] = useState<string | null>(null);
+  const [openingReport, setOpeningReport] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+
+  // A shared report link (?report=<id>) opens straight onto that saved
+  // analysis. Read from window rather than useSearchParams, which would
+  // force a Suspense boundary around the whole page for one mount-time read.
+  useEffect(() => {
+    const reportId = new URLSearchParams(window.location.search).get("report");
+    if (!reportId) return;
+    setViewState("loading");
+    setOpeningReport(true);
+    fetchReport(reportId)
+      .then((report) => {
+        if (report) {
+          setResult(report);
+          setViewState("results");
+        } else {
+          setErrorMessage("That report link has expired or doesn't exist. Run a new analysis instead.");
+          setViewState("error");
+          setReportInUrl(null);
+        }
+      })
+      .catch(() => {
+        setErrorMessage("Couldn't reach the analysis server. Is the backend running?");
+        setViewState("error");
+      })
+      .finally(() => setOpeningReport(false));
+  }, []);
 
   async function runAnalysis(ideaText: string) {
     setViewState("loading");
@@ -36,6 +72,7 @@ export default function Home() {
           } else if (event.type === "result") {
             setResult(event.data);
             setViewState("results");
+            setReportInUrl(event.data.report_id ?? null);
           } else if (event.type === "error") {
             setErrorMessage(event.message);
             setViewState("error");
@@ -64,6 +101,7 @@ export default function Home() {
 
   function handleReset() {
     abortRef.current?.abort();
+    setReportInUrl(null);
     setViewState("idle");
     setCurrentStage(null);
     setResult(null);
@@ -76,7 +114,11 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center gap-10 bg-neutral-50 px-4 py-16">
       {viewState === "idle" && <IdeaForm onSubmit={handleSubmit} />}
 
-      {viewState === "loading" && (
+      {viewState === "loading" && openingReport && (
+        <p className="text-neutral-500">Opening saved report...</p>
+      )}
+
+      {viewState === "loading" && !openingReport && (
         <div className="flex flex-col items-center gap-8">
           <p className="text-neutral-500">
             {appliedSuggestion ? "Re-checking your idea..." : "Analyzing your idea..."}
@@ -99,7 +141,7 @@ export default function Home() {
 
       {viewState === "results" && result && (
         <div className="w-full">
-          <div className="mx-auto mb-6 flex w-full max-w-3xl justify-end">
+          <div className="mx-auto mb-6 flex w-full max-w-3xl justify-end print:hidden">
             <button
               onClick={handleReset}
               className="text-sm text-neutral-500 underline hover:text-neutral-900"

@@ -11,6 +11,12 @@ in your space whose **protection has already expired**. Those aren't obstacles �
 published technology that has passed into the public domain, free for anyone to build
 on. In testing, a typical search surfaced 10 such patents out of 26.
 
+And it goes past keyword search the way a professional searcher would: it **chases
+citations**. The patents closest to your idea cite older work and are cited by newer
+work, and documents that several close matches all point to are almost always
+relevant, whatever words they use. Keyword search can't find those. Citation chasing
+can, at no extra API cost.
+
 It's built for independent inventors, students, and early-stage founders who want a
 first read on "has this already been done?" before spending money on a formal patent
 search — patent search tools built for law firms are expensive and not designed for
@@ -35,11 +41,11 @@ flowchart TD
     subgraph pipeline [" "]
         direction TB
         q["<b>1 · Query Generator</b> — LLM<br/>2-4 Google Patents boolean queries<br/><span style='font-size:11px'>major markets · India-specific · broad recall</span>"]
-        s["<b>2 · Search Layer</b> — SerpApi<br/>google_patents (patents + scholar) per query<br/><span style='font-size:11px'>+ one plain google query for market availability</span>"]
+        s["<b>2 · Search Layer</b> — SerpApi, run concurrently<br/>google_patents (patents + scholar) per query, India query filtered to IN<br/><span style='font-size:11px'>+ google (market availability) + google_trends (market interest)</span>"]
         r["<b>3 · Rank & Dedupe</b><br/>merge, dedupe by id<br/><span style='font-size:11px'>score relevance via sentence-transformer embeddings</span>"]
-        d["<b>4 · Deep-Dive</b> — SerpApi<br/>full claims/abstract for top 5-8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
+        d["<b>4 · Deep-Dive</b> — SerpApi, run concurrently<br/>full claims/abstract + citations for top 8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
         n["<b>5 · Novelty Verdict</b> — LLM<br/>overlap/differences/verdict per candidate<br/><span style='font-size:11px'>+ confidence + differentiation + citations + claim spans</span>"]
-        i["<b>6 · India Signal + Public Domain</b><br/><span style='font-size:11px'>computed from data already pulled in step 2 — no extra API calls</span>"]
+        i["<b>6 · India Signal · Public Domain · Citation Chasing</b><br/><span style='font-size:11px'>computed from data already pulled in steps 2 and 4 — no extra API calls</span>"]
         o["<b>7 · Orchestrator</b><br/><span style='font-size:11px'>async generator → staged progress events → one structured result</span>"]
 
         q --> s --> r --> d --> n --> i --> o
@@ -47,7 +53,7 @@ flowchart TD
 
     api{{"⚡ FastAPI · POST /analyze<br/><i>Server-Sent Events</i>"}}
 
-    fe["🖥️ <b>Next.js frontend</b><br/>staged progress checklist<br/>ranked result cards<br/>India signal + differentiation<br/>force-directed landscape graph<br/>claim-chart highlighting"]
+    fe["🖥️ <b>Next.js frontend</b><br/>staged progress checklist<br/>ranked result cards<br/>India signal + differentiation<br/>landscape graph with citation edges<br/>filing timeline + market interest<br/>claim chart · shareable report · attorney brief"]
 
     idea --> q
     o --> api --> fe
@@ -70,7 +76,25 @@ for the landscape graph.
 **LLM:** Groq (`openai/gpt-oss-120b`, OpenAI-compatible API) — swapped in for Claude
 to keep the project free to run; all LLM calls go through one wrapper
 (`backend/app/llm.py`) so the provider can be swapped again in one file.
-**Search:** SerpApi (`google_patents`, `google_patents_details`, `google`).
+**Search:** SerpApi (`google_patents`, `google_patents_details`, `google`, `google_trends`).
+
+---
+
+## How SerpApi powers it
+
+Nothing in a report is made up by the LLM. Every document, status, date and
+citation comes from SerpApi; the LLM only writes the queries and compares texts.
+
+| SerpApi engine | Calls per analysis | What it provides |
+|---|---|---|
+| `google_patents` (`scholar=true`, `clustered=true`) | 3 | Prior-art patents **and** academic papers in one call per query angle. The India angle adds `country=IN`, so it searches Indian Patent Office filings for real. Each result's `country_status` feeds the India signal and the public-domain finder, and the clustered `summary` feeds the assignee breakdown. |
+| `google_patents_details` | up to 8 | Full abstract + claims for the claim chart and novelty comparison, plus `patent_citations` / `cited_by` for **citation chasing** and the citation edges in the landscape graph. |
+| `google` | 1 | Market-availability check: is a product like this already sold? |
+| `google_trends` | 1 | Five years of search interest in the product category: does anyone want this? |
+
+Every report ends with a **"How this report was built"** panel. It lists the exact
+queries, the result count for each, and the SerpApi calls behind that report, and
+each query opens in Google Patents so the user can keep searching from there.
 
 ---
 
@@ -93,6 +117,8 @@ priorart-ai/
 │   │       ├── novelty.py            # 1.5 (+ claim chart)
 │   │       ├── india_status.py       # 1.6
 │   │       ├── public_domain.py      # expired-patent finder
+│   │       ├── citation_chase.py     # backward/forward citation chasing
+│   │       ├── market_trends.py      # Google Trends market-interest signal
 │   │       └── orchestrator.py       # 1.7 — wires it all together
 │   ├── tests/test_pipeline.py    # pure-logic tests (no keys/network needed)
 │   ├── .cache/                   # persisted analyses — survives restarts
@@ -100,9 +126,12 @@ priorart-ai/
 └── frontend/
     ├── app/page.tsx               # top-level view state machine
     ├── components/                # IdeaForm, ProgressChecklist, ResultsView,
-    │                               # LandscapeGraph, ClaimChart, CompetitorLandscape
+    │                               # LandscapeGraph, ClaimChart, CompetitorLandscape,
+    │                               # CitationDiscoveries, FilingTimeline,
+    │                               # MarketTrendChart, IndiaSignal,
+    │                               # SearchStrategyPanel, ReportActions
     ├── lib/                       # analyzeStream.ts (SSE client), landscapeGraph.ts,
-    │                               # highlightText.tsx
+    │                               # highlightText.tsx, reportBrief.ts
     └── types/analysis.ts          # shared contract with the backend
 ```
 
@@ -167,15 +196,19 @@ port if that one's taken) and paste in an invention idea.
 
 ### API quota and caching
 
-A single analysis costs **4-12 SerpApi searches** (3 patent queries + 1 market
-query + up to 8 claim lookups). SerpApi's free tier allows 250/month, so roughly
-20-60 analyses.
+A single analysis costs **up to 13 SerpApi searches** (3 patent queries + 1 market
+query + 1 Trends lookup + up to 8 detail lookups). SerpApi's free tier allows
+250/month, so roughly 20 fresh analyses. The independent calls run concurrently, so
+a fresh run takes seconds of search time, not a minute.
 
 Because of that, every completed analysis is cached to `backend/.cache/`, keyed on
 a hash of the idea text. The cache is **persistent across restarts** — re-running
 the same idea replays the saved result instantly and costs nothing, which is what
 makes a demo reproducible without live quota. Delete a file from `backend/.cache/`
 to force a fresh run of that idea.
+
+Every analysis gets a **shareable report link** (`/?report=<id>`), served from this
+cache by `GET /report/{id}`. Opening a link never triggers a new (billable) run.
 
 If the search quota runs out, the app says so explicitly rather than reporting
 "no results found" — an empty result and a failed search are reported differently
@@ -189,8 +222,10 @@ source venv/bin/activate
 python -m pytest tests/ -q
 ```
 
-The suite covers the pipeline's pure logic — dedupe/merge rules, the India status
-tally, LLM-output validation guards, claim truncation, and cache persistence. It
+The suite covers the pipeline's pure logic: dedupe/merge rules, the India status
+tally, LLM-output validation guards, claim truncation, cache persistence, citation
+chasing, Trends parsing, the country-filtered India query, and report-link
+validation. It
 needs no API keys and no network, and runs in a few seconds.
 
 ---
@@ -260,6 +295,12 @@ technique patent professionals call "claim charting"):
   source text; when it paraphrases instead (common with longer patent claim text),
   that pair is silently skipped rather than mis-highlighted. Expect it to show
   fewer highlighted pairs on some runs than others.
+- **Citation chasing** only covers patents: academic papers and products have no
+  citation data in Google Patents. It follows one hop, the references of the top 8
+  candidates, so a document linked only through a chain of citations won't surface.
+- **Market interest** uses Google Trends, which has no data for very niche product
+  categories. When interest is too low to measure, the section is left out rather
+  than shown as a flat line that would wrongly suggest zero demand.
 - **Embedding-based relevance ranking** uses a general-purpose English
   sentence-transformer model, not one specifically trained for multilingual or
   patent-domain text — ranking quality is best for English, technically-worded

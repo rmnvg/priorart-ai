@@ -24,18 +24,32 @@ export interface GraphNode {
   val: number; // node size driver for react-force-graph
 }
 
+// "similarity" links are layout scaffolding (idea -> result, same-cluster
+// nudges) and render faintly; "citation" links are real, documented
+// relationships from patent citation data and render as visible arrows.
+export type GraphLinkKind = "similarity" | "citation";
+
 export interface GraphLink {
   source: string;
   target: string;
   distance: number;
   strength: number;
+  kind: GraphLinkKind;
+}
+
+export interface LegendEntry {
+  label: string;
+  color: string;
+  shape: "dot" | "arrow";
 }
 
 export interface LandscapeGraphData {
   nodes: GraphNode[];
   links: GraphLink[];
-  legend: { label: string; color: string }[];
+  legend: LegendEntry[];
 }
+
+export const CITATION_LINK_COLOR = "rgba(11,11,11,0.55)";
 
 const IDEA_NODE_ID = "__idea__";
 
@@ -98,6 +112,7 @@ export function buildLandscapeGraph(result: AnalysisResult): LandscapeGraphData 
     // Closer relevance -> shorter target distance -> settles nearer the idea node.
     distance: 60 + (1 - r.relevance_score) * 260,
     strength: 0.6,
+    kind: "similarity",
   }));
 
   // Weak same-cluster links nudge same-color nodes together spatially,
@@ -110,15 +125,31 @@ export function buildLandscapeGraph(result: AnalysisResult): LandscapeGraphData 
         target: members[i].id,
         distance: 50,
         strength: 0.15,
+        kind: "similarity",
       });
     }
   }
 
-  const legend = [
-    { label: "Your idea", color: IDEA_NODE_COLOR },
-    ...topClusters.map((cluster, i) => ({ label: cluster, color: CLUSTER_COLORS[i] })),
-    { label: "Other / unclassified", color: OTHER_CLUSTER_COLOR },
+  // Citation edges only between nodes actually on the graph. Weak strength:
+  // they're drawn to be seen, not to pull the relevance layout out of shape.
+  const nodeIds = new Set(nodes.map((n) => n.id));
+  const citationLinks: GraphLink[] = (result.citation_network?.edges ?? [])
+    .filter((e) => nodeIds.has(e.source) && nodeIds.has(e.target))
+    .map((e) => ({ source: e.source, target: e.target, distance: 80, strength: 0.05, kind: "citation" }));
+  links.push(...citationLinks);
+
+  const legend: LegendEntry[] = [
+    { label: "Your idea", color: IDEA_NODE_COLOR, shape: "dot" },
+    ...topClusters.map((cluster, i) => ({
+      label: cluster,
+      color: CLUSTER_COLORS[i],
+      shape: "dot" as const,
+    })),
+    { label: "Other / unclassified", color: OTHER_CLUSTER_COLOR, shape: "dot" },
   ];
+  if (citationLinks.length > 0) {
+    legend.push({ label: "Cites (patent citation)", color: CITATION_LINK_COLOR, shape: "arrow" });
+  }
 
   return { nodes, links, legend };
 }

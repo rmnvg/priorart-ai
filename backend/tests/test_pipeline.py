@@ -253,7 +253,7 @@ def test_cache_miss_returns_none(temp_cache):
 def test_cache_treats_corrupt_file_as_miss(temp_cache, tmp_path):
     """A stale file from an older schema must degrade to 're-run it', never
     break the endpoint."""
-    key = temp_cache._cache_key("My idea")
+    key = temp_cache.cache_key("My idea")
     (tmp_path / f"{key}.json").write_text("{not valid json")
     assert temp_cache.get_cached("My idea") is None
 
@@ -361,3 +361,224 @@ def test_public_domain_ignores_non_patents():
         relevance_score=0.9,
     )
     assert find_public_domain([product]).count == 0
+
+
+# --- Citation chasing ------------------------------------------------------
+
+from app.pipeline.citation_chase import chase_citations
+from app.pipeline.deepdive import CandidateDetail, CitationRef, _parse_citation_refs
+
+
+def ref(patent_id, direction="backward", examiner=False, priority_date="2015-01-01"):
+    return CitationRef(
+        patent_id=patent_id,
+        title=f"Title of {patent_id}",
+        direction=direction,
+        examiner_cited=examiner,
+        priority_date=priority_date,
+    )
+
+
+def candidate(id, refs=(), source_type="patent"):
+    return CandidateDetail(
+        id=id,
+        source_type=source_type,
+        title="t",
+        link="l",
+        summary_text="s",
+        citation_refs=list(refs),
+    )
+
+
+def test_parse_citation_refs_reads_both_directions_and_examiner_flag():
+    raw = {
+        "patent_citations": {
+            "original": [
+                {"patent_id": "patent/US1/en", "title": " Old ", "examiner_cited": "*"},
+                {"title": "no id — skipped"},
+            ],
+            "family_to_family": [{"patent_id": "patent/US9/en"}],
+        },
+        "cited_by": {"original": [{"patent_id": "patent/US2/en", "assignee_original": "Acme"}]},
+    }
+    refs = _parse_citation_refs(raw)
+    assert [(r.patent_id, r.direction, r.examiner_cited) for r in refs] == [
+        ("patent/US1/en", "backward", True),
+        ("patent/US2/en", "forward", False),
+    ]
+    assert refs[0].title == "Old"
+    assert refs[1].assignee == "Acme"
+
+
+def test_parse_citation_refs_handles_missing_blocks():
+    assert _parse_citation_refs({}) == []
+    assert _parse_citation_refs({"patent_citations": None, "cited_by": {}}) == []
+
+
+def test_chase_surfaces_documents_shared_by_multiple_candidates():
+    candidates = [
+        candidate("a", [ref("patent/X/en"), ref("patent/ONLY_A/en")]),
+        candidate("b", [ref("patent/X/en", direction="forward")]),
+    ]
+    network = chase_citations(candidates, [patent(id="a"), patent(id="b")])
+    assert [d.id for d in network.discoveries] == ["patent/X/en"]
+    found = network.discoveries[0]
+    assert found.referenced_by == ["a", "b"]
+    assert found.direction == "both"
+    assert found.reason == "shared_reference"
+    assert found.link == "https://patents.google.com/patent/X/en"
+    assert network.references_scanned == 3
+
+
+def test_chase_never_rediscovers_documents_already_in_results():
+    candidates = [candidate("a", [ref("b")]), candidate("c", [ref("b")])]
+    network = chase_citations(candidates, [patent(id="a"), patent(id="b"), patent(id="c")])
+    assert network.discoveries == []
+
+
+def test_chase_counts_distinct_candidates_not_raw_references():
+    """One patent citing the same document twice (e.g. both directions) is
+    still one opinion, not a consensus."""
+    candidates = [candidate("a", [ref("patent/X/en"), ref("patent/X/en", direction="forward")])]
+    network = chase_citations(candidates, [patent(id="a")])
+    assert all(d.reason != "shared_reference" for d in network.discoveries)
+
+
+def test_chase_falls_back_to_examiner_citations_of_closest_patent():
+    candidates = [
+        candidate("scholar1", source_type="scholar"),  # closest, but no citation data
+        candidate(
+            "a",
+            [
+                ref("patent/E1/en", examiner=True),
+                ref("patent/APPLICANT/en", examiner=False),
+                ref("patent/LATER/en", direction="forward", examiner=True),
+            ],
+        ),
+    ]
+    network = chase_citations(candidates, [patent(id="a")])
+    assert [d.id for d in network.discoveries] == ["patent/E1/en"]
+    assert network.discoveries[0].reason == "examiner_cited"
+
+
+def test_chase_flags_likely_expired_references():
+    old = ref("patent/OLD/en", priority_date="1990-01-01")
+    candidates = [candidate("a", [old]), candidate("b", [old])]
+    assert chase_citations(candidates, [patent(id="a"), patent(id="b")]).discoveries[0].likely_expired
+
+
+def test_citation_edges_link_results_once_in_citing_direction():
+    candidates = [
+        candidate("a", [ref("b", direction="backward")]),
+        candidate("b", [ref("a", direction="forward")]),  # same relationship seen from b
+        candidate("c", [ref("c")]),  # self-reference ignored
+    ]
+    results = [patent(id="a"), patent(id="b"), patent(id="c")]
+    edges = chase_citations(candidates, results).edges
+    assert [(e.source, e.target) for e in edges] == [("a", "b")]
+
+
+# --- Market trends ---------------------------------------------------------
+
+from app.pipeline.market_trends import parse_trend
+
+
+def trends_response(values):
+    return {
+        "interest_over_time": {
+            "timeline_data": [
+                {"date": f"week {i}", "values": [{"query": "q", "extracted_value": v}]}
+                for i, v in enumerate(values)
+            ]
+        }
+    }
+
+
+def test_trend_direction_compares_last_year_to_year_before():
+    rising = parse_trend("q", trends_response([40] * 52 + [60] * 52))
+    assert rising.direction == "rising" and rising.change_pct == 50
+    declining = parse_trend("q", trends_response([80] * 52 + [40] * 52))
+    assert declining.direction == "declining"
+    steady = parse_trend("q", trends_response([50] * 52 + [52] * 52))
+    assert steady.direction == "steady"
+
+
+def test_trend_too_niche_for_data_is_omitted_not_shown_as_zero_demand():
+    assert parse_trend("q", trends_response([0, 0, 3, 0, 1] * 20)) is None
+
+
+def test_trend_handles_empty_or_malformed_response():
+    assert parse_trend("q", {}) is None
+    assert parse_trend("q", {"interest_over_time": {"timeline_data": [{"values": []}]}}) is None
+
+
+# --- India filings / country-filtered search -------------------------------
+
+
+def test_india_filings_counted_across_all_results():
+    results = [patent(id=f"patent/US{i}/en") for i in range(10)] + [
+        patent(id="patent/IN202141000001A/en")
+    ]
+    assert compute_india_status(results).india_filings_found == 1
+
+
+def test_india_query_is_country_filtered_and_order_preserved(monkeypatch):
+    from app.pipeline import search
+    from app.pipeline.query_generator import GeneratedQuery, QueryGenerationResult
+
+    calls = []
+
+    def fake_search(query, country=None):
+        calls.append((query, country))
+        if query == "boom":
+            raise RuntimeError("quota exhausted api_key=secret")
+        return [], []
+
+    monkeypatch.setattr(search, "search_patents_for_query", fake_search)
+    qr = QueryGenerationResult(
+        core_concepts=["x"],
+        queries=[
+            GeneratedQuery(type="major_markets", query="m", rationale=""),
+            GeneratedQuery(type="india_specific", query="i", rationale=""),
+            GeneratedQuery(type="broad_recall", query="boom", rationale=""),
+        ],
+    )
+    bundles = search.run_patent_scholar_search(qr)
+    assert [b.query_type for b in bundles] == ["major_markets", "india_specific", "broad_recall"]
+    assert sorted(calls) == [("boom", None), ("i", "IN"), ("m", None)]
+    assert bundles[1].country == "IN"
+    assert bundles[2].search_failed and not bundles[0].search_failed
+
+
+# --- Report permalinks -----------------------------------------------------
+
+
+@pytest.mark.parametrize("key", ["../../etc/passwd", "0c7be2fd33796d9", "0C7BE2FD33796D9A", ""])
+def test_report_keys_reject_anything_but_generated_shape(temp_cache, key):
+    assert temp_cache.get_cached_by_key(key) is None
+
+
+def test_report_endpoint_serves_cached_result_only(temp_cache):
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+    from app.models import AnalysisResult, ResultEvent
+    from app.pipeline.india_status import IndiaStatus
+
+    result = AnalysisResult(
+        idea_text="My idea",
+        ranked_results=[],
+        candidate_assessments=[],
+        overall_novelty_confidence=0.5,
+        differentiation_suggestions=[],
+        citations=[],
+        india_status=IndiaStatus(blocking_in_india=0, active_elsewhere_only=0),
+    )
+    temp_cache.set_cached("My idea", [ResultEvent(data=result)])
+    key = temp_cache.cache_key("My idea")
+
+    client = TestClient(app)
+    response = client.get(f"/report/{key}")
+    assert response.status_code == 200
+    assert response.json()["report_id"] == key
+    assert client.get("/report/ffffffffffffffff").status_code == 404

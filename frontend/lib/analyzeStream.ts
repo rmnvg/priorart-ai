@@ -1,4 +1,4 @@
-import type { AnalyzeStreamEvent } from "@/types/analysis";
+import type { AnalysisResult, AnalyzeStreamEvent } from "@/types/analysis";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -46,4 +46,13 @@ export async function streamAnalysis(
       }
     }
   }
+}
+
+/** A previously completed analysis, by the id carried in a shared report
+ * link. Returns null when the report doesn't exist (or no longer does). */
+export async function fetchReport(reportId: string): Promise<AnalysisResult | null> {
+  const response = await fetch(`${API_URL}/report/${encodeURIComponent(reportId)}`);
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+  return (await response.json()) as AnalysisResult;
 }

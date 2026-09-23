@@ -16,6 +16,14 @@ from app.pipeline.rank import RankedResult
 class IndiaStatus(BaseModel):
     blocking_in_india: int
     active_elsewhere_only: int
+    # Indian Patent Office publications anywhere in the results (not just
+    # the closest matches) — surfaced by the country-filtered India query.
+    india_filings_found: int = 0
+
+
+def is_indian_filing(patent_id: str) -> bool:
+    # SerpApi patent ids look like "patent/IN202141012345A/en".
+    return patent_id.startswith("patent/IN")
 
 
 def compute_india_status(ranked_results: list[RankedResult], top_n: int = 8) -> IndiaStatus:
@@ -40,4 +48,7 @@ def compute_india_status(ranked_results: list[RankedResult], top_n: int = 8) -> 
     return IndiaStatus(
         blocking_in_india=blocking_in_india,
         active_elsewhere_only=active_elsewhere_only,
+        india_filings_found=sum(
+            1 for r in ranked_results if r.source_type == "patent" and is_indian_filing(r.id)
+        ),
     )

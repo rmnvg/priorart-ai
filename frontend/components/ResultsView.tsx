@@ -1,9 +1,15 @@
 import { useState } from "react";
+import CitationDiscoveries from "@/components/CitationDiscoveries";
 import ClaimChartView from "@/components/ClaimChart";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
+import FilingTimeline, { filingsByYear, MIN_FILINGS_TO_PLOT } from "@/components/FilingTimeline";
+import IndiaSignal from "@/components/IndiaSignal";
 import LandscapeGraph from "@/components/LandscapeGraph";
+import MarketTrendChart from "@/components/MarketTrendChart";
 import NoveltyVerdict from "@/components/NoveltyVerdict";
 import PublicDomain from "@/components/PublicDomain";
+import ReportActions from "@/components/ReportActions";
+import SearchStrategyPanel from "@/components/SearchStrategyPanel";
 import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/types/analysis";
 
 // How many prior-art cards to show before collapsing. A full run returns
@@ -143,6 +149,10 @@ export default function ResultsView({
   // Based on the total, not the currently-hidden count — otherwise expanding
   // drops the count to zero and the collapse control disappears with it.
   const isCollapsible = result.ranked_results.length > VISIBLE_RESULTS;
+  // Same "enough data to plot" rule FilingTimeline applies to itself, so the
+  // section header never renders around an empty chart.
+  const hasTimeline =
+    filingsByYear(result.ranked_results).reduce((n, d) => n + d.count, 0) >= MIN_FILINGS_TO_PLOT;
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-8">
@@ -183,6 +193,8 @@ export default function ResultsView({
 
       <NoveltyVerdict confidence={result.overall_novelty_confidence} />
 
+      <ReportActions result={result} />
+
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label="Results analyzed" value={result.ranked_results.length} />
         <StatTile label="Assessed in depth" value={result.candidate_assessments.length} />
@@ -208,35 +220,28 @@ export default function ResultsView({
         </div>
       </div>
 
+      {result.citation_network && (
+        <CitationDiscoveries network={result.citation_network} rankedResults={result.ranked_results} />
+      )}
+
+      {(hasTimeline || result.market_trend) && (
+        <div className="break-inside-avoid">
+          <h2 className="text-xl font-bold text-neutral-900">Timing</h2>
+          <p className="mt-1 text-sm text-neutral-500">
+            Is this space heating up, and does anyone want this?
+          </p>
+          <div
+            className={`mt-4 grid grid-cols-1 gap-6 ${hasTimeline && result.market_trend ? "md:grid-cols-2" : ""}`}
+          >
+            {hasTimeline && <FilingTimeline results={result.ranked_results} />}
+            {result.market_trend && <MarketTrendChart trend={result.market_trend} />}
+          </div>
+        </div>
+      )}
+
       <CompetitorLandscape assignees={result.top_assignees} />
 
-      <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm">
-        <div className="border-l-4 border-orange-400 p-5">
-          <h2 className="font-semibold text-neutral-900">India patentability signal</h2>
-          <p className="mt-1 text-sm text-neutral-500">
-            Whether the closest matches are actually in force in India, or only protected
-            elsewhere — where the same idea may still be open.
-          </p>
-          <div className="mt-4 grid grid-cols-2 gap-4">
-            <div className="rounded-lg bg-orange-50 p-3">
-              <div className="text-2xl font-semibold text-orange-900">
-                {result.india_status.blocking_in_india}
-              </div>
-              <div className="text-sm text-orange-800">Active &amp; blocking in India</div>
-            </div>
-            <div className="rounded-lg bg-neutral-50 p-3">
-              <div className="text-2xl font-semibold text-neutral-900">
-                {result.india_status.active_elsewhere_only}
-              </div>
-              <div className="text-sm text-neutral-600">Active elsewhere, not in India</div>
-            </div>
-          </div>
-          <p className="mt-3 text-xs text-neutral-400">
-            Google Patents reports Indian legal status as unknown more often than not, so
-            treat this as a conservative floor rather than a complete picture.
-          </p>
-        </div>
-      </div>
+      <IndiaSignal status={result.india_status} />
 
       <div className="rounded-xl border border-green-200 bg-green-50/60 p-5 shadow-sm">
         <h2 className="text-lg font-semibold text-green-900">How to differentiate your idea</h2>
@@ -257,7 +262,7 @@ export default function ResultsView({
               {onApplySuggestion && (
                 <button
                   onClick={() => onApplySuggestion(suggestion)}
-                  className="shrink-0 whitespace-nowrap rounded-md bg-green-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800"
+                  className="shrink-0 whitespace-nowrap rounded-md bg-green-700 print:hidden px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800"
                 >
                   Apply & re-check →
                 </button>
@@ -305,6 +310,8 @@ export default function ResultsView({
           </button>
         )}
       </div>
+
+      {result.search_strategy && <SearchStrategyPanel strategy={result.search_strategy} />}
     </div>
   );
 }

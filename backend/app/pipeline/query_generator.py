@@ -23,6 +23,7 @@ class GeneratedQuery(BaseModel):
 class QueryGenerationResult(BaseModel):
     core_concepts: list[str]
     suggested_cpc: str | None = None
+    trends_keyword: str | None = None
     queries: list[GeneratedQuery]
 
 
@@ -52,17 +53,23 @@ code for this idea's technical field, suggest it (e.g. "H01L31/00"). Otherwise u
 above, one of each type:
    - "major_markets": a precise query aimed at finding blocking prior art in major \
 patent markets (US/EP/CN/WO), using the most specific terms from the idea.
-   - "india_specific": a query still targeting the same core invention but phrased \
-to also surface India-relevant filings (do not add country filters to the query \
-text itself, just keep the terms broad enough to catch IN-filed equivalents).
+   - "india_specific": a query targeting the same core invention that will be run \
+ONLY against Indian Patent Office filings (the country filter is applied for you — do \
+not put country terms in the query text). The Indian corpus is much smaller, so use \
+2-3 concept groups with generous OR synonyms rather than the most specific terms.
    - "broad_recall": a deliberately looser query using broader/parent terms and \
 more OR synonyms, to catch prior art that uses different terminology for the same \
 concept, accepting more noise in exchange for recall.
+
+4. Give a "trends_keyword": the 1-3 word phrase an ordinary person would type into \
+Google to find a product like this (e.g. "kayak paddle", "smart water bottle"), used to \
+measure public interest in the product category. Plain words only, no operators.
 
 Respond with a single JSON object of this exact shape:
 {{
   "core_concepts": ["...", "..."],
   "suggested_cpc": "..." or null,
+  "trends_keyword": "...",
   "queries": [
     {{"type": "major_markets", "query": "...", "rationale": "..."}},
     {{"type": "india_specific", "query": "...", "rationale": "..."}},

@@ -4,7 +4,9 @@ This is what the FastAPI SSE endpoint (section 2) will consume directly —
 the staging lives here, not bolted on in the API layer.
 
 Each blocking pipeline call is run via asyncio.to_thread so the event loop
-stays free to flush progress events promptly.
+stays free to flush progress events promptly. The market and Trends lookups
+depend only on the generated queries, so they're started alongside the patent
+search and collected later rather than waited on in sequence.
 """
 import asyncio
 import logging
@@ -17,14 +19,23 @@ from app.models import (
     ErrorEvent,
     ProgressEvent,
     ResultEvent,
+    SearchQueryInfo,
+    SearchStrategy,
 )
+from app.pipeline.citation_chase import chase_citations
 from app.pipeline.deepdive import deep_dive
 from app.pipeline.india_status import compute_india_status
+from app.pipeline.market_trends import fetch_market_trend
 from app.pipeline.novelty import assess_novelty
 from app.pipeline.public_domain import find_public_domain
 from app.pipeline.query_generator import generate_queries
 from app.pipeline.rank import rank_and_dedupe
-from app.pipeline.search import SearchLayerResult, run_market_search, run_patent_scholar_search
+from app.pipeline.search import (
+    SearchLayerResult,
+    build_market_query,
+    run_market_search,
+    run_patent_scholar_search,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +43,17 @@ MIN_IDEA_LENGTH = 10
 MAX_IDEA_LENGTH = 6000  # generous multi-paragraph allowance; guards against pathological pastes
 DEEP_DIVE_TOP_N = 8
 MARKET_CONTEXT_TOP_N = 3
+
+
+def _count_serpapi_calls(patent_queries: int, deep_dives: int, used_trends: bool) -> dict[str, int]:
+    calls = {
+        "google_patents": patent_queries,
+        "google": 1,
+        "google_patents_details": deep_dives,
+    }
+    if used_trends:
+        calls["google_trends"] = 1
+    return calls
 
 
 async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, None]:
@@ -56,6 +78,10 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             stage="searching_patents",
             message=f"Searching patents across {len(query_result.queries)} query angles...",
         )
+        market_task = asyncio.create_task(asyncio.to_thread(run_market_search, query_result))
+        trend_task = asyncio.create_task(
+            asyncio.to_thread(fetch_market_trend, query_result.trends_keyword)
+        )
         bundles = await asyncio.to_thread(run_patent_scholar_search, query_result)
         # The major_markets query is the most precisely-targeted one, so its
         # assignee breakdown (from SerpApi's clustered=true summary — no
@@ -75,7 +101,8 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             stage="checking_market_availability",
             message="Checking whether a similar product already exists commercially...",
         )
-        market_results = await asyncio.to_thread(run_market_search, query_result)
+        market_results = await market_task
+        market_trend = await trend_task
         search_result = SearchLayerResult(query_bundles=bundles, market_results=market_results)
 
         yield ProgressEvent(
@@ -115,6 +142,7 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
         # Prior art whose protection has ended — free to build on, and the
         # most actionable part of the report for an independent inventor.
         public_domain = find_public_domain(ranked)
+        citation_network = chase_citations(top_candidates, ranked)
 
         # The claim chart always compares against the top deep-dived
         # candidate (the closest match) — the novelty prompt was instructed
@@ -141,6 +169,28 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             claim_chart=claim_chart,
             top_assignees=top_assignees,
             public_domain=public_domain,
+            search_strategy=SearchStrategy(
+                core_concepts=query_result.core_concepts,
+                suggested_cpc=query_result.suggested_cpc,
+                queries=[
+                    SearchQueryInfo(
+                        type=b.query_type,
+                        query=b.query,
+                        rationale=gq.rationale,
+                        country=b.country,
+                        result_count=len(b.results),
+                        failed=b.search_failed,
+                    )
+                    for b, gq in zip(bundles, query_result.queries)
+                ],
+                market_query=build_market_query(query_result),
+                trends_keyword=query_result.trends_keyword,
+                serpapi_calls=_count_serpapi_calls(
+                    len(bundles), len(top_candidates), bool(query_result.trends_keyword)
+                ),
+            ),
+            citation_network=citation_network,
+            market_trend=market_trend,
         )
 
         yield ProgressEvent(stage="done", message="Analysis complete.")

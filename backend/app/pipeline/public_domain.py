@@ -40,7 +40,7 @@ class PublicDomainSummary(BaseModel):
     entries: list[PublicDomainEntry]
 
 
-def _years_since(priority_date: str | None) -> int | None:
+def years_since(priority_date: str | None) -> int | None:
     if not priority_date:
         return None
     try:
@@ -71,7 +71,7 @@ def find_public_domain(
         if not any(s == "NOT_ACTIVE" for s in statuses):
             continue
 
-        age = _years_since(r.priority_date)
+        age = years_since(r.priority_date)
         entries.append(
             PublicDomainEntry(
                 id=r.id,

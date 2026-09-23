@@ -47,6 +47,7 @@ export interface CandidateNoveltyAssessment {
 export interface IndiaStatus {
   blocking_in_india: number;
   active_elsewhere_only: number;
+  india_filings_found?: number; // Indian Patent Office filings anywhere in the results
 }
 
 export interface Citation {
@@ -95,6 +96,60 @@ export interface PublicDomainSummary {
   entries: PublicDomainEntry[];
 }
 
+export interface SearchQueryInfo {
+  type: string;
+  query: string;
+  rationale: string;
+  country?: string | null;
+  result_count: number;
+  failed: boolean;
+}
+
+export interface SearchStrategy {
+  core_concepts: string[];
+  suggested_cpc?: string | null;
+  queries: SearchQueryInfo[];
+  market_query: string;
+  trends_keyword?: string | null;
+  serpapi_calls: Record<string, number>; // engine -> number of calls
+}
+
+export interface CitationDiscovery {
+  id: string;
+  title: string;
+  link: string;
+  assignee?: string | null;
+  priority_date?: string | null;
+  referenced_by: string[]; // ids of the top candidates that reference it
+  direction: "backward" | "forward" | "both";
+  examiner_cited: boolean;
+  reason: "shared_reference" | "examiner_cited";
+  likely_expired: boolean;
+}
+
+export interface CitationEdge {
+  source: string; // citing patent
+  target: string; // cited patent
+}
+
+export interface CitationNetwork {
+  discoveries: CitationDiscovery[];
+  edges: CitationEdge[];
+  references_scanned: number;
+}
+
+export interface TrendPoint {
+  date: string;
+  value: number; // 0-100, Google Trends relative interest
+}
+
+export interface MarketTrend {
+  keyword: string;
+  points: TrendPoint[];
+  direction: "rising" | "steady" | "declining";
+  change_pct: number;
+}
+
 export interface AnalysisResult {
   idea_text: string;
   ranked_results: RankedResult[];
@@ -106,6 +161,11 @@ export interface AnalysisResult {
   claim_chart: ClaimChart | null;
   top_assignees: AssigneeStat[];
   public_domain: PublicDomainSummary | null;
+  // Absent on analyses cached before these features existed.
+  search_strategy?: SearchStrategy | null;
+  citation_network?: CitationNetwork | null;
+  market_trend?: MarketTrend | null;
+  report_id?: string | null;
 }
 
 export interface ResultEvent {
