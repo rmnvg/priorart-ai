@@ -164,17 +164,41 @@ def build_market_query(query_result: QueryGenerationResult) -> str:
     return " ".join(query_result.core_concepts[:4])
 
 
+# LLMs "typeset" their output — non-breaking hyphens, curly quotes — and
+# Google Patents treats those as different characters: a curly-quoted phrase
+# is no longer a phrase, and "foam‑filled" with U+2011 matches nothing.
+_QUERY_PUNCTUATION = str.maketrans(
+    {
+        "\u2010": "-",
+        "\u2011": "-",
+        "\u2012": "-",
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u2018": "'",
+        "\u2019": "'",
+        "\u201c": '"',
+        "\u201d": '"',
+        "\u00a0": " ",
+    }
+)
+
+
+def clean_query(query: str) -> str:
+    return " ".join(query.translate(_QUERY_PUNCTUATION).split())
+
+
 def _run_one_query(gq: GeneratedQuery) -> QueryBundle:
     country = QUERY_COUNTRY_FILTERS.get(gq.type)
+    query = clean_query(gq.query)
     search_failed = False
     try:
-        results, assignee_stats = search_patents_for_query(gq.query, country)
+        results, assignee_stats = search_patents_for_query(query, country)
     except Exception as e:
         logger.warning("Patent search failed for %s query: %s", gq.type, redact(e))
         results, assignee_stats, search_failed = [], [], True
     return QueryBundle(
         query_type=gq.type,
-        query=gq.query,
+        query=query,
         country=country,
         results=results,
         assignee_stats=assignee_stats,
@@ -182,16 +206,20 @@ def _run_one_query(gq: GeneratedQuery) -> QueryBundle:
     )
 
 
-def run_patent_scholar_search(query_result: QueryGenerationResult) -> list[QueryBundle]:
-    """Run all generated queries against google_patents, concurrently — the
-    calls are independent and each is a few seconds of network wait. Never
-    raises on a single failed query — a bad query shouldn't kill the whole
-    search stage; it just contributes an empty bundle. Bundle order matches
-    query order regardless of which call finishes first."""
-    if not query_result.queries:
+def run_queries(queries: list[GeneratedQuery]) -> list[QueryBundle]:
+    """Run queries against google_patents, concurrently — the calls are
+    independent and each is a few seconds of network wait. Never raises on a
+    single failed query — a bad query shouldn't kill the whole search stage;
+    it just contributes an empty bundle. Bundle order matches query order
+    regardless of which call finishes first."""
+    if not queries:
         return []
-    with ThreadPoolExecutor(max_workers=len(query_result.queries)) as pool:
-        return list(pool.map(_run_one_query, query_result.queries))
+    with ThreadPoolExecutor(max_workers=len(queries)) as pool:
+        return list(pool.map(_run_one_query, queries))
+
+
+def run_patent_scholar_search(query_result: QueryGenerationResult) -> list[QueryBundle]:
+    return run_queries(query_result.queries)
 
 
 def run_market_search(query_result: QueryGenerationResult) -> list[ProductResult]:

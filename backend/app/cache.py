@@ -87,7 +87,11 @@ def get_cached_by_key(key: str) -> list[AnalyzeStreamEvent] | None:
     return events
 
 
-def set_cached(idea_text: str, events: list[AnalyzeStreamEvent]) -> None:
+def set_cached(
+    idea_text: str, events: list[AnalyzeStreamEvent], parent_report_id: str | None = None
+) -> None:
+    """`parent_report_id` marks a re-check ("Apply & re-check" on another
+    report) so the examples gallery can leave these variants out."""
     key = cache_key(idea_text)
     _memory[key] = events
 
@@ -97,8 +101,43 @@ def set_cached(idea_text: str, events: list[AnalyzeStreamEvent]) -> None:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
         payload = {
             "idea_text": idea_text,
+            "parent_report_id": parent_report_id,
             "events": [e.model_dump(mode="json") for e in events],
         }
         _path_for(key).write_text(json.dumps(payload, indent=2))
     except OSError as e:
         logger.warning("Could not persist cache for key %s: %s", key, e)
+
+
+def list_top_level_reports() -> list[tuple[str, ResultEvent]]:
+    """Every cached analysis that isn't a re-check of another one, newest
+    first — the examples gallery. Unreadable files are skipped, the same as
+    a cache miss."""
+    if not CACHE_DIR.exists():
+        return []
+    reports: list[tuple[float, str, ResultEvent]] = []
+    for path in CACHE_DIR.glob("*.json"):
+        key = path.stem
+        if not is_valid_key(key):
+            continue
+        try:
+            if json.loads(path.read_text()).get("parent_report_id"):
+                continue
+            mtime = path.stat().st_mtime
+        except (OSError, json.JSONDecodeError):
+            continue
+        events = get_cached_by_key(key)
+        result = next((e for e in events or [] if isinstance(e, ResultEvent)), None)
+        if result is not None:
+            reports.append((mtime, key, result))
+    reports.sort(key=lambda r: r[0], reverse=True)
+    return [(key, result) for _, key, result in reports]
+
+
+def evict(key: str) -> None:
+    """Forget a cached analysis (memory and disk), so the next request for
+    it runs the pipeline fresh."""
+    if not is_valid_key(key):
+        return
+    _memory.pop(key, None)
+    _path_for(key).unlink(missing_ok=True)

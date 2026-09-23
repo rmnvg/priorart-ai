@@ -1,0 +1,89 @@
+{
+  "about": "Each case is a real granted patent, verified on Google Patents, paired with a plain-English description of the invention written the way an inventor would describe it -- deliberately avoiding the patent's own title and claim vocabulary. The benchmark asks: given only the plain description, does the search find the actual patent?",
+  "cases": [
+    {
+      "id": "one-click-checkout",
+      "patent": "US5960411A",
+      "patent_title": "Method and system for placing a purchase order via a communications network",
+      "priority_date": "1997-09-12",
+      "idea": "An online shopping website where a returning customer can buy something with a single click, because the site already remembers their delivery address and card details, so they never have to fill in a checkout form again."
+    },
+    {
+      "id": "slide-to-unlock",
+      "patent": "US8046721B2",
+      "patent_title": "Unlocking a device by performing gestures on an unlock image",
+      "priority_date": "2005-12-23",
+      "idea": "A phone whose touch screen stays locked until you drag a small on-screen button along a track from one side to the other, so it can't unlock by accident in your pocket."
+    },
+    {
+      "id": "phone-grip",
+      "patent": "US8560031B2",
+      "patent_title": "Extending socket for portable media player",
+      "priority_date": "2011-03-16",
+      "idea": "A small collapsible grip stuck to the back of a phone that pops out like a concertina, so you can hold the phone with one finger, prop it up as a stand, or wind your earphone wire around it."
+    },
+    {
+      "id": "hoverboard",
+      "patent": "US8738278B2",
+      "patent_title": "Two-wheel, self-balancing vehicle with independently movable foot placement sections",
+      "priority_date": "2012-02-12",
+      "idea": "A self-balancing board on two wheels where each foot stands on its own separate platform with its own motor and tilt sensor, so leaning each foot forward or back independently lets you steer."
+    },
+    {
+      "id": "pump-water-gun",
+      "patent": "US4591071A",
+      "patent_title": "Squirt gun",
+      "priority_date": "1983-10-14",
+      "idea": "A toy water gun with a hand pump that builds up air pressure inside its water tank, so pulling the trigger fires a long, powerful stream; it also plays space-blaster sounds while it fires."
+    },
+    {
+      "id": "cat-laser",
+      "patent": "US5443036A",
+      "patent_title": "Method of exercising a cat",
+      "priority_date": "1993-11-02",
+      "idea": "Getting a pet cat to exercise by shining a handheld laser pointer onto the floor and walls and moving the dot around unpredictably so the cat chases it."
+    },
+    {
+      "id": "bladeless-fan",
+      "patent": "US8308445B2",
+      "patent_title": "Fan",
+      "priority_date": "2007-09-04",
+      "idea": "A fan with no visible blades: a motor in the base pushes air up into a hollow ring, and the air leaves through a thin slot running around the ring, dragging the surrounding room air along with it."
+    },
+    {
+      "id": "coffee-pod",
+      "patent": "US5325765A",
+      "patent_title": "Beverage filter cartridge",
+      "priority_date": "1992-09-16",
+      "idea": "A sealed single-serve plastic cup holding ground coffee inside a paper filter, which the coffee machine punctures at the top and bottom to push hot water through and brew exactly one cup."
+    },
+    {
+      "id": "wheeled-shoe",
+      "patent": "US6698769B2",
+      "patent_title": "Multi-wheel heeling apparatus",
+      "priority_date": "1999-04-01",
+      "idea": "A sneaker with small wheels hidden in holes in the heel of the sole, so you can walk normally and then lean back on your heel to roll along like on a skate."
+    },
+    {
+      "id": "spinning-ice-cream",
+      "patent": "US5971829A",
+      "patent_title": "Motorized ice cream cone",
+      "priority_date": "1998-03-06",
+      "idea": "A battery-powered handheld gadget that holds a scoop of ice cream in a little cup and slowly spins it, so you just hold your tongue still and the ice cream turns against it."
+    },
+    {
+      "id": "robot-vacuum",
+      "patent": "US6883201B2",
+      "patent_title": "Autonomous floor-cleaning robot",
+      "priority_date": "2002-01-03",
+      "idea": "A small round robot vacuum that drives around the house by itself, with two rollers spinning in opposite directions underneath plus a spinning side brush that flicks dust from along the walls into its path."
+    },
+    {
+      "id": "finger-spinner",
+      "patent": "US5591062A",
+      "patent_title": "Spinning toy",
+      "priority_date": "1992-02-10",
+      "idea": "A toy shaped like a small dome with a wide flared rim that you balance and spin on the tip of one finger, for fun."
+    }
+  ]
+}

@@ -4,6 +4,7 @@ const QUERY_LABELS: Record<string, string> = {
   major_markets: "Major markets",
   india_specific: "India",
   broad_recall: "Broad recall",
+  refined: "Refined by agent",
 };
 
 const ENGINE_LABELS: Record<string, string> = {
@@ -46,9 +47,27 @@ export default function SearchStrategyPanel({ strategy }: { strategy: SearchStra
         )}
       </div>
 
+      {strategy.refinement_observation && (
+        <div className="mt-4 rounded-lg border border-violet-200 bg-violet-50 p-3">
+          <p className="text-xs font-semibold text-violet-900">
+            Search agent: after reading the first results
+          </p>
+          <p className="mt-1 text-sm text-violet-900">{strategy.refinement_observation}</p>
+          {(strategy.refinement_terms?.length ?? 0) > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {strategy.refinement_terms!.map((term) => (
+                <span key={term} className="rounded-full bg-white px-2 py-0.5 text-xs text-violet-800">
+                  {term}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       <ul className="mt-4 space-y-3">
         {strategy.queries.map((q) => (
-          <li key={q.type} className="rounded-lg border border-neutral-100 bg-neutral-50 p-3">
+          <li key={`${q.type}-${q.query}`} className="rounded-lg border border-neutral-100 bg-neutral-50 p-3">
             <div className="flex flex-wrap items-center gap-2 text-xs">
               <span className="font-semibold text-neutral-800">{QUERY_LABELS[q.type] ?? q.type}</span>
               {q.country && (
@@ -69,7 +88,9 @@ export default function SearchStrategyPanel({ strategy }: { strategy: SearchStra
               </a>
             </div>
             <code className="mt-1.5 block break-words font-mono text-xs text-neutral-800">{q.query}</code>
-            {q.rationale && <p className="mt-1 text-xs text-neutral-500">{q.rationale}</p>}
+            {q.rationale && q.type !== "refined" && (
+              <p className="mt-1 text-xs text-neutral-500">{q.rationale}</p>
+            )}
           </li>
         ))}
       </ul>

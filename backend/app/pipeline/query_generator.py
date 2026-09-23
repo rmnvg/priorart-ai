@@ -11,7 +11,8 @@ from pydantic import BaseModel, ValidationError
 
 from app.llm import complete_json
 
-QueryType = Literal["major_markets", "india_specific", "broad_recall"]
+# "refined" queries come from the refinement stage, never from the generator.
+QueryType = Literal["major_markets", "india_specific", "broad_recall", "refined"]
 
 
 class GeneratedQuery(BaseModel):

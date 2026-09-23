@@ -7,6 +7,7 @@ export type PipelineStage =
   | "searching_scholar"
   | "checking_market_availability"
   | "ranking_results"
+  | "refining_search"
   | "scoring_novelty"
   | "done";
 
@@ -112,6 +113,8 @@ export interface SearchStrategy {
   market_query: string;
   trends_keyword?: string | null;
   serpapi_calls: Record<string, number>; // engine -> number of calls
+  refinement_observation?: string | null; // what the refinement agent noticed
+  refinement_terms?: string[];
 }
 
 export interface CitationDiscovery {
@@ -150,6 +153,17 @@ export interface MarketTrend {
   change_pct: number;
 }
 
+// The inventor-facing parts of a report, translated. Parallel to the
+// English fields on AnalysisResult (same order, same lengths).
+export interface LocalizedContent {
+  language_code: string;
+  language_name: string;
+  plain_summary: string;
+  differentiation_suggestions: string[];
+  citation_claims: string[];
+  ui_labels: Record<string, string>;
+}
+
 export interface AnalysisResult {
   idea_text: string;
   ranked_results: RankedResult[];
@@ -166,6 +180,20 @@ export interface AnalysisResult {
   citation_network?: CitationNetwork | null;
   market_trend?: MarketTrend | null;
   report_id?: string | null;
+  plain_summary?: string;
+  original_idea_text?: string | null; // the inventor's own words, when not English
+  language_code?: string;
+  language_name?: string;
+  localized?: LocalizedContent | null;
+}
+
+export interface ExampleReport {
+  report_id: string;
+  idea_text: string;
+  language_name: string;
+  novelty_confidence: number;
+  results_count: number;
+  public_domain_count: number;
 }
 
 export interface ResultEvent {
@@ -182,4 +210,6 @@ export type AnalyzeStreamEvent = ProgressEvent | ResultEvent | ErrorEvent;
 
 export interface AnalyzeRequest {
   idea_text: string;
+  language?: string; // ISO 639-1; forces the report language
+  parent_report_id?: string; // set for "Apply & re-check" runs
 }

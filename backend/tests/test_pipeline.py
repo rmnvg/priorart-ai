@@ -582,3 +582,379 @@ def test_report_endpoint_serves_cached_result_only(temp_cache):
     assert response.status_code == 200
     assert response.json()["report_id"] == key
     assert client.get("/report/ffffffffffffffff").status_code == 404
+
+
+# --- Language support ------------------------------------------------------
+
+from app.pipeline import language as language_mod
+
+
+def test_english_detection_needs_no_llm_call():
+    assert language_mod.looks_english("A solar-powered crop dryer with a café-style vent")
+    assert not language_mod.looks_english("सौर ऊर्जा से चलने वाला फसल सुखाने का यंत्र")
+    assert not language_mod.looks_english("சூரிய சக்தியில் இயங்கும் உலர்த்தி")
+
+
+def test_translation_failure_falls_back_to_original_text(monkeypatch):
+    def broken(*args, **kwargs):
+        raise ValueError("LLM did not return valid JSON")
+
+    monkeypatch.setattr(language_mod, "complete_json", broken)
+    result = language_mod.detect_and_translate("सौर ऊर्जा से चलने वाला यंत्र")
+    assert result.code == "und"
+    assert result.english_text == "सौर ऊर्जा से चलने वाला यंत्र"
+
+
+def test_localization_discarded_when_lists_change_length(monkeypatch):
+    """A dropped suggestion would shift every 'Apply' button onto the wrong
+    text — English is better than misaligned."""
+    monkeypatch.setattr(
+        language_mod,
+        "complete_json",
+        lambda *a, **k: {
+            "plain_summary": "सार",
+            "differentiation_suggestions": ["एक"],  # two went in
+            "citation_claims": [],
+            "ui_labels": {},
+        },
+    )
+    assert language_mod.localize_report("hi", "Hindi", "summary", ["one", "two"], []) is None
+
+
+def test_localization_fills_missing_labels_with_english(monkeypatch):
+    monkeypatch.setattr(
+        language_mod,
+        "complete_json",
+        lambda *a, **k: {
+            "plain_summary": "सार",
+            "differentiation_suggestions": ["एक"],
+            "citation_claims": ["दावा"],
+            "ui_labels": {"novelty_verdict": "नवीनता"},
+        },
+    )
+    localized = language_mod.localize_report("hi", "Hindi", "summary", ["one"], ["claim"])
+    assert localized.ui_labels["novelty_verdict"] == "नवीनता"
+    assert localized.ui_labels["based_on"] == "Based on:"
+    assert set(localized.ui_labels) == set(language_mod.UI_LABELS)
+
+
+# --- Refinement agent ------------------------------------------------------
+
+from app.pipeline import refine as refine_mod
+from app.pipeline.query_generator import GeneratedQuery, QueryGenerationResult
+
+
+def _query_result():
+    return QueryGenerationResult(
+        core_concepts=["paddle"],
+        queries=[GeneratedQuery(type="major_markets", query="(paddle) (folding)", rationale="")],
+    )
+
+
+def test_refinement_drops_repeated_queries_and_caps_count(monkeypatch):
+    monkeypatch.setattr(
+        refine_mod,
+        "complete_json",
+        lambda *a, **k: {
+            "observation": "Patents call this a sectional shaft.",
+            "new_terms": ["sectional shaft"],
+            "queries": ["(PADDLE) (folding)", '("sectional shaft")', "(oar) (joint)"],
+        },
+    )
+    plan = refine_mod.plan_refinement("idea text", _query_result(), [patent()], max_queries=1)
+    assert [q.query for q in plan.queries] == ['("sectional shaft")']
+    assert plan.queries[0].type == "refined"
+    assert plan.new_terms == ["sectional shaft"]
+
+
+def test_refinement_switches_to_broader_queries_when_nothing_found(monkeypatch):
+    prompts = []
+
+    def fake(prompt, **kwargs):
+        prompts.append(prompt)
+        return {"observation": "Broadening.", "queries": ["(paddle)"]}
+
+    monkeypatch.setattr(refine_mod, "complete_json", fake)
+    refine_mod.plan_refinement("idea text", _query_result(), [], max_queries=2)
+    assert "returned NOTHING" in prompts[0]
+
+
+def test_refinement_disabled_or_failing_returns_none(monkeypatch):
+    assert refine_mod.plan_refinement("idea", _query_result(), [], max_queries=0) is None
+
+    def broken(*a, **k):
+        raise ValueError("bad json")
+
+    monkeypatch.setattr(refine_mod, "complete_json", broken)
+    assert refine_mod.plan_refinement("idea", _query_result(), [patent()], max_queries=1) is None
+
+
+# --- Orchestrator, end to end with every external call faked ----------------
+
+from app.pipeline import orchestrator as orch
+from app.pipeline.language import IdeaLanguage, LocalizedContent
+from app.pipeline.novelty import NoveltyAssessment
+from app.pipeline.refine import RefinementPlan
+
+
+def _fake_pipeline(monkeypatch, *, language_code="en", refinement=True):
+    searched: list[list[str]] = []
+
+    def fake_translate(text):
+        if language_code == "en":
+            return IdeaLanguage(code="en", name="English", english_text=text)
+        return IdeaLanguage(code=language_code, name="Hindi", english_text="english version")
+
+    def fake_run_queries(queries):
+        searched.append([q.query for q in queries])
+        return [QueryBundle(query_type=q.type, query=q.query, results=[]) for q in queries]
+
+    def fake_rank(search_result, idea):
+        return [patent(id=f"patent/US{i}/en") for i in range(len(search_result.query_bundles))]
+
+    monkeypatch.setattr(orch, "detect_and_translate", fake_translate)
+    monkeypatch.setattr(orch, "generate_queries", lambda idea: _query_result())
+    monkeypatch.setattr(orch, "run_queries", fake_run_queries)
+    monkeypatch.setattr(orch, "run_market_search", lambda qr: [])
+    monkeypatch.setattr(orch, "fetch_market_trend", lambda kw: None)
+    monkeypatch.setattr(orch, "rank_and_dedupe", fake_rank)
+    monkeypatch.setattr(orch, "deep_dive", lambda ranked, n: [])
+    monkeypatch.setattr(
+        orch,
+        "assess_novelty",
+        lambda *a: NoveltyAssessment(
+            candidate_assessments=[],
+            overall_novelty_confidence=0.6,
+            differentiation_suggestions=["add a hinge"],
+            citations=[],
+            claim_chart_pairs=[],
+            plain_summary="Plain summary.",
+        ),
+    )
+    monkeypatch.setattr(
+        orch,
+        "plan_refinement",
+        lambda *a: RefinementPlan(
+            observation="Patents say 'sectional shaft'.",
+            new_terms=["sectional shaft"],
+            queries=[GeneratedQuery(type="refined", query='("sectional shaft")', rationale="r")],
+        )
+        if refinement
+        else None,
+    )
+    monkeypatch.setattr(
+        orch,
+        "localize_report",
+        lambda code, name, summary, suggestions, claims: LocalizedContent(
+            language_code=code,
+            language_name=name,
+            plain_summary="सार",
+            differentiation_suggestions=["कब्ज़ा जोड़ें"],
+            citation_claims=[],
+            ui_labels={},
+        ),
+    )
+    return searched
+
+
+def test_pipeline_runs_refinement_round_and_records_it(monkeypatch):
+    searched = _fake_pipeline(monkeypatch)
+    events = _run(orch.run_pipeline("A folding kayak paddle idea"))
+
+    messages = [e.message for e in events if e.type == "progress"]
+    assert "Patents say 'sectional shaft'." in messages
+    assert searched == [["(paddle) (folding)"], ['("sectional shaft")']]
+
+    result = events[-1].data
+    strategy = result.search_strategy
+    assert [q.type for q in strategy.queries] == ["major_markets", "refined"]
+    assert strategy.refinement_terms == ["sectional shaft"]
+    assert strategy.serpapi_calls["google_patents"] == 2
+    # Re-ranked over both rounds.
+    assert len(result.ranked_results) == 2
+    assert result.plain_summary == "Plain summary."
+    assert result.language_code == "en" and result.localized is None
+
+
+def test_pipeline_translates_idea_and_localizes_report(monkeypatch):
+    _fake_pipeline(monkeypatch, language_code="hi", refinement=False)
+    events = _run(orch.run_pipeline("सौर ऊर्जा से चलने वाला फसल सुखाने का यंत्र"))
+
+    result = events[-1].data
+    assert result.idea_text == "english version"  # pipeline ran on English
+    assert result.original_idea_text == "सौर ऊर्जा से चलने वाला फसल सुखाने का यंत्र"
+    assert result.language_code == "hi"
+    assert result.localized.differentiation_suggestions == ["कब्ज़ा जोड़ें"]
+    assert any("Hindi" in e.message for e in events if e.type == "progress")
+
+
+def test_pipeline_forced_language_localizes_english_idea(monkeypatch):
+    """'Apply & re-check' on a Hindi report sends English text plus
+    language=hi — the re-checked report must still come back in Hindi."""
+    _fake_pipeline(monkeypatch, refinement=False)
+    result = _run(orch.run_pipeline("A folding kayak paddle idea", language="hi"))[-1].data
+    assert result.language_code == "hi"
+    assert result.language_name == "Hindi"
+    assert result.original_idea_text is None
+
+
+# --- Demo mode and examples gallery ----------------------------------------
+
+
+def _result_event(idea="My idea"):
+    from app.models import AnalysisResult, ResultEvent
+    from app.pipeline.india_status import IndiaStatus
+
+    return ResultEvent(
+        data=AnalysisResult(
+            idea_text=idea,
+            ranked_results=[],
+            candidate_assessments=[],
+            overall_novelty_confidence=0.5,
+            differentiation_suggestions=[],
+            citations=[],
+            india_status=IndiaStatus(blocking_in_india=0, active_elsewhere_only=0),
+        )
+    )
+
+
+def test_demo_mode_refuses_new_analyses_but_serves_cached(temp_cache, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app import main, service
+
+    monkeypatch.setattr(service, "LIVE_MODE", False)
+    temp_cache.set_cached("Cached idea here", [_result_event("Cached idea here")])
+    client = TestClient(main.app)
+
+    fresh = client.post("/analyze", json={"idea_text": "A never analyzed idea"})
+    assert "demo mode" in fresh.text
+    cached = client.post("/analyze", json={"idea_text": "Cached idea here"})
+    assert '"type":"result"' in cached.text
+
+
+def test_examples_gallery_skips_rechecks(temp_cache):
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+
+    temp_cache.set_cached("Original idea", [_result_event("Original idea")])
+    temp_cache.set_cached(
+        "Original idea. Additionally, x",
+        [_result_event("Original idea. Additionally, x")],
+        parent_report_id=temp_cache.cache_key("Original idea"),
+    )
+    examples = TestClient(app).get("/examples").json()
+    assert [e["idea_text"] for e in examples] == ["Original idea"]
+
+
+def test_report_language_is_part_of_the_cache_identity():
+    from app.service import report_id_for
+
+    assert report_id_for("Idea", None) != report_id_for("Idea", "hi")
+    assert report_id_for("Idea", "HI") == report_id_for("Idea", "hi")
+
+
+def test_queries_are_cleaned_of_typographic_punctuation():
+    from app.pipeline.search import clean_query
+
+    assert clean_query("(“modular shaft” OR foam‑filled)  (paddle)") == '("modular shaft" OR foam-filled) (paddle)'
+
+
+# --- MCP report rendering --------------------------------------------------
+
+
+def test_mcp_markdown_leads_with_verdict_and_links_report():
+    from app.report_markdown import report_to_markdown
+
+    result = _result_event().data
+    result.overall_novelty_confidence = 0.2
+    result.plain_summary = "Close matches exist."
+    result.differentiation_suggestions = ["Add a hinge"]
+    md = report_to_markdown(result, "http://localhost:3000/?report=abc")
+    assert md.startswith("## Prior-art check: 20% novelty confidence (heavy overlap")
+    assert "Close matches exist." in md
+    assert "1. Add a hinge" in md
+    assert md.rstrip().endswith("not legal advice._")
+    assert "http://localhost:3000/?report=abc" in md
+
+
+# --- Benchmark scoring -----------------------------------------------------
+
+from benchmark.run import Case, CaseResult, find_rank, summarize
+
+
+def _case():
+    return Case(
+        id="coffee-pod",
+        patent="US5325765A",
+        patent_title="Beverage filter cartridge",
+        priority_date="1992-09-16",
+        idea="A coffee pod",
+    )
+
+
+def test_benchmark_matches_any_kind_code_but_not_longer_numbers():
+    ranked = [
+        patent(id="patent/US53257650A/en"),  # longer number: not a match
+        patent(id="patent/US5325765B1/en"),  # same number, different kind code
+    ]
+    assert find_rank(ranked, _case()) == 2
+
+
+def test_benchmark_matches_same_titled_family_member_and_skips_products():
+    product = RankedResult(
+        id="https://shop.example/pod", source_type="product", title="Pods",
+        snippet="", link="", relevance_score=0.9,
+    )
+    family = patent(id="patent/EP0659057A1/en")
+    family.title = "Beverage Filter Cartridge"
+    assert find_rank([product, family], _case()) == 1
+    assert find_rank([product], _case()) is None
+
+
+def test_benchmark_summary_excludes_errored_cases():
+    results = [
+        CaseResult(id="a", patent="p", rank_before=3, rank_after=1, results_before=5,
+                   results_after=6, searches_used=4),
+        CaseResult(id="b", patent="p", rank_before=None, rank_after=12, results_before=5,
+                   results_after=6, searches_used=4),
+        CaseResult(id="c", patent="p", rank_before=None, rank_after=None, results_before=0,
+                   results_after=0, searches_used=3, error="all searches failed"),
+    ]
+    s = summarize(results)
+    assert s["cases"] == 2 and s["errors"] == 1
+    assert s["top10_before"] == 0.5 and s["top10_after"] == 0.5
+    assert s["top1_after"] == 0.5 and s["found_after"] == 1.0
+    assert s["searches_used"] == 11
+
+
+# --- Sample ideas stay pre-cached --------------------------------------------
+
+
+def test_frontend_samples_match_the_warmed_examples():
+    """The home page's sample buttons must send text the warm-up script
+    caches, byte for byte — otherwise they silently become slow, billable
+    live runs in the middle of a demo."""
+    import re
+    from pathlib import Path
+
+    from scripts.warm_examples import EXAMPLES
+
+    ts = (Path(__file__).resolve().parents[2] / "frontend/lib/sampleIdea.ts").read_text()
+    # Each export is string literals joined with "+", ending at ";".
+    samples = [
+        "".join(re.findall(r'"(.*?)"', body))
+        for body in re.findall(r"export const \w+ =(.*?);", ts, flags=re.S)
+    ]
+    assert len(samples) == 2
+    assert samples[0] == EXAMPLES["kayak"]
+    assert samples[1] == EXAMPLES["solar-dryer-hindi"]
+
+
+def test_evict_removes_memory_and_disk(temp_cache, tmp_path):
+    temp_cache.set_cached("Idea to forget", [ProgressEvent(stage="done", message="m")])
+    key = temp_cache.cache_key("Idea to forget")
+    temp_cache.evict(key)
+    assert temp_cache.get_cached("Idea to forget") is None
+    assert not (tmp_path / f"{key}.json").exists()

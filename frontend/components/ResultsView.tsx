@@ -10,7 +10,15 @@ import NoveltyVerdict from "@/components/NoveltyVerdict";
 import PublicDomain from "@/components/PublicDomain";
 import ReportActions from "@/components/ReportActions";
 import SearchStrategyPanel from "@/components/SearchStrategyPanel";
+import { labelsFor } from "@/lib/i18n";
 import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/types/analysis";
+
+// A suggestion as the pipeline needs it (English, since it's appended to the
+// English idea text) and as the reader saw it (possibly translated).
+export interface AppliedSuggestion {
+  english: string;
+  shown: string;
+}
 
 // How many prior-art cards to show before collapsing. A full run returns
 // 30-40 results; rendering them all buries the analysis under an endless
@@ -123,7 +131,7 @@ function ResultCard({
 
 interface ResultsViewProps {
   result: AnalysisResult;
-  onApplySuggestion?: (suggestion: string) => void;
+  onApplySuggestion?: (suggestion: AppliedSuggestion) => void;
   previousConfidence?: number | null;
   appliedSuggestion?: string | null;
 }
@@ -135,6 +143,12 @@ export default function ResultsView({
   appliedSuggestion,
 }: ResultsViewProps) {
   const [showAllResults, setShowAllResults] = useState(false);
+  // Localized reports can be flipped to English — to check a translation,
+  // or to share with someone who reads English.
+  const [showEnglish, setShowEnglish] = useState(false);
+  const localized = showEnglish ? null : (result.localized ?? null);
+  const t = labelsFor(result, showEnglish);
+  const plainSummary = localized?.plain_summary || result.plain_summary;
 
   const verdictByResultId = new Map(
     result.candidate_assessments.map((a) => [a.result_id, a.verdict])
@@ -191,7 +205,43 @@ export default function ResultsView({
         </div>
       )}
 
-      <NoveltyVerdict confidence={result.overall_novelty_confidence} />
+      {result.localized && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-orange-200 bg-orange-50 px-4 py-2.5 text-sm print:hidden">
+          <span className="text-orange-900">
+            {showEnglish
+              ? "Showing the English version of this report."
+              : `This report is in ${result.localized.language_name}. Patent titles and claims stay in English, the language patent offices use.`}
+          </span>
+          <button
+            onClick={() => setShowEnglish((v) => !v)}
+            className="rounded-md border border-orange-300 bg-white px-2.5 py-1 text-xs font-medium text-orange-900 hover:bg-orange-100"
+          >
+            {showEnglish ? `Show in ${result.localized.language_name}` : "Show in English"}
+          </button>
+        </div>
+      )}
+
+      {result.original_idea_text && (
+        <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+            Your idea, as you wrote it
+          </p>
+          <p className="mt-2 text-neutral-900">{result.original_idea_text}</p>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+            Translated for the patent search
+          </p>
+          <p className="mt-1 text-sm text-neutral-600">{result.idea_text}</p>
+        </div>
+      )}
+
+      <NoveltyVerdict confidence={result.overall_novelty_confidence} t={t} />
+
+      {plainSummary && (
+        <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="font-semibold text-neutral-900">{t("what_this_means")}</h2>
+          <p className="mt-2 leading-relaxed text-neutral-700">{plainSummary}</p>
+        </div>
+      )}
 
       <ReportActions result={result} />
 
@@ -206,7 +256,7 @@ export default function ResultsView({
         <StatTile label="Blocking in India" value={result.india_status.blocking_in_india} />
       </div>
 
-      {result.public_domain && <PublicDomain summary={result.public_domain} />}
+      {result.public_domain && <PublicDomain summary={result.public_domain} title={t("free_to_build")} />}
 
       <div>
         <h2 className="text-xl font-bold text-neutral-900">Patent landscape</h2>
@@ -241,45 +291,45 @@ export default function ResultsView({
 
       <CompetitorLandscape assignees={result.top_assignees} />
 
-      <IndiaSignal status={result.india_status} />
+      <IndiaSignal status={result.india_status} title={t("india_signal")} />
 
       <div className="rounded-xl border border-green-200 bg-green-50/60 p-5 shadow-sm">
-        <h2 className="text-lg font-semibold text-green-900">How to differentiate your idea</h2>
-        <p className="mt-1 text-sm text-green-800/80">
-          Specific changes that would move this idea away from its closest matches. Apply one
-          to re-run the analysis and watch the verdict move.
-        </p>
+        <h2 className="text-lg font-semibold text-green-900">{t("differentiate_title")}</h2>
+        <p className="mt-1 text-sm text-green-800/80">{t("differentiate_subtitle")}</p>
         <ul className="mt-4 space-y-2">
-          {result.differentiation_suggestions.map((suggestion, i) => (
-            <li
-              key={i}
-              className="flex items-start justify-between gap-3 rounded-lg bg-white/70 p-3 text-sm text-green-900"
-            >
-              <span className="flex gap-2.5">
-                <span className="font-semibold text-green-600">{i + 1}</span>
-                <span>{suggestion}</span>
-              </span>
-              {onApplySuggestion && (
-                <button
-                  onClick={() => onApplySuggestion(suggestion)}
-                  className="shrink-0 whitespace-nowrap rounded-md bg-green-700 print:hidden px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800"
-                >
-                  Apply & re-check →
-                </button>
-              )}
-            </li>
-          ))}
+          {result.differentiation_suggestions.map((suggestion, i) => {
+            const shown = localized?.differentiation_suggestions[i] ?? suggestion;
+            return (
+              <li
+                key={i}
+                className="flex items-start justify-between gap-3 rounded-lg bg-white/70 p-3 text-sm text-green-900"
+              >
+                <span className="flex gap-2.5">
+                  <span className="font-semibold text-green-600">{i + 1}</span>
+                  <span>{shown}</span>
+                </span>
+                {onApplySuggestion && (
+                  <button
+                    onClick={() => onApplySuggestion({ english: suggestion, shown })}
+                    className="shrink-0 whitespace-nowrap rounded-md bg-green-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800 print:hidden"
+                  >
+                    {t("apply_recheck")}
+                  </button>
+                )}
+              </li>
+            );
+          })}
         </ul>
         {result.citations.length > 0 && (
           <div className="mt-4 border-t border-green-200 pt-3">
-            <p className="text-xs font-medium text-green-800">Based on:</p>
+            <p className="text-xs font-medium text-green-800">{t("based_on")}</p>
             <ul className="mt-1 space-y-1">
               {result.citations.map((c, i) => (
                 <li key={i} className="text-xs text-green-700">
                   <a href={c.link} target="_blank" rel="noopener noreferrer" className="underline">
                     {c.title}
                   </a>
-                  <span className="text-green-600"> — {c.claim}</span>
+                  <span className="text-green-600"> — {localized?.citation_claims[i] ?? c.claim}</span>
                 </li>
               ))}
             </ul>

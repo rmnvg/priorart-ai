@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ExamplesGallery from "@/components/ExamplesGallery";
 import IdeaForm from "@/components/IdeaForm";
 import ProgressChecklist from "@/components/ProgressChecklist";
-import ResultsView from "@/components/ResultsView";
-import { fetchReport, streamAnalysis } from "@/lib/analyzeStream";
-import type { AnalysisResult, PipelineStage } from "@/types/analysis";
+import ResultsView, { type AppliedSuggestion } from "@/components/ResultsView";
+import { fetchLiveMode, fetchReport, streamAnalysis } from "@/lib/analyzeStream";
+import type { AnalysisResult, AnalyzeRequest, PipelineStage } from "@/types/analysis";
 
 type ViewState = "idle" | "loading" | "results" | "error";
 
@@ -21,6 +22,8 @@ function setReportInUrl(reportId: string | null) {
 export default function Home() {
   const [viewState, setViewState] = useState<ViewState>("idle");
   const [currentStage, setCurrentStage] = useState<PipelineStage | null>(null);
+  const [stageMessage, setStageMessage] = useState<string | null>(null);
+  const [live, setLive] = useState<boolean | null>(null);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [previousConfidence, setPreviousConfidence] = useState<number | null>(null);
@@ -28,19 +31,18 @@ export default function Home() {
   const [openingReport, setOpeningReport] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
-  // A shared report link (?report=<id>) opens straight onto that saved
-  // analysis. Read from window rather than useSearchParams, which would
-  // force a Suspense boundary around the whole page for one mount-time read.
-  useEffect(() => {
-    const reportId = new URLSearchParams(window.location.search).get("report");
-    if (!reportId) return;
+  function openReport(reportId: string) {
     setViewState("loading");
     setOpeningReport(true);
+    setPreviousConfidence(null);
+    setAppliedSuggestion(null);
     fetchReport(reportId)
       .then((report) => {
         if (report) {
           setResult(report);
           setViewState("results");
+          setReportInUrl(reportId);
+          window.scrollTo(0, 0);
         } else {
           setErrorMessage("That report link has expired or doesn't exist. Run a new analysis instead.");
           setViewState("error");
@@ -52,11 +54,21 @@ export default function Home() {
         setViewState("error");
       })
       .finally(() => setOpeningReport(false));
+  }
+
+  // A shared report link (?report=<id>) opens straight onto that saved
+  // analysis. Read from window rather than useSearchParams, which would
+  // force a Suspense boundary around the whole page for one mount-time read.
+  useEffect(() => {
+    fetchLiveMode().then(setLive);
+    const reportId = new URLSearchParams(window.location.search).get("report");
+    if (reportId) openReport(reportId);
   }, []);
 
-  async function runAnalysis(ideaText: string) {
+  async function runAnalysis(request: AnalyzeRequest) {
     setViewState("loading");
     setCurrentStage(null);
+    setStageMessage(null);
     setResult(null);
     setErrorMessage(null);
 
@@ -65,10 +77,11 @@ export default function Home() {
 
     try {
       await streamAnalysis(
-        ideaText,
+        request,
         (event) => {
           if (event.type === "progress") {
             setCurrentStage(event.stage);
+            setStageMessage(event.message);
           } else if (event.type === "result") {
             setResult(event.data);
             setViewState("results");
@@ -89,14 +102,20 @@ export default function Home() {
   function handleSubmit(ideaText: string) {
     setPreviousConfidence(null);
     setAppliedSuggestion(null);
-    runAnalysis(ideaText);
+    runAnalysis({ idea_text: ideaText });
   }
 
-  function handleApplySuggestion(suggestion: string) {
+  function handleApplySuggestion({ english, shown }: AppliedSuggestion) {
     if (!result) return;
     setPreviousConfidence(result.overall_novelty_confidence);
-    setAppliedSuggestion(suggestion);
-    runAnalysis(`${result.idea_text} Additionally, ${suggestion}`);
+    setAppliedSuggestion(shown);
+    // The pipeline always gets English (the report's idea_text already is);
+    // the language pin keeps the re-checked report in the reader's language.
+    runAnalysis({
+      idea_text: `${result.idea_text} Additionally, ${english}`,
+      language: result.language_code && result.language_code !== "en" ? result.language_code : undefined,
+      parent_report_id: result.report_id ?? undefined,
+    });
   }
 
   function handleReset() {
@@ -104,6 +123,7 @@ export default function Home() {
     setReportInUrl(null);
     setViewState("idle");
     setCurrentStage(null);
+    setStageMessage(null);
     setResult(null);
     setErrorMessage(null);
     setPreviousConfidence(null);
@@ -112,7 +132,12 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-10 bg-neutral-50 px-4 py-16">
-      {viewState === "idle" && <IdeaForm onSubmit={handleSubmit} />}
+      {viewState === "idle" && (
+        <>
+          <IdeaForm onSubmit={handleSubmit} live={live} />
+          <ExamplesGallery onOpen={openReport} />
+        </>
+      )}
 
       {viewState === "loading" && openingReport && (
         <p className="text-neutral-500">Opening saved report...</p>
@@ -123,7 +148,7 @@ export default function Home() {
           <p className="text-neutral-500">
             {appliedSuggestion ? "Re-checking your idea..." : "Analyzing your idea..."}
           </p>
-          <ProgressChecklist currentStage={currentStage} isComplete={false} />
+          <ProgressChecklist currentStage={currentStage} isComplete={false} message={stageMessage} />
         </div>
       )}
 

@@ -6,15 +6,24 @@ const STAGES: { key: PipelineStage; label: string }[] = [
   { key: "searching_scholar", label: "Reviewing academic literature" },
   { key: "checking_market_availability", label: "Checking market availability" },
   { key: "ranking_results", label: "Ranking & deduplicating results" },
+  { key: "refining_search", label: "Refining the search in patent terminology" },
   { key: "scoring_novelty", label: "Scoring novelty & building citations" },
 ];
 
 interface ProgressChecklistProps {
   currentStage: PipelineStage | null;
   isComplete: boolean;
+  // The pipeline's latest message — where a stage makes a decision (the
+  // language it detected, the terms the refinement agent found), this is
+  // where the user sees it.
+  message?: string | null;
 }
 
-export default function ProgressChecklist({ currentStage, isComplete }: ProgressChecklistProps) {
+export default function ProgressChecklist({
+  currentStage,
+  isComplete,
+  message,
+}: ProgressChecklistProps) {
   const currentIndex = currentStage ? STAGES.findIndex((s) => s.key === currentStage) : -1;
 
   return (
@@ -57,6 +66,14 @@ export default function ProgressChecklist({ currentStage, isComplete }: Progress
           );
         })}
       </ul>
+      {message && !isComplete && (
+        <p
+          key={message}
+          className="mt-6 animate-[fadeIn_300ms_ease-out] rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-600 shadow-sm"
+        >
+          {message}
+        </p>
+      )}
     </div>
   );
 }

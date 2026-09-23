@@ -10,7 +10,17 @@ from openai import OpenAI, OpenAIError
 
 from app.config import GROQ_API_KEY, GROQ_MODEL
 
-_client = OpenAI(api_key=GROQ_API_KEY, base_url="https://api.groq.com/openai/v1")
+_client: OpenAI | None = None
+
+
+def _get_client() -> OpenAI:
+    # Created on first use, not at import: the OpenAI client refuses an empty
+    # key, and a missing key must leave demo mode (saved reports only)
+    # working rather than crash the whole server on startup.
+    global _client
+    if _client is None:
+        _client = OpenAI(api_key=GROQ_API_KEY, base_url="https://api.groq.com/openai/v1")
+    return _client
 
 
 def complete(prompt: str, system: str | None = None, temperature: float = 0.2) -> str:
@@ -20,7 +30,7 @@ def complete(prompt: str, system: str | None = None, temperature: float = 0.2) -
         messages.append({"role": "system", "content": system})
     messages.append({"role": "user", "content": prompt})
 
-    response = _client.chat.completions.create(
+    response = _get_client().chat.completions.create(
         model=GROQ_MODEL,
         messages=messages,
         temperature=temperature,
@@ -53,7 +63,7 @@ def complete_json(
     messages.append({"role": "user", "content": prompt})
 
     try:
-        response = _client.chat.completions.create(
+        response = _get_client().chat.completions.create(
             model=GROQ_MODEL,
             messages=messages,
             temperature=temperature,

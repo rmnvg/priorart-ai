@@ -5,10 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 
-from app.cache import cache_key, get_cached, get_cached_by_key, set_cached
-from app.config import ALLOWED_ORIGINS
-from app.models import AnalysisResult, AnalyzeStreamEvent
-from app.pipeline.orchestrator import run_pipeline
+from app import service
+from app.cache import get_cached_by_key, list_top_level_reports
+from app.config import ALLOWED_ORIGINS, LIVE_MODE
+from app.models import AnalysisResult
 
 app = FastAPI(title="PriorArt AI")
 
@@ -24,42 +24,34 @@ app.add_middleware(
 
 class AnalyzeRequest(BaseModel):
     idea_text: str
+    # Forces the report language (ISO 639-1). Omitted, the report follows
+    # the language the idea is written in.
+    language: str | None = None
+    # Set when this run is a re-check of another report.
+    parent_report_id: str | None = None
 
 
-def _with_report_id(event: AnalyzeStreamEvent, report_id: str) -> AnalyzeStreamEvent:
-    # The report id is the cache key, so a shared link resolves to exactly
-    # the cached analysis. Stamped on replay as well as on fresh runs, so
-    # analyses cached before permalinks existed get one too.
-    if event.type == "result":
-        event.data.report_id = report_id
-    return event
+class ExampleReport(BaseModel):
+    report_id: str
+    idea_text: str
+    language_name: str
+    novelty_confidence: float
+    results_count: int
+    public_domain_count: int
 
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "live": LIVE_MODE}
 
 
 @app.post("/analyze")
 async def analyze(request: AnalyzeRequest):
-    report_id = cache_key(request.idea_text)
-
     async def event_stream() -> AsyncGenerator[dict, None]:
-        cached_events = get_cached(request.idea_text)
-        if cached_events is not None:
-            for event in cached_events:
-                event = _with_report_id(event, report_id)
-                yield {"event": event.type, "data": event.model_dump_json()}
-            return
-
-        collected: list[AnalyzeStreamEvent] = []
-        async for event in run_pipeline(request.idea_text):
-            event = _with_report_id(event, report_id)
-            collected.append(event)
+        async for event in service.analyze(
+            request.idea_text, request.language, request.parent_report_id
+        ):
             yield {"event": event.type, "data": event.model_dump_json()}
-
-        if collected and collected[-1].type == "result":
-            set_cached(request.idea_text, collected)
 
     return EventSourceResponse(event_stream())
 
@@ -74,3 +66,23 @@ def get_report(report_id: str) -> AnalysisResult:
         raise HTTPException(status_code=404, detail="Report not found")
     result.data.report_id = report_id
     return result.data
+
+
+@app.get("/examples", response_model=list[ExampleReport])
+def list_examples() -> list[ExampleReport]:
+    """Saved analyses for the examples gallery — what a judge or visitor
+    sees without API keys. Re-checks of other reports are left out."""
+    examples = []
+    for report_id, event in list_top_level_reports():
+        data = event.data
+        examples.append(
+            ExampleReport(
+                report_id=report_id,
+                idea_text=data.original_idea_text or data.idea_text,
+                language_name=data.language_name,
+                novelty_confidence=data.overall_novelty_confidence,
+                results_count=len(data.ranked_results),
+                public_domain_count=data.public_domain.count if data.public_domain else 0,
+            )
+        )
+    return examples

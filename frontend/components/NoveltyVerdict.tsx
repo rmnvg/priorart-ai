@@ -1,36 +1,27 @@
+import type { LabelKey, Translate } from "@/lib/i18n";
+
 // The single number the whole report leads with, so it gets hero treatment:
 // one large figure per view, proportional (not tabular) figures at display
 // size, and a meter whose fill carries severity against a lighter step of the
 // same hue. Status color never stands alone — the verdict word sits beside it.
-const LEVELS = [
-  {
-    min: 0.65,
-    color: "#0ca30c",
-    label: "Looks novel",
-    blurb: "No strong blocking prior art surfaced for this idea.",
-  },
-  {
-    min: 0.35,
-    color: "#fab219",
-    label: "Partial overlap",
-    blurb: "Real prior art shares elements with this idea, but it isn't fully anticipated.",
-  },
-  {
-    min: 0,
-    color: "#d03b3b",
-    label: "Heavy overlap",
-    blurb: "Close matches already exist — differentiation will be essential.",
-  },
+const LEVELS: { min: number; color: string; label: LabelKey; blurb: LabelKey }[] = [
+  { min: 0.65, color: "#0ca30c", label: "looks_novel", blurb: "looks_novel_blurb" },
+  { min: 0.35, color: "#fab219", label: "partial_overlap", blurb: "partial_overlap_blurb" },
+  { min: 0, color: "#d03b3b", label: "heavy_overlap", blurb: "heavy_overlap_blurb" },
 ];
 
-export default function NoveltyVerdict({ confidence }: { confidence: number }) {
+export function verdictLevel(confidence: number) {
+  return LEVELS.find((l) => confidence >= l.min) ?? LEVELS[LEVELS.length - 1];
+}
+
+export default function NoveltyVerdict({ confidence, t }: { confidence: number; t: Translate }) {
   const pct = Math.round(confidence * 100);
-  const level = LEVELS.find((l) => confidence >= l.min) ?? LEVELS[LEVELS.length - 1];
+  const level = verdictLevel(confidence);
 
   return (
     <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
       <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-        Novelty verdict
+        {t("novelty_verdict")}
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -44,7 +35,7 @@ export default function NoveltyVerdict({ confidence }: { confidence: number }) {
           className="rounded-full px-3 py-1 text-sm font-semibold"
           style={{ backgroundColor: `${level.color}1a`, color: level.color }}
         >
-          {level.label}
+          {t(level.label)}
         </span>
       </div>
 
@@ -63,7 +54,7 @@ export default function NoveltyVerdict({ confidence }: { confidence: number }) {
         />
       </div>
 
-      <p className="mt-3 text-sm text-neutral-600">{level.blurb}</p>
+      <p className="mt-3 text-sm text-neutral-600">{t(level.blurb)}</p>
     </div>
   );
 }

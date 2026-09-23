@@ -1,17 +1,22 @@
-"""Stage 1.7: wires stages 1.1-1.6 into a single async generator that yields
+"""Stage 1.7: wires every stage into a single async generator that yields
 progress events as it goes, ending with either a result or an error event.
-This is what the FastAPI SSE endpoint (section 2) will consume directly —
+This is what the FastAPI SSE endpoint (and the MCP server) consume directly —
 the staging lives here, not bolted on in the API layer.
 
 Each blocking pipeline call is run via asyncio.to_thread so the event loop
 stays free to flush progress events promptly. The market and Trends lookups
 depend only on the generated queries, so they're started alongside the patent
 search and collected later rather than waited on in sequence.
+
+Progress messages are written for the person watching: where a stage makes a
+decision (the language it detected, the terminology the refinement agent
+found), the message says what it decided, not just which stage is running.
 """
 import asyncio
 import logging
 from collections.abc import AsyncGenerator
 
+from app.config import DEEP_DIVE_TOP_N, ENABLE_TRENDS, REFINEMENT_QUERIES
 from app.models import (
     AnalysisResult,
     AnalyzeStreamEvent,
@@ -25,24 +30,30 @@ from app.models import (
 from app.pipeline.citation_chase import chase_citations
 from app.pipeline.deepdive import deep_dive
 from app.pipeline.india_status import compute_india_status
+from app.pipeline.language import detect_and_translate, language_name_for, localize_report
 from app.pipeline.market_trends import fetch_market_trend
 from app.pipeline.novelty import assess_novelty
 from app.pipeline.public_domain import find_public_domain
-from app.pipeline.query_generator import generate_queries
+from app.pipeline.query_generator import GeneratedQuery, generate_queries
 from app.pipeline.rank import rank_and_dedupe
+from app.pipeline.refine import plan_refinement
 from app.pipeline.search import (
+    QueryBundle,
     SearchLayerResult,
     build_market_query,
     run_market_search,
-    run_patent_scholar_search,
+    run_queries,
 )
 
 logger = logging.getLogger(__name__)
 
 MIN_IDEA_LENGTH = 10
 MAX_IDEA_LENGTH = 6000  # generous multi-paragraph allowance; guards against pathological pastes
-DEEP_DIVE_TOP_N = 8
 MARKET_CONTEXT_TOP_N = 3
+
+# Language codes the report is never translated into: English needs no
+# translation, and "und" means detection itself failed.
+NO_LOCALIZATION = {"en", "und"}
 
 
 def _count_serpapi_calls(patent_queries: int, deep_dives: int, used_trends: bool) -> dict[str, int]:
@@ -56,7 +67,15 @@ def _count_serpapi_calls(patent_queries: int, deep_dives: int, used_trends: bool
     return calls
 
 
-async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, None]:
+async def _noop() -> None:
+    return None
+
+
+async def run_pipeline(
+    idea_text: str, language: str | None = None
+) -> AsyncGenerator[AnalyzeStreamEvent, None]:
+    """`language` forces the report language (ISO 639-1). Without it, the
+    report comes back in whatever language the idea was written in."""
     idea_text = (idea_text or "").strip()
     if len(idea_text) < MIN_IDEA_LENGTH:
         yield ErrorEvent(
@@ -72,17 +91,38 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             stage="generating_queries",
             message="Extracting core concepts and generating search queries...",
         )
-        query_result = await asyncio.to_thread(generate_queries, idea_text)
+        idea_language = await asyncio.to_thread(detect_and_translate, idea_text)
+        translated = idea_language.code != "en" and idea_language.english_text != idea_text
+        if translated:
+            yield ProgressEvent(
+                stage="generating_queries",
+                message=f"Understood your idea in {idea_language.name} — translating it into "
+                "patent-search English and extracting its core concepts...",
+            )
+        # Everything downstream (queries, embeddings, claim chart) runs on
+        # English: that's the language of the patent corpus.
+        english_idea = idea_language.english_text
+        output_code = (language or idea_language.code).lower()
+        output_name = (
+            idea_language.name
+            if output_code == idea_language.code
+            else language_name_for(output_code)
+        )
+
+        query_result = await asyncio.to_thread(generate_queries, english_idea)
 
         yield ProgressEvent(
             stage="searching_patents",
-            message=f"Searching patents across {len(query_result.queries)} query angles...",
+            message=f"Searching patents across {len(query_result.queries)} query angles, "
+            "including Indian Patent Office filings...",
         )
         market_task = asyncio.create_task(asyncio.to_thread(run_market_search, query_result))
         trend_task = asyncio.create_task(
             asyncio.to_thread(fetch_market_trend, query_result.trends_keyword)
+            if ENABLE_TRENDS
+            else _noop()
         )
-        bundles = await asyncio.to_thread(run_patent_scholar_search, query_result)
+        bundles: list[QueryBundle] = await asyncio.to_thread(run_queries, query_result.queries)
         # The major_markets query is the most precisely-targeted one, so its
         # assignee breakdown (from SerpApi's clustered=true summary — no
         # extra API call) is the most meaningful "who owns this space" view.
@@ -103,13 +143,40 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
         )
         market_results = await market_task
         market_trend = await trend_task
-        search_result = SearchLayerResult(query_bundles=bundles, market_results=market_results)
 
         yield ProgressEvent(
             stage="ranking_results",
             message="Ranking and deduplicating results by relevance to your idea...",
         )
-        ranked = await asyncio.to_thread(rank_and_dedupe, search_result, idea_text)
+        ranked = await asyncio.to_thread(
+            rank_and_dedupe,
+            SearchLayerResult(query_bundles=bundles, market_results=market_results),
+            english_idea,
+        )
+
+        all_queries: list[GeneratedQuery] = list(query_result.queries)
+        refinement = None
+        # Skip refinement when the search provider itself is down: the
+        # follow-up queries would fail the same way.
+        if REFINEMENT_QUERIES > 0 and not all(b.search_failed for b in bundles):
+            yield ProgressEvent(
+                stage="refining_search",
+                message="Reading the first results to learn the terminology patents use for "
+                "this idea...",
+            )
+            refinement = await asyncio.to_thread(
+                plan_refinement, english_idea, query_result, ranked, REFINEMENT_QUERIES
+            )
+            if refinement:
+                yield ProgressEvent(stage="refining_search", message=refinement.observation)
+                refined_bundles = await asyncio.to_thread(run_queries, refinement.queries)
+                bundles = bundles + refined_bundles
+                all_queries += refinement.queries
+                ranked = await asyncio.to_thread(
+                    rank_and_dedupe,
+                    SearchLayerResult(query_bundles=bundles, market_results=market_results),
+                    english_idea,
+                )
 
         if not ranked:
             # Distinguish "the search worked and found nothing" from "the
@@ -131,18 +198,33 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
 
         yield ProgressEvent(
             stage="scoring_novelty",
-            message="Pulling full claims for top candidates and scoring novelty...",
+            message="Pulling full claims and citations for top candidates and scoring novelty...",
         )
         top_candidates = await asyncio.to_thread(deep_dive, ranked, DEEP_DIVE_TOP_N)
         top_products = [r for r in ranked if r.source_type == "product"][:MARKET_CONTEXT_TOP_N]
         novelty_result = await asyncio.to_thread(
-            assess_novelty, idea_text, top_candidates, top_products
+            assess_novelty, english_idea, top_candidates, top_products
         )
         india_status = compute_india_status(ranked, DEEP_DIVE_TOP_N)
         # Prior art whose protection has ended — free to build on, and the
         # most actionable part of the report for an independent inventor.
         public_domain = find_public_domain(ranked)
         citation_network = chase_citations(top_candidates, ranked)
+
+        localized = None
+        if output_code not in NO_LOCALIZATION:
+            yield ProgressEvent(
+                stage="scoring_novelty",
+                message=f"Writing your report in {output_name}...",
+            )
+            localized = await asyncio.to_thread(
+                localize_report,
+                output_code,
+                output_name,
+                novelty_result.plain_summary,
+                novelty_result.differentiation_suggestions,
+                [c.claim for c in novelty_result.citations],
+            )
 
         # The claim chart always compares against the top deep-dived
         # candidate (the closest match) — the novelty prompt was instructed
@@ -159,7 +241,7 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
             )
 
         result = AnalysisResult(
-            idea_text=idea_text,
+            idea_text=english_idea,
             ranked_results=ranked,
             candidate_assessments=novelty_result.candidate_assessments,
             overall_novelty_confidence=novelty_result.overall_novelty_confidence,
@@ -181,22 +263,33 @@ async def run_pipeline(idea_text: str) -> AsyncGenerator[AnalyzeStreamEvent, Non
                         result_count=len(b.results),
                         failed=b.search_failed,
                     )
-                    for b, gq in zip(bundles, query_result.queries)
+                    for b, gq in zip(bundles, all_queries)
                 ],
                 market_query=build_market_query(query_result),
-                trends_keyword=query_result.trends_keyword,
+                trends_keyword=query_result.trends_keyword if ENABLE_TRENDS else None,
                 serpapi_calls=_count_serpapi_calls(
-                    len(bundles), len(top_candidates), bool(query_result.trends_keyword)
+                    len(bundles),
+                    len(top_candidates),
+                    ENABLE_TRENDS and bool(query_result.trends_keyword),
                 ),
+                refinement_observation=refinement.observation if refinement else None,
+                refinement_terms=refinement.new_terms if refinement else [],
             ),
             citation_network=citation_network,
             market_trend=market_trend,
+            plain_summary=novelty_result.plain_summary,
+            original_idea_text=idea_text if translated else None,
+            # Reflects what the report actually contains: if localization
+            # failed, it's English regardless of what was asked for.
+            language_code=output_code if localized else "en",
+            language_name=output_name if localized else "English",
+            localized=localized,
         )
 
         yield ProgressEvent(stage="done", message="Analysis complete.")
         yield ResultEvent(data=result)
 
-    except Exception as e:
+    except Exception:
         # Never echo the raw exception to the client: SerpApi's own errors
         # embed the API key in the request URL (it's a query param), and any
         # future code path that reaches this top-level handler unwrapped

@@ -50,6 +50,7 @@ class NoveltyAssessment(BaseModel):
     differentiation_suggestions: list[str]
     citations: list[Citation]
     claim_chart_pairs: list[ClaimChartPair]
+    plain_summary: str = ""
 
 
 class _RawCandidateAssessment(BaseModel):
@@ -70,6 +71,7 @@ class _RawNoveltyAssessment(BaseModel):
     differentiation_suggestions: list[str]
     citations: list[_RawCitation]
     claim_chart_pairs: list[ClaimChartPair] = []
+    plain_summary: str = ""
 
 
 SYSTEM_PROMPT = """You are a patent analyst assessing the novelty of an inventor's idea \
@@ -124,6 +126,11 @@ casing) of their source text — do not paraphrase or summarize them, they will 
 located and highlighted by exact text match. If you cannot find genuine overlapping \
 concepts with real verbatim spans, return an empty list rather than inventing spans \
 that don't exist in the source text.
+6. Produce "plain_summary": 3-4 short sentences addressed directly to the inventor \
+("you"), in plain everyday language with no patent jargon: what already exists that is \
+closest to their idea, what about their idea looks genuinely different (if anything), and \
+the single most useful next step. Mention a specific closest match by what it does, not \
+by its patent number.
 
 Respond with a single JSON object of this exact shape:
 {{
@@ -137,7 +144,8 @@ Respond with a single JSON object of this exact shape:
   ],
   "claim_chart_pairs": [
     {{"concept": "...", "idea_span": "...", "candidate_span": "..."}}
-  ]
+  ],
+  "plain_summary": "..."
 }}
 """
 
@@ -227,6 +235,7 @@ def assess_novelty(
                 differentiation_suggestions=parsed.differentiation_suggestions,
                 citations=_resolve_citations(parsed.citations, lookup),
                 claim_chart_pairs=parsed.claim_chart_pairs,
+                plain_summary=parsed.plain_summary.strip(),
             )
         except (ValueError, ValidationError) as e:
             last_error = e

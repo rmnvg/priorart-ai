@@ -29,11 +29,17 @@ const NEXT_STEPS: { title: string; body: string; href: string; linkLabel: string
   },
 ];
 
-export default function IndiaSignal({ status }: { status: IndiaStatus }) {
+export default function IndiaSignal({
+  status,
+  title = "India patentability signal",
+}: {
+  status: IndiaStatus;
+  title?: string;
+}) {
   return (
     <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm">
       <div className="border-l-4 border-orange-400 p-5">
-        <h2 className="font-semibold text-neutral-900">India patentability signal</h2>
+        <h2 className="font-semibold text-neutral-900">{title}</h2>
         <p className="mt-1 text-sm text-neutral-500">
           Whether the closest matches are actually in force in India, or only protected
           elsewhere, where the same idea may still be open.

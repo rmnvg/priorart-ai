@@ -7,6 +7,7 @@ from pydantic import BaseModel
 
 from app.pipeline.citation_chase import CitationNetwork
 from app.pipeline.india_status import IndiaStatus
+from app.pipeline.language import LocalizedContent
 from app.pipeline.market_trends import MarketTrend
 from app.pipeline.novelty import CandidateAssessment, Citation, ClaimChartPair
 from app.pipeline.public_domain import PublicDomainSummary
@@ -19,6 +20,7 @@ PipelineStage = Literal[
     "searching_scholar",
     "checking_market_availability",
     "ranking_results",
+    "refining_search",
     "scoring_novelty",
     "done",
 ]
@@ -56,6 +58,10 @@ class SearchStrategy(BaseModel):
     market_query: str
     trends_keyword: str | None = None
     serpapi_calls: dict[str, int]
+    # What the refinement agent noticed in the first round, and the
+    # patent vocabulary it searched again with.
+    refinement_observation: str | None = None
+    refinement_terms: list[str] = []
 
 
 class AnalysisResult(BaseModel):
@@ -75,6 +81,14 @@ class AnalysisResult(BaseModel):
     search_strategy: SearchStrategy | None = None
     citation_network: CitationNetwork | None = None
     market_trend: MarketTrend | None = None
+    # Written for the inventor in plain language (English source).
+    plain_summary: str = ""
+    # Language support: idea_text above is always the English the pipeline
+    # ran on; the inventor's own words are kept here when they differed.
+    original_idea_text: str | None = None
+    language_code: str = "en"
+    language_name: str = "English"
+    localized: LocalizedContent | None = None
     # Set by the API layer (it's the cache key), not the pipeline.
     report_id: str | None = None
 

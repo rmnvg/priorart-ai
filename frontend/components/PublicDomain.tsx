@@ -3,13 +3,19 @@ import type { PublicDomainSummary } from "@/types/analysis";
 // Deliberately framed as an opportunity, not a warning. Everywhere else in
 // this report prior art is an obstacle; here it's the opposite — protection
 // has ended, so the technology is published, public, and free to build on.
-export default function PublicDomain({ summary }: { summary: PublicDomainSummary }) {
+export default function PublicDomain({
+  summary,
+  title = "Free to build on",
+}: {
+  summary: PublicDomainSummary;
+  title?: string;
+}) {
   if (summary.count === 0) return null;
 
   return (
     <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 shadow-sm">
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-lg font-semibold text-emerald-900">Free to build on</h2>
+        <h2 className="text-lg font-semibold text-emerald-900">{title}</h2>
         <span className="text-sm text-emerald-800/80">
           {summary.count} of {summary.patents_considered} patents found are no longer in force
         </span>
