@@ -7,12 +7,15 @@ It's the same pipeline as the web app, through the same service layer — same
 cache, same report ids — so a check started in an AI assistant can be opened
 as a full interactive report in the browser, and vice versa.
 """
+import asyncio
+
 from mcp.server.mcpserver import Context, MCPServer
 
 from app import service
 from app.cache import get_cached_by_key, list_top_level_reports
-from app.config import PUBLIC_APP_URL
+from app.config import GROQ_API_KEY, PUBLIC_APP_URL
 from app.models import AnalysisResult
+from app.pipeline.ask import answer_question
 from app.report_markdown import report_to_markdown
 
 # The pipeline's stages, in order — for progress reporting to the client.
@@ -79,6 +82,30 @@ def get_prior_art_report(report_id: str) -> str:
         return f"No saved report with id {report_id!r}."
     result.data.report_id = report_id
     return _render(result.data)
+
+
+@server.tool()
+async def ask_about_report(report_id: str, question: str) -> str:
+    """Answer a follow-up question about a saved prior-art report, using only
+    what that report's searches found (with the documents cited). Good for
+    "which patent is the biggest risk?", "can I sell this in India?", etc.
+
+    Args:
+        report_id: The report's id (from check_prior_art or list_saved_reports).
+        question: The question, in any language; the answer uses the same one.
+    """
+    if not GROQ_API_KEY:
+        return "Questions need an LLM key: add GROQ_API_KEY to backend/.env."
+    events = get_cached_by_key(report_id)
+    result = next((e for e in events or [] if e.type == "result"), None)
+    if result is None:
+        return f"No saved report with id {report_id!r}."
+    try:
+        answer = await asyncio.to_thread(answer_question, result.data, question)
+    except ValueError:
+        return "Couldn't answer that right now — try again or rephrase."
+    sources = "\n".join(f"[{s.key}] {s.title} — {s.link}" for s in answer.sources)
+    return f"{answer.answer}\n\n{sources}" if sources else answer.answer
 
 
 @server.tool()

@@ -2,7 +2,9 @@ import type {
   AnalysisResult,
   AnalyzeRequest,
   AnalyzeStreamEvent,
+  AskTurn,
   ExampleReport,
+  ReportAnswer,
 } from "@/types/analysis";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -83,4 +85,30 @@ export async function fetchLiveMode(): Promise<boolean | null> {
   } catch {
     return null;
   }
+}
+
+/** A follow-up question about a saved report, answered from that report
+ * alone. Throws with the server's explanation (no LLM key, unknown report,
+ * model failure) so the UI can show it as-is. */
+export async function askReport(
+  reportId: string,
+  question: string,
+  history: AskTurn[]
+): Promise<ReportAnswer> {
+  const response = await fetch(`${API_URL}/report/${encodeURIComponent(reportId)}/ask`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question, history }),
+  });
+  if (!response.ok) {
+    let detail = "Couldn't get an answer — is the backend running?";
+    try {
+      const body = (await response.json()) as { detail?: unknown };
+      if (typeof body.detail === "string") detail = body.detail;
+    } catch {
+      // non-JSON error body: keep the generic message
+    }
+    throw new Error(detail);
+  }
+  return (await response.json()) as ReportAnswer;
 }

@@ -131,7 +131,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-10 bg-neutral-50 px-4 py-16">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-10 bg-neutral-50 px-4 py-8 sm:py-16">
       {viewState === "idle" && (
         <>
           <IdeaForm onSubmit={handleSubmit} live={live} />

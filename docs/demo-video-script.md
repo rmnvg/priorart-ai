@@ -17,7 +17,7 @@ progress events are the recorded ones, paced by `REPLAY_STEP_SECONDS`.
 | 1:15–1:30 | **Free to build on** section | "It also finds the patents in this space that have expired. That's technology she can legally use today." |
 | 1:30–1:50 | Landscape graph (hover a node, point at citation arrows), then **Found by citation chasing** | "Every dot is real prior art. The arrows are actual patent citations, and citation chasing finds documents keyword search never returned." |
 | 1:50–2:10 | **Apply & re-check** on a suggestion; the verdict moves | "Each suggestion is concrete. Apply one and the whole analysis re-runs, and you can watch the novelty score move." |
-| 2:10–2:25 | India signal plus next steps, **Download attorney brief** (open the .md briefly) | "India-specific status, next steps with the Indian Patent Office, and a brief to hand to a patent agent." |
+| 2:10–2:25 | **Ask about this report**: tap the Hindi question "क्या मैं इसे भारत में बना कर बेच सकता हूँ?" and show the cited answer | "She can ask follow-ups in Hindi, and every answer cites the patents it's based on." |
 | 2:25–2:35 | Scroll to **How this report was built** | "Everything is traceable: the exact queries and every SerpApi call, across four engines." |
 | 2:35–2:45 | Claude Desktop: ask "Has anyone patented a clay fridge that cools by evaporation?" and show the tool result | "And it's an MCP server too, so the same check works inside Claude or Cursor." |
 | 2:45–2:55 | `backend/benchmark/results/latest.md` table | "On 12 real patents described in plain words, it finds the actual patent in the top ten X% of the time, and the refinement agent raises that from Y%." |
@@ -27,5 +27,6 @@ exactly, so speaking starts a live run: about a minute and up to 14 searches, wh
 is fine if you have quota and want it fully live. For a cached take, dictate a few
 words to show the microphone working, clear the box, then click **हिंदी में उदाहरण**.
 
-Cut first if you're over time: the attorney-brief file preview, then the English
-toggle.
+Cut first if you're over time: the English toggle, then "Found by citation
+chasing". If you have spare seconds, show **Download attorney brief** next to the
+India next-steps card.

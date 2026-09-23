@@ -1,16 +1,30 @@
-from collections.abc import AsyncGenerator
+import asyncio
+from collections.abc import AsyncGenerator, AsyncIterator
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
 from app import service
 from app.cache import get_cached_by_key, list_top_level_reports
-from app.config import ALLOWED_ORIGINS, LIVE_MODE
+from app.config import ALLOWED_ORIGINS, GROQ_API_KEY, LIVE_MODE
 from app.models import AnalysisResult
+from app.pipeline.ask import AskTurn, ReportAnswer, answer_question
+from app.pipeline.rank import warm_up
 
-app = FastAPI(title="PriorArt AI")
+
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    # The embedding model takes seconds to load; do it at startup so the
+    # first analysis doesn't. Demo mode never ranks, so it skips the cost.
+    if LIVE_MODE:
+        await asyncio.to_thread(warm_up)
+    yield
+
+
+app = FastAPI(title="PriorArt AI", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,6 +43,12 @@ class AnalyzeRequest(BaseModel):
     language: str | None = None
     # Set when this run is a re-check of another report.
     parent_report_id: str | None = None
+
+
+class AskRequest(BaseModel):
+    question: str = Field(min_length=3, max_length=500)
+    # Earlier turns, oldest first, so follow-ups ("and in India?") resolve.
+    history: list[AskTurn] = Field(default=[], max_length=10)
 
 
 class ExampleReport(BaseModel):
@@ -86,3 +106,27 @@ def list_examples() -> list[ExampleReport]:
             )
         )
     return examples
+
+
+@app.post("/report/{report_id}/ask", response_model=ReportAnswer)
+async def ask_about_report(report_id: str, request: AskRequest) -> ReportAnswer:
+    """A follow-up question answered from a saved report alone. Needs only
+    the LLM key — no searches — so it works in demo mode when Groq is set."""
+    if not GROQ_API_KEY:
+        raise HTTPException(
+            status_code=503,
+            detail="Questions need an LLM key: add GROQ_API_KEY to backend/.env.",
+        )
+    events = get_cached_by_key(report_id)
+    result = next((e for e in events or [] if e.type == "result"), None)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    try:
+        return await asyncio.to_thread(
+            answer_question, result.data, request.question, request.history
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=502,
+            detail="Couldn't answer that right now — try again or rephrase the question.",
+        )

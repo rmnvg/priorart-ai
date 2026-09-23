@@ -958,3 +958,85 @@ def test_evict_removes_memory_and_disk(temp_cache, tmp_path):
     temp_cache.evict(key)
     assert temp_cache.get_cached("Idea to forget") is None
     assert not (tmp_path / f"{key}.json").exists()
+
+
+# --- Ask about this report ---------------------------------------------------
+
+from app.pipeline import ask as ask_mod
+
+
+def _report_for_ask():
+    result = _result_event("A folding paddle").data
+    result.ranked_results = [
+        patent(id="patent/US1/en", country_status={"US": "ACTIVE"}),
+        patent(id="patent/US2/en", country_status={"US": "NOT_ACTIVE"}),
+    ]
+    return result
+
+
+def test_ask_context_lists_documents_with_keys_and_legal_status():
+    result = _report_for_ask()
+    table = ask_mod._document_table(result)
+    context = ask_mod.build_context(result, table)
+    assert list(table) == ["D1", "D2"]
+    assert "[D1] A patent" in context and "in force in US" in context
+    assert "[D2] A patent" in context and "lapsed in US" in context
+
+
+def test_ask_citations_normalize_bare_and_grouped_keys_and_drop_invented_ones():
+    table = ask_mod._document_table(_report_for_ask())
+    answer = ask_mod.resolve_citations("Closest is D2, see [D1, D2] and [D9] .", table)
+    assert answer.answer == "Closest is [D2], see [D1][D2] and."
+    assert [s.key for s in answer.sources] == ["D2", "D1"]
+    assert answer.sources[0].link == "https://example.com"
+
+
+def test_ask_sends_only_recent_history(monkeypatch):
+    prompts = []
+
+    def fake(prompt, **kwargs):
+        prompts.append(prompt)
+        return {"answer": "It lapsed [D2]."}
+
+    monkeypatch.setattr(ask_mod, "complete_json", fake)
+    history = [ask_mod.AskTurn(question=f"q{i}", answer=f"a{i}") for i in range(6)]
+    answer = ask_mod.answer_question(_report_for_ask(), "and in India?", history)
+    assert answer.sources[0].key == "D2"
+    assert "Q: q5" in prompts[0] and "Q: q1" not in prompts[0]
+    assert "QUESTION: and in India?" in prompts[0]
+
+
+def test_ask_endpoint_needs_llm_key_and_a_real_report(temp_cache, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app import main
+
+    client = TestClient(main.app)
+    monkeypatch.setattr(main, "GROQ_API_KEY", "")
+    assert client.post("/report/ffffffffffffffff/ask", json={"question": "Why?"}).status_code == 503
+
+    monkeypatch.setattr(main, "GROQ_API_KEY", "key")
+    assert client.post("/report/ffffffffffffffff/ask", json={"question": "Why?"}).status_code == 404
+    assert client.post("/report/ffffffffffffffff/ask", json={"question": ""}).status_code == 422
+
+    temp_cache.set_cached("Folding paddle idea", [_result_event("Folding paddle idea")])
+    key = temp_cache.cache_key("Folding paddle idea")
+    monkeypatch.setattr(
+        main, "answer_question", lambda r, q, h: ask_mod.ReportAnswer(answer="Yes.", sources=[])
+    )
+    response = client.post(f"/report/{key}/ask", json={"question": "Can I sell it?"})
+    assert response.status_code == 200 and response.json()["answer"] == "Yes."
+
+
+def test_ui_labels_match_frontend_english_labels():
+    """Localized labels are keyed by these strings on both sides; a key or
+    wording that drifts means a label silently never translates."""
+    import re
+    from pathlib import Path
+
+    ts = (Path(__file__).resolve().parents[2] / "frontend/lib/i18n.ts").read_text()
+    block = re.search(r"const ENGLISH_LABELS = \{(.*?)\} as const", ts, re.S).group(1)
+    frontend = {}
+    for key, value in re.findall(r'(\w+):\s*\n?\s*"((?:[^"\\]|\\.)*)"', block):
+        frontend[key] = value
+    assert frontend == language_mod.UI_LABELS

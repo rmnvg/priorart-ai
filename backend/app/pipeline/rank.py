@@ -4,20 +4,38 @@ Merges results across all query bundles (patents, scholar, market/product),
 dedupes by id, and scores each candidate's relevance to the original idea
 using embedding similarity (sentence-transformers) rather than an extra LLM
 call per candidate — cheaper and fast enough for this many candidates.
+
+sentence-transformers (and torch under it) is imported on first use, not at
+module import: it takes seconds and hundreds of MB, and demo mode, the report
+endpoints and the test suite never rank anything. Call `warm_up()` at server
+start to pay that cost before the first request instead of during it.
 """
+from typing import TYPE_CHECKING
+
 from pydantic import BaseModel
-from sentence_transformers import SentenceTransformer, util
 
 from app.pipeline.search import SearchLayerResult, SearchResult, SourceType
 
-_model: SentenceTransformer | None = None
+if TYPE_CHECKING:
+    from sentence_transformers import SentenceTransformer
+
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+
+_model: "SentenceTransformer | None" = None
 
 
-def _get_model() -> SentenceTransformer:
+def _get_model() -> "SentenceTransformer":
     global _model
     if _model is None:
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
+        from sentence_transformers import SentenceTransformer
+
+        _model = SentenceTransformer(EMBEDDING_MODEL)
     return _model
+
+
+def warm_up() -> None:
+    """Load the embedding model now rather than on the first analysis."""
+    _get_model()
 
 
 class RankedResult(BaseModel):
@@ -66,6 +84,8 @@ def rank_and_dedupe(search_result: SearchLayerResult, idea_text: str) -> list[Ra
 
     candidate_texts = [f"{r.title}. {r.snippet}" for r, _ in deduped]
     candidate_embeddings = model.encode(candidate_texts, convert_to_tensor=True)
+
+    from sentence_transformers import util
 
     similarities = util.cos_sim(idea_embedding, candidate_embeddings)[0]
 

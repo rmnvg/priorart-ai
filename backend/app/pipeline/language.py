@@ -50,6 +50,13 @@ UI_LABELS: dict[str, str] = {
     "based_on": "Based on:",
     "free_to_build": "Free to build on",
     "india_signal": "India patentability signal",
+    "ask_title": "Ask about this report",
+    "ask_subtitle": "Answers come only from what this search found, with sources.",
+    "ask_placeholder": "Ask a question about your idea and this report...",
+    "ask_button": "Ask",
+    "ask_q1": "Which patent is the biggest risk for my idea, and why?",
+    "ask_q2": "Can I make and sell this in India?",
+    "ask_q3": "What can I build on freely without worrying about patents?",
 }
 
 

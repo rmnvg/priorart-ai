@@ -187,6 +187,23 @@ export interface AnalysisResult {
   localized?: LocalizedContent | null;
 }
 
+export interface AskTurn {
+  question: string;
+  answer: string;
+}
+
+export interface AnswerSource {
+  key: string; // "D3", as it appears in the answer text
+  id: string;
+  title: string;
+  link: string;
+}
+
+export interface ReportAnswer {
+  answer: string; // cites sources inline as [D3]
+  sources: AnswerSource[];
+}
+
 export interface ExampleReport {
   report_id: string;
   idea_text: string;

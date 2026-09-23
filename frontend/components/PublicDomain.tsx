@@ -43,7 +43,7 @@ export default function PublicDomain({
                   filed {e.years_since_filing} years ago
                 </span>
               )}
-              <span className="ml-auto text-xs text-neutral-400">
+              <span className="basis-full text-xs text-neutral-400 sm:ml-auto sm:basis-auto">
                 no longer active in {e.lapsed_in.join(", ")}
               </span>
             </div>

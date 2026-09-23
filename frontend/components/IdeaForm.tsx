@@ -35,10 +35,10 @@ export default function IdeaForm({ onSubmit, disabled, live }: IdeaFormProps) {
 
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <h1 className="text-4xl font-bold tracking-tight text-neutral-900">
+      <h1 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
         Has your idea already been invented?
       </h1>
-      <p className="mt-3 text-lg text-neutral-600">
+      <p className="mt-3 text-base text-neutral-600 sm:text-lg">
         Describe an invention in plain words — English, Hindi or any Indian language — and get a novelty verdict backed by real
         prior art — in about a minute, not a $2,000 search.
       </p>

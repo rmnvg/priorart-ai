@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AskReport from "@/components/AskReport";
 import CitationDiscoveries from "@/components/CitationDiscoveries";
 import ClaimChartView from "@/components/ClaimChart";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
@@ -263,7 +264,7 @@ export default function ResultsView({
         <p className="mt-1 text-sm text-neutral-500">
           Each dot is a result from the search, sized and pulled closer by how well it
           matches your idea, and colored by patent classification. Hover a dot for
-          details, click to open the source.
+          details; click or tap it to open the source.
         </p>
         <div className="mt-4">
           <LandscapeGraph result={result} />
@@ -302,7 +303,7 @@ export default function ResultsView({
             return (
               <li
                 key={i}
-                className="flex items-start justify-between gap-3 rounded-lg bg-white/70 p-3 text-sm text-green-900"
+                className="flex flex-col gap-2 rounded-lg bg-white/70 p-3 text-sm text-green-900 sm:flex-row sm:items-start sm:justify-between sm:gap-3"
               >
                 <span className="flex gap-2.5">
                   <span className="font-semibold text-green-600">{i + 1}</span>
@@ -311,7 +312,7 @@ export default function ResultsView({
                 {onApplySuggestion && (
                   <button
                     onClick={() => onApplySuggestion({ english: suggestion, shown })}
-                    className="shrink-0 whitespace-nowrap rounded-md bg-green-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800 print:hidden"
+                    className="ml-7 self-start rounded-md bg-green-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-green-800 sm:ml-0 sm:shrink-0 sm:whitespace-nowrap print:hidden"
                   >
                     {t("apply_recheck")}
                   </button>
@@ -336,6 +337,8 @@ export default function ResultsView({
           </div>
         )}
       </div>
+
+      {result.report_id && <AskReport key={result.report_id} reportId={result.report_id} t={t} />}
 
       {result.claim_chart && (
         <ClaimChartView claimChart={result.claim_chart} ideaText={result.idea_text} />

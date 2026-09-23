@@ -1,5 +1,7 @@
 # PriorArt AI
 
+[![CI](https://github.com/rmnvg/priorart-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/rmnvg/priorart-ai/actions/workflows/ci.yml)
+
 **AI-powered patent prior-art & novelty checker.** Describe an invention idea in
 plain words (typed or spoken, in English, Hindi or another Indian language) and get
 back ranked prior art (patents, academic papers, and existing
@@ -27,6 +29,11 @@ It speaks the inventor's language. A farmer can **dictate an idea in Hindi** (or
 Tamil, Bengali, Marathi and more) and read the verdict, summary and suggestions in
 Hindi. The patent evidence and the downloadable attorney brief stay in English,
 which is the language patent offices and agents actually work in.
+
+And the report is a conversation, not a dead end: **ask it follow-up questions**
+("which patent is the real risk?", "can I sell this in India?") and get short answers
+drawn only from what the search found, each one citing its source documents. Ask in
+Hindi, and the answer comes back in Hindi.
 
 It's built for independent inventors, students, and early-stage founders who want a
 first read on "has this already been done?" before spending money on a formal patent
@@ -269,7 +276,19 @@ tally, LLM-output validation guards, claim truncation, cache persistence, citati
 chasing, Trends parsing, the country-filtered India query, and report-link
 validation, language handling, the refinement agent, the whole orchestrator (with
 every external call faked), demo mode, and benchmark scoring. It needs no API keys
-and no network, and runs in a few seconds.
+and no network, and runs in under a second.
+
+The frontend has its own unit tests (claim-chart highlighting, landscape-graph
+construction, the attorney brief, localization, the filing timeline, cited answers):
+
+```bash
+cd frontend
+npm test            # vitest
+npm run typecheck
+```
+
+Both suites, plus a production build, run on every push via GitHub Actions
+(`.github/workflows/ci.yml`).
 
 ---
 
@@ -283,7 +302,7 @@ AI assistant can check an idea for prior art in the middle of a conversation:
 > cited patents, expired ones free to build on, and a link to the full report.
 
 Tools: `check_prior_art(idea, language?)`, `get_prior_art_report(report_id)`,
-`list_saved_reports()`. It shares the web app's cache and report ids, so a check
+`ask_about_report(report_id, question)`, `list_saved_reports()`. It shares the web app's cache and report ids, so a check
 started in the assistant opens as the full interactive report in the browser.
 
 Claude Desktop (`claude_desktop_config.json`), using absolute paths:
