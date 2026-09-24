@@ -46,7 +46,8 @@ def report_to_markdown(result: AnalysisResult, report_url: str | None = None) ->
 
     if result.public_domain and result.public_domain.count:
         lines.append(
-            f"### Free to build on: {result.public_domain.count} related patents are no longer in force"
+            f"### Likely free to build on: {result.public_domain.count} related patents reported "
+            "as no longer in force (check each one's countries)"
         )
         for e in result.public_domain.entries[:MAX_LISTED]:
             why = "20-year term expired" if e.reason == "term_expired" else "lapsed early"

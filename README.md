@@ -10,9 +10,10 @@ patent-landscape graph, and concrete suggestions for how to differentiate your i
 from what already exists.
 
 It also does the inverse, which most prior-art tools don't: it identifies the patents
-in your space whose **protection has already expired**. Those aren't obstacles — they're
-published technology that has passed into the public domain, free for anyone to build
-on. In testing, a typical search surfaced 10 such patents out of 26.
+in your space whose **protection is reported as ended**. Those usually aren't
+obstacles: once a patent lapses or expires in a country, what it describes is generally
+free to use there. Each one lists exactly where it's reported lapsed, and where its
+status isn't reported. In testing, a typical search surfaced 10 such patents out of 26.
 
 And it goes past keyword search the way a professional searcher would: it **chases
 citations**. The patents closest to your idea cite older work and are cited by newer
@@ -29,6 +30,16 @@ It speaks the inventor's language. A farmer can **dictate an idea in Hindi** (or
 Tamil, Bengali, Marathi and more) and read the verdict, summary and suggestions in
 Hindi. The patent evidence and the downloadable attorney brief stay in English,
 which is the language patent offices and agents actually work in.
+
+Improving the idea is evidence-based, not a score that moves. **"Apply & re-check"**
+folds a suggestion into the idea and re-runs everything. It then tests the revised
+idea against the *original* closest patents, so an overlap can't disappear just because
+a new search ranked it lower. For each patent it shows whether the change is already in
+it and what's still shared, all backed by quotes verified in code. It also lists the
+new close matches the change ran into.
+
+The report leads with **three plain answers**: the closest existing work, what sets
+the idea apart in the searched evidence, and the next step.
 
 And the report is a conversation, not a dead end: **ask it follow-up questions**
 ("which patent is the real risk?", "can I sell this in India?") and get short answers
@@ -155,6 +166,7 @@ priorart-ai/
 │   │       ├── refine.py             # refinement agent (search in patent vocabulary)
 │   │       ├── ask.py                # follow-up Q&A grounded in a report
 │   │       ├── examination.py        # Indian examination preview (s. 3, 2(1)(j), 2(1)(ja))
+│   │       ├── recheck.py            # evidence comparison for "Apply & re-check"
 │   │       ├── deepdive.py           # 1.4
 │   │       ├── novelty.py            # 1.5 (+ claim chart)
 │   │       ├── india_status.py       # 1.6
@@ -311,7 +323,7 @@ AI assistant can check an idea for prior art in the middle of a conversation:
 
 > *"I'm thinking of building a clay fridge that cools by evaporation. Has this been
 > done?"* → the assistant calls `check_prior_art` and answers with the verdict,
-> cited patents, expired ones free to build on, and a link to the full report.
+> cited patents, ones reported as expired, and a link to the full report.
 
 Tools: `check_prior_art(idea, language?)`, `get_prior_art_report(report_id)`,
 `ask_about_report(report_id, question)`, `preview_examination_report(report_id)`,

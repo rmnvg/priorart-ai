@@ -42,8 +42,10 @@ class AnalyzeRequest(BaseModel):
     # Forces the report language (ISO 639-1). Omitted, the report follows
     # the language the idea is written in.
     language: str | None = None
-    # Set when this run is a re-check of another report.
+    # Set when this run is a re-check of another report: which report, and
+    # the change applied (English) — for the evidence comparison.
     parent_report_id: str | None = None
+    applied_change: str | None = Field(default=None, max_length=1000)
 
 
 class AskRequest(BaseModel):
@@ -78,7 +80,7 @@ def health():
 async def analyze(request: AnalyzeRequest):
     async def event_stream() -> AsyncGenerator[dict, None]:
         async for event in service.analyze(
-            request.idea_text, request.language, request.parent_report_id
+            request.idea_text, request.language, request.parent_report_id, request.applied_change
         ):
             yield {"event": event.type, "data": event.model_dump_json()}
 

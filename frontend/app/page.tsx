@@ -23,6 +23,7 @@ export default function Home() {
   const [viewState, setViewState] = useState<ViewState>("idle");
   const [currentStage, setCurrentStage] = useState<PipelineStage | null>(null);
   const [stageMessage, setStageMessage] = useState<string | null>(null);
+  const [replaying, setReplaying] = useState(false);
   const [live, setLive] = useState<boolean | null>(null);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -69,6 +70,7 @@ export default function Home() {
     setViewState("loading");
     setCurrentStage(null);
     setStageMessage(null);
+    setReplaying(false);
     setResult(null);
     setErrorMessage(null);
 
@@ -82,6 +84,7 @@ export default function Home() {
           if (event.type === "progress") {
             setCurrentStage(event.stage);
             setStageMessage(event.message);
+            if (event.replayed) setReplaying(true);
           } else if (event.type === "result") {
             setResult(event.data);
             setViewState("results");
@@ -115,6 +118,7 @@ export default function Home() {
       idea_text: `${result.idea_text} Additionally, ${english}`,
       language: result.language_code && result.language_code !== "en" ? result.language_code : undefined,
       parent_report_id: result.report_id ?? undefined,
+      applied_change: english,
     });
   }
 
@@ -145,9 +149,16 @@ export default function Home() {
 
       {viewState === "loading" && !openingReport && (
         <div className="flex flex-col items-center gap-8">
-          <p className="text-neutral-500">
-            {appliedSuggestion ? "Re-checking your idea..." : "Analyzing your idea..."}
-          </p>
+          <div className="flex flex-col items-center gap-2 text-center">
+            <p className="text-neutral-500">
+              {appliedSuggestion ? "Re-checking your idea..." : "Analyzing your idea..."}
+            </p>
+            {replaying && (
+              <span className="rounded-full bg-neutral-200 px-3 py-1 text-xs font-medium text-neutral-700">
+                Replaying a saved analysis: these are the recorded steps of an earlier live run
+              </span>
+            )}
+          </div>
           <ProgressChecklist currentStage={currentStage} isComplete={false} message={stageMessage} />
         </div>
       )}

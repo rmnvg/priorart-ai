@@ -15,6 +15,7 @@ export interface ProgressEvent {
   type: "progress";
   stage: PipelineStage;
   message: string;
+  replayed?: boolean; // a saved run being replayed, not a live analysis
 }
 
 export type SourceType = "patent" | "scholar" | "product";
@@ -185,6 +186,7 @@ export interface AnalysisResult {
   language_code?: string;
   language_name?: string;
   localized?: LocalizedContent | null;
+  recheck?: RecheckComparison | null; // only on "Apply & re-check" runs
 }
 
 export interface AskTurn {
@@ -202,6 +204,25 @@ export interface AnswerSource {
 export interface ReportAnswer {
   answer: string; // cites sources inline as [D3]
   sources: AnswerSource[];
+}
+
+// Evidence-backed re-check: backend/app/pipeline/recheck.py
+export interface RecheckComparison {
+  parent_report_id: string;
+  applied_change: string;
+  confidence_before: number;
+  original_matches: {
+    id: string;
+    title: string;
+    link: string;
+    verdict_before: NoveltyVerdict;
+    change_found_in_document: boolean;
+    change_quote?: string | null; // verified evidence when the change is already there
+    still_shared: { feature: string; quote: string }[];
+    explanation: string;
+  }[];
+  new_matches: { id: string; title: string; link: string; verdict: NoveltyVerdict; source_type: string }[];
+  evidence_basis: "full_text" | "snippets";
 }
 
 // Examination preview: backend/app/pipeline/examination.py
@@ -256,4 +277,5 @@ export interface AnalyzeRequest {
   idea_text: string;
   language?: string; // ISO 639-1; forces the report language
   parent_report_id?: string; // set for "Apply & re-check" runs
+  applied_change?: string; // the suggestion applied, in English
 }

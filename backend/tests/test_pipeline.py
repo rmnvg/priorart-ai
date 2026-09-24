@@ -899,7 +899,7 @@ def test_benchmark_matches_any_kind_code_but_not_longer_numbers():
         patent(id="patent/US53257650A/en"),  # longer number: not a match
         patent(id="patent/US5325765B1/en"),  # same number, different kind code
     ]
-    assert find_rank(ranked, _case()) == 2
+    assert find_rank(ranked, _case()) == (2, "exact")
 
 
 def test_benchmark_matches_same_titled_family_member_and_skips_products():
@@ -909,23 +909,27 @@ def test_benchmark_matches_same_titled_family_member_and_skips_products():
     )
     family = patent(id="patent/EP0659057A1/en")
     family.title = "Beverage Filter Cartridge"
-    assert find_rank([product, family], _case()) == 1
-    assert find_rank([product], _case()) is None
+    assert find_rank([product, family], _case()) == (1, "family")
+    assert find_rank([product], _case()) == (None, None)
+    # An exact match lower down beats a same-title lookalike above it.
+    assert find_rank([family, patent(id="patent/US5325765A/en")], _case()) == (2, "exact")
 
 
 def test_benchmark_summary_excludes_errored_cases():
     results = [
-        CaseResult(id="a", patent="p", rank_before=3, rank_after=1, results_before=5,
-                   results_after=6, searches_used=4),
-        CaseResult(id="b", patent="p", rank_before=None, rank_after=12, results_before=5,
-                   results_after=6, searches_used=4),
+        CaseResult(id="a", patent="p", rank_before=3, rank_after=1, match_before="family",
+                   match_after="exact", results_before=5, results_after=6, searches_used=4),
+        CaseResult(id="b", patent="p", rank_before=2, rank_after=12, match_before="exact",
+                   match_after="exact", results_before=5, results_after=6, searches_used=4),
         CaseResult(id="c", patent="p", rank_before=None, rank_after=None, results_before=0,
                    results_after=0, searches_used=3, error="all searches failed"),
     ]
     s = summarize(results)
     assert s["cases"] == 2 and s["errors"] == 1
-    assert s["top10_before"] == 0.5 and s["top10_after"] == 0.5
+    assert s["top10_before"] == 1.0 and s["top10_after"] == 0.5
+    assert s["top10_exact_before"] == 0.5 and s["top10_exact_after"] == 0.5
     assert s["top1_after"] == 0.5 and s["found_after"] == 1.0
+    assert s["refinement_improved"] == 1 and s["refinement_worsened"] == 1
     assert s["searches_used"] == 11
 
 
@@ -1206,3 +1210,126 @@ def test_examination_markdown_is_labelled_a_simulation():
     md = examination_to_markdown(preview)
     assert "simulated — not issued by the Indian Patent Office" in md
     assert "lack of novelty" in md and "[Paddle](https://x)" in md
+
+
+def test_replayed_runs_are_marked_as_replays(temp_cache, monkeypatch):
+    from app import service
+
+    monkeypatch.setattr(service, "REPLAY_STEP_SECONDS", 0)
+    temp_cache.set_cached(
+        "Saved idea text", [ProgressEvent(stage="done", message="m"), _result_event("Saved idea text")]
+    )
+    events = _run(service.analyze("Saved idea text"))
+    assert events[0].type == "progress" and events[0].replayed is True
+    assert events[1].type == "result"
+    # The cached copy itself stays unmarked, so a later live run isn't confused.
+    assert temp_cache.get_cached("Saved idea text")[0].replayed is False
+
+
+# --- Evidence-backed re-check ----------------------------------------------
+
+from app.pipeline import recheck as recheck_mod
+from app.pipeline.novelty import CandidateAssessment
+
+
+def _assessment(result_id, verdict):
+    return CandidateAssessment(
+        result_id=result_id, title=f"T {result_id}", link="l",
+        overlapping_elements=[], differences=[], verdict=verdict,
+    )
+
+
+def _recheck_pair():
+    from app.models import ExaminedDocument
+
+    parent = _result_event("A folding paddle").data
+    parent.ranked_results = [patent(id="a", score=0.9), patent(id="b", score=0.8), patent(id="c", score=0.7)]
+    parent.candidate_assessments = [
+        _assessment("c", "not_relevant"), _assessment("b", "partially_overlapping"), _assessment("a", "blocking"),
+    ]
+    parent.examined_documents = [
+        ExaminedDocument(id="a", source_type="patent", title="T a", link="l",
+                         text="A paddle with four hollow segments that interlock and float on water."),
+        ExaminedDocument(id="b", source_type="patent", title="T b", link="l",
+                         text="An oar that has an inflatable bladder inside the shaft for extra buoyancy."),
+    ]
+    revised = _result_event("A folding paddle. Additionally, add a bladder").data
+    revised.ranked_results = [patent(id="a"), patent(id="new1"), patent(id="new2")]
+    revised.candidate_assessments = [
+        _assessment("new2", "partially_overlapping"), _assessment("new1", "blocking"),
+        _assessment("a", "blocking"),  # already in the original search: not "new"
+    ]
+    return parent, revised
+
+
+def test_recheck_keeps_original_matches_and_trusts_only_verified_quotes(monkeypatch):
+    parent, revised = _recheck_pair()
+    monkeypatch.setattr(
+        recheck_mod,
+        "complete_json",
+        lambda *a, **k: {
+            "documents": [
+                {"key": "D1", "change_quote": "", "explanation": "No bladder here.",
+                 "still_shared": [
+                     {"feature": "hollow segments", "quote": "four hollow segments that interlock"},
+                     {"feature": "invented", "quote": "a bladder made of bamboo fibre"},
+                 ]},
+                {"key": "D2", "change_quote": "an inflatable bladder inside the shaft", "explanation": "Has it."},
+            ]
+        },
+    )
+    comparison = recheck_mod.compare_recheck(parent, "abc", revised, "add a bladder")
+    first, second = comparison.original_matches
+    assert (first.id, second.id) == ("a", "b")  # blocking first; the irrelevant one left out
+    assert not first.change_found_in_document and first.change_quote is None
+    assert [s.feature for s in first.still_shared] == ["hollow segments"]  # invented quote dropped
+    assert second.change_found_in_document and second.change_quote
+    assert [m.id for m in comparison.new_matches] == ["new1", "new2"]
+    assert comparison.confidence_before == parent.overall_novelty_confidence
+    assert comparison.evidence_basis == "full_text"
+
+
+def test_recheck_unverifiable_change_quote_means_not_found(monkeypatch):
+    parent, revised = _recheck_pair()
+    monkeypatch.setattr(
+        recheck_mod,
+        "complete_json",
+        lambda *a, **k: {"documents": [{"key": "D1", "change_quote": "a bladder in every segment of it"}]},
+    )
+    comparison = recheck_mod.compare_recheck(parent, "abc", revised, "add a bladder")
+    assert comparison.original_matches[0].change_found_in_document is False
+    # D2 was skipped by the model: still reported, with no evidence claimed.
+    assert comparison.original_matches[1].still_shared == []
+
+
+def test_recheck_model_failure_falls_back_to_none(monkeypatch):
+    parent, revised = _recheck_pair()
+
+    def broken(*a, **k):
+        raise ValueError("bad json")
+
+    monkeypatch.setattr(recheck_mod, "complete_json", broken)
+    assert recheck_mod.compare_recheck(parent, "abc", revised, "add a bladder") is None
+
+
+def test_pipeline_attaches_recheck_only_for_rechecks(monkeypatch):
+    _fake_pipeline(monkeypatch, refinement=False)
+    calls = []
+    monkeypatch.setattr(
+        orch, "compare_recheck",
+        lambda parent, pid, result, change: calls.append((pid, change)) or None,
+    )
+    _run(orch.run_pipeline("A folding kayak paddle idea"))
+    assert calls == []
+    parent = _result_event("A folding kayak paddle idea").data
+    _run(orch.run_pipeline("A folding kayak paddle idea. Additionally, x", parent=parent,
+                           parent_report_id="abc", applied_change="x"))
+    assert calls == [("abc", "x")]
+
+
+def test_recheck_explanations_never_show_internal_document_keys():
+    assert recheck_mod._without_keys("so the change distinguishes the invention from D1.") == (
+        "so the change distinguishes the invention from this document."
+    )
+    assert recheck_mod._without_keys("D2 does not describe it") == "this document does not describe it"
+    assert recheck_mod._without_keys("Uses DC motors and D-rings") == "Uses DC motors and D-rings"

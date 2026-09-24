@@ -52,9 +52,11 @@ async def analyze(
     idea_text: str,
     language: str | None = None,
     parent_report_id: str | None = None,
+    applied_change: str | None = None,
 ) -> AsyncGenerator[AnalyzeStreamEvent, None]:
     """Yields the same events as the pipeline, replaying from cache when the
-    idea has been analyzed before."""
+    idea has been analyzed before. A re-check names the report it revises
+    and the change applied, for the evidence comparison."""
     cache_text = cache_text_for(idea_text, language)
     report_id = cache_key(cache_text)
     parent = parent_report_id if parent_report_id and is_valid_key(parent_report_id) else None
@@ -62,8 +64,10 @@ async def analyze(
     cached_events = get_cached(cache_text)
     if cached_events is not None:
         for event in cached_events:
-            if event.type == "progress" and REPLAY_STEP_SECONDS > 0:
-                await asyncio.sleep(REPLAY_STEP_SECONDS)
+            if event.type == "progress":
+                if REPLAY_STEP_SECONDS > 0:
+                    await asyncio.sleep(REPLAY_STEP_SECONDS)
+                event = event.model_copy(update={"replayed": True})
             yield _with_report_id(event, report_id)
         return
 
@@ -71,8 +75,15 @@ async def analyze(
         yield ErrorEvent(message=DEMO_MODE_MESSAGE)
         return
 
+    parent_report = load_report(parent) if parent else None
     collected: list[AnalyzeStreamEvent] = []
-    async for event in run_pipeline(idea_text, language):
+    async for event in run_pipeline(
+        idea_text,
+        language,
+        parent=parent_report,
+        parent_report_id=parent if parent_report else None,
+        applied_change=(applied_change or "").strip() or None,
+    ):
         event = _with_report_id(event, report_id)
         collected.append(event)
         yield event

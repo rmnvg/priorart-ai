@@ -9,7 +9,7 @@ from app.pipeline.citation_chase import CitationNetwork
 from app.pipeline.india_status import IndiaStatus
 from app.pipeline.language import LocalizedContent
 from app.pipeline.market_trends import MarketTrend
-from app.pipeline.novelty import CandidateAssessment, Citation, ClaimChartPair
+from app.pipeline.novelty import CandidateAssessment, Citation, ClaimChartPair, NoveltyVerdict
 from app.pipeline.public_domain import PublicDomainSummary
 from app.pipeline.rank import RankedResult
 from app.pipeline.search import AssigneeStat
@@ -30,6 +30,9 @@ class ProgressEvent(BaseModel):
     type: Literal["progress"] = "progress"
     stage: PipelineStage
     message: str
+    # True when this is a saved run being replayed, not a live one — the UI
+    # says so rather than passing a replay off as a live analysis.
+    replayed: bool = False
 
 
 class ClaimChart(BaseModel):
@@ -49,6 +52,41 @@ class ExaminedDocument(BaseModel):
     title: str
     link: str
     text: str
+
+
+# --- Evidence-backed re-check (built in app.pipeline.recheck) ---------------
+
+class SharedFeature(BaseModel):
+    feature: str
+    quote: str  # verified against the document text
+
+
+class OriginalMatchCheck(BaseModel):
+    id: str
+    title: str
+    link: str
+    verdict_before: NoveltyVerdict
+    change_found_in_document: bool
+    change_quote: str | None = None  # the verified evidence when it is found
+    still_shared: list[SharedFeature]
+    explanation: str
+
+
+class NewMatch(BaseModel):
+    id: str
+    title: str
+    link: str
+    verdict: NoveltyVerdict
+    source_type: str = "patent"
+
+
+class RecheckComparison(BaseModel):
+    parent_report_id: str
+    applied_change: str
+    confidence_before: float
+    original_matches: list[OriginalMatchCheck]
+    new_matches: list[NewMatch]
+    evidence_basis: str  # "full_text" | "snippets", as in the examination preview
 
 
 class SearchQueryInfo(BaseModel):
@@ -101,6 +139,9 @@ class AnalysisResult(BaseModel):
     language_name: str = "English"
     localized: LocalizedContent | None = None
     examined_documents: list[ExaminedDocument] = []
+    # Set only on a re-check ("Apply & re-check"): how the revised idea
+    # compares with the original report's closest matches.
+    recheck: RecheckComparison | None = None
     # Set by the API layer (it's the cache key), not the pipeline.
     report_id: str | None = None
 

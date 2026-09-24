@@ -3,6 +3,9 @@
 The rules ask for a screen recording of the project **running locally**. Record
 at 1280×800 or larger, browser zoom 110%, one tab, with notifications off.
 
+The app labels replays itself ("Replaying a saved analysis"), so leave that tag
+visible rather than hiding it.
+
 **Before recording** (see `launch-checklist.md`): warm the gallery, apply one
 suggestion on the Hindi report once (so the re-check replays instantly), and run
 the benchmark. Every run in the video is then a cached replay of a real run. The
@@ -18,7 +21,7 @@ progress events are the recorded ones, paced by `REPLAY_STEP_SECONDS`.
 | 1:30–1:40 | Landscape graph: point at the citation arrows | "Every dot is real prior art; the arrows are actual patent citations." |
 | 1:40–2:00 | **See how an Indian patent examiner would respond**: the element table (tap a mark to show the quote), then the novelty core | "Then it reads the evidence like an Indian patent examiner: element by element, every match backed by a quote from the patent, checked in code. Here's what no patent covers, which is what she should build her application around." |
 | 2:00–2:10 | Open the **herbal wound paste** example and its examination preview, showing the **Section 3(p)** flag | "And some ideas aren't patentable in India at all. This one is likely traditional knowledge under Section 3(p). She finds that out before paying filing fees." |
-| 2:10–2:20 | **Apply & re-check** on a suggestion; the verdict moves | "Apply a suggestion and watch the novelty score move." |
+| 2:10–2:20 | **Apply & re-check** on a suggestion; show the comparison card | "Apply a suggestion and it re-checks against the original closest patents: the change isn't in either of them, here's what they still share, and here are the new matches the change ran into." |
 | 2:20–2:30 | **Ask about this report**: tap the Hindi question "क्या मैं इसे भारत में बना कर बेच सकता हूँ?" and show the cited answer | "She can ask follow-ups in Hindi, and every answer cites the patents it's based on." |
 | 2:30–2:37 | Scroll to **How this report was built** | "Every query and every SerpApi call, across four engines." |
 | 2:37–2:45 | Claude Desktop: ask "Has anyone patented a clay fridge that cools by evaporation?" and show the tool result | "And it's an MCP server too, so the same check works inside Claude or Cursor." |

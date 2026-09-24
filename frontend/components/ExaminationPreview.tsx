@@ -242,7 +242,7 @@ function PreviewBody({
                         {e.text}
                         {uncovered && (
                           <span className="ml-1.5 whitespace-nowrap rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-800">
-                            not found anywhere
+                            not in searched documents
                           </span>
                         )}
                       </td>
@@ -316,7 +316,8 @@ function PreviewBody({
         <section className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-4">
           <h3 className="font-semibold text-emerald-900">Your novelty core</h3>
           <p className="mt-1 text-sm text-emerald-800">
-            None of the documents found disclose these. An application would need to be built
+            None of the searched documents disclose these (that doesn&apos;t mean no document
+            anywhere does). An application would need to be built
             around them — tell your patent agent this first.
           </p>
           <ul className="mt-2 list-disc space-y-0.5 pl-5 text-sm text-emerald-900">

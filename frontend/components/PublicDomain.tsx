@@ -1,28 +1,41 @@
-import type { PublicDomainSummary } from "@/types/analysis";
+import type { PublicDomainSummary, RankedResult } from "@/types/analysis";
 
-// Deliberately framed as an opportunity, not a warning. Everywhere else in
-// this report prior art is an obstacle; here it's the opposite — protection
-// has ended, so the technology is published, public, and free to build on.
+// Framed as an opportunity, not a warning — everywhere else in this report
+// prior art is an obstacle, here it's the opposite. But only as strong as
+// the evidence: each entry says exactly where it's reported lapsed, and
+// where its status isn't reported at all, rather than promising it's free.
 export default function PublicDomain({
   summary,
-  title = "Free to build on",
+  rankedResults,
+  title = "Likely free to build on",
 }: {
   summary: PublicDomainSummary;
+  rankedResults: RankedResult[];
   title?: string;
 }) {
   if (summary.count === 0) return null;
+
+  const statusById = new Map(rankedResults.map((r) => [r.id, r.country_status ?? {}]));
+  const unreportedIn = (id: string) =>
+    Object.entries(statusById.get(id) ?? {})
+      .filter(([, status]) => status !== "ACTIVE" && status !== "NOT_ACTIVE")
+      .map(([country]) => country)
+      .sort();
 
   return (
     <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 shadow-sm">
       <div className="flex flex-wrap items-baseline gap-x-3">
         <h2 className="text-lg font-semibold text-emerald-900">{title}</h2>
         <span className="text-sm text-emerald-800/80">
-          {summary.count} of {summary.patents_considered} patents found are no longer in force
+          {summary.count} of {summary.patents_considered} patents found are reported as no
+          longer in force
         </span>
       </div>
       <p className="mt-1 text-sm text-emerald-800/80">
-        These aren&apos;t blockers — their protection has ended, so the technology is public
-        domain. You can legally use, build on, or manufacture what they describe.
+        Google Patents reports these as lapsed or expired in every country where it has their
+        legal status, and active nowhere. A patent that has ended is usually free to use in
+        that country — check the countries listed for each one, especially any whose status
+        isn&apos;t reported.
       </p>
 
       <ul className="mt-4 space-y-2">
@@ -44,7 +57,10 @@ export default function PublicDomain({
                 </span>
               )}
               <span className="basis-full text-xs text-neutral-400 sm:ml-auto sm:basis-auto">
-                no longer active in {e.lapsed_in.join(", ")}
+                reported lapsed in {e.lapsed_in.join(", ")}
+                {unreportedIn(e.id).length > 0 && (
+                  <span className="text-amber-700"> · status not reported in {unreportedIn(e.id).join(", ")}</span>
+                )}
               </span>
             </div>
             <a

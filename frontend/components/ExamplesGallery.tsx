@@ -42,7 +42,7 @@ export default function ExamplesGallery({ onOpen }: { onOpen: (reportId: string)
                   </span>
                 </span>
                 <span>{ex.results_count} results</span>
-                {ex.public_domain_count > 0 && <span>{ex.public_domain_count} free to build on</span>}
+                {ex.public_domain_count > 0 && <span>{ex.public_domain_count} likely free to build on</span>}
                 {ex.language_name !== "English" && (
                   <span className="rounded bg-orange-100 px-1.5 py-0.5 font-medium text-orange-800">
                     {ex.language_name}

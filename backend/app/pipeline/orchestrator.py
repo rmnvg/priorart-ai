@@ -37,6 +37,7 @@ from app.pipeline.novelty import assess_novelty
 from app.pipeline.public_domain import find_public_domain
 from app.pipeline.query_generator import GeneratedQuery, generate_queries
 from app.pipeline.rank import rank_and_dedupe
+from app.pipeline.recheck import compare_recheck
 from app.pipeline.refine import plan_refinement
 from app.pipeline.search import (
     QueryBundle,
@@ -73,10 +74,18 @@ async def _noop() -> None:
 
 
 async def run_pipeline(
-    idea_text: str, language: str | None = None
+    idea_text: str,
+    language: str | None = None,
+    parent: AnalysisResult | None = None,
+    parent_report_id: str | None = None,
+    applied_change: str | None = None,
 ) -> AsyncGenerator[AnalyzeStreamEvent, None]:
     """`language` forces the report language (ISO 639-1). Without it, the
-    report comes back in whatever language the idea was written in."""
+    report comes back in whatever language the idea was written in.
+
+    A re-check passes the report it revises (`parent`) and the change that
+    was applied; the result then carries an evidence comparison against the
+    parent's closest matches."""
     idea_text = (idea_text or "").strip()
     if len(idea_text) < MIN_IDEA_LENGTH:
         yield ErrorEvent(
@@ -296,6 +305,16 @@ async def run_pipeline(
             language_name=output_name if localized else "English",
             localized=localized,
         )
+
+        if parent is not None and parent_report_id and applied_change:
+            yield ProgressEvent(
+                stage="scoring_novelty",
+                message="Checking whether your change sets the idea apart from the original "
+                "closest patents...",
+            )
+            result.recheck = await asyncio.to_thread(
+                compare_recheck, parent, parent_report_id, result, applied_change
+            )
 
         yield ProgressEvent(stage="done", message="Analysis complete.")
         yield ResultEvent(data=result)

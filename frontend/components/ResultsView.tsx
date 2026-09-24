@@ -4,12 +4,14 @@ import CitationDiscoveries from "@/components/CitationDiscoveries";
 import ClaimChartView from "@/components/ClaimChart";
 import ExaminationPreview from "@/components/ExaminationPreview";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
+import DecisionSummary from "@/components/DecisionSummary";
 import FilingTimeline, { filingsByYear, MIN_FILINGS_TO_PLOT } from "@/components/FilingTimeline";
 import IndiaSignal from "@/components/IndiaSignal";
 import LandscapeGraph from "@/components/LandscapeGraph";
 import MarketTrendChart from "@/components/MarketTrendChart";
 import NoveltyVerdict from "@/components/NoveltyVerdict";
 import PublicDomain from "@/components/PublicDomain";
+import RecheckComparison from "@/components/RecheckComparison";
 import ReportActions from "@/components/ReportActions";
 import SearchStrategyPanel from "@/components/SearchStrategyPanel";
 import { labelsFor } from "@/lib/i18n";
@@ -172,7 +174,17 @@ export default function ResultsView({
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-8">
-      {previousPct !== null && (
+      {result.recheck && (
+        <RecheckComparison
+          comparison={result.recheck}
+          confidenceAfter={result.overall_novelty_confidence}
+          shownChange={appliedSuggestion ?? result.recheck.applied_change}
+        />
+      )}
+
+      {/* Fallback when the evidence comparison isn't available (older
+          saved re-checks, or the comparison step failed). */}
+      {!result.recheck && previousPct !== null && (
         <div className="rounded-xl border border-blue-200 bg-blue-50/70 p-5 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wider text-blue-500">
             Re-checked after your change
@@ -238,6 +250,14 @@ export default function ResultsView({
 
       <NoveltyVerdict confidence={result.overall_novelty_confidence} t={t} />
 
+      <DecisionSummary
+        result={result}
+        t={t}
+        suggestions={result.differentiation_suggestions.map(
+          (s, i) => localized?.differentiation_suggestions[i] ?? s
+        )}
+      />
+
       {plainSummary && (
         <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
           <h2 className="font-semibold text-neutral-900">{t("what_this_means")}</h2>
@@ -251,14 +271,14 @@ export default function ResultsView({
         <StatTile label="Results analyzed" value={result.ranked_results.length} />
         <StatTile label="Assessed in depth" value={result.candidate_assessments.length} />
         <StatTile
-          label="Free to build on"
+          label="Likely free to build on"
           value={result.public_domain?.count ?? 0}
           accent
         />
         <StatTile label="Blocking in India" value={result.india_status.blocking_in_india} />
       </div>
 
-      {result.public_domain && <PublicDomain summary={result.public_domain} title={t("free_to_build")} />}
+      {result.public_domain && <PublicDomain summary={result.public_domain} rankedResults={result.ranked_results} title={t("free_to_build")} />}
 
       <div>
         <h2 className="text-xl font-bold text-neutral-900">Patent landscape</h2>

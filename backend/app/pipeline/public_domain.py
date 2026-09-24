@@ -1,9 +1,10 @@
-"""Public-domain finder: prior art you are free to build on.
+"""Public-domain finder: prior art that is likely free to build on.
 
 The rest of the pipeline treats prior art as an obstacle. This stage inverts
 that: a patent whose protection has ended is not a blocker, it's published
-technology released to the public, legally free for anyone to use. For an
-independent inventor that's often the most actionable thing in the report.
+technology released to the public, generally free to use wherever it has
+lapsed. For an independent inventor that's often the most actionable thing in
+the report.
 
 Runs entirely on `country_status` and `priority_date` already fetched during
 the search stage — no extra API calls.

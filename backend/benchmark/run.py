@@ -28,6 +28,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -49,11 +50,21 @@ class Case(BaseModel):
     idea: str
 
 
+# "exact": the target's own publication number (any kind code).
+# "family": a different publication with the identical title — usually the
+# same invention filed elsewhere or continued, but not verified to be, so
+# it's reported separately and never folded into the exact figures.
+MatchKind = Literal["exact", "family"]
+
+
 class CaseResult(BaseModel):
     id: str
     patent: str
     rank_before: int | None  # 1-based among patents + papers; None = not found
     rank_after: int | None
+    match_before: MatchKind | None = None
+    match_after: MatchKind | None = None
+    seconds: float = 0.0
     results_before: int
     results_after: int
     refined_queries: list[str] = []
@@ -78,20 +89,20 @@ def _normalize_title(title: str) -> str:
     return re.sub(r"[^a-z0-9]", "", title.lower())
 
 
-def find_rank(ranked, case: Case) -> int | None:
-    """1-based position of the target among patent/scholar results. Matches
-    the exact publication (any kind code), or a same-titled patent — family
-    members (continuations, foreign filings) usually share the title and
-    describe the same invention."""
+def find_rank(ranked, case: Case) -> tuple[int | None, MatchKind | None]:
+    """1-based position of the target among patent/scholar results, and how
+    it matched. An exact publication match anywhere wins over a same-title
+    match higher up, so "exact" figures are never inflated by a lookalike."""
     number = re.compile(rf"patent/{re.escape(_base_number(case.patent))}[A-Z]")
     title = _normalize_title(case.patent_title)
     documents = [r for r in ranked if r.source_type in ("patent", "scholar")]
     for position, r in enumerate(documents, start=1):
         if number.search(r.id):
-            return position
+            return position, "exact"
+    for position, r in enumerate(documents, start=1):
         if r.source_type == "patent" and _normalize_title(r.title) == title and len(title) > 12:
-            return position
-    return None
+            return position, "family"
+    return None, None
 
 
 def run_case(case: Case) -> CaseResult:
@@ -119,7 +130,7 @@ def run_case(case: Case) -> CaseResult:
         )
 
     ranked = rank_and_dedupe(SearchLayerResult(query_bundles=bundles, market_results=[]), case.idea)
-    rank_before = find_rank(ranked, case)
+    rank_before, match_before = find_rank(ranked, case)
     results_before = len(ranked)
 
     plan = plan_refinement(case.idea, query_result, ranked, REFINEMENT_QUERIES)
@@ -131,11 +142,14 @@ def run_case(case: Case) -> CaseResult:
             SearchLayerResult(query_bundles=bundles, market_results=[]), case.idea
         )
 
+    rank_after, match_after = find_rank(ranked, case)
     return CaseResult(
         id=case.id,
         patent=case.patent,
         rank_before=rank_before,
-        rank_after=find_rank(ranked, case),
+        rank_after=rank_after,
+        match_before=match_before,
+        match_after=match_after,
         results_before=results_before,
         results_after=len(ranked),
         refined_queries=[q.query for q in plan.queries] if plan else [],
@@ -153,22 +167,41 @@ def summarize(results: list[CaseResult]) -> dict:
     scored = [r for r in results if r.error is None]
     n = len(scored)
 
-    def rate(key: str, k: int | None) -> float:
+    def rate(phase: str, k: int | None, exact_only: bool = False) -> float:
         if not n:
             return 0.0
-        ranks = [getattr(r, key) for r in scored]
-        return sum(1 for x in ranks if (x is not None if k is None else _hit(x, k))) / n
+        hits = 0
+        for r in scored:
+            rank, kind = getattr(r, f"rank_{phase}"), getattr(r, f"match_{phase}")
+            if exact_only and kind != "exact":
+                continue
+            hits += rank is not None if k is None else _hit(rank, k)
+        return hits / n
+
+    def worse(r: CaseResult) -> bool:
+        # Refinement re-ranks everything, so it can push the target down.
+        if r.rank_before is None:
+            return False
+        return r.rank_after is None or r.rank_after > r.rank_before
 
     return {
         "cases": n,
         "errors": len(results) - n,
-        "top1_before": rate("rank_before", 1),
-        "top10_before": rate("rank_before", TOP_K),
-        "found_before": rate("rank_before", None),
-        "top1_after": rate("rank_after", 1),
-        "top10_after": rate("rank_after", TOP_K),
-        "found_after": rate("rank_after", None),
+        "top1_before": rate("before", 1),
+        "top10_before": rate("before", TOP_K),
+        "found_before": rate("before", None),
+        "top1_after": rate("after", 1),
+        "top10_after": rate("after", TOP_K),
+        "found_after": rate("after", None),
+        "top10_exact_before": rate("before", TOP_K, exact_only=True),
+        "top10_exact_after": rate("after", TOP_K, exact_only=True),
+        "refinement_improved": sum(
+            1 for r in scored
+            if r.rank_after is not None and (r.rank_before is None or r.rank_after < r.rank_before)
+        ),
+        "refinement_worsened": sum(1 for r in scored if worse(r)),
         "searches_used": sum(r.searches_used for r in results),
+        "median_seconds": sorted(r.seconds for r in scored)[n // 2] if n else 0.0,
     }
 
 
@@ -176,8 +209,10 @@ def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: 
     def pct(x: float) -> str:
         return f"{round(x * 100)}%"
 
-    def rank(r: int | None) -> str:
-        return f"#{r}" if r is not None else "—"
+    def rank(r: int | None, kind: str | None) -> str:
+        if r is None:
+            return "—"
+        return f"#{r}" + (" (family)" if kind == "family" else "")
 
     lines = [
         "# Search-recall benchmark",
@@ -188,12 +223,16 @@ def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: 
         "Given only a plain-English description of a real, granted invention, how often does "
         "the search surface the actual patent?",
         "",
-        "| | Top 1 | Top 10 | Anywhere in results |",
-        "|---|---|---|---|",
+        "| | Top 1 | Top 10 | Top 10, exact publication only | Anywhere in results |",
+        "|---|---|---|---|---|",
         f"| First search round | {pct(summary['top1_before'])} | {pct(summary['top10_before'])} "
-        f"| {pct(summary['found_before'])} |",
+        f"| {pct(summary['top10_exact_before'])} | {pct(summary['found_before'])} |",
         f"| After refinement agent | {pct(summary['top1_after'])} | {pct(summary['top10_after'])} "
-        f"| {pct(summary['found_after'])} |",
+        f"| {pct(summary['top10_exact_after'])} | {pct(summary['found_after'])} |",
+        "",
+        f"Refinement moved the target up in {summary['refinement_improved']} case(s) and down "
+        f"(or out) in {summary['refinement_worsened']}. Median time per case: "
+        f"{summary['median_seconds']:.0f}s.",
         "",
         "| Case | Patent | Rank before | Rank after | Refined query |",
         "|---|---|---|---|---|",
@@ -205,12 +244,15 @@ def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: 
             refined = f"error: {r.error}"
         lines.append(
             f"| {r.id} | [{case.patent}](https://patents.google.com/patent/{case.patent}/en) "
-            f"{case.patent_title} | {rank(r.rank_before)} | {rank(r.rank_after)} | {refined} |"
+            f"{case.patent_title} | {rank(r.rank_before, r.match_before)} | "
+            f"{rank(r.rank_after, r.match_after)} | {refined} |"
         )
     lines += [
         "",
         "Ranks count patents and papers only (the full app also lists products). A match is the "
-        "exact publication (any kind code) or a same-titled family member.",
+        "exact publication (any kind code); \"(family)\" marks a different publication with the "
+        "identical title, which is likely but not verified to be the same invention. This "
+        "measures retrieval, not the legal accuracy of any verdict.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -269,6 +311,7 @@ def main() -> int:
         started = time.time()
         try:
             result = run_case(case)
+            result.seconds = round(time.time() - started, 1)
         except Exception as e:  # one bad case shouldn't lose the run
             result = CaseResult(
                 id=case.id,
