@@ -14,13 +14,14 @@ SerpApi dashboard). Optionally, ask for hackathon credits — draft:
 > searches while building. Would it be possible to get extra credits to run the
 > benchmark and record the demo? Account email: <your email>. Thank you!
 
-## 2. Spend it in this order (~140 searches)
+## 2. Spend it in this order (~150 searches)
 
 From `backend/` with the venv active:
 
 | Step | Command | Searches |
 |---|---|---|
-| Fill the gallery (5 ideas, refreshing the old kayak report) | `python -m scripts.warm_examples --refresh kayak` | ≤ 70 |
+| Fill the gallery (6 ideas, refreshing the old kayak report) | `python -m scripts.warm_examples --refresh kayak` | ≤ 84 |
+| Open each gallery report and click **See how an Indian patent examiner would respond** once, so the previews are cached for the video | (in the browser) | 0 (Groq only) |
 | Cache one re-check for the video: open the Hindi report in the app, click **Apply & re-check** on one suggestion | (in the browser) | ≤ 14 |
 | Benchmark | `python -m benchmark.run` (rerun with `--resume` if interrupted) | ≤ 48 |
 

@@ -1040,3 +1040,169 @@ def test_ui_labels_match_frontend_english_labels():
     for key, value in re.findall(r'(\w+):\s*\n?\s*"((?:[^"\\]|\\.)*)"', block):
         frontend[key] = value
     assert frontend == language_mod.UI_LABELS
+
+
+# --- Examination preview -------------------------------------------------------
+
+from app.pipeline import examination as exam
+
+
+def _exam_docs(*texts, cpcs=None):
+    cpcs = cpcs or [None] * len(texts)
+    return [
+        exam._Doc(
+            meta=exam.ExaminedDoc(key=f"D{i}", id=f"patent/US{i}/en", title=f"Doc {i}", link="l", source_type="patent"),
+            text=t,
+            cpc_code=cpcs[i - 1],
+            relevance=0.5,
+        )
+        for i, t in enumerate(texts, start=1)
+    ]
+
+
+def _elements(n):
+    return [exam.Element(id=f"E{i}", text=f"element {i}") for i in range(1, n + 1)]
+
+
+def _cov(element, document, status="disclosed"):
+    return exam.Coverage(element=element, document=document, status=status, quote="q q q q")
+
+
+def test_quotes_must_really_occur_in_the_document():
+    text = "A paddle shaft comprising four hollow segments that interlock, each sealed and buoyant."
+    assert exam.quote_is_verified("four hollow segments that interlock", text)
+    assert exam.quote_is_verified("FOUR HOLLOW  segments that interlock…", text)  # case, spacing, ellipsis
+    assert exam.quote_is_verified("each sealed and buoyant.", text)
+    assert not exam.quote_is_verified("four hollow segments that snap together", text)  # paraphrase
+    assert not exam.quote_is_verified("hollow segments", text)  # too short to be evidence
+
+
+def test_verify_coverage_drops_unverifiable_and_unknown_findings():
+    docs = _exam_docs("The shaft has four hollow segments that interlock tightly.")
+    raw = [
+        exam._RawCoverage(element="e1", document="d1", status="partial", quote="four hollow segments that interlock"),
+        exam._RawCoverage(element="E1", document="D1", status="disclosed", quote="four hollow segments that interlock tightly"),
+        exam._RawCoverage(element="E2", document="D1", status="disclosed", quote="made entirely of bamboo fibre sheets"),
+        exam._RawCoverage(element="E9", document="D1", status="disclosed", quote="four hollow segments that interlock"),
+        exam._RawCoverage(element="E1", document="D7", status="disclosed", quote="four hollow segments that interlock"),
+    ]
+    coverage, dropped = exam.verify_coverage(raw, _elements(2), docs)
+    assert [(c.element, c.document, c.status) for c in coverage] == [("E1", "D1", "disclosed")]
+    assert dropped == 1  # the invented bamboo quote
+
+
+def test_single_document_disclosing_everything_is_a_novelty_objection():
+    docs = _exam_docs("a", "b")
+    coverage = [_cov("E1", "D1"), _cov("E2", "D1"), _cov("E1", "D2")]
+    outcome, anticipating, pairs, uncovered = exam.compute_objections(_elements(2), docs, coverage)
+    assert outcome == "novelty_objection"
+    assert anticipating == ["D1"] and pairs == [] and uncovered == []
+
+
+def test_two_documents_together_raise_inventive_step_same_field_first():
+    docs = _exam_docs("a", "b", "c", cpcs=["B63H16/04", "A01B1/00", "B63H16/08"])
+    coverage = [_cov("E1", "D1"), _cov("E2", "D2"), _cov("E2", "D3")]
+    outcome, anticipating, pairs, uncovered = exam.compute_objections(_elements(2), docs, coverage)
+    assert outcome == "inventive_step_objection" and anticipating == []
+    assert [p.documents for p in pairs] == [["D1", "D3"], ["D1", "D2"]]
+    assert pairs[0].same_field and not pairs[1].same_field
+
+
+def test_partial_findings_never_ground_an_objection():
+    docs = _exam_docs("a")
+    coverage = [_cov("E1", "D1"), _cov("E2", "D1", status="partial")]
+    outcome, _, _, uncovered = exam.compute_objections(_elements(2), docs, coverage)
+    assert outcome == "no_objection_found"
+    assert uncovered == ["E2"]
+
+
+def test_everything_covered_only_across_three_documents_is_a_combination_risk():
+    docs = _exam_docs("a", "b", "c")
+    coverage = [_cov("E1", "D1"), _cov("E2", "D2"), _cov("E3", "D3")]
+    outcome, anticipating, pairs, uncovered = exam.compute_objections(_elements(3), docs, coverage)
+    assert outcome == "combination_risk" and not anticipating and not pairs and not uncovered
+
+
+def test_section3_screen_keeps_fixed_law_text_and_drops_unknown_clauses(monkeypatch):
+    monkeypatch.setattr(
+        exam,
+        "complete_json",
+        lambda *a, **k: {
+            "elements": ["a paste of turmeric and neem", "applied to wounds"],
+            "section3": [
+                {"clause": "3(p)", "risk": "possible", "reason": "r1", "how_to_address": "h1"},
+                {"clause": "3 (e)", "risk": "high", "reason": "r2", "how_to_address": "h2"},
+                {"clause": "3(z)", "risk": "high", "reason": "invented", "how_to_address": "x"},
+            ],
+        },
+    )
+    elements, flags = exam._screen("A turmeric and neem wound paste")
+    assert [e.id for e in elements] == ["E1", "E2"]
+    assert [f.clause for f in flags] == ["3(e)", "3(p)"]  # high risk first; 3(z) dropped
+    assert flags[1].law_summary == exam.SECTION_3["3(p)"][1]
+
+
+def test_documents_fall_back_to_snippets_for_older_reports():
+    from app.models import ExaminedDocument
+
+    result = _result_event().data
+    result.ranked_results = [patent(id="patent/US1/en"), patent(id="patent/US2/en")]
+    docs, basis = exam.select_documents(result)
+    assert basis == "snippets" and [d.meta.key for d in docs] == ["D1", "D2"]
+
+    result.examined_documents = [
+        ExaminedDocument(id="patent/US2/en", source_type="patent", title="T", link="l", text="full text")
+    ]
+    docs, basis = exam.select_documents(result)
+    assert basis == "full_text" and docs[0].text == "full text"
+
+
+def test_examination_endpoint_computes_once_then_serves_cache(temp_cache, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app import main, service
+
+    temp_cache.set_cached("Folding paddle idea", [_result_event("Folding paddle idea")])
+    key = temp_cache.cache_key("Folding paddle idea")
+    client = TestClient(main.app)
+
+    monkeypatch.setattr(service, "GROQ_API_KEY", "")
+    assert client.post(f"/report/{key}/examination").status_code == 503
+    assert client.post("/report/ffffffffffffffff/examination").status_code == 404
+
+    calls = []
+
+    def fake_preview(report):
+        calls.append(report.idea_text)
+        return exam.ExaminationPreview(
+            outcome="no_objection_found", elements=_elements(2), documents=[], coverage=[],
+            novelty_objections=[], inventive_step_objections=[], uncovered_elements=["E1", "E2"],
+            section3_flags=[], evidence_basis="snippets", unverified_quotes_dropped=0,
+        )
+
+    monkeypatch.setattr(service, "GROQ_API_KEY", "key")
+    monkeypatch.setattr(service, "preview_examination", fake_preview)
+    first = client.post(f"/report/{key}/examination")
+    second = client.post(f"/report/{key}/examination")
+    assert first.status_code == second.status_code == 200
+    assert first.json() == second.json()
+    assert len(calls) == 1  # second request came from the cache
+
+    # The attachment isn't mistaken for a report, and goes when the report does.
+    assert [e["report_id"] for e in client.get("/examples").json()] == [key]
+    temp_cache.evict(key)
+    assert temp_cache.get_attachment(key, "examination") is None
+
+
+def test_examination_markdown_is_labelled_a_simulation():
+    from app.report_markdown import examination_to_markdown
+
+    preview = exam.ExaminationPreview(
+        outcome="novelty_objection", elements=_elements(1),
+        documents=[exam.ExaminedDoc(key="D1", id="x", title="Paddle", link="https://x", source_type="patent")],
+        coverage=[], novelty_objections=["D1"], inventive_step_objections=[], uncovered_elements=[],
+        section3_flags=[], evidence_basis="full_text", unverified_quotes_dropped=0,
+    )
+    md = examination_to_markdown(preview)
+    assert "simulated — not issued by the Indian Patent Office" in md
+    assert "lack of novelty" in md and "[Paddle](https://x)" in md

@@ -204,6 +204,33 @@ export interface ReportAnswer {
   sources: AnswerSource[];
 }
 
+// Examination preview: backend/app/pipeline/examination.py
+export type ExaminationOutcome =
+  | "novelty_objection" // one document discloses every element — s. 2(1)(j)
+  | "inventive_step_objection" // two documents together do — s. 2(1)(ja)
+  | "combination_risk" // only three or more documents together do
+  | "no_objection_found"; // some element is disclosed nowhere
+
+export interface ExaminationPreview {
+  outcome: ExaminationOutcome;
+  elements: { id: string; text: string }[];
+  documents: { key: string; id: string; title: string; link: string; source_type: string }[];
+  coverage: { element: string; document: string; status: "disclosed" | "partial"; quote: string }[];
+  novelty_objections: string[]; // document keys
+  inventive_step_objections: { documents: string[]; same_field: boolean }[];
+  uncovered_elements: string[]; // element ids — the novelty core
+  section3_flags: {
+    clause: string;
+    title: string;
+    law_summary: string;
+    risk: "high" | "possible";
+    reason: string;
+    how_to_address: string;
+  }[];
+  evidence_basis: "full_text" | "snippets";
+  unverified_quotes_dropped: number;
+}
+
 export interface ExampleReport {
   report_id: string;
   idea_text: string;

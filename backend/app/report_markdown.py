@@ -69,3 +69,44 @@ def report_to_markdown(result: AnalysisResult, report_url: str | None = None) ->
         lines.append(f"Full interactive report (landscape graph, claim chart): {report_url}")
     lines.append("_First-pass search, not legal advice._")
     return "\n".join(lines)
+
+
+OUTCOME_LINES = {
+    "novelty_objection": "Likely objection: **lack of novelty** (s. 2(1)(j)) — one document discloses every element.",
+    "inventive_step_objection": "Likely objection: **lack of inventive step** (s. 2(1)(ja)) — two documents together disclose every element.",
+    "combination_risk": "Inventive-step risk: every element appears somewhere, but only across three or more documents.",
+    "no_objection_found": "No novelty or inventive-step objection from the documents found — at least one element appears in none of them.",
+}
+
+
+def examination_to_markdown(preview) -> str:
+    """`preview` is an app.pipeline.examination.ExaminationPreview."""
+    docs = {d.key: d for d in preview.documents}
+    elements = {e.id: e.text for e in preview.elements}
+    lines = ["## Examination preview (simulated — not issued by the Indian Patent Office)", ""]
+    lines += [OUTCOME_LINES[preview.outcome], ""]
+
+    if preview.section3_flags:
+        lines.append("### Section 3 (not an invention under the Patents Act)")
+        for f in preview.section3_flags:
+            lines.append(f"- **{f.clause} {f.title}** ({f.risk} risk): {f.reason} → {f.how_to_address}")
+        lines.append("")
+
+    for key in preview.novelty_objections:
+        lines.append(f"- Anticipated by [{docs[key].title}]({docs[key].link})")
+    for obj in preview.inventive_step_objections:
+        a, b = (docs[k] for k in obj.documents)
+        field = " (same technical field)" if obj.same_field else ""
+        lines.append(f"- Obvious over [{a.title}]({a.link}) + [{b.title}]({b.link}){field}")
+
+    if preview.uncovered_elements:
+        lines += ["", "### Novelty core — disclosed by none of the documents found"]
+        lines += [f"- {elements[e]}" for e in preview.uncovered_elements]
+
+    lines += [
+        "",
+        f"_Based on {len(preview.documents)} documents "
+        f"({'full text' if preview.evidence_basis == 'full_text' else 'search snippets only'}). "
+        "A preview, not a legal opinion — a registered patent agent must confirm._",
+    ]
+    return "\n".join(lines)

@@ -3,6 +3,7 @@ import type {
   AnalyzeRequest,
   AnalyzeStreamEvent,
   AskTurn,
+  ExaminationPreview,
   ExampleReport,
   ReportAnswer,
 } from "@/types/analysis";
@@ -100,15 +101,28 @@ export async function askReport(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ question, history }),
   });
-  if (!response.ok) {
-    let detail = "Couldn't get an answer — is the backend running?";
-    try {
-      const body = (await response.json()) as { detail?: unknown };
-      if (typeof body.detail === "string") detail = body.detail;
-    } catch {
-      // non-JSON error body: keep the generic message
-    }
-    throw new Error(detail);
-  }
+  if (!response.ok) throw new Error(await errorDetail(response, "Couldn't get an answer — is the backend running?"));
   return (await response.json()) as ReportAnswer;
+}
+
+/** How an Indian patent examiner might read a saved report. Computed once
+ * server-side, then cached — later calls return instantly. */
+export async function fetchExamination(reportId: string): Promise<ExaminationPreview> {
+  const response = await fetch(`${API_URL}/report/${encodeURIComponent(reportId)}/examination`, {
+    method: "POST",
+  });
+  if (!response.ok) {
+    throw new Error(await errorDetail(response, "Couldn't prepare the preview — is the backend running?"));
+  }
+  return (await response.json()) as ExaminationPreview;
+}
+
+// FastAPI errors carry a human-readable `detail`; show it as-is.
+async function errorDetail(response: Response, fallback: string): Promise<string> {
+  try {
+    const body = (await response.json()) as { detail?: unknown };
+    return typeof body.detail === "string" ? body.detail : fallback;
+  } catch {
+    return fallback;
+  }
 }

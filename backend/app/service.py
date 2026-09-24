@@ -6,9 +6,18 @@ ids, the same cache, the same refusal without API keys.
 import asyncio
 from collections.abc import AsyncGenerator
 
-from app.cache import cache_key, get_cached, is_valid_key, set_cached
-from app.config import LIVE_MODE, REPLAY_STEP_SECONDS
-from app.models import AnalyzeStreamEvent, ErrorEvent
+from app.cache import (
+    cache_key,
+    get_attachment,
+    get_cached,
+    get_cached_by_key,
+    is_valid_key,
+    set_attachment,
+    set_cached,
+)
+from app.config import GROQ_API_KEY, LIVE_MODE, REPLAY_STEP_SECONDS
+from app.models import AnalysisResult, AnalyzeStreamEvent, ErrorEvent
+from app.pipeline.examination import ExaminationPreview, preview_examination
 from app.pipeline.orchestrator import run_pipeline
 
 DEMO_MODE_MESSAGE = (
@@ -70,3 +79,37 @@ async def analyze(
 
     if collected and collected[-1].type == "result":
         set_cached(cache_text, collected, parent_report_id=parent)
+
+
+class LLMUnavailable(Exception):
+    """An LLM-only feature was requested without an LLM key configured."""
+
+
+def load_report(report_id: str) -> AnalysisResult | None:
+    events = get_cached_by_key(report_id)
+    result = next((e for e in events or [] if e.type == "result"), None)
+    if result is None:
+        return None
+    result.data.report_id = report_id
+    return result.data
+
+
+EXAMINATION_ATTACHMENT = "examination"
+
+
+def examination_for(report_id: str, report: AnalysisResult) -> ExaminationPreview:
+    """The report's examination preview: from the cache when it's been
+    computed before (stable across views, instant in a demo), otherwise
+    computed now and cached. Raises LLMUnavailable without a Groq key, and
+    ValueError if the model can't produce usable output."""
+    cached = get_attachment(report_id, EXAMINATION_ATTACHMENT)
+    if cached is not None:
+        try:
+            return ExaminationPreview.model_validate(cached)
+        except ValueError:
+            pass  # written by an older schema: recompute
+    if not GROQ_API_KEY:
+        raise LLMUnavailable
+    preview = preview_examination(report)
+    set_attachment(report_id, EXAMINATION_ATTACHMENT, preview.model_dump(mode="json"))
+    return preview

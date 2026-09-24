@@ -40,6 +40,17 @@ class ClaimChart(BaseModel):
     pairs: list[ClaimChartPair]
 
 
+class ExaminedDocument(BaseModel):
+    """The condensed full text (abstract + leading claims) of a deep-dived
+    candidate, kept with the report so later steps — the examination
+    preview — can quote real evidence without another API call."""
+    id: str
+    source_type: str
+    title: str
+    link: str
+    text: str
+
+
 class SearchQueryInfo(BaseModel):
     type: str
     query: str
@@ -89,6 +100,7 @@ class AnalysisResult(BaseModel):
     language_code: str = "en"
     language_name: str = "English"
     localized: LocalizedContent | None = None
+    examined_documents: list[ExaminedDocument] = []
     # Set by the API layer (it's the cache key), not the pipeline.
     report_id: str | None = None
 

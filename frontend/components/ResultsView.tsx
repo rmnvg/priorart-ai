@@ -2,6 +2,7 @@ import { useState } from "react";
 import AskReport from "@/components/AskReport";
 import CitationDiscoveries from "@/components/CitationDiscoveries";
 import ClaimChartView from "@/components/ClaimChart";
+import ExaminationPreview from "@/components/ExaminationPreview";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
 import FilingTimeline, { filingsByYear, MIN_FILINGS_TO_PLOT } from "@/components/FilingTimeline";
 import IndiaSignal from "@/components/IndiaSignal";
@@ -337,6 +338,8 @@ export default function ResultsView({
           </div>
         )}
       </div>
+
+      {result.report_id && <ExaminationPreview key={`exam-${result.report_id}`} reportId={result.report_id} />}
 
       {result.report_id && <AskReport key={result.report_id} reportId={result.report_id} t={t} />}
 

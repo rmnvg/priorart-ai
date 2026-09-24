@@ -8,10 +8,11 @@ from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
 from app import service
-from app.cache import get_cached_by_key, list_top_level_reports
+from app.cache import list_top_level_reports
 from app.config import ALLOWED_ORIGINS, GROQ_API_KEY, LIVE_MODE
 from app.models import AnalysisResult
 from app.pipeline.ask import AskTurn, ReportAnswer, answer_question
+from app.pipeline.examination import ExaminationPreview
 from app.pipeline.rank import warm_up
 
 
@@ -60,6 +61,14 @@ class ExampleReport(BaseModel):
     public_domain_count: int
 
 
+def _load_report(report_id: str) -> AnalysisResult:
+    """A saved report by id, or 404."""
+    report = service.load_report(report_id)
+    if report is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    return report
+
+
 @app.get("/health")
 def health():
     return {"status": "ok", "live": LIVE_MODE}
@@ -80,12 +89,7 @@ async def analyze(request: AnalyzeRequest):
 def get_report(report_id: str) -> AnalysisResult:
     """A saved analysis by id — what a shared report link loads. Serves only
     what's already cached; never triggers a (billable) pipeline run."""
-    events = get_cached_by_key(report_id)
-    result = next((e for e in events or [] if e.type == "result"), None)
-    if result is None:
-        raise HTTPException(status_code=404, detail="Report not found")
-    result.data.report_id = report_id
-    return result.data
+    return _load_report(report_id)
 
 
 @app.get("/examples", response_model=list[ExampleReport])
@@ -117,16 +121,32 @@ async def ask_about_report(report_id: str, request: AskRequest) -> ReportAnswer:
             status_code=503,
             detail="Questions need an LLM key: add GROQ_API_KEY to backend/.env.",
         )
-    events = get_cached_by_key(report_id)
-    result = next((e for e in events or [] if e.type == "result"), None)
-    if result is None:
-        raise HTTPException(status_code=404, detail="Report not found")
+    report = _load_report(report_id)
     try:
-        return await asyncio.to_thread(
-            answer_question, result.data, request.question, request.history
-        )
+        return await asyncio.to_thread(answer_question, report, request.question, request.history)
     except ValueError:
         raise HTTPException(
             status_code=502,
             detail="Couldn't answer that right now — try again or rephrase the question.",
+        )
+
+
+
+@app.post("/report/{report_id}/examination", response_model=ExaminationPreview)
+async def examination_preview(report_id: str) -> ExaminationPreview:
+    """How an Indian patent examiner might read this report's evidence.
+    Computed once per report (LLM only, no searches), then served from the
+    cache — so it's stable across views and instant in a demo."""
+    report = _load_report(report_id)
+    try:
+        return await asyncio.to_thread(service.examination_for, report_id, report)
+    except service.LLMUnavailable:
+        raise HTTPException(
+            status_code=503,
+            detail="The examination preview needs an LLM key: add GROQ_API_KEY to backend/.env.",
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=502,
+            detail="Couldn't prepare the examination preview right now — please try again.",
         )

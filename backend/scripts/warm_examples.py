@@ -44,6 +44,13 @@ EXAMPLES: dict[str, str] = {
         "detects early signs of fever or heat, and sends an SMS alert to the farmer's basic "
         "feature phone without needing a smartphone app."
     ),
+    # Shows the examination preview's Section 3 screen: traditional
+    # knowledge (3(p)) and admixture (3(e)) are the likely flags.
+    "herbal-wound-paste": (
+        "A wound-healing paste made by grinding fresh neem leaves with turmeric and honey, "
+        "applied to cuts and burns to speed healing and prevent infection, packed in "
+        "single-use sachets for rural first-aid kits."
+    ),
     "erickshaw-swap": (
         "A battery-swapping station for electric rickshaws where the driver slides out a "
         "depleted battery pack and slides in a charged one in under a minute; each pack has an "

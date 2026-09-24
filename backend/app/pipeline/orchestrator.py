@@ -22,6 +22,7 @@ from app.models import (
     AnalyzeStreamEvent,
     ClaimChart,
     ErrorEvent,
+    ExaminedDocument,
     ProgressEvent,
     ResultEvent,
     SearchQueryInfo,
@@ -276,6 +277,16 @@ async def run_pipeline(
                 refinement_terms=refinement.new_terms if refinement else [],
             ),
             citation_network=citation_network,
+            examined_documents=[
+                ExaminedDocument(
+                    id=c.id,
+                    source_type=c.source_type,
+                    title=c.title,
+                    link=c.link,
+                    text=c.summary_text,
+                )
+                for c in top_candidates
+            ],
             market_trend=market_trend,
             plain_summary=novelty_result.plain_summary,
             original_idea_text=idea_text if translated else None,

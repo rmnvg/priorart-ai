@@ -35,6 +35,16 @@ And the report is a conversation, not a dead end: **ask it follow-up questions**
 drawn only from what the search found, each one citing its source documents. Ask in
 Hindi, and the answer comes back in Hindi.
 
+Finally, it reads the evidence **the way an Indian patent examiner would**. The
+examination preview screens the idea against **Section 3 of the Patents Act** (the
+exclusions: software "as such", farming methods, traditional knowledge, and more).
+It then checks every element of the idea against the patents found, and a
+"disclosed" mark only counts if it quotes the patent and the quote is verified in
+code. From that it works out, deterministically, whether a **lack-of-novelty
+(s. 2(1)(j))** or **lack-of-inventive-step (s. 2(1)(ja))** objection is likely. It
+ends with the idea's *novelty core*: the elements no patent discloses. It's labelled
+as a simulation throughout, and it drafts no claims; that's a patent agent's job.
+
 It's built for independent inventors, students, and early-stage founders who want a
 first read on "has this already been done?" before spending money on a formal patent
 search — patent search tools built for law firms are expensive and not designed for
@@ -143,6 +153,8 @@ priorart-ai/
 │   │       ├── search.py             # 1.2
 │   │       ├── rank.py               # 1.3
 │   │       ├── refine.py             # refinement agent (search in patent vocabulary)
+│   │       ├── ask.py                # follow-up Q&A grounded in a report
+│   │       ├── examination.py        # Indian examination preview (s. 3, 2(1)(j), 2(1)(ja))
 │   │       ├── deepdive.py           # 1.4
 │   │       ├── novelty.py            # 1.5 (+ claim chart)
 │   │       ├── india_status.py       # 1.6
@@ -302,7 +314,8 @@ AI assistant can check an idea for prior art in the middle of a conversation:
 > cited patents, expired ones free to build on, and a link to the full report.
 
 Tools: `check_prior_art(idea, language?)`, `get_prior_art_report(report_id)`,
-`ask_about_report(report_id, question)`, `list_saved_reports()`. It shares the web app's cache and report ids, so a check
+`ask_about_report(report_id, question)`, `preview_examination_report(report_id)`,
+`list_saved_reports()`. It shares the web app's cache and report ids, so a check
 started in the assistant opens as the full interactive report in the browser.
 
 Claude Desktop (`claude_desktop_config.json`), using absolute paths:

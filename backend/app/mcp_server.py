@@ -12,11 +12,11 @@ import asyncio
 from mcp.server.mcpserver import Context, MCPServer
 
 from app import service
-from app.cache import get_cached_by_key, list_top_level_reports
+from app.cache import list_top_level_reports
 from app.config import GROQ_API_KEY, PUBLIC_APP_URL
 from app.models import AnalysisResult
 from app.pipeline.ask import answer_question
-from app.report_markdown import report_to_markdown
+from app.report_markdown import examination_to_markdown, report_to_markdown
 
 # The pipeline's stages, in order — for progress reporting to the client.
 STAGES = [
@@ -76,12 +76,10 @@ async def check_prior_art(idea: str, ctx: Context, language: str | None = None) 
 def get_prior_art_report(report_id: str) -> str:
     """Open a saved prior-art report by its id (the `report=` value in a
     PriorArt AI report link)."""
-    events = get_cached_by_key(report_id)
-    result = next((e for e in events or [] if e.type == "result"), None)
-    if result is None:
+    report = service.load_report(report_id)
+    if report is None:
         return f"No saved report with id {report_id!r}."
-    result.data.report_id = report_id
-    return _render(result.data)
+    return _render(report)
 
 
 @server.tool()
@@ -96,16 +94,38 @@ async def ask_about_report(report_id: str, question: str) -> str:
     """
     if not GROQ_API_KEY:
         return "Questions need an LLM key: add GROQ_API_KEY to backend/.env."
-    events = get_cached_by_key(report_id)
-    result = next((e for e in events or [] if e.type == "result"), None)
-    if result is None:
+    report = service.load_report(report_id)
+    if report is None:
         return f"No saved report with id {report_id!r}."
     try:
-        answer = await asyncio.to_thread(answer_question, result.data, question)
+        answer = await asyncio.to_thread(answer_question, report, question)
     except ValueError:
         return "Couldn't answer that right now — try again or rephrase."
     sources = "\n".join(f"[{s.key}] {s.title} — {s.link}" for s in answer.sources)
     return f"{answer.answer}\n\n{sources}" if sources else answer.answer
+
+
+@server.tool()
+async def preview_examination_report(report_id: str) -> str:
+    """Preview how an Indian patent examiner might respond to a saved report:
+    Section 3 exclusions (software per se, farming methods, traditional
+    knowledge, ...), and novelty / inventive-step objections computed from
+    an element-by-element check with verified quotes. A simulation, not
+    legal advice.
+
+    Args:
+        report_id: The report's id (from check_prior_art or list_saved_reports).
+    """
+    report = service.load_report(report_id)
+    if report is None:
+        return f"No saved report with id {report_id!r}."
+    try:
+        preview = await asyncio.to_thread(service.examination_for, report_id, report)
+    except service.LLMUnavailable:
+        return "The examination preview needs an LLM key: add GROQ_API_KEY to backend/.env."
+    except ValueError:
+        return "Couldn't prepare the examination preview right now — try again."
+    return examination_to_markdown(preview)
 
 
 @server.tool()

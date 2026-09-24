@@ -141,3 +141,35 @@ def evict(key: str) -> None:
         return
     _memory.pop(key, None)
     _path_for(key).unlink(missing_ok=True)
+    # Attachments were computed from the old analysis; they go with it.
+    for path in CACHE_DIR.glob(f"{key}.*.json"):
+        path.unlink(missing_ok=True)
+
+
+# --- Per-report attachments --------------------------------------------------
+# Things computed on demand from a saved report (the examination preview),
+# stored beside it as "<key>.<name>.json" so they're computed once and replay
+# instantly. The report listing ignores these files: their stems aren't keys.
+
+
+def _attachment_path(key: str, name: str) -> Path:
+    return CACHE_DIR / f"{key}.{name}.json"
+
+
+def get_attachment(key: str, name: str) -> dict | None:
+    if not is_valid_key(key):
+        return None
+    try:
+        return json.loads(_attachment_path(key, name).read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def set_attachment(key: str, name: str, payload: dict) -> None:
+    if not is_valid_key(key):
+        return
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        _attachment_path(key, name).write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+    except OSError as e:
+        logger.warning("Could not persist %s for key %s: %s", name, key, e)
