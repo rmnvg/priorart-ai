@@ -1333,3 +1333,250 @@ def test_recheck_explanations_never_show_internal_document_keys():
     )
     assert recheck_mod._without_keys("D2 does not describe it") == "this document does not describe it"
     assert recheck_mod._without_keys("Uses DC motors and D-rings") == "Uses DC motors and D-rings"
+
+
+# --- Sketch input ----------------------------------------------------------
+
+import base64
+
+from app.pipeline import sketch as sketch_mod
+
+_PNG = "data:image/png;base64," + base64.b64encode(b"\x89PNG\r\n\x1a\n" + b"0" * 64).decode()
+
+
+@pytest.mark.parametrize(
+    "data_url",
+    [
+        "not a data url",
+        "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4=",
+        "data:image/png;base64,",
+        "data:text/plain;base64,aGVsbG8=",
+    ],
+)
+def test_sketch_rejects_anything_but_a_supported_image(data_url):
+    with pytest.raises(sketch_mod.SketchUnreadable):
+        sketch_mod.decode_image(data_url)
+
+
+def test_sketch_rejects_oversized_images(monkeypatch):
+    monkeypatch.setattr(sketch_mod, "MAX_IMAGE_BYTES", 10)
+    with pytest.raises(sketch_mod.SketchUnreadable, match="too large"):
+        sketch_mod.decode_image(_PNG)
+
+
+def test_sketch_reading_keeps_only_connections_between_real_parts():
+    raw = sketch_mod._RawReading(
+        purpose="  Keeps  vegetables cool ",
+        components=[
+            sketch_mod._RawComponent(id="C1", name="Outer clay pot", description="Unglazed."),
+            sketch_mod._RawComponent(id="C2", name="", description="unnamed: dropped"),
+            sketch_mod._RawComponent(id="C3", name="Wet sand", description="Fills the gap."),
+            sketch_mod._RawComponent(id="C4", name="outer clay pot", description="duplicate"),
+        ],
+        relationships=[
+            sketch_mod._RawRelationship(source="C3", target="C1", relation="fills"),
+            sketch_mod._RawRelationship(source="C3", target="C1", relation="fills"),  # repeat
+            sketch_mod._RawRelationship(source="C1", target="C1", relation="touches"),  # self
+            sketch_mod._RawRelationship(source="C1", target="C9", relation="feeds"),  # unknown
+            sketch_mod._RawRelationship(source="C1", target="C2", relation="holds"),  # dropped part
+        ],
+        uncertain=["Is the pot glazed?", "  "],
+    )
+    reading = sketch_mod.build_reading(raw)
+    assert reading.purpose == "Keeps vegetables cool"
+    # Renumbered after the unnamed part was dropped, and connections follow.
+    assert [(c.id, c.name) for c in reading.components] == [("C1", "Outer clay pot"), ("C2", "Wet sand")]
+    assert [(r.source, r.target, r.relation) for r in reading.relationships] == [("C2", "C1", "fills")]
+    assert reading.uncertain == ["Is the pot glazed?"]
+
+
+def test_sketch_relations_name_parts_instead_of_ids():
+    raw = sketch_mod._RawReading(
+        components=[
+            sketch_mod._RawComponent(id="C1", name="Outer pot"),
+            sketch_mod._RawComponent(id="C2", name="Inner pot"),
+            sketch_mod._RawComponent(id="C3", name="Wet sand"),
+        ],
+        relationships=[
+            sketch_mod._RawRelationship(source="C3", target="C1", relation="fills the gap between C2 and"),
+        ],
+    )
+    (relation,) = sketch_mod.build_reading(raw).relationships
+    assert relation.relation == "fills the gap between Inner pot and"
+
+
+def test_sketch_with_no_parts_is_refused_with_advice():
+    with pytest.raises(sketch_mod.SketchUnreadable, match="clearer photo"):
+        sketch_mod.build_reading(sketch_mod._RawReading(components=[]))
+
+
+def test_sketch_endpoint_reads_once_then_serves_cache(temp_cache, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app import main, service
+
+    client = TestClient(main.app)
+    monkeypatch.setattr(service, "GROQ_API_KEY", "")
+    assert client.post("/sketch", json={"image": _PNG}).status_code == 503
+    bad = client.post("/sketch", json={"image": "data:image/gif;base64,R0lGODlhAQABAAAAACw="})
+    assert bad.status_code == 422 and "PNG" in bad.json()["detail"]
+
+    calls = []
+
+    def fake_read(image, note):
+        calls.append(note)
+        return sketch_mod.SketchReading(
+            purpose="p", components=[sketch_mod.SketchComponent(id="C1", name="pot", description="")],
+            relationships=[], uncertain=[],
+        )
+
+    monkeypatch.setattr(service, "GROQ_API_KEY", "key")
+    monkeypatch.setattr(service, "read_sketch", fake_read)
+    first = client.post("/sketch", json={"image": _PNG, "note": "a cooler"})
+    second = client.post("/sketch", json={"image": _PNG, "note": "a cooler"})
+    assert first.status_code == second.status_code == 200
+    assert first.json()["components"][0]["name"] == "pot"
+    assert calls == ["a cooler"]  # the repeat came from the cache
+    client.post("/sketch", json={"image": _PNG, "note": "something else"})
+    assert len(calls) == 2  # a different note is a different reading
+    # Sketch readings never show up as reports.
+    assert client.get("/examples").json() == []
+
+
+# --- Constrained redesign --------------------------------------------------
+
+from app.pipeline import redesign as redesign_mod
+
+
+def _redesign_parent():
+    parent, _ = _recheck_pair()
+    return parent
+
+
+def _features():
+    return redesign_mod.features_from_texts(["Hollow segments", "Interlocking joints", "hollow  segments", "Blade"])
+
+
+def test_features_are_deduped_and_numbered():
+    assert [(f.id, f.text) for f in _features()] == [
+        ("E1", "Hollow segments"), ("E2", "Interlocking joints"), ("E3", "Blade"),
+    ]
+
+
+def test_brief_keeps_only_real_features_and_writes_out_the_cost():
+    brief = redesign_mod.RedesignBrief(
+        locked_features=["e3", "E9", "E1"],
+        constraints=["No electricity", " no  electricity ", "Hand-operated", ""],
+        cost_target_inr=2000,
+    )
+    locked, constraints = redesign_mod.normalize_brief(brief, _features())
+    assert locked == ["E1", "E3"]  # feature order; unknown id dropped
+    assert constraints == ["No electricity", "Hand-operated", "Target cost under ₹2,000 per unit"]
+    # The cache name doesn't depend on the order things were picked in.
+    assert redesign_mod.brief_key(locked, constraints) == redesign_mod.brief_key(
+        ["E3", "E1"], list(reversed(constraints))
+    )
+
+
+def test_redesign_trusts_only_verified_evidence_and_flags_dropped_locks(monkeypatch):
+    parent = _redesign_parent()
+    monkeypatch.setattr(
+        redesign_mod,
+        "complete_json",
+        lambda *a, **k: {
+            "alternatives": [
+                {
+                    "title": "Foam-core paddle",
+                    "how_it_works": "Unlike D1, the shaft is solid foam.",
+                    "what_changes": "Solid foam replaces hollow segments.",
+                    "keeps": ["E2", "E7"],
+                    "constraint_notes": [
+                        {"constraint": "no electricity", "approach": "Nothing powered."},
+                        {"constraint": "Cheap to build (reworded)", "approach": "Uses offcuts."},
+                    ],
+                    "avoids": [
+                        {"document": "[D1]", "mechanism": "hollow buoyant segments",
+                         "quote": "four hollow segments that interlock and float on water"},
+                        {"document": "D2", "mechanism": "made up", "quote": "a titanium blade with sensors"},
+                        {"document": "D5", "mechanism": "unknown doc", "quote": "anything at all here"},
+                    ],
+                    "revised_idea": "A collapsible kayak paddle whose segments are solid closed-cell foam.",
+                    "change_summary": "Replace the hollow segments with solid foam segments.",
+                },
+                {"title": "No idea", "how_it_works": "x", "revised_idea": "too short", "change_summary": "x"},
+            ]
+        },
+    )
+    brief = redesign_mod.RedesignBrief(
+        locked_features=["E1", "E2"], constraints=["No electricity", "Cheap to build"]
+    )
+    result = redesign_mod.propose_redesigns(parent, _features(), brief)
+
+    assert [m.id for m in result.matches_considered] == ["a", "b"]  # the original closest
+    (alt,) = result.alternatives  # the one without a usable revised idea is dropped
+    assert alt.keeps == ["E2"] and alt.drops_locked == ["E1"]
+    assert [(v.document_id, v.mechanism) for v in alt.avoids] == [("a", "hollow buoyant segments")]
+    assert result.unverified_quotes_dropped == 1  # the invented quote; the unknown doc isn't evidence
+    assert [(n.constraint, n.approach) for n in alt.constraint_notes] == [
+        ("No electricity", "Nothing powered."), ("Cheap to build", "Uses offcuts."),
+    ]
+    assert "D1" not in alt.how_it_works and "the existing design" in alt.how_it_works
+
+
+def test_redesign_with_no_usable_alternatives_raises(monkeypatch):
+    monkeypatch.setattr(redesign_mod, "complete_json", lambda *a, **k: {"alternatives": []})
+    with pytest.raises(ValueError):
+        redesign_mod.propose_redesigns(_redesign_parent(), _features(), redesign_mod.RedesignBrief())
+
+
+def test_redesign_endpoints_reuse_examination_elements_and_cache_per_brief(temp_cache, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app import main, service
+
+    temp_cache.set_cached("Folding paddle idea", [_result_event("Folding paddle idea")])
+    key = temp_cache.cache_key("Folding paddle idea")
+    client = TestClient(main.app)
+
+    monkeypatch.setattr(service, "GROQ_API_KEY", "")
+    assert client.post(f"/report/{key}/features").status_code == 503
+    assert client.post("/report/ffffffffffffffff/features").status_code == 404
+    too_many = {"constraints": ["c"] * (redesign_mod.MAX_CONSTRAINTS + 1)}
+    assert client.post(f"/report/{key}/redesign", json=too_many).status_code == 422
+
+    # With the examination preview already computed, its elements are the
+    # features — no LLM call needed, even without a key.
+    temp_cache.set_attachment(key, "examination", exam.ExaminationPreview(
+        outcome="no_objection_found", elements=_elements(3), documents=[], coverage=[],
+        novelty_objections=[], inventive_step_objections=[], uncovered_elements=[],
+        section3_flags=[], evidence_basis="snippets", unverified_quotes_dropped=0,
+    ).model_dump(mode="json"))
+    features = client.post(f"/report/{key}/features")
+    assert features.status_code == 200
+    assert [f["text"] for f in features.json()["features"]] == ["element 1", "element 2", "element 3"]
+
+    calls = []
+
+    def fake_propose(report, features, brief):
+        calls.append(brief)
+        locked, constraints = redesign_mod.normalize_brief(brief, features)
+        return redesign_mod.RedesignResult(
+            features=features, locked_features=locked, constraints=constraints, alternatives=[],
+            matches_considered=[], evidence_basis="snippets", unverified_quotes_dropped=0,
+        )
+
+    monkeypatch.setattr(service, "GROQ_API_KEY", "key")
+    monkeypatch.setattr(service, "propose_redesigns", fake_propose)
+    body = {"locked_features": ["E1"], "constraints": ["No electricity"], "cost_target_inr": 2000}
+    first = client.post(f"/report/{key}/redesign", json=body)
+    second = client.post(f"/report/{key}/redesign", json=body)
+    assert first.status_code == second.status_code == 200
+    assert first.json()["constraints"][-1] == "Target cost under ₹2,000 per unit"
+    assert len(calls) == 1  # the same brief is served from the cache
+    client.post(f"/report/{key}/redesign", json={**body, "cost_target_inr": 1500})
+    assert len(calls) == 2
+
+    # Redesigns are attachments: never listed as reports, gone with the report.
+    assert [e["report_id"] for e in client.get("/examples").json()] == [key]
+    temp_cache.evict(key)
+    assert list(temp_cache.CACHE_DIR.glob(f"{key}.*.json")) == []

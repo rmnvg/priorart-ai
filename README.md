@@ -38,6 +38,18 @@ a new search ranked it lower. For each patent it shows whether the change is alr
 it and what's still shared, all backed by quotes verified in code. It also lists the
 new close matches the change ran into.
 
+It also reads **drawings**. An inventor can upload a rough sketch or a photo of a
+prototype. A vision model reads it into parts and how they connect, and lists the
+details it couldn't make out. Nothing is searched until the inventor corrects that
+reading, and the exact text that will be searched is shown before they do.
+
+And it helps **redesign around what exists**. In the redesign studio the inventor locks
+the features that must stay and sets constraints ("no electricity", "under ₹2,000 per
+unit"). It proposes three alternative designs, each tied to a quoted passage, verified in
+code, from one of the original closest matches it moves away from. Cost and performance
+are treated as design targets, and every design is labelled a hypothesis until the
+inventor re-checks it through the same evidence-backed re-check as above.
+
 The report leads with **three plain answers**: the closest existing work, what sets
 the idea apart in the searched evidence, and the next step.
 
@@ -167,6 +179,8 @@ priorart-ai/
 │   │       ├── ask.py                # follow-up Q&A grounded in a report
 │   │       ├── examination.py        # Indian examination preview (s. 3, 2(1)(j), 2(1)(ja))
 │   │       ├── recheck.py            # evidence comparison for "Apply & re-check"
+│   │       ├── sketch.py             # sketch / prototype photo → parts and connections
+│   │       ├── redesign.py           # constrained redesign around the closest matches
 │   │       ├── deepdive.py           # 1.4
 │   │       ├── novelty.py            # 1.5 (+ claim chart)
 │   │       ├── india_status.py       # 1.6
@@ -186,7 +200,8 @@ priorart-ai/
     │                               # CitationDiscoveries, FilingTimeline,
     │                               # MarketTrendChart, IndiaSignal,
     │                               # SearchStrategyPanel, ReportActions,
-    │                               # VoiceInput, ExamplesGallery
+    │                               # VoiceInput, ExamplesGallery,
+    │                               # SketchReview, RedesignStudio
     ├── lib/                       # analyzeStream.ts (SSE client), landscapeGraph.ts,
     │                               # highlightText.tsx, reportBrief.ts, i18n.ts
     └── types/analysis.ts          # shared contract with the backend
@@ -239,6 +254,7 @@ Optional settings in `backend/.env`:
 | Variable | Default | What it does |
 |---|---|---|
 | `REFINEMENT_QUERIES` | `1` | Follow-up queries the refinement agent may run (1 search each); `0` turns it off |
+| `GROQ_VISION_MODEL` | `qwen/qwen3.8-27b` | Groq model that reads uploaded sketches (`GROQ_MODEL` is text-only) |
 | `DEEP_DIVE_TOP_N` | `8` | Candidates pulled in full (1 search each) |
 | `ENABLE_TRENDS` | `true` | Google Trends market-interest lookup (1 search) |
 | `ALLOWED_ORIGINS` | none | Extra CORS origins for a deployed frontend |
@@ -456,6 +472,7 @@ testing the backend pipeline, the frontend, and this documentation.
 
 **AI/APIs used at runtime by the app itself:** Groq (hosting `openai/gpt-oss-120b`)
 powers the LLM reasoning steps (translation, query generation, search refinement,
-novelty assessment, claim charting, report localization); SerpApi powers all
+novelty assessment, claim charting, report localization, redesign proposals), and
+Groq-hosted `qwen/qwen3.8-27b` reads uploaded sketches; SerpApi powers all
 patent, scholar, product and Trends search. Voice input uses the browser's built-in
 Web Speech API.

@@ -14,6 +14,8 @@ from app.models import AnalysisResult
 from app.pipeline.ask import AskTurn, ReportAnswer, answer_question
 from app.pipeline.examination import ExaminationPreview
 from app.pipeline.rank import warm_up
+from app.pipeline.redesign import FeatureList, RedesignBrief, RedesignResult
+from app.pipeline.sketch import SketchReading, SketchUnreadable
 
 
 @asynccontextmanager
@@ -52,6 +54,14 @@ class AskRequest(BaseModel):
     question: str = Field(min_length=3, max_length=500)
     # Earlier turns, oldest first, so follow-ups ("and in India?") resolve.
     history: list[AskTurn] = Field(default=[], max_length=10)
+
+
+class SketchRequest(BaseModel):
+    # A data URL (data:image/jpeg;base64,...). The frontend downscales
+    # before sending; the cap is the provider's 4 MB base64 limit.
+    image: str = Field(min_length=32, max_length=4_000_000)
+    # Whatever the inventor already typed, to help read the drawing.
+    note: str | None = Field(default=None, max_length=2000)
 
 
 class ExampleReport(BaseModel):
@@ -151,4 +161,62 @@ async def examination_preview(report_id: str) -> ExaminationPreview:
         raise HTTPException(
             status_code=502,
             detail="Couldn't prepare the examination preview right now — please try again.",
+        )
+
+
+@app.post("/sketch", response_model=SketchReading)
+async def read_sketch(request: SketchRequest) -> SketchReading:
+    """A sketch or prototype photo read into parts and connections, for the
+    inventor to correct before searching. LLM only, no searches."""
+    try:
+        return await asyncio.to_thread(service.sketch_reading_for, request.image, request.note)
+    except SketchUnreadable as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    except service.LLMUnavailable:
+        raise HTTPException(
+            status_code=503,
+            detail="Reading a sketch needs an LLM key: add GROQ_API_KEY to backend/.env.",
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=502,
+            detail="Couldn't read the sketch right now — please try again.",
+        )
+
+
+@app.post("/report/{report_id}/features", response_model=FeatureList)
+async def report_features(report_id: str) -> FeatureList:
+    """The idea's essential features, for choosing what a redesign must keep."""
+    report = _load_report(report_id)
+    try:
+        return await asyncio.to_thread(service.features_for, report_id, report)
+    except service.LLMUnavailable:
+        raise HTTPException(
+            status_code=503,
+            detail="Redesigns need an LLM key: add GROQ_API_KEY to backend/.env.",
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=502,
+            detail="Couldn't identify the idea's features right now — please try again.",
+        )
+
+
+@app.post("/report/{report_id}/redesign", response_model=RedesignResult)
+async def redesign(report_id: str, brief: RedesignBrief) -> RedesignResult:
+    """Three alternative designs that keep the locked features, respect the
+    constraints, and step away from the closest matches — each a hypothesis
+    until re-checked. LLM only, no searches; cached per brief."""
+    report = _load_report(report_id)
+    try:
+        return await asyncio.to_thread(service.redesign_for, report_id, report, brief)
+    except service.LLMUnavailable:
+        raise HTTPException(
+            status_code=503,
+            detail="Redesigns need an LLM key: add GROQ_API_KEY to backend/.env.",
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=502,
+            detail="Couldn't propose designs right now — please try again.",
         )

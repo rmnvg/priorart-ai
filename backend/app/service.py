@@ -4,6 +4,7 @@ write — shared by the HTTP API (app.main) and the MCP server
 ids, the same cache, the same refusal without API keys.
 """
 import asyncio
+import hashlib
 from collections.abc import AsyncGenerator
 
 from app.cache import (
@@ -19,6 +20,17 @@ from app.config import GROQ_API_KEY, LIVE_MODE, REPLAY_STEP_SECONDS
 from app.models import AnalysisResult, AnalyzeStreamEvent, ErrorEvent
 from app.pipeline.examination import ExaminationPreview, preview_examination
 from app.pipeline.orchestrator import run_pipeline
+from app.pipeline.redesign import (
+    FeatureList,
+    RedesignBrief,
+    RedesignResult,
+    brief_key,
+    extract_features,
+    features_from_texts,
+    normalize_brief,
+    propose_redesigns,
+)
+from app.pipeline.sketch import SketchReading, decode_image, read_sketch
 
 DEMO_MODE_MESSAGE = (
     "This copy of PriorArt AI is running in demo mode (no API keys configured), so it "
@@ -124,3 +136,74 @@ def examination_for(report_id: str, report: AnalysisResult) -> ExaminationPrevie
     preview = preview_examination(report)
     set_attachment(report_id, EXAMINATION_ATTACHMENT, preview.model_dump(mode="json"))
     return preview
+
+
+FEATURES_ATTACHMENT = "features"
+
+
+def features_for(report_id: str, report: AnalysisResult) -> FeatureList:
+    """The idea's features for the redesign studio. When the examination
+    preview has been run, its elements are reused, so both views name the
+    same parts; otherwise they're extracted now. Cached either way."""
+    cached = get_attachment(report_id, FEATURES_ATTACHMENT)
+    if cached is not None:
+        try:
+            return FeatureList.model_validate(cached)
+        except ValueError:
+            pass
+    examination = get_attachment(report_id, EXAMINATION_ATTACHMENT)
+    features = None
+    if examination is not None:
+        try:
+            elements = ExaminationPreview.model_validate(examination).elements
+            features = FeatureList(features=features_from_texts([e.text for e in elements]))
+        except ValueError:
+            features = None
+    if features is None:
+        if not GROQ_API_KEY:
+            raise LLMUnavailable
+        features = extract_features(report.idea_text)
+    set_attachment(report_id, FEATURES_ATTACHMENT, features.model_dump(mode="json"))
+    return features
+
+
+def redesign_for(report_id: str, report: AnalysisResult, brief: RedesignBrief) -> RedesignResult:
+    """Alternative designs for this brief: cached per report and brief, so a
+    demo replays the same designs and a repeat request costs nothing."""
+    features = features_for(report_id, report).features
+    locked, constraints = normalize_brief(brief, features)
+    name = f"redesign-{brief_key(locked, constraints)}"
+    cached = get_attachment(report_id, name)
+    if cached is not None:
+        try:
+            return RedesignResult.model_validate(cached)
+        except ValueError:
+            pass
+    if not GROQ_API_KEY:
+        raise LLMUnavailable
+    result = propose_redesigns(report, features, brief)
+    set_attachment(report_id, name, result.model_dump(mode="json"))
+    return result
+
+
+SKETCH_ATTACHMENT = "sketch"
+
+
+def sketch_reading_for(image_data_url: str, note: str | None) -> SketchReading:
+    """A sketch read into parts and connections. Cached on the image and
+    note, so the same drawing gives the same reading on stage. Raises
+    SketchUnreadable for an image the inventor should replace."""
+    image = decode_image(image_data_url)
+    note = (note or "").strip()
+    key = hashlib.sha256(image + b"\0" + note.encode()).hexdigest()[:16]
+    cached = get_attachment(key, SKETCH_ATTACHMENT)
+    if cached is not None:
+        try:
+            return SketchReading.model_validate(cached)
+        except ValueError:
+            pass
+    if not GROQ_API_KEY:
+        raise LLMUnavailable
+    reading = read_sketch(image_data_url, note)
+    set_attachment(key, SKETCH_ATTACHMENT, reading.model_dump(mode="json"))
+    return reading
