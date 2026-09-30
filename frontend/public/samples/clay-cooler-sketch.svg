@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640">
+  <!-- A rough, hand-drawn-style sketch of a pot-in-pot evaporative cooler,
+       used by the "Try a sample sketch" button. Deliberately informal:
+       wobbly strokes and handwritten labels, like a notebook drawing. -->
+  <rect width="1000" height="640" fill="#fbfaf6"/>
+  <g fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- outer pot -->
+    <path d="M232 168 C 228 260, 238 390, 262 470 C 290 540, 520 548, 556 474 C 584 396, 590 262, 584 168"/>
+    <path d="M222 166 C 300 150, 510 150, 594 166"/>
+    <path d="M226 176 C 320 190, 500 190, 590 176"/>
+    <!-- inner pot -->
+    <path d="M292 196 C 290 270, 298 360, 318 420 C 342 470, 478 472, 500 420 C 520 360, 526 270, 524 196"/>
+    <path d="M286 194 C 360 184, 460 184, 530 194"/>
+    <!-- wet sand in the gap (stipple) -->
+    <g stroke-width="2.2">
+      <path d="M252 230 l3 2 M262 262 l2 3 M248 300 l3 1 M266 338 l2 2 M258 380 l3 2 M276 420 l2 3 M296 470 l3 1 M340 500 l2 2 M392 510 l3 1 M444 508 l2 2 M494 492 l3 2 M530 456 l2 3 M548 410 l3 1 M556 360 l2 2 M560 310 l3 2 M562 260 l2 3 M556 222 l3 1"/>
+      <path d="M270 250 l2 2 M246 350 l2 2 M280 460 l2 2 M370 492 l2 2 M470 500 l2 2 M540 430 l2 2 M550 280 l2 2 M270 400 l2 2"/>
+    </g>
+    <!-- vegetables inside -->
+    <ellipse cx="370" cy="390" rx="34" ry="24"/>
+    <path d="M362 368 c 4 -10, 14 -12, 18 -4"/>
+    <ellipse cx="442" cy="380" rx="28" ry="30"/>
+    <path d="M442 350 c -2 -8, 6 -12, 10 -8"/>
+    <path d="M330 420 c 30 -10, 70 -6, 96 4"/>
+    <!-- wet cloth lid, draped -->
+    <path d="M212 150 C 280 120, 540 116, 606 150 C 612 162, 600 170, 590 166" stroke-dasharray="10 7"/>
+    <path d="M214 152 C 206 170, 210 190, 218 204" stroke-dasharray="10 7"/>
+    <path d="M604 152 C 612 172, 608 192, 600 206" stroke-dasharray="10 7"/>
+    <!-- water drips / evaporation squiggles -->
+    <path d="M608 262 c 10 -12, -6 -20, 4 -32 M630 280 c 10 -12, -6 -20, 4 -32" stroke-width="2.4"/>
+    <path d="M150 300 c -10 -12, 6 -20, -4 -32 M126 320 c -10 -12, 6 -20, -4 -32" stroke-width="2.4"/>
+    <!-- leader lines -->
+    <path d="M640 140 C 620 144, 612 150, 604 154" stroke-width="2"/>
+    <path d="M640 330 C 610 334, 590 340, 578 346" stroke-width="2"/>
+    <path d="M640 420 C 580 420, 540 410, 520 400" stroke-width="2"/>
+    <path d="M160 440 C 200 430, 230 420, 250 404" stroke-width="2"/>
+    <path d="M160 540 C 240 520, 330 440, 350 410" stroke-width="2"/>
+  </g>
+  <g fill="#2b2b2b" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="24">
+    <text x="648" y="136">wet cloth on top</text>
+    <text x="648" y="326">OUTER clay pot</text>
+    <text x="648" y="352" font-size="20">(unglazed, porous)</text>
+    <text x="648" y="416">INNER pot</text>
+    <text x="648" y="442" font-size="20">(glazed)</text>
+    <text x="40" y="468">wet sand</text>
+    <text x="40" y="494" font-size="20">in the gap,</text>
+    <text x="40" y="518" font-size="20">add water daily</text>
+    <text x="40" y="566">vegetables</text>
+    <text x="660" y="214" font-size="20">water evaporates</text>
+    <text x="660" y="238" font-size="20">→ cools inside</text>
+    <text x="300" y="604" font-size="28">no electricity!</text>
+  </g>
+</svg>

@@ -5,7 +5,11 @@ import type {
   AskTurn,
   ExaminationPreview,
   ExampleReport,
+  Feature,
+  RedesignBrief,
+  RedesignResult,
   ReportAnswer,
+  SketchReading,
 } from "@/types/analysis";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -115,6 +119,39 @@ export async function fetchExamination(reportId: string): Promise<ExaminationPre
     throw new Error(await errorDetail(response, "Couldn't prepare the preview — is the backend running?"));
   }
   return (await response.json()) as ExaminationPreview;
+}
+
+/** A sketch or prototype photo (as a data URL) read into parts and
+ * connections, for the inventor to correct before searching. `note` is any
+ * text they already typed, to help read the drawing. */
+export async function readSketch(image: string, note?: string): Promise<SketchReading> {
+  const response = await fetch(`${API_URL}/sketch`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ image, note: note?.trim() || null }),
+  });
+  if (!response.ok) throw new Error(await errorDetail(response, "Couldn't read the sketch — is the backend running?"));
+  return (await response.json()) as SketchReading;
+}
+
+/** The idea's essential features, for choosing what a redesign must keep. */
+export async function fetchFeatures(reportId: string): Promise<Feature[]> {
+  const response = await fetch(`${API_URL}/report/${encodeURIComponent(reportId)}/features`, {
+    method: "POST",
+  });
+  if (!response.ok) throw new Error(await errorDetail(response, "Couldn't load the idea's features — is the backend running?"));
+  return ((await response.json()) as { features: Feature[] }).features;
+}
+
+/** Alternative designs for a brief. Cached server-side per brief. */
+export async function fetchRedesign(reportId: string, brief: RedesignBrief): Promise<RedesignResult> {
+  const response = await fetch(`${API_URL}/report/${encodeURIComponent(reportId)}/redesign`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(brief),
+  });
+  if (!response.ok) throw new Error(await errorDetail(response, "Couldn't propose designs — is the backend running?"));
+  return (await response.json()) as RedesignResult;
 }
 
 // FastAPI errors carry a human-readable `detail`; show it as-is.

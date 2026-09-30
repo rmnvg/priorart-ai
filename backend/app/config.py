@@ -7,6 +7,9 @@ load_dotenv()
 SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY", "")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+# Reads uploaded sketches and prototype photos. GROQ_MODEL is text-only, so
+# images go to a separate vision model on the same Groq key.
+GROQ_VISION_MODEL = os.getenv("GROQ_VISION_MODEL", "qwen/qwen3.8-27b")
 
 # Extra CORS origins for a deployed frontend, comma-separated
 # (e.g. "https://priorart.vercel.app"). Any localhost port is always allowed.

@@ -12,16 +12,20 @@ import MarketTrendChart from "@/components/MarketTrendChart";
 import NoveltyVerdict from "@/components/NoveltyVerdict";
 import PublicDomain from "@/components/PublicDomain";
 import RecheckComparison from "@/components/RecheckComparison";
+import RedesignStudio from "@/components/RedesignStudio";
 import ReportActions from "@/components/ReportActions";
 import SearchStrategyPanel from "@/components/SearchStrategyPanel";
 import { labelsFor } from "@/lib/i18n";
 import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/types/analysis";
 
 // A suggestion as the pipeline needs it (English, since it's appended to the
-// English idea text) and as the reader saw it (possibly translated).
+// English idea text) and as the reader saw it (possibly translated). A
+// redesign also brings the complete revised idea, which replaces the
+// current one instead of being appended to it.
 export interface AppliedSuggestion {
   english: string;
   shown: string;
+  revisedIdea?: string;
 }
 
 // How many prior-art cards to show before collapsing. A full run returns
@@ -138,6 +142,7 @@ interface ResultsViewProps {
   onApplySuggestion?: (suggestion: AppliedSuggestion) => void;
   previousConfidence?: number | null;
   appliedSuggestion?: string | null;
+  sketchImage?: string | null; // the sketch this idea was described from
 }
 
 export default function ResultsView({
@@ -145,6 +150,7 @@ export default function ResultsView({
   onApplySuggestion,
   previousConfidence,
   appliedSuggestion,
+  sketchImage,
 }: ResultsViewProps) {
   const [showAllResults, setShowAllResults] = useState(false);
   // Localized reports can be flipped to English — to check a translation,
@@ -232,6 +238,22 @@ export default function ResultsView({
           >
             {showEnglish ? `Show in ${result.localized.language_name}` : "Show in English"}
           </button>
+        </div>
+      )}
+
+      {sketchImage && (
+        <div className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm sm:flex-row">
+          <img
+            src={sketchImage}
+            alt="The sketch this idea was described from"
+            className="max-h-40 w-full rounded-lg border border-neutral-200 bg-neutral-50 object-contain sm:w-48"
+          />
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+              Searched from your sketch
+            </p>
+            <p className="mt-2 text-sm text-neutral-700">{result.original_idea_text ?? result.idea_text}</p>
+          </div>
         </div>
       )}
 
@@ -358,6 +380,14 @@ export default function ResultsView({
           </div>
         )}
       </div>
+
+      {result.report_id && (
+        <RedesignStudio
+          key={`redesign-${result.report_id}`}
+          reportId={result.report_id}
+          onRecheck={onApplySuggestion}
+        />
+      )}
 
       {result.report_id && <ExaminationPreview key={`exam-${result.report_id}`} reportId={result.report_id} />}
 

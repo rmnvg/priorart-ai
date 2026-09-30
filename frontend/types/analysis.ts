@@ -252,6 +252,61 @@ export interface ExaminationPreview {
   unverified_quotes_dropped: number;
 }
 
+// Sketch input: backend/app/pipeline/sketch.py
+export interface SketchComponent {
+  id: string; // "C1"
+  name: string;
+  description: string;
+}
+
+export interface SketchRelationship {
+  source: string; // component id
+  target: string; // component id
+  relation: string; // "sits inside"
+}
+
+export interface SketchReading {
+  purpose: string;
+  components: SketchComponent[];
+  relationships: SketchRelationship[];
+  uncertain: string[]; // questions the model couldn't answer from the image
+}
+
+// Constrained redesign: backend/app/pipeline/redesign.py
+export interface Feature {
+  id: string; // "E1"
+  text: string;
+}
+
+export interface RedesignBrief {
+  locked_features: string[]; // feature ids the design must keep
+  constraints: string[];
+  cost_target_inr?: number | null;
+}
+
+export interface DesignAlternative {
+  title: string;
+  how_it_works: string;
+  what_changes: string;
+  keeps: string[];
+  drops_locked: string[]; // locked feature ids it doesn't say it keeps
+  constraint_notes: { constraint: string; approach: string }[];
+  avoids: { document_id: string; title: string; link: string; mechanism: string; quote: string }[];
+  revised_idea: string; // English, for the re-check run
+  change_summary: string; // English, the re-check's applied change
+}
+
+export interface RedesignResult {
+  features: Feature[];
+  locked_features: string[];
+  constraints: string[];
+  alternatives: DesignAlternative[];
+  matches_considered: { id: string; title: string; link: string }[];
+  evidence_basis: "full_text" | "snippets";
+  unverified_quotes_dropped: number;
+  language_name: string;
+}
+
 export interface ExampleReport {
   report_id: string;
   idea_text: string;

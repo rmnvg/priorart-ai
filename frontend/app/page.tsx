@@ -29,6 +29,9 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [previousConfidence, setPreviousConfidence] = useState<number | null>(null);
   const [appliedSuggestion, setAppliedSuggestion] = useState<string | null>(null);
+  // The sketch an analysis was described from, shown beside its report.
+  // Held only for the run it started; a shared link or re-check has none.
+  const [sketchImage, setSketchImage] = useState<string | null>(null);
   const [openingReport, setOpeningReport] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -37,6 +40,7 @@ export default function Home() {
     setOpeningReport(true);
     setPreviousConfidence(null);
     setAppliedSuggestion(null);
+    setSketchImage(null);
     fetchReport(reportId)
       .then((report) => {
         if (report) {
@@ -102,20 +106,24 @@ export default function Home() {
     }
   }
 
-  function handleSubmit(ideaText: string) {
+  function handleSubmit(ideaText: string, sketch?: string) {
     setPreviousConfidence(null);
     setAppliedSuggestion(null);
+    setSketchImage(sketch ?? null);
     runAnalysis({ idea_text: ideaText });
   }
 
-  function handleApplySuggestion({ english, shown }: AppliedSuggestion) {
+  function handleApplySuggestion({ english, shown, revisedIdea }: AppliedSuggestion) {
     if (!result) return;
     setPreviousConfidence(result.overall_novelty_confidence);
     setAppliedSuggestion(shown);
+    setSketchImage(null);
     // The pipeline always gets English (the report's idea_text already is);
     // the language pin keeps the re-checked report in the reader's language.
+    // A redesign brings its own complete revised idea; a suggestion is
+    // appended to the current one.
     runAnalysis({
-      idea_text: `${result.idea_text} Additionally, ${english}`,
+      idea_text: revisedIdea ?? `${result.idea_text} Additionally, ${english}`,
       language: result.language_code && result.language_code !== "en" ? result.language_code : undefined,
       parent_report_id: result.report_id ?? undefined,
       applied_change: english,
@@ -132,6 +140,7 @@ export default function Home() {
     setErrorMessage(null);
     setPreviousConfidence(null);
     setAppliedSuggestion(null);
+    setSketchImage(null);
   }
 
   return (
@@ -190,6 +199,7 @@ export default function Home() {
             onApplySuggestion={handleApplySuggestion}
             previousConfidence={previousConfidence}
             appliedSuggestion={appliedSuggestion}
+            sketchImage={sketchImage}
           />
         </div>
       )}
