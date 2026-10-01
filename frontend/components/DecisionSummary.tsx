@@ -1,4 +1,5 @@
 import { buildDecision } from "@/lib/decision";
+import { EVIDENCE_SOURCE_LABELS } from "@/lib/evidence";
 import type { Translate } from "@/lib/i18n";
 import type { AnalysisResult, NoveltyVerdict } from "@/types/analysis";
 
@@ -22,6 +23,13 @@ export default function DecisionSummary({
 }) {
   const decision = buildDecision(result);
   const next = decision.nextSuggestionIndex !== null ? suggestions[decision.nextSuggestionIndex] : null;
+  // The verified passage that shows the closest match's overlap, when the
+  // report has feature evidence for it.
+  const closestEvidence = decision.closest
+    ? (result.feature_findings ?? [])
+        .flatMap((f) => f.evidence.map((e) => ({ ...e, feature: f.feature })))
+        .find((e) => e.result_id === decision.closest!.result_id)
+    : undefined;
   const closestType = decision.closest
     ? result.ranked_results.find((r) => r.id === decision.closest!.result_id)?.source_type
     : undefined;
@@ -52,6 +60,17 @@ export default function DecisionSummary({
               {decision.closest.overlapping_elements.length > 0 &&
                 ` — shares ${decision.closest.overlapping_elements.slice(0, 2).join("; ")}`}
             </p>
+            {closestEvidence && (
+              <blockquote className="mt-2 border-l-2 border-amber-300 pl-2.5 text-xs italic text-neutral-600">
+                &ldquo;{closestEvidence.quote}&rdquo;
+              </blockquote>
+            )}
+            {decision.closest.evidence_source && (
+              <p className="mt-1.5 text-xs text-neutral-400">
+                Judged {EVIDENCE_SOURCE_LABELS[decision.closest.evidence_source]}
+                {decision.closest.found_via === "citation" && ", found by citation follow-up"}
+              </p>
+            )}
           </>
         ) : (
           <p className="mt-1.5 text-sm text-neutral-600">

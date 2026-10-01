@@ -3,6 +3,7 @@ assistant. Written to be read by a model and relayed to a person: the
 verdict first, the evidence as links, nothing decorative.
 """
 from app.models import AnalysisResult
+from app.pipeline.evidence import headline
 
 VERDICT_LABELS = {
     "blocking": "blocking",
@@ -22,11 +23,27 @@ def _verdict_word(confidence: float) -> str:
 
 
 def report_to_markdown(result: AnalysisResult, report_url: str | None = None) -> str:
-    pct = round(result.overall_novelty_confidence * 100)
-    lines = [
-        f"## Prior-art check: {pct}% novelty confidence ({_verdict_word(result.overall_novelty_confidence)})",
-        "",
-    ]
+    summary = headline(result.feature_findings, len(result.examined_documents))
+    if summary:
+        lines = ["## Prior-art check", "", summary, ""]
+        for f in result.feature_findings:
+            if f.evidence:
+                e = f.evidence[0]
+                via = ", found by citation follow-up" if e.found_via == "citation" else ""
+                lines.append(
+                    f"- **{f.feature}** — [{e.title}]({e.link}) ({e.evidence_source}{via}): "
+                    f"\"{e.quote}\""
+                )
+            else:
+                lines.append(f"- **{f.feature}** — not found in the evidence reviewed")
+        lines.append("")
+    else:
+        # Reports saved before feature findings existed.
+        lines = [
+            f"## Prior-art check: {_verdict_word(result.overall_novelty_confidence)} "
+            "(model estimate)",
+            "",
+        ]
     if result.plain_summary:
         lines += [result.plain_summary, ""]
 
@@ -35,6 +52,17 @@ def report_to_markdown(result: AnalysisResult, report_url: str | None = None) ->
         for a in result.candidate_assessments[:MAX_CLOSEST]:
             overlap = "; ".join(a.overlapping_elements[:3]) or "no real overlap"
             lines.append(f"- [{a.title}]({a.link}) — {VERDICT_LABELS[a.verdict]}. Overlaps: {overlap}")
+        lines.append("")
+
+    changed = [f for f in result.citation_followups if f.changed_conclusion]
+    for f in changed:
+        shown = {x.id: x.feature for x in result.feature_findings}
+        lines.append(
+            f"**Citation follow-up changed the conclusion:** [{f.title}]({f.link}), cited by the "
+            f"closest matches but missed by keyword search, shows "
+            f"{'; '.join(shown.get(x, x) for x in f.newly_found)}."
+        )
+    if changed:
         lines.append("")
 
     discoveries = result.citation_network.discoveries if result.citation_network else []
@@ -56,8 +84,9 @@ def report_to_markdown(result: AnalysisResult, report_url: str | None = None) ->
 
     india = result.india_status
     lines.append(
-        f"**India:** {india.blocking_in_india} of the closest matches are in force in India, "
-        f"{india.active_elsewhere_only} only elsewhere."
+        f"**India:** {india.related_active_in_india} related patents among the closest matches "
+        f"are reported active in India, {india.active_elsewhere_only} only elsewhere "
+        "(legal status, not an overlap finding)."
     )
     lines.append("")
 

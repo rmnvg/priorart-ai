@@ -9,7 +9,7 @@ describe("buildReportBrief", () => {
       "http://localhost:3000/?report=abc"
     );
     expect(brief).toContain("## Invention\n\nA folding paddle");
-    expect(brief).toContain("**Novelty confidence:** 42%");
+    expect(brief).toContain("**AI's overall read (model estimate):** 42%");
     expect(brief).toContain("Interactive report: http://localhost:3000/?report=abc");
   });
 

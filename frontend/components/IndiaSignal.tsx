@@ -41,13 +41,16 @@ export default function IndiaSignal({
       <div className="border-l-4 border-orange-400 p-5">
         <h2 className="font-semibold text-neutral-900">{title}</h2>
         <p className="mt-1 text-sm text-neutral-500">
-          Whether the closest matches are actually in force in India, or only protected
-          elsewhere, where the same idea may still be open.
+          The legal status Google Patents reports for the closest matches: in force in
+          India, or only elsewhere. This is about where related patents are active, not
+          whether they overlap your idea — that is shown in &ldquo;What we found&rdquo;.
         </p>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="rounded-lg bg-orange-50 p-3">
-            <div className="text-2xl font-semibold text-orange-900">{status.blocking_in_india}</div>
-            <div className="text-sm text-orange-800">Active &amp; blocking in India</div>
+            <div className="text-2xl font-semibold text-orange-900">
+              {status.related_active_in_india}
+            </div>
+            <div className="text-sm text-orange-800">Related patents reported active in India</div>
           </div>
           <div className="rounded-lg bg-neutral-50 p-3">
             <div className="text-2xl font-semibold text-neutral-900">

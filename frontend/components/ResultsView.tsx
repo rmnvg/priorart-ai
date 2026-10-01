@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import AskReport from "@/components/AskReport";
 import CitationDiscoveries from "@/components/CitationDiscoveries";
 import ClaimChartView from "@/components/ClaimChart";
 import ExaminationPreview from "@/components/ExaminationPreview";
 import CompetitorLandscape from "@/components/CompetitorLandscape";
 import DecisionSummary from "@/components/DecisionSummary";
+import EvidenceFindings from "@/components/EvidenceFindings";
 import FilingTimeline, { filingsByYear, MIN_FILINGS_TO_PLOT } from "@/components/FilingTimeline";
 import IndiaSignal from "@/components/IndiaSignal";
 import LandscapeGraph from "@/components/LandscapeGraph";
@@ -15,6 +17,7 @@ import RecheckComparison from "@/components/RecheckComparison";
 import RedesignStudio from "@/components/RedesignStudio";
 import ReportActions from "@/components/ReportActions";
 import SearchStrategyPanel from "@/components/SearchStrategyPanel";
+import { SIMILARITY_HINT, similarityBand, summarizeEvidence } from "@/lib/evidence";
 import { labelsFor } from "@/lib/i18n";
 import type { AnalysisResult, NoveltyVerdict as Verdict, SourceType } from "@/types/analysis";
 
@@ -55,6 +58,28 @@ function StatTile({
       </div>
       <div className={`mt-0.5 text-xs ${accent ? "text-emerald-800" : "text-neutral-500"}`}>
         {label}
+      </div>
+    </div>
+  );
+}
+
+function SectionHeading({
+  step,
+  title,
+  subtitle,
+}: {
+  step: number;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <div className="flex gap-3 border-t border-neutral-200 pt-6">
+      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-sm font-semibold text-white">
+        {step}
+      </span>
+      <div>
+        <h2 className="text-xl font-bold text-neutral-900">{title}</h2>
+        <p className="mt-0.5 text-sm text-neutral-500">{subtitle}</p>
       </div>
     </div>
   );
@@ -104,8 +129,8 @@ function ResultCard({
             {VERDICT_LABELS[verdict]}
           </span>
         )}
-        <span className="ml-auto text-xs text-neutral-400">
-          {Math.round(result.relevance_score * 100)}% match
+        <span className="ml-auto text-xs text-neutral-400" title={SIMILARITY_HINT}>
+          {similarityBand(result.relevance_score)} text similarity
         </span>
       </div>
       <h3 className="mt-2 font-medium text-neutral-900">{result.title}</h3>
@@ -153,6 +178,16 @@ export default function ResultsView({
   sketchImage,
 }: ResultsViewProps) {
   const [showAllResults, setShowAllResults] = useState(false);
+  // The research detail sits behind one toggle so the decision and the
+  // redesign flow are reachable without a long scroll. Printing opens it,
+  // so a printed report is still complete.
+  const [exploreOpen, setExploreOpen] = useState(false);
+  useEffect(() => {
+    const open = () => flushSync(() => setExploreOpen(true));
+    window.addEventListener("beforeprint", open);
+    return () => window.removeEventListener("beforeprint", open);
+  }, []);
+  const evidence = summarizeEvidence(result);
   // Localized reports can be flipped to English — to check a translation,
   // or to share with someone who reads English.
   const [showEnglish, setShowEnglish] = useState(false);
@@ -270,7 +305,17 @@ export default function ResultsView({
         </div>
       )}
 
-      <NoveltyVerdict confidence={result.overall_novelty_confidence} t={t} />
+      <SectionHeading
+        step={1}
+        title="What we found"
+        subtitle="The closest existing work and the passages that show it."
+      />
+
+      {evidence ? (
+        <EvidenceFindings summary={evidence} />
+      ) : (
+        <NoveltyVerdict confidence={result.overall_novelty_confidence} t={t} />
+      )}
 
       <DecisionSummary
         result={result}
@@ -279,6 +324,8 @@ export default function ResultsView({
           (s, i) => localized?.differentiation_suggestions[i] ?? s
         )}
       />
+
+      {evidence && <NoveltyVerdict confidence={result.overall_novelty_confidence} t={t} secondary />}
 
       {plainSummary && (
         <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
@@ -289,53 +336,11 @@ export default function ResultsView({
 
       <ReportActions result={result} />
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <StatTile label="Results analyzed" value={result.ranked_results.length} />
-        <StatTile label="Assessed in depth" value={result.candidate_assessments.length} />
-        <StatTile
-          label="Likely free to build on"
-          value={result.public_domain?.count ?? 0}
-          accent
-        />
-        <StatTile label="Blocking in India" value={result.india_status.blocking_in_india} />
-      </div>
-
-      {result.public_domain && <PublicDomain summary={result.public_domain} rankedResults={result.ranked_results} title={t("free_to_build")} />}
-
-      <div>
-        <h2 className="text-xl font-bold text-neutral-900">Patent landscape</h2>
-        <p className="mt-1 text-sm text-neutral-500">
-          Each dot is a result from the search, sized and pulled closer by how well it
-          matches your idea, and colored by patent classification. Hover a dot for
-          details; click or tap it to open the source.
-        </p>
-        <div className="mt-4">
-          <LandscapeGraph result={result} />
-        </div>
-      </div>
-
-      {result.citation_network && (
-        <CitationDiscoveries network={result.citation_network} rankedResults={result.ranked_results} />
-      )}
-
-      {(hasTimeline || result.market_trend) && (
-        <div className="break-inside-avoid">
-          <h2 className="text-xl font-bold text-neutral-900">Timing</h2>
-          <p className="mt-1 text-sm text-neutral-500">
-            Is this space heating up, and does anyone want this?
-          </p>
-          <div
-            className={`mt-4 grid grid-cols-1 gap-6 ${hasTimeline && result.market_trend ? "md:grid-cols-2" : ""}`}
-          >
-            {hasTimeline && <FilingTimeline results={result.ranked_results} />}
-            {result.market_trend && <MarketTrendChart trend={result.market_trend} />}
-          </div>
-        </div>
-      )}
-
-      <CompetitorLandscape assignees={result.top_assignees} />
-
-      <IndiaSignal status={result.india_status} title={t("india_signal")} />
+      <SectionHeading
+        step={2}
+        title="What you could change"
+        subtitle="Keep what you can't give up, explore alternatives, then re-check one against the same closest matches to see what still overlaps."
+      />
 
       <div className="rounded-xl border border-green-200 bg-green-50/60 p-5 shadow-sm">
         <h2 className="text-lg font-semibold text-green-900">{t("differentiate_title")}</h2>
@@ -391,33 +396,107 @@ export default function ResultsView({
 
       {result.report_id && <ExaminationPreview key={`exam-${result.report_id}`} reportId={result.report_id} />}
 
-      {result.report_id && <AskReport key={result.report_id} reportId={result.report_id} t={t} />}
+      <SectionHeading
+        step={3}
+        title="Explore the research"
+        subtitle="The landscape graph, citations, timeline, assignees, India status, the full results and every query that was run."
+      />
 
-      {result.claim_chart && (
-        <ClaimChartView claimChart={result.claim_chart} ideaText={result.idea_text} />
+      <button
+        onClick={() => setExploreOpen((v) => !v)}
+        aria-expanded={exploreOpen}
+        className="w-full rounded-lg border border-neutral-300 bg-white py-2.5 text-sm font-medium text-neutral-700 shadow-sm transition hover:bg-neutral-50 print:hidden"
+      >
+        {exploreOpen ? "Hide the research detail" : `Show the research detail (${result.ranked_results.length} results)`}
+      </button>
+
+      {exploreOpen && (
+        <div className="space-y-8">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <StatTile label="Results analyzed" value={result.ranked_results.length} />
+            <StatTile label="Assessed in depth" value={result.candidate_assessments.length} />
+            <StatTile
+              label="Likely free to build on"
+              value={result.public_domain?.count ?? 0}
+              accent
+            />
+            <StatTile
+              label="Related patents reported active in India"
+              value={result.india_status.related_active_in_india}
+            />
+          </div>
+
+          {result.public_domain && <PublicDomain summary={result.public_domain} rankedResults={result.ranked_results} title={t("free_to_build")} />}
+
+          {result.citation_network && (
+            <CitationDiscoveries
+              network={result.citation_network}
+              rankedResults={result.ranked_results}
+              followups={result.citation_followups ?? []}
+              findings={result.feature_findings ?? []}
+            />
+          )}
+
+          {result.claim_chart && (
+            <ClaimChartView claimChart={result.claim_chart} ideaText={result.idea_text} />
+          )}
+
+          <div>
+            <h2 className="text-xl font-bold text-neutral-900">Patent landscape</h2>
+            <p className="mt-1 text-sm text-neutral-500">
+              Each dot is a result from the search, sized and pulled closer by how well it
+              matches your idea, and colored by patent classification. Hover a dot for
+              details; click or tap it to open the source.
+            </p>
+            <div className="mt-4">
+              <LandscapeGraph result={result} />
+            </div>
+          </div>
+
+          {(hasTimeline || result.market_trend) && (
+            <div className="break-inside-avoid">
+              <h2 className="text-xl font-bold text-neutral-900">Timing</h2>
+              <p className="mt-1 text-sm text-neutral-500">
+                Is this space heating up, and does anyone want this?
+              </p>
+              <div
+                className={`mt-4 grid grid-cols-1 gap-6 ${hasTimeline && result.market_trend ? "md:grid-cols-2" : ""}`}
+              >
+                {hasTimeline && <FilingTimeline results={result.ranked_results} />}
+                {result.market_trend && <MarketTrendChart trend={result.market_trend} />}
+              </div>
+            </div>
+          )}
+
+          <CompetitorLandscape assignees={result.top_assignees} />
+
+          <IndiaSignal status={result.india_status} title={t("india_signal")} />
+
+          {result.report_id && <AskReport key={result.report_id} reportId={result.report_id} t={t} />}
+
+          <div>
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-xl font-bold text-neutral-900">Prior art & related results</h2>
+              <span className="text-sm text-neutral-400">{result.ranked_results.length} found</span>
+            </div>
+            <div className="mt-4 space-y-3">
+              {visibleResults.map((r) => (
+                <ResultCard key={r.id} result={r} verdict={verdictByResultId.get(r.id) ?? null} />
+              ))}
+            </div>
+            {isCollapsible && (
+              <button
+                onClick={() => setShowAllResults((v) => !v)}
+                className="mt-4 w-full rounded-lg border border-neutral-300 bg-white py-2.5 text-sm font-medium text-neutral-700 shadow-sm transition hover:bg-neutral-50"
+              >
+                {showAllResults ? "Show fewer results" : `Show all ${result.ranked_results.length} results`}
+              </button>
+            )}
+          </div>
+
+          {result.search_strategy && <SearchStrategyPanel strategy={result.search_strategy} />}
+        </div>
       )}
-
-      <div>
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-bold text-neutral-900">Prior art & related results</h2>
-          <span className="text-sm text-neutral-400">{result.ranked_results.length} found</span>
-        </div>
-        <div className="mt-4 space-y-3">
-          {visibleResults.map((r) => (
-            <ResultCard key={r.id} result={r} verdict={verdictByResultId.get(r.id) ?? null} />
-          ))}
-        </div>
-        {isCollapsible && (
-          <button
-            onClick={() => setShowAllResults((v) => !v)}
-            className="mt-4 w-full rounded-lg border border-neutral-300 bg-white py-2.5 text-sm font-medium text-neutral-700 shadow-sm transition hover:bg-neutral-50"
-          >
-            {showAllResults ? "Show fewer results" : `Show all ${result.ranked_results.length} results`}
-          </button>
-        )}
-      </div>
-
-      {result.search_strategy && <SearchStrategyPanel strategy={result.search_strategy} />}
     </div>
   );
 }

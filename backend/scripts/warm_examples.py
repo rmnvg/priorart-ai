@@ -9,8 +9,9 @@ Usage, from backend/:
     python -m scripts.warm_examples --refresh kayak
         # re-run a cached one (e.g. to pick up new pipeline features)
 
-Each fresh analysis costs up to 14 SerpApi searches (3 patent queries, 1
-refinement query, 1 market search, 1 Trends lookup, up to 8 detail lookups).
+Each fresh analysis costs up to 16 SerpApi searches (3 patent queries, 1
+refinement query, 1 market search, 1 Trends lookup, up to 8 detail lookups,
+up to 2 citation follow-up lookups).
 """
 import argparse
 import asyncio
@@ -19,7 +20,7 @@ import sys
 from app import service
 from app.cache import evict, get_cached
 
-SEARCHES_PER_ANALYSIS = 14
+SEARCHES_PER_ANALYSIS = 16
 
 # The first two must match frontend/lib/sampleIdea.ts exactly (a test
 # checks), or the sample buttons turn into slow, billable live runs.

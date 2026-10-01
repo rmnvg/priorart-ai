@@ -8,6 +8,7 @@ import {
   type GraphLink,
   type GraphNode,
 } from "@/lib/landscapeGraph";
+import { similarityBand } from "@/lib/evidence";
 import type { AnalysisResult } from "@/types/analysis";
 
 // react-force-graph-2d renders to an HTML canvas and reaches for `window` at
@@ -121,9 +122,9 @@ export default function LandscapeGraph({ result }: { result: AnalysisResult }) {
           nodeLabel={(node) => {
             const n = node as GraphNode;
             if (n.isIdea) return "Your idea";
-            const pct = n.relevanceScore ? Math.round(n.relevanceScore * 100) : null;
+            const band = n.relevanceScore ? similarityBand(n.relevanceScore) : null;
             const verdict = n.verdict ? ` · ${n.verdict.replace(/_/g, " ")}` : "";
-            return `${n.label}${pct !== null ? ` (${pct}% match${verdict})` : ""}`;
+            return `${n.label}${band !== null ? ` (${band.toLowerCase()} text similarity${verdict})` : ""}`;
           }}
           linkWidth={(link) => ((link as GraphLink).kind === "citation" ? 1.5 : 1)}
           linkColor={(link) =>

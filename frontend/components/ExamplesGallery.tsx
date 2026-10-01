@@ -38,7 +38,9 @@ export default function ExamplesGallery({ onOpen }: { onOpen: (reportId: string)
                 <span className="flex items-center gap-1.5">
                   <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: verdict.color }} />
                   <span className="font-medium text-neutral-700">
-                    {Math.round(ex.novelty_confidence * 100)}% · {englishLabel(verdict.label)}
+                    {ex.features_total
+                      ? `Overlap in ${ex.features_found ?? 0} of ${ex.features_total} features`
+                      : englishLabel(verdict.label)}
                   </span>
                 </span>
                 <span>{ex.results_count} results</span>

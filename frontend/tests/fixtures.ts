@@ -22,7 +22,7 @@ export function analysis(overrides: Partial<AnalysisResult> = {}): AnalysisResul
     overall_novelty_confidence: 0.5,
     differentiation_suggestions: [],
     citations: [],
-    india_status: { blocking_in_india: 0, active_elsewhere_only: 0 },
+    india_status: { related_active_in_india: 0, active_elsewhere_only: 0 },
     claim_chart: null,
     top_assignees: [],
     public_domain: null,

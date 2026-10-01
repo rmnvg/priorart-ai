@@ -5,9 +5,15 @@
 **AI-powered patent prior-art & novelty checker.** Describe an invention idea in
 plain words (typed or spoken, in English, Hindi or another Indian language) and get
 back ranked prior art (patents, academic papers, and existing
-products), a novelty verdict with reasoning and citations, an interactive
-patent-landscape graph, and concrete suggestions for how to differentiate your idea
-from what already exists.
+products), a feature-by-feature evidence check, an interactive patent-landscape graph,
+and concrete suggestions for how to differentiate your idea from what already exists.
+
+The report leads with **evidence, not a score**: *"We found overlap in these three
+features. This fourth feature wasn't found in the evidence reviewed."* Under each
+feature is the exact passage from the document that shows it, checked word for word
+against that document's text in code, and whether it came from the patent's claims, its
+abstract, or only a search snippet. "Not found" is always bounded by what was reviewed.
+The model's overall novelty estimate is still shown, as a small, labelled estimate.
 
 It also does the inverse, which most prior-art tools don't: it identifies the patents
 in your space whose **protection is reported as ended**. Those usually aren't
@@ -19,7 +25,12 @@ And it goes past keyword search the way a professional searcher would: it **chas
 citations**. The patents closest to your idea cite older work and are cited by newer
 work, and documents that several close matches all point to are almost always
 relevant, whatever words they use. Keyword search can't find those. Citation chasing
-can, at no extra API cost.
+can, from data the deep-dive already fetched.
+
+Then it **follows them up**. The two strongest citation discoveries are fetched in full
+(`google_patents_details`) and checked against the same features as everything else.
+If one shows a feature no searched document did, the conclusion changes, and the report
+names the citation that changed it.
 
 The search is an **agent**, not a single query. After the first round it reads the
 results, notices the vocabulary the relevant patents use ("patents call this a
@@ -50,8 +61,12 @@ code, from one of the original closest matches it moves away from. Cost and perf
 are treated as design targets, and every design is labelled a hypothesis until the
 inventor re-checks it through the same evidence-backed re-check as above.
 
-The report leads with **three plain answers**: the closest existing work, what sets
-the idea apart in the searched evidence, and the next step.
+The report is organised as a decision, not a dashboard: **What we found** (the
+feature evidence, the closest match with its passage, what sets the idea apart, the
+next step), **What you could change** (differentiation suggestions, the redesign
+studio, re-check, the examination preview), and **Explore the research** (the graph,
+citations, timeline, assignees, India status, every result and query), which stays
+folded until opened.
 
 And the report is a conversation, not a dead end: **ask it follow-up questions**
 ("which patent is the real risk?", "can I sell this in India?") and get short answers
@@ -96,12 +111,13 @@ flowchart TD
         r["<b>3 · Rank & Dedupe</b><br/>merge, dedupe by id<br/><span style='font-size:11px'>score relevance via sentence-transformer embeddings</span>"]
         a["<b>3b · Refinement Agent</b> — LLM + SerpApi<br/>reads the first results, learns the patents' own vocabulary<br/><span style='font-size:11px'>searches again in their terms, re-ranks everything</span>"]
         d["<b>4 · Deep-Dive</b> — SerpApi, run concurrently<br/>full claims/abstract + citations for top 8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
-        n["<b>5 · Novelty Verdict</b> — LLM<br/>overlap/differences/verdict per candidate<br/><span style='font-size:11px'>+ confidence + differentiation + citations + claim spans</span>"]
+        n["<b>5 · Novelty Verdict</b> — LLM<br/>overlap/differences/verdict per candidate<br/><span style='font-size:11px'>+ idea features with verified quotes + differentiation + claim spans</span>"]
         i["<b>6 · India Signal · Public Domain · Citation Chasing</b><br/><span style='font-size:11px'>computed from data already pulled in steps 2 and 4 — no extra API calls</span>"]
+        f["<b>6a · Citation Follow-up</b> — SerpApi + LLM<br/>fetch the top 2 shared citations, check them against the idea's features<br/><span style='font-size:11px'>a newly shown feature updates the conclusion, with the citation named</span>"]
         l["<b>6b · Localize</b> — LLM<br/><span style='font-size:11px'>summary, suggestions and labels written back in the inventor's language</span>"]
         o["<b>7 · Orchestrator</b><br/><span style='font-size:11px'>async generator → staged progress events → one structured result</span>"]
 
-        q --> s --> r --> a --> d --> n --> i --> l --> o
+        q --> s --> r --> a --> d --> n --> i --> f --> l --> o
     end
 
     api{{"⚡ FastAPI · POST /analyze<br/><i>Server-Sent Events</i>"}}
@@ -143,7 +159,7 @@ citation comes from SerpApi; the LLM only writes the queries and compares texts.
 | SerpApi engine | Calls per analysis | What it provides |
 |---|---|---|
 | `google_patents` (`scholar=true`, `clustered=true`) | 3 + 1 refinement | Prior-art patents **and** academic papers in one call per query angle. The India angle adds `country=IN`, so it searches Indian Patent Office filings for real. Each result's `country_status` feeds the India signal and the public-domain finder, and the clustered `summary` feeds the assignee breakdown. |
-| `google_patents_details` | up to 8 | Full abstract + claims for the claim chart and novelty comparison, plus `patent_citations` / `cited_by` for **citation chasing** and the citation edges in the landscape graph. |
+| `google_patents_details` | up to 8 + 2 | Full abstract + claims for the feature evidence and claim chart, plus `patent_citations` / `cited_by` for **citation chasing** and the citation edges in the landscape graph. Up to 2 more calls **follow up** the strongest citation discoveries, so a document keyword search missed can change the conclusion. |
 | `google` | 1 | Market-availability check: is a product like this already sold? |
 | `google_trends` | 1 | Five years of search interest in the product category: does anyone want this? |
 
@@ -186,10 +202,12 @@ priorart-ai/
 │   │       ├── india_status.py       # 1.6
 │   │       ├── public_domain.py      # expired-patent finder
 │   │       ├── citation_chase.py     # backward/forward citation chasing
+│   │       ├── citation_followup.py  # fetch + assess top citation discoveries
+│   │       ├── evidence.py           # idea features, verified quotes, headline
 │   │       ├── market_trends.py      # Google Trends market-interest signal
 │   │       └── orchestrator.py       # 1.7 — wires it all together
 │   ├── tests/test_pipeline.py    # pure-logic tests (no keys/network needed)
-│   ├── benchmark/                # search-recall benchmark on 12 real patents
+│   ├── benchmark/                # search-recall benchmark on 17 real patents (12 dev + 5 held-out)
 │   ├── scripts/warm_examples.py  # fills the examples gallery
 │   ├── .cache/                   # persisted analyses — survives restarts
 │   └── requirements.txt
@@ -256,6 +274,7 @@ Optional settings in `backend/.env`:
 | `REFINEMENT_QUERIES` | `1` | Follow-up queries the refinement agent may run (1 search each); `0` turns it off |
 | `GROQ_VISION_MODEL` | `qwen/qwen3.8-27b` | Groq model that reads uploaded sketches (`GROQ_MODEL` is text-only) |
 | `DEEP_DIVE_TOP_N` | `8` | Candidates pulled in full (1 search each) |
+| `CITATION_FOLLOWUPS` | `2` | Citation discoveries fetched and assessed (1 search each); `0` turns it off |
 | `ENABLE_TRENDS` | `true` | Google Trends market-interest lookup (1 search) |
 | `ALLOWED_ORIGINS` | none | Extra CORS origins for a deployed frontend |
 | `PUBLIC_APP_URL` | `http://localhost:3000` | Where report links from the MCP server point |
@@ -285,9 +304,9 @@ port if that one's taken) and paste in an invention idea.
 
 ### API quota and caching
 
-A single analysis costs **up to 14 SerpApi searches** (3 patent queries + 1
-refinement query + 1 market query + 1 Trends lookup + up to 8 detail lookups). SerpApi's free tier allows
-250/month, so roughly 20 fresh analyses. The independent calls run concurrently, so
+A single analysis costs **up to 16 SerpApi searches** (3 patent queries + 1
+refinement query + 1 market query + 1 Trends lookup + up to 8 detail lookups + up to 2
+citation follow-ups). SerpApi's free tier allows 250/month, so roughly 15 fresh analyses. The independent calls run concurrently, so
 a fresh run takes seconds of search time, not a minute.
 
 Because of that, every completed analysis is cached to `backend/.cache/`, keyed on
@@ -367,20 +386,29 @@ still work.
 
 ## Does it actually find prior art? The benchmark
 
-`backend/benchmark/` holds 12 real, granted patents, each verified on Google
+`backend/benchmark/` holds 17 real, granted patents, each verified on Google
 Patents: the one-click checkout, slide-to-unlock, the coffee pod, the bladeless
-fan, and more. Each one is paired with a plain-English description of the invention,
+fan, and more. Each one is paired with a plain description of the invention,
 written the way an inventor would say it and **deliberately avoiding the patent's
 own wording**. The benchmark runs the search on each description and records where
 the real patent lands, **before and after the refinement agent**.
 
+The cases are split. The 12 **development** cases were available while the search was
+being built. The 5 **held-out** cases were written afterwards and are never used for
+tuning. Three of them are in Hindi and go through the same translation step as the
+app. The report gives each split its own figures, and it lists every case where
+refinement made the ranking worse, every failure with the queries that were run, and
+the runtime and searches used.
+
 ```bash
 cd backend
-python -m benchmark.run --dry-run   # cases + SerpApi cost (~48 searches)
-python -m benchmark.run             # writes benchmark/results/latest.md
+python -m benchmark.run --dry-run         # cases + SerpApi cost (~68 searches)
+python -m benchmark.run                   # writes benchmark/results/latest.md + latest.json
+python -m benchmark.run --split heldout   # held-out cases only (~20 searches)
 ```
 
-Results: see [`backend/benchmark/results/latest.md`](backend/benchmark/results/latest.md).
+Results are written to `backend/benchmark/results/latest.md` when the benchmark is
+run. It measures retrieval only, not the legal accuracy of any verdict.
 
 ---
 
@@ -436,15 +464,22 @@ technique patent professionals call "claim charting"):
   Patent Office is often `UNKNOWN` rather than `ACTIVE`/`NOT_ACTIVE` — a real gap in
   Google's own data coverage, not a bug in this tool. The India signal is accurate
   to what Google Patents reports, which is sometimes incomplete for `IN` filings.
+  It is a legal-status count ("related patents reported active in India"), not a
+  finding that those patents overlap the idea.
 - **Public-domain status is indicative, not legal advice.** It relies on the legal
   status Google Patents reports, which is incomplete for some jurisdictions, and a
   patent lapsed early for unpaid fees can occasionally be revived. The tool
   deliberately requires positive evidence of lapse (never treating "unknown" as
   free) and labels the two cases differently, but verify with an attorney before
   relying on it commercially.
-- **Novelty confidence reflects textual/conceptual overlap**, not scientific or
-  technical plausibility — it can't tell you an idea is implausible, only that it
-  does or doesn't textually overlap with what search turned up.
+- **The feature evidence is bounded by what was reviewed**: abstracts and leading
+  claims of the top documents, not full specifications. "Not found" means not in
+  those texts. The model's overall novelty estimate is not a calibrated probability,
+  which is why it's shown below the evidence and labelled as an estimate. Neither one
+  says anything about technical plausibility.
+- **Result similarity** ("High / Medium / Low text similarity") is embedding
+  similarity between the result's text and the idea. It orders results; it is not a
+  probability of overlap, so it is never shown as a percentage.
 - **Claim-chart highlighting** depends on the LLM copying spans verbatim from the
   source text; when it paraphrases instead (common with longer patent claim text),
   that pair is silently skipped rather than mis-highlighted. Expect it to show

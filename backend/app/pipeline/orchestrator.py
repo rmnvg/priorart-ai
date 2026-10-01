@@ -16,7 +16,7 @@ import asyncio
 import logging
 from collections.abc import AsyncGenerator
 
-from app.config import DEEP_DIVE_TOP_N, ENABLE_TRENDS, REFINEMENT_QUERIES
+from app.config import CITATION_FOLLOWUPS, DEEP_DIVE_TOP_N, ENABLE_TRENDS, REFINEMENT_QUERIES
 from app.models import (
     AnalysisResult,
     AnalyzeStreamEvent,
@@ -29,6 +29,11 @@ from app.models import (
     SearchStrategy,
 )
 from app.pipeline.citation_chase import chase_citations
+from app.pipeline.citation_followup import (
+    FollowUpOutcome,
+    follow_up_citations,
+    select_discoveries,
+)
 from app.pipeline.deepdive import deep_dive
 from app.pipeline.india_status import compute_india_status
 from app.pipeline.language import detect_and_translate, language_name_for, localize_report
@@ -58,11 +63,13 @@ MARKET_CONTEXT_TOP_N = 3
 NO_LOCALIZATION = {"en", "und"}
 
 
-def _count_serpapi_calls(patent_queries: int, deep_dives: int, used_trends: bool) -> dict[str, int]:
+def _count_serpapi_calls(
+    patent_queries: int, deep_dives: int, used_trends: bool, followups: int = 0
+) -> dict[str, int]:
     calls = {
         "google_patents": patent_queries,
         "google": 1,
-        "google_patents_details": deep_dives,
+        "google_patents_details": deep_dives + followups,
     }
     if used_trends:
         calls["google_trends"] = 1
@@ -221,6 +228,37 @@ async def run_pipeline(
         public_domain = find_public_domain(ranked)
         citation_network = chase_citations(top_candidates, ranked)
 
+        # Second investigation step: fetch the strongest citation discoveries
+        # and assess them against the same features, so what citation chasing
+        # finds can change the conclusion rather than just being listed.
+        feature_findings = novelty_result.feature_findings
+        candidate_assessments = list(novelty_result.candidate_assessments)
+        followup = FollowUpOutcome()
+        to_follow = select_discoveries(citation_network, CITATION_FOLLOWUPS)
+        if to_follow and feature_findings:
+            yield ProgressEvent(
+                stage="scoring_novelty",
+                message=f"Following up {len(to_follow)} document(s) the closest matches cite "
+                "but the keyword search missed...",
+            )
+            followup = await asyncio.to_thread(
+                follow_up_citations,
+                english_idea,
+                citation_network,
+                feature_findings,
+                CITATION_FOLLOWUPS,
+            )
+            candidate_assessments += followup.assessments
+            feature_text = {f.id: f.feature for f in feature_findings}
+            for f in followup.followups:
+                if f.changed_conclusion:
+                    yield ProgressEvent(
+                        stage="scoring_novelty",
+                        message=f"Citation follow-up changed the conclusion: \"{f.title}\" shows "
+                        + "; ".join(feature_text[x] for x in f.newly_found)
+                        + ", which no searched document did.",
+                    )
+
         localized = None
         if output_code not in NO_LOCALIZATION:
             yield ProgressEvent(
@@ -253,7 +291,7 @@ async def run_pipeline(
         result = AnalysisResult(
             idea_text=english_idea,
             ranked_results=ranked,
-            candidate_assessments=novelty_result.candidate_assessments,
+            candidate_assessments=candidate_assessments,
             overall_novelty_confidence=novelty_result.overall_novelty_confidence,
             differentiation_suggestions=novelty_result.differentiation_suggestions,
             citations=novelty_result.citations,
@@ -281,6 +319,7 @@ async def run_pipeline(
                     len(bundles),
                     len(top_candidates),
                     ENABLE_TRENDS and bool(query_result.trends_keyword),
+                    followup.lookups,
                 ),
                 refinement_observation=refinement.observation if refinement else None,
                 refinement_terms=refinement.new_terms if refinement else [],
@@ -293,9 +332,14 @@ async def run_pipeline(
                     title=c.title,
                     link=c.link,
                     text=c.summary_text,
+                    evidence_source=c.evidence_source,
+                    found_via=found_via,
                 )
-                for c in top_candidates
+                for c, found_via in [(c, "search") for c in top_candidates]
+                + [(c, "citation") for c in followup.details]
             ],
+            feature_findings=feature_findings,
+            citation_followups=followup.followups,
             market_trend=market_trend,
             plain_summary=novelty_result.plain_summary,
             original_idea_text=idea_text if translated else None,

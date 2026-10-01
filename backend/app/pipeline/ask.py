@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from app.llm import complete_json
 from app.models import AnalysisResult
+from app.pipeline.evidence import headline
 
 MAX_RANKED_IN_CONTEXT = 15
 MAX_HISTORY_TURNS = 4
@@ -77,9 +78,12 @@ def build_context(result: AnalysisResult, table: dict[str, AnswerSource]) -> str
 
     lines = [
         f"INVENTION: {result.idea_text}",
-        f"NOVELTY CONFIDENCE: {round(result.overall_novelty_confidence * 100)}% "
-        "(0 = fully anticipated, 100 = nothing similar found)",
+        f"MODEL'S OVERALL NOVELTY ESTIMATE: {round(result.overall_novelty_confidence * 100)}% "
+        "(an uncalibrated model estimate — prefer the feature evidence below)",
     ]
+    summary = headline(result.feature_findings, len(result.examined_documents))
+    if summary:
+        lines.append(f"FEATURE EVIDENCE: {summary}")
     if result.plain_summary:
         lines.append(f"SUMMARY: {result.plain_summary}")
 
@@ -122,7 +126,8 @@ def build_context(result: AnalysisResult, table: dict[str, AnswerSource]) -> str
 
     india = result.india_status
     lines.append(
-        f"\nINDIA: {india.blocking_in_india} of the closest matches in force in India; "
+        f"\nINDIA: {india.related_active_in_india} related patents among the closest matches "
+        "reported active in India (legal status only — not evidence they overlap the idea); "
         f"{india.active_elsewhere_only} in force elsewhere but not India; "
         f"{india.india_filings_found} Indian filings among results. Google Patents often "
         "reports Indian legal status as unknown."

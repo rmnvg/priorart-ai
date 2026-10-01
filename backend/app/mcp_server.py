@@ -140,9 +140,13 @@ def list_saved_reports() -> str:
         data = event.data
         idea = (data.original_idea_text or data.idea_text).strip()
         short = idea if len(idea) <= 120 else idea[:117] + "..."
-        lines.append(
-            f"- `{report_id}` — {round(data.overall_novelty_confidence * 100)}% novelty: {short}"
+        found = sum(1 for f in data.feature_findings if f.evidence)
+        verdict = (
+            f"overlap in {found} of {len(data.feature_findings)} features"
+            if data.feature_findings
+            else f"{round(data.overall_novelty_confidence * 100)}% model novelty estimate"
         )
+        lines.append(f"- `{report_id}` — {verdict}: {short}")
     return "\n".join(lines)
 
 
