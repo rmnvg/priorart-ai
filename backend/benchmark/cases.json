@@ -1,89 +1,146 @@
 {
-  "about": "Each case is a real granted patent, verified on Google Patents, paired with a plain-English description of the invention written the way an inventor would describe it -- deliberately avoiding the patent's own title and claim vocabulary. The benchmark asks: given only the plain description, does the search find the actual patent?",
+  "about": "Each case is a real granted patent, verified on Google Patents, paired with a plain-English description of the invention written the way an inventor would describe it -- deliberately avoiding the patent's own title and claim vocabulary. The benchmark asks: given only the plain description, does the search find the actual patent? Cases are split: 'development' cases were available while the search was being built and tuned; 'heldout' cases were written afterwards, are never used for tuning, and include descriptions in Hindi (run through the same translation step as the app). Report the two splits separately.",
   "cases": [
     {
       "id": "one-click-checkout",
       "patent": "US5960411A",
       "patent_title": "Method and system for placing a purchase order via a communications network",
       "priority_date": "1997-09-12",
-      "idea": "An online shopping website where a returning customer can buy something with a single click, because the site already remembers their delivery address and card details, so they never have to fill in a checkout form again."
+      "idea": "An online shopping website where a returning customer can buy something with a single click, because the site already remembers their delivery address and card details, so they never have to fill in a checkout form again.",
+      "split": "development"
     },
     {
       "id": "slide-to-unlock",
       "patent": "US8046721B2",
       "patent_title": "Unlocking a device by performing gestures on an unlock image",
       "priority_date": "2005-12-23",
-      "idea": "A phone whose touch screen stays locked until you drag a small on-screen button along a track from one side to the other, so it can't unlock by accident in your pocket."
+      "idea": "A phone whose touch screen stays locked until you drag a small on-screen button along a track from one side to the other, so it can't unlock by accident in your pocket.",
+      "split": "development"
     },
     {
       "id": "phone-grip",
       "patent": "US8560031B2",
       "patent_title": "Extending socket for portable media player",
       "priority_date": "2011-03-16",
-      "idea": "A small collapsible grip stuck to the back of a phone that pops out like a concertina, so you can hold the phone with one finger, prop it up as a stand, or wind your earphone wire around it."
+      "idea": "A small collapsible grip stuck to the back of a phone that pops out like a concertina, so you can hold the phone with one finger, prop it up as a stand, or wind your earphone wire around it.",
+      "split": "development"
     },
     {
       "id": "hoverboard",
       "patent": "US8738278B2",
       "patent_title": "Two-wheel, self-balancing vehicle with independently movable foot placement sections",
       "priority_date": "2012-02-12",
-      "idea": "A self-balancing board on two wheels where each foot stands on its own separate platform with its own motor and tilt sensor, so leaning each foot forward or back independently lets you steer."
+      "idea": "A self-balancing board on two wheels where each foot stands on its own separate platform with its own motor and tilt sensor, so leaning each foot forward or back independently lets you steer.",
+      "split": "development"
     },
     {
       "id": "pump-water-gun",
       "patent": "US4591071A",
       "patent_title": "Squirt gun",
       "priority_date": "1983-10-14",
-      "idea": "A toy water gun with a hand pump that builds up air pressure inside its water tank, so pulling the trigger fires a long, powerful stream; it also plays space-blaster sounds while it fires."
+      "idea": "A toy water gun with a hand pump that builds up air pressure inside its water tank, so pulling the trigger fires a long, powerful stream; it also plays space-blaster sounds while it fires.",
+      "split": "development"
     },
     {
       "id": "cat-laser",
       "patent": "US5443036A",
       "patent_title": "Method of exercising a cat",
       "priority_date": "1993-11-02",
-      "idea": "Getting a pet cat to exercise by shining a handheld laser pointer onto the floor and walls and moving the dot around unpredictably so the cat chases it."
+      "idea": "Getting a pet cat to exercise by shining a handheld laser pointer onto the floor and walls and moving the dot around unpredictably so the cat chases it.",
+      "split": "development"
     },
     {
       "id": "bladeless-fan",
       "patent": "US8308445B2",
       "patent_title": "Fan",
       "priority_date": "2007-09-04",
-      "idea": "A fan with no visible blades: a motor in the base pushes air up into a hollow ring, and the air leaves through a thin slot running around the ring, dragging the surrounding room air along with it."
+      "idea": "A fan with no visible blades: a motor in the base pushes air up into a hollow ring, and the air leaves through a thin slot running around the ring, dragging the surrounding room air along with it.",
+      "split": "development"
     },
     {
       "id": "coffee-pod",
       "patent": "US5325765A",
       "patent_title": "Beverage filter cartridge",
       "priority_date": "1992-09-16",
-      "idea": "A sealed single-serve plastic cup holding ground coffee inside a paper filter, which the coffee machine punctures at the top and bottom to push hot water through and brew exactly one cup."
+      "idea": "A sealed single-serve plastic cup holding ground coffee inside a paper filter, which the coffee machine punctures at the top and bottom to push hot water through and brew exactly one cup.",
+      "split": "development"
     },
     {
       "id": "wheeled-shoe",
       "patent": "US6698769B2",
       "patent_title": "Multi-wheel heeling apparatus",
       "priority_date": "1999-04-01",
-      "idea": "A sneaker with small wheels hidden in holes in the heel of the sole, so you can walk normally and then lean back on your heel to roll along like on a skate."
+      "idea": "A sneaker with small wheels hidden in holes in the heel of the sole, so you can walk normally and then lean back on your heel to roll along like on a skate.",
+      "split": "development"
     },
     {
       "id": "spinning-ice-cream",
       "patent": "US5971829A",
       "patent_title": "Motorized ice cream cone",
       "priority_date": "1998-03-06",
-      "idea": "A battery-powered handheld gadget that holds a scoop of ice cream in a little cup and slowly spins it, so you just hold your tongue still and the ice cream turns against it."
+      "idea": "A battery-powered handheld gadget that holds a scoop of ice cream in a little cup and slowly spins it, so you just hold your tongue still and the ice cream turns against it.",
+      "split": "development"
     },
     {
       "id": "robot-vacuum",
       "patent": "US6883201B2",
       "patent_title": "Autonomous floor-cleaning robot",
       "priority_date": "2002-01-03",
-      "idea": "A small round robot vacuum that drives around the house by itself, with two rollers spinning in opposite directions underneath plus a spinning side brush that flicks dust from along the walls into its path."
+      "idea": "A small round robot vacuum that drives around the house by itself, with two rollers spinning in opposite directions underneath plus a spinning side brush that flicks dust from along the walls into its path.",
+      "split": "development"
     },
     {
       "id": "finger-spinner",
       "patent": "US5591062A",
       "patent_title": "Spinning toy",
       "priority_date": "1992-02-10",
-      "idea": "A toy shaped like a small dome with a wide flared rim that you balance and spin on the tip of one finger, for fun."
+      "idea": "A toy shaped like a small dome with a wide flared rim that you balance and spin on the tip of one finger, for fun.",
+      "split": "development"
+    },
+    {
+      "id": "hi-snap-bricks",
+      "split": "heldout",
+      "language": "hi",
+      "patent": "US3005282A",
+      "patent_title": "Toy building brick",
+      "priority_date": "1958-01-28",
+      "idea": "बच्चों के खेलने के लिए प्लास्टिक की छोटी ईंटें, जिनके ऊपर गोल उभार होते हैं और नीचे खोखला हिस्सा होता है, ताकि एक ईंट दूसरी पर दबाकर मज़बूती से जुड़ जाए और फिर आसानी से अलग भी हो सके।"
+    },
+    {
+      "id": "hi-twist-cube",
+      "split": "heldout",
+      "language": "hi",
+      "patent": "US4378116A",
+      "patent_title": "Spatial logical toy",
+      "priority_date": "1980-10-28",
+      "idea": "हाथ में पकड़ने वाली घन के आकार की एक पहेली, जिसकी हर सतह की परतें अलग-अलग घुमाई जा सकती हैं ताकि रंग बिखर जाएँ, और खेलने वाले को घुमा-घुमाकर हर सतह पर फिर से एक ही रंग लाना हो।"
+    },
+    {
+      "id": "hi-hook-loop",
+      "split": "heldout",
+      "language": "hi",
+      "patent": "US2717437A",
+      "patent_title": "Velvet type fabric and method of producing same",
+      "priority_date": "1951-10-22",
+      "idea": "कपड़े या थैले बंद करने का एक तरीका जिसमें एक पट्टी पर बहुत छोटे-छोटे हुक होते हैं और दूसरी पट्टी पर मुलायम रोएँदार छल्ले, दोनों को दबाने पर वे चिपक जाते हैं और खींचने पर अलग हो जाते हैं — बटन या ज़िप की ज़रूरत नहीं।"
+    },
+    {
+      "id": "throwing-disc",
+      "split": "heldout",
+      "language": "en",
+      "patent": "US3359678A",
+      "patent_title": "Flying saucer",
+      "priority_date": "1965-11-01",
+      "idea": "A light plastic disc with a curved rim that you throw with a flick of the wrist so it spins and glides a long way through the air, for playing catch on the beach."
+    },
+    {
+      "id": "sliding-teeth-closure",
+      "split": "heldout",
+      "language": "en",
+      "patent": "US1219881A",
+      "patent_title": "Separable fastener",
+      "priority_date": "1914-08-27",
+      "idea": "A way to close a bag or jacket using two cloth strips edged with small metal teeth that lock into each other when a little slider is pulled along them, and come apart when it is pulled back."
     }
   ]
 }

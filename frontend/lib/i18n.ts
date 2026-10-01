@@ -16,7 +16,7 @@ const ENGLISH_LABELS = {
   what_this_means: "What this means for you",
   differentiate_title: "How to differentiate your idea",
   differentiate_subtitle:
-    "Specific changes that would move this idea away from its closest matches. Apply one to re-run the analysis and watch the verdict move.",
+    "Specific changes that would move this idea away from its closest matches. Apply one to re-check it against the same matches and see what still overlaps.",
   apply_recheck: "Apply & re-check →",
   based_on: "Based on:",
   free_to_build: "Likely free to build on",

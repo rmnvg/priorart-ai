@@ -15,9 +15,16 @@ Usage, from backend/:
     python -m benchmark.run                  # all cases
     python -m benchmark.run --cases cat-laser,coffee-pod
     python -m benchmark.run --resume         # skip cases already in latest.json
+    python -m benchmark.run --split heldout  # only the held-out cases
+
+Cases are split into "development" (available while the search was built and
+tuned) and "heldout" (written afterwards, never used for tuning, some in
+Hindi). The report gives each split its own figures — a held-out number is
+the one to quote.
 
 Cost: 3 google_patents searches per case, plus REFINEMENT_QUERIES (default
 1). No details/market/Trends calls — recall only needs the search half.
+Non-English cases also make one LLM translation call, exactly as the app does.
 Results are written after every case, so an interrupted run (quota, network)
 loses nothing: rerun with --resume.
 """
@@ -48,6 +55,8 @@ class Case(BaseModel):
     patent_title: str
     priority_date: str
     idea: str
+    split: Literal["development", "heldout"] = "development"
+    language: str = "en"
 
 
 # "exact": the target's own publication number (any kind code).
@@ -72,6 +81,8 @@ class CaseResult(BaseModel):
     queries: list[str] = []
     searches_used: int
     error: str | None = None
+    split: str = "development"
+    translated_idea: str | None = None  # the English the search ran on, when translated
 
 
 def load_cases() -> list[Case]:
@@ -108,12 +119,16 @@ def find_rank(ranked, case: Case) -> tuple[int | None, MatchKind | None]:
 def run_case(case: Case) -> CaseResult:
     # Imported here so --dry-run works without the ML/LLM stack or keys.
     from app.config import REFINEMENT_QUERIES
+    from app.pipeline.language import detect_and_translate
     from app.pipeline.query_generator import generate_queries
     from app.pipeline.rank import rank_and_dedupe
     from app.pipeline.refine import plan_refinement
     from app.pipeline.search import SearchLayerResult, run_queries
 
-    query_result = generate_queries(case.idea)
+    # Same first step as the app: everything downstream runs on English.
+    idea = detect_and_translate(case.idea).english_text
+    translated = idea if idea != case.idea else None
+    query_result = generate_queries(idea)
     bundles = run_queries(query_result.queries)
     searches = len(bundles)
     if all(b.search_failed for b in bundles):
@@ -127,19 +142,21 @@ def run_case(case: Case) -> CaseResult:
             queries=[b.query for b in bundles],
             searches_used=searches,
             error="all searches failed (quota or network)",
+            split=case.split,
+            translated_idea=translated,
         )
 
-    ranked = rank_and_dedupe(SearchLayerResult(query_bundles=bundles, market_results=[]), case.idea)
+    ranked = rank_and_dedupe(SearchLayerResult(query_bundles=bundles, market_results=[]), idea)
     rank_before, match_before = find_rank(ranked, case)
     results_before = len(ranked)
 
-    plan = plan_refinement(case.idea, query_result, ranked, REFINEMENT_QUERIES)
+    plan = plan_refinement(idea, query_result, ranked, REFINEMENT_QUERIES)
     if plan:
         refined = run_queries(plan.queries)
         searches += len(refined)
         bundles += refined
         ranked = rank_and_dedupe(
-            SearchLayerResult(query_bundles=bundles, market_results=[]), case.idea
+            SearchLayerResult(query_bundles=bundles, market_results=[]), idea
         )
 
     rank_after, match_after = find_rank(ranked, case)
@@ -156,6 +173,8 @@ def run_case(case: Case) -> CaseResult:
         refinement_observation=plan.observation if plan else None,
         queries=[b.query for b in bundles],
         searches_used=searches,
+        split=case.split,
+        translated_idea=translated,
     )
 
 
@@ -202,13 +221,34 @@ def summarize(results: list[CaseResult]) -> dict:
         "refinement_worsened": sum(1 for r in scored if worse(r)),
         "searches_used": sum(r.searches_used for r in results),
         "median_seconds": sorted(r.seconds for r in scored)[n // 2] if n else 0.0,
+        "total_seconds": round(sum(r.seconds for r in results), 1),
     }
 
 
-def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: dict) -> str:
+def _worsened(r: CaseResult) -> bool:
+    return r.rank_before is not None and (r.rank_after is None or r.rank_after > r.rank_before)
+
+
+def _summary_table(summary: dict) -> list[str]:
     def pct(x: float) -> str:
         return f"{round(x * 100)}%"
 
+    return [
+        "| | Top 1 | Top 10 | Top 10, exact publication only | Anywhere in results |",
+        "|---|---|---|---|---|",
+        f"| First search round | {pct(summary['top1_before'])} | {pct(summary['top10_before'])} "
+        f"| {pct(summary['top10_exact_before'])} | {pct(summary['found_before'])} |",
+        f"| After refinement agent | {pct(summary['top1_after'])} | {pct(summary['top10_after'])} "
+        f"| {pct(summary['top10_exact_after'])} | {pct(summary['found_after'])} |",
+        "",
+        f"{summary['cases']} case(s) scored, {summary['errors']} error(s). Refinement moved the "
+        f"target up in {summary['refinement_improved']} case(s) and down (or out) in "
+        f"{summary['refinement_worsened']}. {summary['searches_used']} SerpApi searches; "
+        f"{summary['total_seconds']:.0f}s in total, median {summary['median_seconds']:.0f}s per case.",
+    ]
+
+
+def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: dict) -> str:
     def rank(r: int | None, kind: str | None) -> str:
         if r is None:
             return "—"
@@ -220,33 +260,70 @@ def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: 
         f"_Run {datetime.now().strftime('%Y-%m-%d %H:%M')} · {summary['cases']} cases · "
         f"{summary['searches_used']} SerpApi searches attempted_",
         "",
-        "Given only a plain-English description of a real, granted invention, how often does "
-        "the search surface the actual patent?",
+        "Given only a plain description of a real, granted invention, how often does the search "
+        "surface the actual patent? The held-out cases were written after the search was tuned "
+        "and include Hindi descriptions; quote those figures, not the development ones.",
         "",
-        "| | Top 1 | Top 10 | Top 10, exact publication only | Anywhere in results |",
-        "|---|---|---|---|---|",
-        f"| First search round | {pct(summary['top1_before'])} | {pct(summary['top10_before'])} "
-        f"| {pct(summary['top10_exact_before'])} | {pct(summary['found_before'])} |",
-        f"| After refinement agent | {pct(summary['top1_after'])} | {pct(summary['top10_after'])} "
-        f"| {pct(summary['top10_exact_after'])} | {pct(summary['found_after'])} |",
+    ]
+    for split, title in (("heldout", "Held-out cases"), ("development", "Development cases")):
+        subset = [r for r in results if r.split == split]
+        if subset:
+            lines += [f"## {title}", ""] + _summary_table(summarize(subset)) + [""]
+    lines += ["## All cases", ""] + _summary_table(summary) + [""]
+
+    lines += [
+        "## Per case",
         "",
-        f"Refinement moved the target up in {summary['refinement_improved']} case(s) and down "
-        f"(or out) in {summary['refinement_worsened']}. Median time per case: "
-        f"{summary['median_seconds']:.0f}s.",
-        "",
-        "| Case | Patent | Rank before | Rank after | Refined query |",
-        "|---|---|---|---|---|",
+        "| Case | Split | Patent | Rank before | Rank after | Seconds | Searches |",
+        "|---|---|---|---|---|---|---|",
     ]
     for r in results:
         case = cases[r.id]
-        refined = f"`{r.refined_queries[0]}`" if r.refined_queries else "—"
-        if r.error:
-            refined = f"error: {r.error}"
         lines.append(
-            f"| {r.id} | [{case.patent}](https://patents.google.com/patent/{case.patent}/en) "
+            f"| {r.id} | {r.split} | [{case.patent}](https://patents.google.com/patent/{case.patent}/en) "
             f"{case.patent_title} | {rank(r.rank_before, r.match_before)} | "
-            f"{rank(r.rank_after, r.match_after)} | {refined} |"
+            f"{rank(r.rank_after, r.match_after)} | {r.seconds:.0f} | {r.searches_used} |"
         )
+
+    worsened = [r for r in results if r.error is None and _worsened(r)]
+    if worsened:
+        lines += ["", "## Where refinement made it worse", ""]
+        for r in worsened:
+            lines.append(
+                f"- **{r.id}**: {rank(r.rank_before, r.match_before)} → "
+                f"{rank(r.rank_after, r.match_after)}. Refined query: "
+                f"`{r.refined_queries[0] if r.refined_queries else '—'}`. "
+                f"Agent's reasoning: {r.refinement_observation or '—'}"
+            )
+
+    missed = [r for r in results if r.error is None and not _hit(r.rank_after, TOP_K)]
+    errored = [r for r in results if r.error]
+    if missed or errored:
+        lines += ["", f"## Failures (target not in the top {TOP_K})", ""]
+        for r in missed:
+            case = cases[r.id]
+            where = f"ranked {rank(r.rank_after, r.match_after)}" if r.rank_after else "not returned at all"
+            lines.append(f"### {r.id} — {where}")
+            lines.append("")
+            lines.append(f"- Description: {case.idea}")
+            if r.translated_idea:
+                lines.append(f"- Translated for the search: {r.translated_idea}")
+            lines.append("- Queries run: " + "; ".join(f"`{q}`" for q in r.queries))
+            if r.refinement_observation:
+                lines.append(f"- Refinement agent noticed: {r.refinement_observation}")
+            lines.append(
+                f"- Results returned: {r.results_after}. "
+                + (
+                    "The patent was found but ranked below results whose wording sits closer to "
+                    "the description."
+                    if r.rank_after
+                    else "None of the queries used vocabulary that retrieves this patent."
+                )
+            )
+            lines.append("")
+        for r in errored:
+            lines.append(f"- **{r.id}**: not scored — {r.error}")
+
     lines += [
         "",
         "Ranks count patents and papers only (the full app also lists products). A match is the "
@@ -274,6 +351,9 @@ def main() -> int:
     parser.add_argument("--cases", help="comma-separated case ids (default: all)")
     parser.add_argument("--dry-run", action="store_true", help="print plan and cost only")
     parser.add_argument("--resume", action="store_true", help="skip cases already in latest.json")
+    parser.add_argument(
+        "--split", choices=["development", "heldout"], help="run only one split (default: both)"
+    )
     args = parser.parse_args()
 
     all_cases = load_cases()
@@ -286,6 +366,8 @@ def main() -> int:
             print(f"Unknown case ids: {', '.join(unknown)}", file=sys.stderr)
             return 2
         selected = [by_id[w] for w in wanted]
+    if args.split:
+        selected = [c for c in selected if c.split == args.split]
 
     previous: list[CaseResult] = []
     if args.resume and LATEST_JSON.exists():
@@ -303,7 +385,7 @@ def main() -> int:
     )
     if args.dry_run:
         for c in selected:
-            print(f"  {c.id:22} {c.patent:14} {c.patent_title}")
+            print(f"  {c.id:22} {c.split:11} {c.patent:14} {c.patent_title}")
         return 0
 
     results = list(previous)
@@ -322,6 +404,7 @@ def main() -> int:
                 results_after=0,
                 searches_used=0,
                 error=type(e).__name__,
+                split=case.split,
             )
         results.append(result)
         save(by_id, results)

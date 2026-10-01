@@ -53,7 +53,7 @@ def test_india_status_counts_active_in_india():
         patent(id="c", country_status={"EP": "ACTIVE", "CN": "ACTIVE"}),
     ]
     status = compute_india_status(results)
-    assert status.blocking_in_india == 1
+    assert status.related_active_in_india == 1
     assert status.active_elsewhere_only == 2
 
 
@@ -66,7 +66,7 @@ def test_india_status_ignores_inactive_and_unknown():
         patent(id="c", country_status={}),
     ]
     status = compute_india_status(results)
-    assert status.blocking_in_india == 0
+    assert status.related_active_in_india == 0
     assert status.active_elsewhere_only == 0
 
 
@@ -75,7 +75,7 @@ def test_india_status_counts_each_patent_once():
     one in each bucket."""
     results = [patent(id="a", country_status={"IN": "ACTIVE", "US": "ACTIVE", "EP": "ACTIVE"})]
     status = compute_india_status(results)
-    assert status.blocking_in_india == 1
+    assert status.related_active_in_india == 1
     assert status.active_elsewhere_only == 0
 
 
@@ -572,7 +572,7 @@ def test_report_endpoint_serves_cached_result_only(temp_cache):
         overall_novelty_confidence=0.5,
         differentiation_suggestions=[],
         citations=[],
-        india_status=IndiaStatus(blocking_in_india=0, active_elsewhere_only=0),
+        india_status=IndiaStatus(related_active_in_india=0, active_elsewhere_only=0),
     )
     temp_cache.set_cached("My idea", [ResultEvent(data=result)])
     key = temp_cache.cache_key("My idea")
@@ -813,7 +813,7 @@ def _result_event(idea="My idea"):
             overall_novelty_confidence=0.5,
             differentiation_suggestions=[],
             citations=[],
-            india_status=IndiaStatus(blocking_in_india=0, active_elsewhere_only=0),
+            india_status=IndiaStatus(related_active_in_india=0, active_elsewhere_only=0),
         )
     )
 
@@ -872,7 +872,10 @@ def test_mcp_markdown_leads_with_verdict_and_links_report():
     result.plain_summary = "Close matches exist."
     result.differentiation_suggestions = ["Add a hinge"]
     md = report_to_markdown(result, "http://localhost:3000/?report=abc")
-    assert md.startswith("## Prior-art check: 20% novelty confidence (heavy overlap")
+    # Older reports without feature findings: the model's verdict, labelled as
+    # an estimate, never a bare percentage.
+    assert md.startswith("## Prior-art check: heavy overlap with existing prior art (model estimate)")
+    assert "20%" not in md
     assert "Close matches exist." in md
     assert "1. Add a hinge" in md
     assert md.rstrip().endswith("not legal advice._")
@@ -1580,3 +1583,260 @@ def test_redesign_endpoints_reuse_examination_elements_and_cache_per_brief(temp_
     assert [e["report_id"] for e in client.get("/examples").json()] == [key]
     temp_cache.evict(key)
     assert list(temp_cache.CACHE_DIR.glob(f"{key}.*.json")) == []
+
+
+# --- Feature evidence ---------------------------------------------------------
+
+from app.pipeline import citation_followup as followup_mod
+from app.pipeline.citation_chase import CitationDiscovery, CitationNetwork
+from app.pipeline.evidence import FeatureFinding, attach_evidence, headline, quote_is_verified
+from app.pipeline.india_status import IndiaStatus
+from app.pipeline.novelty import IdeaFeature, _RawCandidateAssessment, build_feature_findings
+
+DOC_TEXT = (
+    "A drying chamber heated by a solar collector, with a chimney that draws air "
+    "upward through stacked mesh trays holding the grain."
+)
+
+
+def _detail(id="patent/US1A/en", text=DOC_TEXT, source="claims"):
+    return CandidateDetail(
+        id=id,
+        source_type="patent",
+        title=f"Doc {id}",
+        link=f"https://patents.google.com/{id}",
+        summary_text=text,
+        evidence_source=source,
+    )
+
+
+def _raw_assessment(id, verdict="partially_overlapping", quotes=()):
+    return _RawCandidateAssessment.model_validate(
+        {
+            "result_id": id,
+            "overlapping_elements": [],
+            "differences": [],
+            "verdict": verdict,
+            "feature_evidence": [{"feature": f, "quote": q} for f, q in quotes],
+        }
+    )
+
+
+FEATURES = [
+    IdeaFeature(id="F1", text="solar-heated drying chamber"),
+    IdeaFeature(id="F2", text="chimney-driven airflow"),
+    IdeaFeature(id="F3", text="clay body that stores heat"),
+]
+
+
+def test_quote_verification_tolerates_case_and_typography_only():
+    assert quote_is_verified("A DRYING chamber heated by a solar collector…", DOC_TEXT)
+    assert not quote_is_verified("a drying chamber warmed by a solar collector", DOC_TEXT)
+    assert not quote_is_verified("solar collector", DOC_TEXT)  # too short to be evidence
+
+
+def test_feature_findings_keep_only_verified_quotes():
+    raw = [
+        _raw_assessment(
+            "patent/US1A/en",
+            quotes=[
+                ("F1", "A drying chamber heated by a solar collector"),
+                ("F2", "a chimney that pulls air through the trays"),  # paraphrase
+            ],
+        )
+    ]
+    findings = build_feature_findings(FEATURES, raw, [_detail()])
+    by_id = {f.id: f for f in findings}
+    assert [e.result_id for e in by_id["F1"].evidence] == ["patent/US1A/en"]
+    assert by_id["F1"].evidence[0].evidence_source == "claims"
+    assert by_id["F2"].evidence == []
+    assert by_id["F3"].evidence == []
+
+
+def test_feature_findings_ignore_not_relevant_candidates_and_unknown_features():
+    raw = [
+        _raw_assessment(
+            "patent/US1A/en",
+            verdict="not_relevant",
+            quotes=[("F1", "A drying chamber heated by a solar collector")],
+        ),
+    ]
+    findings = build_feature_findings(FEATURES, raw, [_detail()])
+    assert all(not f.evidence for f in findings)
+    raw = [_raw_assessment("patent/US1A/en", quotes=[("F9", "A drying chamber heated by a solar collector")])]
+    assert all(not f.evidence for f in build_feature_findings(FEATURES, raw, [_detail()]))
+
+
+def test_feature_findings_need_at_least_two_features():
+    assert build_feature_findings(FEATURES[:1], [], [_detail()]) == []
+
+
+def test_attach_evidence_one_quote_per_document_per_feature():
+    findings = [FeatureFinding(id="F1", feature="x")]
+    kwargs = dict(
+        result_id="d", title="t", link="l", document_text=DOC_TEXT, evidence_source="abstract"
+    )
+    assert attach_evidence(findings, "f1", "A drying chamber heated by a solar collector", **kwargs)
+    assert not attach_evidence(findings, "F1", "a chimney that draws air upward", **kwargs)
+    assert len(findings[0].evidence) == 1
+
+
+def test_headline_says_not_found_in_evidence_reviewed_never_novel():
+    findings = [
+        FeatureFinding(id="F1", feature="solar chamber"),
+        FeatureFinding(id="F2", feature="clay body"),
+    ]
+    attach_evidence(
+        findings, "F1", "A drying chamber heated by a solar collector",
+        result_id="d", title="t", link="l", document_text=DOC_TEXT, evidence_source="claims",
+    )
+    text = headline(findings, 8)
+    assert text == (
+        "Overlap found in 1 of 2 features: solar chamber. "
+        "Not found in the 8 documents reviewed: clay body."
+    )
+    assert headline([], 8) is None
+
+
+def _discovery(id):
+    return CitationDiscovery(
+        id=id,
+        title=f"Doc {id}",
+        link=f"https://patents.google.com/{id}",
+        referenced_by=["patent/US1A/en", "patent/US2A/en"],
+        direction="backward",
+        examiner_cited=True,
+        reason="shared_reference",
+        likely_expired=False,
+    )
+
+
+def test_followup_records_which_discovery_changed_the_conclusion():
+    findings = [
+        FeatureFinding(id="F1", feature="solar-heated drying chamber"),
+        FeatureFinding(id="F2", feature="chimney-driven airflow"),
+    ]
+    # F1 was already shown by a searched document.
+    attach_evidence(
+        findings, "F1", "A drying chamber heated by a solar collector",
+        result_id="patent/US1A/en", title="t", link="l", document_text=DOC_TEXT,
+        evidence_source="claims",
+    )
+    discoveries = [_discovery("patent/US9A/en"), _discovery("patent/US8A/en")]
+    details = [_detail("patent/US9A/en"), _detail("patent/US8A/en")]
+    raw = followup_mod._RawFollowUps.model_validate(
+        {
+            "documents": [
+                {
+                    "key": "C1",
+                    "verdict": "partially_overlapping",
+                    "feature_evidence": [
+                        {"feature": "F1", "quote": "A drying chamber heated by a solar collector"},
+                        {"feature": "F2", "quote": "a chimney that draws air upward"},
+                    ],
+                    "explanation": "Shows the chimney.",
+                },
+                # Same feature again: must not also claim the change.
+                {
+                    "key": "C2",
+                    "verdict": "blocking",
+                    "feature_evidence": [{"feature": "F2", "quote": "a chimney that draws air upward"}],
+                },
+            ]
+        }
+    )
+    followups, assessments = followup_mod.apply_followups(findings, discoveries, details, raw)
+
+    assert followups[0].features_found == ["F1", "F2"]
+    assert followups[0].newly_found == ["F2"]
+    assert followups[0].changed_conclusion
+    assert followups[1].newly_found == [] and not followups[1].changed_conclusion
+    assert [e.found_via for e in findings[1].evidence] == ["citation", "citation"]
+    assert all(a.found_via == "citation" for a in assessments)
+    assert followups[0].model_dump()["changed_conclusion"] is True
+
+
+def test_followup_without_verified_evidence_is_not_a_match():
+    findings = [FeatureFinding(id="F1", feature="x"), FeatureFinding(id="F2", feature="y")]
+    raw = followup_mod._RawFollowUps.model_validate(
+        {"documents": [{"key": "C1", "verdict": "blocking", "feature_evidence": [
+            {"feature": "F1", "quote": "words that are not in the document at all"}
+        ]}]}
+    )
+    followups, assessments = followup_mod.apply_followups(
+        findings, [_discovery("patent/US9A/en")], [_detail("patent/US9A/en")], raw
+    )
+    assert followups[0].verdict == "not_relevant"
+    assert assessments == []
+
+
+def test_followup_is_skipped_without_findings_or_discoveries(monkeypatch):
+    def boom(*a, **k):
+        raise AssertionError("no lookups expected")
+
+    monkeypatch.setattr(followup_mod, "fetch_detail", boom)
+    network = CitationNetwork(discoveries=[_discovery("patent/US9A/en")])
+    assert followup_mod.follow_up_citations("idea", network, [], 2).lookups == 0
+    findings = [FeatureFinding(id="F1", feature="x")]
+    assert followup_mod.follow_up_citations("idea", CitationNetwork(), findings, 2).lookups == 0
+    assert followup_mod.follow_up_citations("idea", network, findings, 0).lookups == 0
+
+
+def test_followup_llm_failure_leaves_report_unchanged(monkeypatch):
+    monkeypatch.setattr(followup_mod, "fetch_detail", lambda *a, **k: _detail("patent/US9A/en"))
+
+    def broken(*a, **k):
+        raise ValueError("bad json")
+
+    monkeypatch.setattr(followup_mod, "complete_json", broken)
+    findings = [FeatureFinding(id="F1", feature="x"), FeatureFinding(id="F2", feature="y")]
+    network = CitationNetwork(discoveries=[_discovery("patent/US9A/en")])
+    outcome = followup_mod.follow_up_citations("idea", network, findings, 2)
+    assert outcome.lookups == 1  # the details call was still made and counted
+    assert outcome.followups == [] and all(not f.evidence for f in findings)
+
+
+def test_india_status_reads_reports_saved_before_rename():
+    old = IndiaStatus.model_validate({"blocking_in_india": 2, "active_elsewhere_only": 1})
+    assert old.related_active_in_india == 2
+    assert "blocking_in_india" not in old.model_dump()
+
+
+def test_pipeline_counts_followup_lookups_and_records_evidence(monkeypatch):
+    _fake_pipeline(monkeypatch, refinement=False)
+    findings = [FeatureFinding(id="F1", feature="x"), FeatureFinding(id="F2", feature="y")]
+    monkeypatch.setattr(
+        orch,
+        "assess_novelty",
+        lambda *a: NoveltyAssessment(
+            candidate_assessments=[],
+            overall_novelty_confidence=0.6,
+            differentiation_suggestions=[],
+            citations=[],
+            claim_chart_pairs=[],
+            feature_findings=findings,
+        ),
+    )
+    monkeypatch.setattr(
+        orch,
+        "chase_citations",
+        lambda c, r: CitationNetwork(discoveries=[_discovery("patent/US9A/en")]),
+    )
+    follow = followup_mod.CitationFollowUp(
+        id="patent/US9A/en", title="Doc", link="l", referenced_by=[], reason="shared_reference",
+        evidence_source="claims", verdict="partially_overlapping", features_found=["F2"],
+        newly_found=["F2"], explanation="e",
+    )
+    monkeypatch.setattr(
+        orch,
+        "follow_up_citations",
+        lambda *a: followup_mod.FollowUpOutcome(
+            followups=[follow], details=[_detail("patent/US9A/en")], lookups=1
+        ),
+    )
+    events = _run(orch.run_pipeline("A folding kayak paddle idea"))
+    result = events[-1].data
+    assert result.search_strategy.serpapi_calls["google_patents_details"] == 1
+    assert result.citation_followups[0].changed_conclusion
+    assert result.examined_documents[-1].found_via == "citation"
+    assert any("changed the conclusion" in e.message for e in events if e.type == "progress")

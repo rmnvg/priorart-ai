@@ -22,6 +22,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
+from app.pipeline.evidence import EvidenceSource
 from app.pipeline.rank import RankedResult
 from app.pipeline.search import SourceType
 from app.serpapi_client import client as _client
@@ -46,6 +47,9 @@ class CandidateDetail(BaseModel):
     title: str
     link: str
     summary_text: str
+    # What summary_text was built from: the claims are the strongest
+    # evidence, a search snippet the weakest.
+    evidence_source: EvidenceSource = "snippet"
     prior_art_keywords: list[str] = []
     citation_refs: list[CitationRef] = []
 
@@ -99,25 +103,44 @@ def _parse_citation_refs(raw: dict) -> list[CitationRef]:
     return refs
 
 
-def get_candidate_detail(candidate: RankedResult) -> CandidateDetail:
+def _evidence_source(raw: dict, source_type: str) -> EvidenceSource:
+    if source_type == "patent":
+        if raw.get("claims"):
+            return "claims"
+        return "abstract" if raw.get("abstract") else "snippet"
+    return "abstract" if raw.get("snippet") or raw.get("concepts") else "snippet"
+
+
+def fetch_detail(
+    doc_id: str, source_type: SourceType, title: str, link: str, snippet: str = ""
+) -> CandidateDetail:
     try:
-        raw = dict(_client.search(engine="google_patents_details", patent_id=candidate.id))
+        raw = dict(_client.search(engine="google_patents_details", patent_id=doc_id))
     except Exception:
         raw = {}
 
-    if candidate.source_type == "patent":
-        summary_text = _summarize_patent_details(raw, candidate.snippet)
+    if source_type == "patent":
+        summary_text = _summarize_patent_details(raw, snippet)
     else:
-        summary_text = _summarize_scholar_details(raw, candidate.snippet)
+        summary_text = _summarize_scholar_details(raw, snippet)
 
     return CandidateDetail(
-        id=candidate.id,
-        source_type=candidate.source_type,
-        title=candidate.title,
-        link=candidate.link,
+        id=doc_id,
+        source_type=source_type,
+        # Citation follow-ups know only a publication number; the details
+        # response carries the real title.
+        title=title or (raw.get("title") or "").strip() or doc_id,
+        link=link,
         summary_text=summary_text,
+        evidence_source=_evidence_source(raw, source_type),
         prior_art_keywords=raw.get("prior_art_keywords") or [],
-        citation_refs=_parse_citation_refs(raw) if candidate.source_type == "patent" else [],
+        citation_refs=_parse_citation_refs(raw) if source_type == "patent" else [],
+    )
+
+
+def get_candidate_detail(candidate: RankedResult) -> CandidateDetail:
+    return fetch_detail(
+        candidate.id, candidate.source_type, candidate.title, candidate.link, candidate.snippet
     )
 
 

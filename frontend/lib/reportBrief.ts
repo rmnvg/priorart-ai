@@ -1,3 +1,4 @@
+import { EVIDENCE_SOURCE_LABELS, evidenceHeadline, summarizeEvidence } from "@/lib/evidence";
 import type { AnalysisResult, NoveltyVerdict } from "@/types/analysis";
 
 // A plain-Markdown brief of the analysis, written to be handed to a patent
@@ -24,7 +25,6 @@ function escapeCell(text: string): string {
 }
 
 export function buildReportBrief(result: AnalysisResult, reportUrl?: string): string {
-  const pct = Math.round(result.overall_novelty_confidence * 100);
   const today = new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD, local time
   const lines: string[] = [];
 
@@ -37,11 +37,33 @@ export function buildReportBrief(result: AnalysisResult, reportUrl?: string): st
     lines.push(`> ${result.original_idea_text}`, "");
   }
 
+  const evidence = summarizeEvidence(result);
+  if (evidence) {
+    lines.push("## What was found", "", evidenceHeadline(evidence), "");
+    lines.push("| Feature | Found in | Passage |", "|---|---|---|");
+    for (const f of result.feature_findings ?? []) {
+      const e = f.evidence[0];
+      lines.push(
+        e
+          ? `| ${escapeCell(f.feature)} | [${escapeCell(e.title)}](${e.link}) (${EVIDENCE_SOURCE_LABELS[e.evidence_source]}${e.found_via === "citation" ? ", via citation follow-up" : ""}) | "${escapeCell(e.quote)}" |`
+          : `| ${escapeCell(f.feature)} | Not found in the documents reviewed | — |`
+      );
+    }
+    lines.push("");
+  }
+
   lines.push("## Summary", "");
-  lines.push(`- **Novelty confidence:** ${pct}%`);
+  if (!evidence) {
+    lines.push(
+      `- **AI's overall read (model estimate):** ${Math.round(result.overall_novelty_confidence * 100)}%`
+    );
+  }
   lines.push(`- **Results reviewed:** ${result.ranked_results.length}`);
   lines.push(`- **Assessed in depth:** ${result.candidate_assessments.length}`);
-  lines.push(`- **Closest matches active in India:** ${result.india_status.blocking_in_india}`);
+  lines.push(
+    `- **Related patents reported active in India:** ${result.india_status.related_active_in_india} ` +
+      "(legal status, not an overlap finding)"
+  );
   lines.push(
     `- **Closest matches active elsewhere, not India:** ${result.india_status.active_elsewhere_only}`
   );

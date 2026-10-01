@@ -69,6 +69,9 @@ class ExampleReport(BaseModel):
     idea_text: str
     language_name: str
     novelty_confidence: float
+    # Feature evidence; both 0 on reports saved before it existed.
+    features_found: int = 0
+    features_total: int = 0
     results_count: int
     public_domain_count: int
 
@@ -117,6 +120,8 @@ def list_examples() -> list[ExampleReport]:
                 idea_text=data.original_idea_text or data.idea_text,
                 language_name=data.language_name,
                 novelty_confidence=data.overall_novelty_confidence,
+                features_found=sum(1 for f in data.feature_findings if f.evidence),
+                features_total=len(data.feature_findings),
                 results_count=len(data.ranked_results),
                 public_domain_count=data.public_domain.count if data.public_domain else 0,
             )

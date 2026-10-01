@@ -26,6 +26,9 @@ LIVE_MODE = bool(SERPAPI_API_KEY and GROQ_API_KEY)
 REFINEMENT_QUERIES = int(os.getenv("REFINEMENT_QUERIES", "1"))
 # Full-text/citation lookups per analysis (one SerpApi search each).
 DEEP_DIVE_TOP_N = int(os.getenv("DEEP_DIVE_TOP_N", "8"))
+# Citation follow-up: documents found by citation chasing that are fetched
+# and assessed against the idea's features (one SerpApi search each).
+CITATION_FOLLOWUPS = int(os.getenv("CITATION_FOLLOWUPS", "2"))
 # Google Trends market-interest lookup (one SerpApi search).
 ENABLE_TRENDS = os.getenv("ENABLE_TRENDS", "true").lower() != "false"
 

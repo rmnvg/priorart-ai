@@ -36,9 +36,9 @@ from pydantic import BaseModel, ValidationError
 
 from app.llm import complete_json
 from app.models import AnalysisResult
+from app.pipeline.evidence import quote_is_verified
 
 MAX_DOCUMENTS = 8
-MIN_QUOTE_WORDS = 4
 MIN_ELEMENTS = 2
 MAX_ELEMENTS = 6
 MAX_COMBINATIONS_SHOWN = 3
@@ -204,30 +204,7 @@ def select_documents(result: AnalysisResult) -> tuple[list[_Doc], EvidenceBasis]
     return docs, basis
 
 
-# --- Quote verification ----------------------------------------------------------
-
-_LOOKALIKES = str.maketrans(
-    {
-        "‐": "-", "‑": "-", "‒": "-", "–": "-", "—": "-",
-        "‘": "'", "’": "'", "“": '"', "”": '"', " ": " ",
-    }
-)
-
-
-def _normalize(text: str) -> str:
-    text = text.translate(_LOOKALIKES).lower()
-    return " ".join(text.split())
-
-
-def quote_is_verified(quote: str, document_text: str) -> bool:
-    """The quote must actually occur in the document — modulo case,
-    whitespace and typographic punctuation — and be long enough to be
-    evidence rather than a coincidental phrase. A trailing ellipsis (models
-    like to add one) is ignored."""
-    cleaned = _normalize(quote).strip(" .…").strip('"')
-    if len(cleaned.split()) < MIN_QUOTE_WORDS:
-        return False
-    return cleaned in _normalize(document_text)
+# Quote verification is shared with every stage that quotes a document.
 
 
 # --- Objection logic (deterministic) ---------------------------------------------

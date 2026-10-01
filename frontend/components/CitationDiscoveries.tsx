@@ -1,4 +1,11 @@
-import type { CitationNetwork, RankedResult } from "@/types/analysis";
+import { EVIDENCE_SOURCE_LABELS } from "@/lib/evidence";
+import type { CitationFollowUp, CitationNetwork, FeatureFinding, RankedResult } from "@/types/analysis";
+
+const FOLLOWUP_VERDICTS = {
+  blocking: "Discloses the idea as a whole",
+  partially_overlapping: "Shares some features",
+  not_relevant: "No feature of your idea found",
+} as const;
 
 const DIRECTION_COPY = {
   backward: "cited by",
@@ -17,14 +24,20 @@ function shortTitle(title: string, max = 60) {
 export default function CitationDiscoveries({
   network,
   rankedResults,
+  followups = [],
+  findings = [],
 }: {
   network: CitationNetwork;
   rankedResults: RankedResult[];
+  followups?: CitationFollowUp[]; // discoveries that were fetched and assessed
+  findings?: FeatureFinding[];
 }) {
   if (network.discoveries.length === 0) return null;
 
   const titleById = new Map(rankedResults.map((r) => [r.id, r.title]));
   const isFallback = network.discoveries.every((d) => d.reason === "examiner_cited");
+  const followupById = new Map(followups.map((f) => [f.id, f]));
+  const featureText = new Map(findings.map((f) => [f.id, f.feature]));
 
   return (
     <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
@@ -76,9 +89,39 @@ export default function CitationDiscoveries({
               {DIRECTION_COPY[d.direction]}:{" "}
               {d.referenced_by.map((id) => shortTitle(titleById.get(id) ?? id)).join(" · ")}
             </p>
+            {followupById.has(d.id) && (
+              <FollowUpResult followup={followupById.get(d.id)!} featureText={featureText} />
+            )}
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function FollowUpResult({
+  followup,
+  featureText,
+}: {
+  followup: CitationFollowUp;
+  featureText: Map<string, string>;
+}) {
+  const names = (ids: string[]) => ids.map((id) => featureText.get(id) ?? id).join("; ");
+  return (
+    <div className="mt-2 rounded-md border border-neutral-200 bg-white p-2.5 text-xs text-neutral-700">
+      <p>
+        <span className="font-semibold text-neutral-900">Followed up:</span> fetched and read{" "}
+        {EVIDENCE_SOURCE_LABELS[followup.evidence_source].replace("from ", "")}.{" "}
+        {FOLLOWUP_VERDICTS[followup.verdict]}
+        {followup.features_found.length > 0 && ` — ${names(followup.features_found)}`}.
+      </p>
+      {followup.changed_conclusion && (
+        <p className="mt-1 font-medium text-blue-800">
+          Changed the conclusion: {names(followup.newly_found)} was not shown by any searched
+          document.
+        </p>
+      )}
+      {followup.explanation && <p className="mt-1 text-neutral-500">{followup.explanation}</p>}
     </div>
   );
 }

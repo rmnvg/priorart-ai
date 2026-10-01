@@ -44,10 +44,58 @@ export interface CandidateNoveltyAssessment {
   overlapping_elements: string[];
   differences: string[];
   verdict: NoveltyVerdict;
+  evidence_source?: EvidenceSource | null; // what the verdict was judged from
+  found_via?: FoundVia; // "citation" for documents the citation follow-up fetched
+}
+
+// Feature-level evidence: backend/app/pipeline/evidence.py
+export type EvidenceSource = "claims" | "abstract" | "snippet";
+export type FoundVia = "search" | "citation";
+
+export interface FeatureEvidence {
+  result_id: string;
+  title: string;
+  link: string;
+  quote: string; // verified to occur in the document text
+  evidence_source: EvidenceSource;
+  found_via: FoundVia;
+}
+
+export interface FeatureFinding {
+  id: string; // "F1"
+  feature: string;
+  evidence: FeatureEvidence[]; // empty = not found in the evidence reviewed
+}
+
+// Citation follow-up: backend/app/pipeline/citation_followup.py
+export interface CitationFollowUp {
+  id: string;
+  title: string;
+  link: string;
+  referenced_by: string[];
+  reason: string;
+  evidence_source: EvidenceSource;
+  verdict: NoveltyVerdict;
+  features_found: string[]; // feature ids
+  newly_found: string[]; // feature ids no searched document showed
+  explanation: string;
+  changed_conclusion: boolean;
+}
+
+export interface ExaminedDocument {
+  id: string;
+  source_type: string;
+  title: string;
+  link: string;
+  text: string;
+  evidence_source?: EvidenceSource | null;
+  found_via?: FoundVia;
 }
 
 export interface IndiaStatus {
-  blocking_in_india: number;
+  // A legal-status count, not an overlap finding: related patents among the
+  // closest matches that Google Patents reports as active in India.
+  related_active_in_india: number;
   active_elsewhere_only: number;
   india_filings_found?: number; // Indian Patent Office filings anywhere in the results
 }
@@ -187,6 +235,9 @@ export interface AnalysisResult {
   language_name?: string;
   localized?: LocalizedContent | null;
   recheck?: RecheckComparison | null; // only on "Apply & re-check" runs
+  examined_documents?: ExaminedDocument[];
+  feature_findings?: FeatureFinding[]; // the headline; absent on older reports
+  citation_followups?: CitationFollowUp[];
 }
 
 export interface AskTurn {
@@ -312,6 +363,8 @@ export interface ExampleReport {
   idea_text: string;
   language_name: string;
   novelty_confidence: number;
+  features_found?: number; // 0/0 on reports saved before feature evidence
+  features_total?: number;
   results_count: number;
   public_domain_count: number;
 }

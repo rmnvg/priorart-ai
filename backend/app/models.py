@@ -6,6 +6,8 @@ from typing import Literal
 from pydantic import BaseModel
 
 from app.pipeline.citation_chase import CitationNetwork
+from app.pipeline.citation_followup import CitationFollowUp
+from app.pipeline.evidence import FeatureFinding
 from app.pipeline.india_status import IndiaStatus
 from app.pipeline.language import LocalizedContent
 from app.pipeline.market_trends import MarketTrend
@@ -52,6 +54,10 @@ class ExaminedDocument(BaseModel):
     title: str
     link: str
     text: str
+    # "claims" | "abstract" | "snippet"; None on reports saved before it was
+    # recorded.
+    evidence_source: str | None = None
+    found_via: str = "search"  # "citation" for documents the follow-up fetched
 
 
 # --- Evidence-backed re-check (built in app.pipeline.recheck) ---------------
@@ -139,6 +145,11 @@ class AnalysisResult(BaseModel):
     language_name: str = "English"
     localized: LocalizedContent | None = None
     examined_documents: list[ExaminedDocument] = []
+    # The headline: the idea's essential features, each with the verified
+    # passages that show it (empty = not found in the evidence reviewed).
+    feature_findings: list[FeatureFinding] = []
+    # Discoveries from citation chasing that were fetched and assessed.
+    citation_followups: list[CitationFollowUp] = []
     # Set only on a re-check ("Apply & re-check"): how the revised idea
     # compares with the original report's closest matches.
     recheck: RecheckComparison | None = None

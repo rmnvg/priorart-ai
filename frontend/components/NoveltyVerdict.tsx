@@ -1,6 +1,7 @@
 import type { LabelKey, Translate } from "@/lib/i18n";
 
-// The single number the whole report leads with, so it gets hero treatment:
+// Reports saved before feature evidence existed lead with this number, so it
+// gets hero treatment there:
 // one large figure per view, proportional (not tabular) figures at display
 // size, and a meter whose fill carries severity against a lighter step of the
 // same hue. Status color never stands alone — the verdict word sits beside it.
@@ -14,9 +15,37 @@ export function verdictLevel(confidence: number) {
   return LEVELS.find((l) => confidence >= l.min) ?? LEVELS[LEVELS.length - 1];
 }
 
-export default function NoveltyVerdict({ confidence, t }: { confidence: number; t: Translate }) {
+export default function NoveltyVerdict({
+  confidence,
+  t,
+  secondary = false,
+}: {
+  confidence: number;
+  t: Translate;
+  // When the report has feature evidence, that is the headline and this is
+  // only the model's overall read: a word, labelled as an estimate, no
+  // percentage that would read as a calibrated probability.
+  secondary?: boolean;
+}) {
   const pct = Math.round(confidence * 100);
   const level = verdictLevel(confidence);
+
+  if (secondary) {
+    return (
+      <p className="flex flex-wrap items-center gap-2 text-sm text-neutral-500">
+        <span>AI&apos;s overall read:</span>
+        <span
+          className="rounded-full px-2.5 py-0.5 text-xs font-semibold"
+          style={{ backgroundColor: `${level.color}1a`, color: level.color }}
+        >
+          {t(level.label)}
+        </span>
+        <span className="text-xs text-neutral-400">
+          a model estimate, not a probability — the quoted evidence above is what to rely on
+        </span>
+      </p>
+    );
+  }
 
   return (
     <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
