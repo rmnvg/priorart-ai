@@ -1,0 +1,60 @@
+{
+  "run_at": "2026-10-02T13:00:47.045310+00:00",
+  "scope": "Live interview responses only; not retrieval accuracy or legal validation.",
+  "serpapi_calls": 0,
+  "results": [
+    {
+      "id": "vague-en",
+      "idea": "A cheap crop dryer that works without electricity.",
+      "response": {
+        "questions": [
+          {
+            "question": "You mention the dryer works without electricity – what physical principle or energy source (e.g., solar heat, wind, combustion, chemical reaction) does it use to dry the crops?",
+            "reason": "Identifying the energy source defines the core mechanism and distinguishes it from other non‑electric dryers."
+          },
+          {
+            "question": "How are the crops positioned or moved within the dryer (e.g., static tray, rotating drum, conveyor) and how does that interact with the drying method?",
+            "reason": "The arrangement and motion of the crop material affect how the drying action is achieved and is key to the invention’s operation."
+          },
+          {
+            "question": "What makes this dryer “cheap” compared to existing non‑electric dryers – is it a specific material, simplified construction, or reduced component count?",
+            "reason": "Understanding the claimed cost‑saving feature clarifies the distinctive aspect that may separate it from prior art."
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 0.88
+    },
+    {
+      "id": "detailed-en",
+      "idea": "A crop dryer with a black metal solar air collector connected below stacked mesh trays, and a tall chimney that draws warm air upward by natural convection. A wax actuator opens an exhaust flap as temperature rises. My proposed difference is a detachable insulated clay heat-storage sleeve around the collector. It must work without electricity.",
+      "response": {
+        "questions": []
+      },
+      "error": null,
+      "seconds": 4.79
+    },
+    {
+      "id": "vague-hi",
+      "idea": "मैं बिना बिजली के अनाज सुखाने वाला सस्ता यंत्र बनाना चाहता हूँ।",
+      "response": {
+        "questions": [
+          {
+            "question": "आप अनाज को बिना बिजली के सुखाने के लिए कौन‑सा भौतिक या रासायनिक प्रक्रिया उपयोग करेंगे?",
+            "reason": "सुखाने की विधि (जैसे सौर, जैव‑इंधन, घर्षण आदि) निर्धारित करती है कि खोज में कौन‑से मौजूदा तकनीकें प्रासंगिक हैं।"
+          },
+          {
+            "question": "सुखाने वाले यंत्र के मुख्य भागों (जैसे हीटिंग स्रोत, धातु बॉडी, वेंटिलेशन) के बीच कैसे जुड़ाव या प्रवाह होगा?",
+            "reason": "भागों के कनेक्शन और ऊर्जा/वायु प्रवाह समझने से यह पता चलता है कि यह समाधान मौजूदा यंत्रों से कैसे अलग है।"
+          },
+          {
+            "question": "आप इस यंत्र को \"सस्ता\" कहने का आधार क्या है – सामग्री, आकार, निर्माण‑प्रक्रिया या कोई विशिष्ट डिज़ाइन?",
+            "reason": "लागत‑कम करने का विशिष्ट तरीका (जैसे स्थानीय सामग्री, सरल संरचना) खोज में समान लागत‑उपायों को पहचानने में मदद करेगा।"
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 4.37
+    }
+  ]
+}

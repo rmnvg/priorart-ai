@@ -52,6 +52,18 @@ export interface CandidateNoveltyAssessment {
 export type EvidenceSource = "claims" | "abstract" | "snippet";
 export type FoundVia = "search" | "citation";
 
+export interface EvidenceSection {
+  label: string;
+  source: EvidenceSource;
+  text: string;
+  original_chars: number;
+  truncated: boolean;
+}
+
+export interface InterviewPlan {
+  questions: { question: string; reason: string }[];
+}
+
 export interface FeatureEvidence {
   result_id: string;
   title: string;
@@ -59,6 +71,7 @@ export interface FeatureEvidence {
   quote: string; // verified to occur in the document text
   evidence_source: EvidenceSource;
   found_via: FoundVia;
+  section?: EvidenceSection | null;
 }
 
 export interface FeatureFinding {
@@ -108,6 +121,8 @@ export interface ExaminedDocument {
   text: string;
   evidence_source?: EvidenceSource | null;
   found_via?: FoundVia;
+  sections?: EvidenceSection[];
+  total_claims?: number;
 }
 
 export interface IndiaStatus {

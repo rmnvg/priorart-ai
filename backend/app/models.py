@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 from app.pipeline.citation_chase import CitationNetwork
 from app.pipeline.citation_followup import CitationFollowUp
-from app.pipeline.evidence import FeatureFinding
+from app.pipeline.evidence import EvidenceSection, FeatureFinding
 from app.pipeline.india_status import IndiaStatus
 from app.pipeline.language import LocalizedContent
 from app.pipeline.market_trends import MarketTrend
@@ -46,7 +46,7 @@ class ClaimChart(BaseModel):
 
 
 class ExaminedDocument(BaseModel):
-    """The condensed full text (abstract + leading claims) of a deep-dived
+    """The reviewed text (abstract + leading claim excerpts) of a deep-dived
     candidate, kept with the report so later steps — the examination
     preview — can quote real evidence without another API call."""
     id: str
@@ -58,6 +58,8 @@ class ExaminedDocument(BaseModel):
     # recorded.
     evidence_source: str | None = None
     found_via: str = "search"  # "citation" for documents the follow-up fetched
+    sections: list[EvidenceSection] = []
+    total_claims: int = 0
 
 
 # --- Evidence-backed re-check (built in app.pipeline.recheck) ---------------

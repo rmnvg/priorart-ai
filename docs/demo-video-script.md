@@ -41,5 +41,13 @@ exactly, so speaking starts a live run (about a minute, up to 16 searches). For 
 cached take, dictate a few words to show the microphone, clear the box, then click
 **हिंदी में उदाहरण**.
 
+**Interview and source inspection.** For a cached sample take, use **Search as
+written — skip questions** to preserve the exact cached description. To demonstrate
+the interview, use **Review & search**, answer a missing technical detail, and show
+the editable **Exact description to search** before confirming. This changes the
+description and normally requires a new live search. New reports let you expand
+**Inspect passage in Abstract / Claim N** and **Review scope & source text**;
+older cached reports cannot demonstrate section attribution until refreshed.
+
 Cut first if you're over time: the progress-checklist narration, then the
 "How this report was built" ending.

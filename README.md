@@ -8,12 +8,27 @@ back ranked prior art (patents, academic papers, and existing
 products), a feature-by-feature evidence check, an interactive patent-landscape graph,
 and concrete suggestions for how to differentiate your idea from what already exists.
 
+**Clarify before searching.** The optional inventor interview asks up to three
+questions in the inventor's language about missing mechanisms, relationships, or
+distinguishing features. Already specific descriptions can proceed without questions.
+The inventor can skip unknown details, edit the exact combined description, and
+confirm it before any search runs. Original wording and inventor-written answers
+are preserved; the interview does not generate a replacement invention.
+
 The report leads with **evidence, not a score**: *"We found overlap in these three
 features. This fourth feature wasn't found in the evidence reviewed."* Under each
 feature is the exact passage from the document that shows it, checked word for word
 against that document's text in code, and whether it came from the patent's claims, its
 abstract, or only a search snippet. "Not found" is always bounded by what was reviewed.
 The model's overall novelty estimate is still shown, as a small, labelled estimate.
+
+**Inspect the source.** New reports keep the abstract and numbered claims separate.
+Click a finding to see its highlighted passage in the actual reviewed section;
+expand review scope to see the retrieved claim count and any truncation. The initial
+review uses up to 2,400 characters of the abstract and 1,600 characters from each of
+the first six claims per patent. Matching a quote verifies its presence, not the
+correctness of the model's interpretation. Older saved reports remain readable and
+explicitly indicate when section-level coverage was not recorded.
 
 **Challenge this finding:** every feature marked “not found” in a saved report
 can trigger a targeted second investigation. Two searches try the feature's
@@ -430,6 +445,21 @@ python -m benchmark.run --split heldout   # held-out cases only (~20 searches)
 Results are written to `backend/benchmark/results/latest.md` when the benchmark is
 run. It measures retrieval only, not the legal accuracy of any verdict.
 
+As of October 2, the configured SerpApi account has no searches remaining, so no
+live retrieval figures are published. The held-out run requires up to 20 searches.
+See [validation status](docs/validation-status.md) for automated checks, live
+interview responses, and the remaining retrieval and human-review work.
+
+The interview can be checked independently without SerpApi calls:
+
+```bash
+cd backend
+python -m scripts.check_interview
+```
+
+This records three development examples in
+`backend/benchmark/results/interview-smoke.json`; it is not a held-out evaluation.
+
 ---
 
 ## Screenshots
@@ -524,6 +554,8 @@ This is a new project, built from scratch for the SerpApi India Hackathon 2026.
 **AI tools used in development:** [Claude Code](https://claude.com/claude-code)
 (Anthropic) was used as an AI pair-programmer throughout development — writing and
 testing the backend pipeline, the frontend, and this documentation.
+Codex (OpenAI) helped implement and test the inventor interview, source-section
+evidence review, and validation documentation.
 
 **AI/APIs used at runtime by the app itself:** Groq (hosting `openai/gpt-oss-120b`)
 powers the LLM reasoning steps (translation, query generation, search refinement,

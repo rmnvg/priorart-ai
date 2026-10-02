@@ -7,10 +7,9 @@ they don't have a patent_id, so there's nothing for google_patents_details to
 look up; they still count toward overall novelty context downstream, just
 without a claims deep-dive.
 
-Truncation is a plain heuristic (abstract + first independent claim(s), or
-snippet + concepts for scholar), not a separate LLM summarization call — this
-keeps the pipeline to one LLM call per candidate at the novelty-verdict stage
-(1.5), rather than two.
+The abstract and first six claims each have their own character allowance, so
+an abstract cannot displace every claim. Sections preserve attribution and
+record truncation; this is bounded review, not full-specification analysis.
 
 The same details response also carries each patent's backward citations
 (`patent_citations`) and forward citations (`cited_by`). Those are kept as
@@ -22,12 +21,15 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from app.pipeline.evidence import EvidenceSource
+from app.pipeline.evidence import EvidenceSection, EvidenceSource
 from app.pipeline.rank import RankedResult
 from app.pipeline.search import SourceType
 from app.serpapi_client import client as _client
 
 MAX_SUMMARY_CHARS = 1200
+MAX_ABSTRACT_CHARS = 2400
+MAX_CLAIM_CHARS = 1600
+MAX_REVIEWED_CLAIMS = 6
 
 
 class CitationRef(BaseModel):
@@ -47,11 +49,13 @@ class CandidateDetail(BaseModel):
     title: str
     link: str
     summary_text: str
-    # What summary_text was built from: the claims are the strongest
-    # evidence, a search snippet the weakest.
+    # Aggregate document label for older consumers. Individual quotations
+    # are attributed using sections, never this document-level label.
     evidence_source: EvidenceSource = "snippet"
     prior_art_keywords: list[str] = []
     citation_refs: list[CitationRef] = []
+    sections: list[EvidenceSection] = []
+    total_claims: int = 0
 
 
 def _truncate(text: str, max_chars: int = MAX_SUMMARY_CHARS) -> str:
@@ -62,12 +66,35 @@ def _truncate(text: str, max_chars: int = MAX_SUMMARY_CHARS) -> str:
 
 
 def _summarize_patent_details(raw: dict, fallback_snippet: str) -> str:
-    abstract = raw.get("abstract") or fallback_snippet
+    sections = patent_sections(raw, fallback_snippet)
+    if len(sections) == 1 and sections[0].source == "snippet":
+        return sections[0].text
+    return section_text(sections)
+
+
+def _section(label: str, source: EvidenceSource, text: str, limit: int) -> EvidenceSection:
+    text = text.strip()
+    return EvidenceSection(label=label, source=source, text=text[:limit],
+                           original_chars=len(text), truncated=len(text) > limit)
+
+
+def patent_sections(raw: dict, fallback_snippet: str = "") -> list[EvidenceSection]:
+    sections = []
+    abstract = raw.get("abstract")
+    if isinstance(abstract, str) and abstract.strip():
+        sections.append(_section("Abstract", "abstract", abstract, MAX_ABSTRACT_CHARS))
+    elif fallback_snippet.strip():
+        sections.append(_section("Search snippet", "snippet", fallback_snippet, MAX_SUMMARY_CHARS))
     claims = raw.get("claims") or []
-    parts = [abstract]
-    for i, claim in enumerate(claims[:2]):
-        parts.append(f"Claim {i + 1}: {claim}")
-    return _truncate(" ".join(p for p in parts if p))
+    if isinstance(claims, list):
+        for index, claim in enumerate(claims[:MAX_REVIEWED_CLAIMS], 1):
+            if isinstance(claim, str) and claim.strip():
+                sections.append(_section(f"Claim {index}", "claims", claim, MAX_CLAIM_CHARS))
+    return sections
+
+
+def section_text(sections: list[EvidenceSection]) -> str:
+    return "\n\n".join(f"{s.label}: {s.text}" + (" [excerpt ends]" if s.truncated else "") for s in sections)
 
 
 def _summarize_scholar_details(raw: dict, fallback_snippet: str) -> str:
@@ -120,9 +147,11 @@ def fetch_detail(
         raw = {}
 
     if source_type == "patent":
-        summary_text = _summarize_patent_details(raw, snippet)
+        sections = patent_sections(raw, snippet)
+        summary_text = section_text(sections)
     else:
         summary_text = _summarize_scholar_details(raw, snippet)
+        sections = [_section("Scholar excerpt", "snippet", summary_text, MAX_SUMMARY_CHARS)] if summary_text else []
 
     return CandidateDetail(
         id=doc_id,
@@ -135,6 +164,8 @@ def fetch_detail(
         evidence_source=_evidence_source(raw, source_type),
         prior_art_keywords=raw.get("prior_art_keywords") or [],
         citation_refs=_parse_citation_refs(raw) if source_type == "patent" else [],
+        sections=sections,
+        total_claims=len(raw.get("claims") or []) if isinstance(raw.get("claims"), list) else 0,
     )
 
 

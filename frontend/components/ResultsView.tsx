@@ -312,7 +312,7 @@ export default function ResultsView({
       />
 
       {evidence ? (
-        <EvidenceFindings summary={evidence} reportId={result.report_id} />
+        <EvidenceFindings summary={evidence} reportId={result.report_id} documents={result.examined_documents} />
       ) : (
         <NoveltyVerdict confidence={result.overall_novelty_confidence} t={t} />
       )}
