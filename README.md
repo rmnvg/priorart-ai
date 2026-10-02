@@ -15,6 +15,26 @@ against that document's text in code, and whether it came from the patent's clai
 abstract, or only a search snippet. "Not found" is always bounded by what was reviewed.
 The model's overall novelty estimate is still shown, as a small, labelled estimate.
 
+**Challenge this finding:** every feature marked “not found” in a saved report
+can trigger a targeted second investigation. Two searches try the feature's
+mechanism and alternative patent terminology; up to three patents are checked
+against that specific feature. The follow-up shows the original finding alongside
+the new result, exact verified passages, their abstract/claim sections, the queries,
+and whether each document was previously reviewed. A failed or incomplete check
+is distinguished from a completed search with no supporting passage.
+
+Challenges use at most **5 additional SerpApi calls** (2 searches + 3 detail
+lookups). Completed findings are saved with the report and reload without searches,
+including in demo mode. Incomplete attempts can be retried. This is supplemental
+evidence: the original report, score, Q&A context and exports remain unchanged.
+The scope is patents only, reviewing up to 4,000 characters of the abstract and
+1,500 characters from each of the first 12 claims; excerpts are labelled.
+
+API: `GET /report/{report_id}/challenge/{feature_id}` loads a saved challenge or
+returns `null`; `POST` runs it or returns its saved result. Only features without
+evidence in the original report are eligible. Concurrent identical requests are
+coalesced within one backend process.
+
 It also does the inverse, which most prior-art tools don't: it identifies the patents
 in your space whose **protection is reported as ended**. Those usually aren't
 obstacles: once a patent lapses or expires in a country, what it describes is generally

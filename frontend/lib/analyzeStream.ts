@@ -1,5 +1,6 @@
 import type {
   AnalysisResult,
+  ChallengeResult,
   AnalyzeRequest,
   AnalyzeStreamEvent,
   AskTurn,
@@ -13,6 +14,17 @@ import type {
 } from "@/types/analysis";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+export async function fetchChallenge(
+  reportId: string, featureId: string, run = false, signal?: AbortSignal
+): Promise<ChallengeResult | null> {
+  const response = await fetch(
+    `${API_URL}/report/${encodeURIComponent(reportId)}/challenge/${encodeURIComponent(featureId)}`,
+    { method: run ? "POST" : "GET", signal }
+  );
+  if (!response.ok) throw new Error(await errorDetail(response, "Couldn't complete the challenge. Please try again."));
+  return (await response.json()) as ChallengeResult | null;
+}
 
 // The backend streams SSE over a POST response, so the native EventSource
 // (GET-only) doesn't apply — we parse the "event: X\r\ndata: Y\r\n\r\n" framing

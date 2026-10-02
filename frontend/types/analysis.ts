@@ -67,6 +67,24 @@ export interface FeatureFinding {
   evidence: FeatureEvidence[]; // empty = not found in the evidence reviewed
 }
 
+export interface ChallengeResult {
+  feature_id: string;
+  feature: string;
+  outcome: "found" | "not_found" | "inconclusive";
+  queries: { query: string; rationale: string }[];
+  documents: {
+    id: string;
+    title: string;
+    link: string;
+    previously_reviewed: boolean;
+    sections: { label: string; source: EvidenceSource; text: string }[];
+  }[];
+  evidence: { document_id: string; section: string; quote: string }[];
+  warnings: string[];
+  serpapi_calls: Record<string, number>;
+  completed_at: string;
+}
+
 // Citation follow-up: backend/app/pipeline/citation_followup.py
 export interface CitationFollowUp {
   id: string;
