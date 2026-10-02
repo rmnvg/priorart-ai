@@ -31,7 +31,7 @@ def report_to_markdown(result: AnalysisResult, report_url: str | None = None) ->
                 e = f.evidence[0]
                 via = ", found by citation follow-up" if e.found_via == "citation" else ""
                 lines.append(
-                    f"- **{f.feature}** — [{e.title}]({e.link}) ({e.evidence_source}{via}): "
+                    f"- **{f.feature}** — [{e.title}]({e.link}) ({e.section.label if e.section else e.evidence_source}{via}): "
                     f"\"{e.quote}\""
                 )
             else:

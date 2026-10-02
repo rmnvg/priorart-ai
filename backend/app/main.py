@@ -14,6 +14,7 @@ from app.models import AnalysisResult
 from app.pipeline.ask import AskTurn, ReportAnswer, answer_question
 from app.pipeline.challenge import ChallengeResult, ChallengeUnavailable, missing_feature
 from app.pipeline.examination import ExaminationPreview
+from app.pipeline.interview import InterviewPlan, InterviewRequest, plan_interview
 from app.pipeline.rank import warm_up
 from app.pipeline.redesign import FeatureList, RedesignBrief, RedesignResult
 from app.pipeline.sketch import SketchReading, SketchUnreadable
@@ -99,6 +100,16 @@ async def analyze(request: AnalyzeRequest):
             yield {"event": event.type, "data": event.model_dump_json()}
 
     return EventSourceResponse(event_stream())
+
+
+@app.post("/interview", response_model=InterviewPlan)
+async def interview(request: InterviewRequest) -> InterviewPlan:
+    if not GROQ_API_KEY:
+        raise HTTPException(status_code=503, detail="The interview is unavailable. You can search your description as written.")
+    try:
+        return await asyncio.to_thread(plan_interview, request.idea_text)
+    except ValueError:
+        raise HTTPException(status_code=502, detail="Couldn't prepare questions. Retry or search your description as written.")
 
 
 @app.get("/report/{report_id}", response_model=AnalysisResult)

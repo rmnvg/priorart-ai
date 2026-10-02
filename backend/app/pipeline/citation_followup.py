@@ -147,6 +147,7 @@ def apply_followups(
                     document_text=detail.summary_text,
                     evidence_source=detail.evidence_source,
                     found_via="citation",
+                    sections=detail.sections,
                 )
                 if added and feature_id not in found:
                     found.append(feature_id)

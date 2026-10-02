@@ -45,7 +45,7 @@ export function buildReportBrief(result: AnalysisResult, reportUrl?: string): st
       const e = f.evidence[0];
       lines.push(
         e
-          ? `| ${escapeCell(f.feature)} | [${escapeCell(e.title)}](${e.link}) (${EVIDENCE_SOURCE_LABELS[e.evidence_source]}${e.found_via === "citation" ? ", via citation follow-up" : ""}) | "${escapeCell(e.quote)}" |`
+          ? `| ${escapeCell(f.feature)} | [${escapeCell(e.title)}](${e.link}) (${escapeCell(e.section?.label ?? EVIDENCE_SOURCE_LABELS[e.evidence_source])}${e.found_via === "citation" ? ", via citation follow-up" : ""}) | "${escapeCell(e.quote)}" |`
           : `| ${escapeCell(f.feature)} | Not found in the documents reviewed | — |`
       );
     }

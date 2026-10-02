@@ -31,6 +31,12 @@ class QueryGenerationResult(BaseModel):
 SYSTEM_PROMPT = """You are a patent search expert who writes precise Google Patents \
 search queries. You always respond with a single valid JSON object and nothing else.
 
+The description may contain interview questions labelled "Question (context only)"
+and "Inventor's answer". Only the original description and inventor's answers are
+invention facts. Examples or possible mechanisms mentioned in a question are not
+features of the invention unless the inventor explicitly confirms them. Do not
+fill in unknown details.
+
 Google Patents query syntax you must use correctly:
 - Parentheses + OR group synonyms: (battery OR "power cell")
 - Adjacent terms/groups are implicitly ANDed: (drone OR UAV) (delivery OR logistics)

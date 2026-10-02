@@ -281,6 +281,7 @@ def build_feature_findings(
                 link=c.link,
                 document_text=c.summary_text,
                 evidence_source=c.evidence_source,
+                sections=c.sections,
             )
     return findings
 

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import ChallengeFinding from "@/components/ChallengeFinding";
+import EvidenceExplorer, { QuotedSection } from "@/components/EvidenceExplorer";
 import { EVIDENCE_SOURCE_LABELS, evidenceHeadline, type EvidenceSummary } from "@/lib/evidence";
-import type { FeatureFinding } from "@/types/analysis";
+import type { ExaminedDocument, FeatureFinding } from "@/types/analysis";
 
 // The report's headline: which features of the idea already appear in the
 // reviewed documents (each with the exact passage, verified against the
 // document's text) and which weren't found. Replaces a single model-made
 // percentage with something the reader can check line by line.
-export default function EvidenceFindings({ summary, reportId }: { summary: EvidenceSummary; reportId?: string | null }) {
+export default function EvidenceFindings({ summary, reportId, documents = [] }: { summary: EvidenceSummary; reportId?: string | null; documents?: ExaminedDocument[] }) {
   const findings = [...summary.found, ...summary.missing].sort(
     (a, b) => Number(a.id.slice(1)) - Number(b.id.slice(1))
   );
@@ -48,6 +49,7 @@ export default function EvidenceFindings({ summary, reportId }: { summary: Evide
           <FindingRow key={f.id} finding={f} reportId={reportId} />
         ))}
       </ul>
+      <EvidenceExplorer documents={documents} />
     </section>
   );
 }
@@ -89,7 +91,7 @@ function FindingRow({ finding, reportId }: { finding: FeatureFinding; reportId?:
                 e.evidence_source === "snippet" ? "bg-yellow-50 text-yellow-800" : "bg-neutral-100"
               }`}
             >
-              {EVIDENCE_SOURCE_LABELS[e.evidence_source]}
+              {e.section?.label ?? EVIDENCE_SOURCE_LABELS[e.evidence_source]}
             </span>
             {e.found_via === "citation" && (
               <span className="rounded bg-blue-50 px-1.5 py-0.5 text-blue-800">
@@ -97,6 +99,7 @@ function FindingRow({ finding, reportId }: { finding: FeatureFinding; reportId?:
               </span>
             )}
           </p>
+          <QuotedSection evidence={e} />
         </div>
       ))}
 

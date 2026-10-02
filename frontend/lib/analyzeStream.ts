@@ -11,9 +11,21 @@ import type {
   RedesignResult,
   ReportAnswer,
   SketchReading,
+  InterviewPlan,
 } from "@/types/analysis";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+export async function fetchInterview(ideaText: string, signal?: AbortSignal): Promise<InterviewPlan> {
+  const response = await fetch(`${API_URL}/interview`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ idea_text: ideaText }),
+    signal,
+  });
+  if (!response.ok) throw new Error(await errorDetail(response, "Couldn't prepare questions. You can search as written."));
+  return (await response.json()) as InterviewPlan;
+}
 
 export async function fetchChallenge(
   reportId: string, featureId: string, run = false, signal?: AbortSignal

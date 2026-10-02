@@ -332,6 +332,8 @@ async def run_pipeline(
                     title=c.title,
                     link=c.link,
                     text=c.summary_text,
+                    sections=c.sections,
+                    total_claims=c.total_claims,
                     evidence_source=c.evidence_source,
                     found_via=found_via,
                 )

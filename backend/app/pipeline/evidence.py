@@ -32,6 +32,14 @@ class IdeaFeature(BaseModel):
     text: str
 
 
+class EvidenceSection(BaseModel):
+    label: str
+    source: EvidenceSource
+    text: str
+    original_chars: int
+    truncated: bool = False
+
+
 class FeatureEvidence(BaseModel):
     result_id: str
     title: str
@@ -39,6 +47,7 @@ class FeatureEvidence(BaseModel):
     quote: str  # verified to occur in the document text
     evidence_source: EvidenceSource
     found_via: FoundVia = "search"
+    section: EvidenceSection | None = None
 
 
 class FeatureFinding(BaseModel):
@@ -91,13 +100,19 @@ def attach_evidence(
     document_text: str,
     evidence_source: EvidenceSource,
     found_via: FoundVia = "search",
+    sections: list[EvidenceSection] | None = None,
 ) -> bool:
     """Adds the quote to the feature's evidence only if it verifies against
     the document text. One quote per document per feature. Returns whether
     it was added."""
     finding = next((f for f in findings if f.id == feature_id.strip().upper()), None)
     quote = quote.strip()
-    if finding is None or not quote_is_verified(quote, document_text):
+    # New reports verify against one real section, never a concatenation
+    # that could misattribute an abstract passage to a patent claim.
+    section = next((s for s in sections or [] if quote_is_verified(quote, s.text)), None)
+    if sections and section is None:
+        return False
+    if finding is None or not quote_is_verified(quote, section.text if section else document_text):
         return False
     if any(e.result_id == result_id for e in finding.evidence):
         return False
@@ -109,8 +124,9 @@ def attach_evidence(
             title=title,
             link=link,
             quote=quote,
-            evidence_source=evidence_source,
+            evidence_source=section.source if section else evidence_source,
             found_via=found_via,
+            section=section,
         )
     )
     return True

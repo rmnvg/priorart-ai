@@ -3,6 +3,8 @@
 import { useRef, useState } from "react";
 import SketchReview from "@/components/SketchReview";
 import VoiceInput from "@/components/VoiceInput";
+import InventorInterview from "@/components/InventorInterview";
+import { MAX_IDEA_LENGTH } from "@/lib/interview";
 import { readSketch } from "@/lib/analyzeStream";
 import { draftFromReading, SAMPLE_SKETCH_URL, type SketchDraft } from "@/lib/sketch";
 import { fileToSketchDataUrl, urlToSketchDataUrl } from "@/lib/sketchImage";
@@ -27,6 +29,7 @@ const STEPS = [
 
 export default function IdeaForm({ onSubmit, disabled, live }: IdeaFormProps) {
   const [ideaText, setIdeaText] = useState("");
+  const [interviewIdea, setInterviewIdea] = useState<string | null>(null);
   const [sketch, setSketch] = useState<{ image: string; draft: SketchDraft; uncertain: string[] } | null>(null);
   const [readingSketch, setReadingSketch] = useState(false);
   const [sketchError, setSketchError] = useState<string | null>(null);
@@ -63,7 +66,8 @@ export default function IdeaForm({ onSubmit, disabled, live }: IdeaFormProps) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (tooShort) return;
-    onSubmit(ideaText);
+    if (live === false) onSubmit(ideaText);
+    else setInterviewIdea(ideaText.trim());
   }
 
   return (
@@ -97,7 +101,10 @@ export default function IdeaForm({ onSubmit, disabled, live }: IdeaFormProps) {
         </div>
       )}
 
-      {sketch ? (
+      {interviewIdea !== null ? (
+        <InventorInterview key={interviewIdea} idea={interviewIdea} disabled={disabled}
+          onSearch={onSubmit} onBack={() => setInterviewIdea(null)} />
+      ) : sketch ? (
         <SketchReview
           image={sketch.image}
           draft={sketch.draft}
@@ -117,6 +124,7 @@ export default function IdeaForm({ onSubmit, disabled, live }: IdeaFormProps) {
             onChange={(e) => setIdeaText(e.target.value)}
             disabled={disabled}
             rows={6}
+            maxLength={MAX_IDEA_LENGTH}
             placeholder="e.g. A smart water bottle that tracks how much you drink and reminds you to hydrate via a phone app, using a pressure sensor at the base. (Any Indian language works.)"
             className="w-full resize-none rounded-xl border border-neutral-300 bg-white p-4 text-neutral-900 shadow-sm transition placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none focus:ring-4 focus:ring-neutral-900/5 disabled:bg-neutral-50 disabled:text-neutral-400"
           />
@@ -173,11 +181,13 @@ export default function IdeaForm({ onSubmit, disabled, live }: IdeaFormProps) {
                 disabled={disabled || tooShort}
                 className="rounded-lg bg-neutral-900 px-6 py-2.5 font-medium text-white shadow-sm transition hover:bg-neutral-700 disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:shadow-none"
               >
-                Analyze idea
+                Review & search
               </button>
             </div>
           </div>
           {sketchError && <p className="mt-2 text-sm text-red-700">{sketchError}</p>}
+          <button type="button" disabled={disabled || tooShort} onClick={() => onSubmit(ideaText)}
+            className="mt-3 text-sm text-neutral-500 underline disabled:opacity-50">Search as written — skip questions</button>
         </form>
       )}
     </div>
