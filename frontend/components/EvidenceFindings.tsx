@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChallengeFinding from "@/components/ChallengeFinding";
 import { EVIDENCE_SOURCE_LABELS, evidenceHeadline, type EvidenceSummary } from "@/lib/evidence";
 import type { FeatureFinding } from "@/types/analysis";
 
@@ -6,7 +7,7 @@ import type { FeatureFinding } from "@/types/analysis";
 // reviewed documents (each with the exact passage, verified against the
 // document's text) and which weren't found. Replaces a single model-made
 // percentage with something the reader can check line by line.
-export default function EvidenceFindings({ summary }: { summary: EvidenceSummary }) {
+export default function EvidenceFindings({ summary, reportId }: { summary: EvidenceSummary; reportId?: string | null }) {
   const findings = [...summary.found, ...summary.missing].sort(
     (a, b) => Number(a.id.slice(1)) - Number(b.id.slice(1))
   );
@@ -44,14 +45,14 @@ export default function EvidenceFindings({ summary }: { summary: EvidenceSummary
 
       <ul className="mt-5 space-y-3">
         {findings.map((f) => (
-          <FindingRow key={f.id} finding={f} />
+          <FindingRow key={f.id} finding={f} reportId={reportId} />
         ))}
       </ul>
     </section>
   );
 }
 
-function FindingRow({ finding }: { finding: FeatureFinding }) {
+function FindingRow({ finding, reportId }: { finding: FeatureFinding; reportId?: string | null }) {
   const [showAll, setShowAll] = useState(false);
   const found = finding.evidence.length > 0;
   const shown = showAll ? finding.evidence : finding.evidence.slice(0, 1);
@@ -107,6 +108,7 @@ function FindingRow({ finding }: { finding: FeatureFinding }) {
           {showAll ? "Show one document" : `Also in ${finding.evidence.length - 1} more document(s)`}
         </button>
       )}
+      {!found && reportId && <ChallengeFinding key={`${reportId}-${finding.id}`} reportId={reportId} featureId={finding.id} />}
     </li>
   );
 }

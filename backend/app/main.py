@@ -12,6 +12,7 @@ from app.cache import list_top_level_reports
 from app.config import ALLOWED_ORIGINS, GROQ_API_KEY, LIVE_MODE
 from app.models import AnalysisResult
 from app.pipeline.ask import AskTurn, ReportAnswer, answer_question
+from app.pipeline.challenge import ChallengeResult, ChallengeUnavailable, missing_feature
 from app.pipeline.examination import ExaminationPreview
 from app.pipeline.rank import warm_up
 from app.pipeline.redesign import FeatureList, RedesignBrief, RedesignResult
@@ -127,6 +128,30 @@ def list_examples() -> list[ExampleReport]:
             )
         )
     return examples
+
+
+@app.get("/report/{report_id}/challenge/{feature_id}", response_model=ChallengeResult | None)
+def saved_feature_challenge(report_id: str, feature_id: str) -> ChallengeResult | None:
+    report = _load_report(report_id)
+    try:
+        return service.saved_challenge(report_id, report, feature_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc))
+
+
+@app.post("/report/{report_id}/challenge/{feature_id}", response_model=ChallengeResult)
+async def challenge_feature(report_id: str, feature_id: str) -> ChallengeResult:
+    report = _load_report(report_id)
+    try:
+        missing_feature(report, feature_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc))
+    try:
+        return await asyncio.to_thread(service.challenge_for, report_id, report, feature_id)
+    except ChallengeUnavailable as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except ValueError:
+        raise HTTPException(status_code=502, detail="Couldn't complete the evidence check. Please try again.")
 
 
 @app.post("/report/{report_id}/ask", response_model=ReportAnswer)

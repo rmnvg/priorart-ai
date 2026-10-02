@@ -6,6 +6,7 @@ ids, the same cache, the same refusal without API keys.
 import asyncio
 import hashlib
 from collections.abc import AsyncGenerator
+from threading import Lock
 
 from app.cache import (
     cache_key,
@@ -18,6 +19,12 @@ from app.cache import (
 )
 from app.config import GROQ_API_KEY, LIVE_MODE, REPLAY_STEP_SECONDS
 from app.models import AnalysisResult, AnalyzeStreamEvent, ErrorEvent
+from app.pipeline.challenge import (
+    ChallengeResult,
+    ChallengeUnavailable,
+    challenge_finding,
+    missing_feature,
+)
 from app.pipeline.examination import ExaminationPreview, preview_examination
 from app.pipeline.orchestrator import run_pipeline
 from app.pipeline.redesign import (
@@ -106,6 +113,43 @@ async def analyze(
 
 class LLMUnavailable(Exception):
     """An LLM-only feature was requested without an LLM key configured."""
+
+
+# Fixed lock stripes bound memory and coalesce concurrent requests in this process.
+_challenge_locks = [Lock() for _ in range(32)]
+
+
+def _challenge_name(report: AnalysisResult, feature_id: str) -> str:
+    feature = missing_feature(report, feature_id)
+    digest = hashlib.sha256(f"{feature.id}:{feature.feature}".encode()).hexdigest()[:16]
+    return f"challenge-v1-{digest}"
+
+
+def saved_challenge(report_id: str, report: AnalysisResult, feature_id: str) -> ChallengeResult | None:
+    cached = get_attachment(report_id, _challenge_name(report, feature_id))
+    if cached is not None:
+        try:
+            return ChallengeResult.model_validate(cached)
+        except ValueError:
+            pass
+    return None
+
+
+def challenge_for(report_id: str, report: AnalysisResult, feature_id: str) -> ChallengeResult:
+    name = _challenge_name(report, feature_id)
+    with _challenge_locks[hash((report_id, name)) % len(_challenge_locks)]:
+        cached = saved_challenge(report_id, report, feature_id)
+        if cached is not None:
+            return cached
+        if not LIVE_MODE:
+            raise ChallengeUnavailable(
+                "New challenges need SERPAPI_API_KEY and GROQ_API_KEY. Saved challenges still work."
+            )
+        result = challenge_finding(report, feature_id)
+        # Incomplete attempts remain retryable, not permanently cached as absence.
+        if result.outcome != "inconclusive":
+            set_attachment(report_id, name, result.model_dump(mode="json"))
+        return result
 
 
 def load_report(report_id: str) -> AnalysisResult | None:
