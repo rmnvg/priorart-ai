@@ -1,0 +1,20 @@
+{
+  "features": [
+    {
+      "id": "E1",
+      "text": "black tin sheet that absorbs solar energy to heat air"
+    },
+    {
+      "id": "E2",
+      "text": "small fan that moves heated air over the tray"
+    },
+    {
+      "id": "E3",
+      "text": "mesh tray for placing crops during drying"
+    },
+    {
+      "id": "E4",
+      "text": "solar-powered energy source for the system"
+    }
+  ]
+}
