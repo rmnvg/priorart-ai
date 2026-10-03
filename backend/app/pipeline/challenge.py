@@ -11,7 +11,12 @@ from pydantic import BaseModel, Field
 
 from app.llm import complete_json
 from app.models import AnalysisResult
-from app.pipeline.evidence import EvidenceSource, FeatureFinding, quote_is_verified
+from app.pipeline.evidence import (
+    EvidenceSource,
+    FeatureFinding,
+    quote_is_verified,
+    resolve_document_id,
+)
 from app.pipeline.query_generator import GeneratedQuery
 from app.pipeline.rank import rank_and_dedupe
 from app.pipeline.search import SearchLayerResult, clean_query, run_queries
@@ -158,10 +163,13 @@ def challenge_finding(report: AnalysisResult, feature_id: str) -> ChallengeResul
             system="You assess supplied patent excerpts, returning only valid JSON.",
             temperature=0.1,
         ))
-        if set(assessment.documents) != {d.id for d in documents}:
+        known_ids = [d.id for d in documents]
+        reviewed = {resolve_document_id(i, known_ids) for i in assessment.documents}
+        if reviewed != set(known_ids):
             raise ValueError("The evidence assessment did not cover every document.")
         by_id = {d.id: d for d in documents}
         for evidence in assessment.evidence:
+            evidence.document_id = resolve_document_id(evidence.document_id, known_ids) or evidence.document_id
             doc = by_id.get(evidence.document_id)
             section = next((s for s in doc.sections if s.label == evidence.section), None) if doc else None
             if section and quote_is_verified(evidence.quote, section.text):

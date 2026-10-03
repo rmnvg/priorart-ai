@@ -1,0 +1,1410 @@
+{
+  "idea_text": "A refrigerator made entirely of clay that keeps vegetables and milk cool without electricity: water from a reservoir on top seeps through the porous clay walls and evaporates, cooling the storage chamber inside.",
+  "parent_report_id": null,
+  "events": [
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Extracting core concepts and generating search queries...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_patents",
+      "message": "Searching patents across 3 query angles, including Indian Patent Office filings...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_scholar",
+      "message": "Reviewing academic literature matches...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "checking_market_availability",
+      "message": "Checking whether a similar product already exists commercially...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "ranking_results",
+      "message": "Ranking and deduplicating results by relevance to your idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Reading the first results to learn the terminology patents use for this idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Prior art refers to this as an \"earthen pot refrigerator\" or \"pot\u2011in\u2011pot cooler\" using \"adiabatic\" or \"passive evaporative\" cooling, not just clay fridge.",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Pulling full claims and citations for top candidates and scoring novelty...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Following up 1 document(s) the closest matches cite but the keyword search missed...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "done",
+      "message": "Analysis complete.",
+      "replayed": false
+    },
+    {
+      "type": "result",
+      "data": {
+        "idea_text": "A refrigerator made entirely of clay that keeps vegetables and milk cool without electricity: water from a reservoir on top seeps through the porous clay walls and evaporates, cooling the storage chamber inside.",
+        "ranked_results": [
+          {
+            "id": "https://cl.pinterest.com/pin/206461964164302211/",
+            "source_type": "product",
+            "title": "Clay refrigerator requires zero energy to keep food cool",
+            "snippet": "It keeps food cool simply through evaporation. An upper chamber that holds up to 20 liters of water is designed in a way that the water ...",
+            "link": "https://cl.pinterest.com/pin/206461964164302211/",
+            "relevance_score": 0.735554575920105,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.scribd.com/document/974767889/Eco-Cool-Clay-Refrigerator",
+            "source_type": "product",
+            "title": "Eco-Cool Clay Refrigerator | PDF",
+            "snippet": "The EcoCool Clay Refrigerator is a sustainable, non-electric cooling solution made from natural clay, offering an affordable alternative to traditional ...",
+            "link": "https://www.scribd.com/document/974767889/Eco-Cool-Clay-Refrigerator",
+            "relevance_score": 0.6719920635223389,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.pinterest.com/pin/how-to-build-a-clay-stove--703756186455905/",
+            "source_type": "product",
+            "title": "Clay Port Refrigerator: Cools with Zer0 Energy",
+            "snippet": "Discover how a clay pot refrigerator uses zero energy to keep food cool. Ideal for off-grid living, it's eco-friendly, affordable, ...",
+            "link": "https://www.pinterest.com/pin/how-to-build-a-clay-stove--703756186455905/",
+            "relevance_score": 0.6341332197189331,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://kr.pinterest.com/pin/435301120259064505/",
+            "source_type": "product",
+            "title": "Building a natural cooling storage system at home is ...",
+            "snippet": "Clay Pot Cooler (Zeer Pot Method) Ideal for small-scale storage of vegetables, fruits, and dairy. Materials Needed: \u2022 Two unglazed ...",
+            "link": "https://kr.pinterest.com/pin/435301120259064505/",
+            "relevance_score": 0.567290186882019,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.threads.com/@thebrainmaze/post/DcqQhx7DSts/video-cooling-food-with-clay-and-water-this-electricity-free-refrigerator-uses-two/",
+            "source_type": "product",
+            "title": "This electricity-free refrigerator uses two clay pots with wet sand ...",
+            "snippet": "Because the clay is porous, a small amount of water slowly passes through the outer wall and begins to evaporate. To change from liquid into ...",
+            "link": "https://www.threads.com/@thebrainmaze/post/DcqQhx7DSts/video-cooling-food-with-clay-and-water-this-electricity-free-refrigerator-uses-two/",
+            "relevance_score": 0.5541149377822876,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://za.pinterest.com/pin/558446422566454987/",
+            "source_type": "product",
+            "title": "Building a natural cooling storage system ...",
+            "snippet": "Building a natural cooling storage system at home is simple and customizable. Here's how you can create one based on available materials and ...",
+            "link": "https://za.pinterest.com/pin/558446422566454987/",
+            "relevance_score": 0.5186131000518799,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/IT202400000759A1/en",
+            "source_type": "patent",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "snippet": "[0013] [0007] Also known is a natural evaporative cooling system, otherwise known as evaporative or adiabatic cooling, which does not use refrigeration circuits or other electrical or chemical cooling devices, but rather exploits the physical principle of water evaporation under specific conditions \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en",
+            "relevance_score": 0.4545406103134155,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "IT": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Inventing Green Srl",
+            "priority_date": "2024-01-17"
+          },
+          {
+            "id": "scholar/12928299845361729114",
+            "source_type": "scholar",
+            "title": "Advances in the development of a tomato postharvest storage system: Towards eradicating postharvest losses",
+            "snippet": "\u2026 [65] Developed an evaporative cooling storage unit. Fruits and \u2026 at which evaporation occurs. Firstly, relative humidity of the surrounding air affects the rate at which evaporative cooling \u2026",
+            "link": "https://patents.google.com/scholar/12928299845361729114",
+            "relevance_score": 0.4274529814720154,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/8618976876933447734",
+            "source_type": "scholar",
+            "title": "Review of research and application of evaporative cooling in preservation of fresh agricultural produce",
+            "snippet": "\u2026 in which the evaporation of liquid into surrounding air cools a \u2026 evaporative cooling when considering water evaporating into \u2026 Passive evaporative cooling systems use natural circulation \u2026",
+            "link": "https://patents.google.com/scholar/8618976876933447734",
+            "relevance_score": 0.4094560146331787,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN106461279B/en",
+            "source_type": "patent",
+            "title": "Refrigerating circulatory device",
+            "snippet": "1. a kind of refrigerating circulatory device, it is characterised in that: Have the refrigeration cycle for connecting compressor, condenser, expansion valve, evaporator, Use the working fluid that contains 1,1,2- trifluoro-ethylene (R1123) and difluoromethane (R32) as the refrigeration cycle \u2026",
+            "link": "https://patents.google.com/patent/CN106461279B/en",
+            "relevance_score": 0.3636859655380249,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "MY": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u677e\u4e0b\u77e5\u8bc6\u4ea7\u6743\u7ecf\u8425\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2014-05-12"
+          },
+          {
+            "id": "patent/EP3102902B1/en",
+            "source_type": "patent",
+            "title": "Building system for cascading flows of matter and energy",
+            "snippet": ". This patent's major innovation is tapping previously unused thermal reservoirs such as swimming pools and reservoirs for fire suppression in order to reduce air conditioning expenses. It goes on to discuss how to do a heat exchange so that the fluid within the reservoir doesn't mix with the \u2026",
+            "link": "https://patents.google.com/patent/EP3102902B1/en",
+            "relevance_score": 0.3368085026741028,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "BR": "ACTIVE",
+              "CA": "ACTIVE",
+              "SG": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Melsheimer, Kevin Hans",
+            "priority_date": "2013-08-22"
+          },
+          {
+            "id": "patent/US10246349B2/en",
+            "source_type": "patent",
+            "title": "Water desalination using freeze crystallization and acoustic pressure shock \u2026",
+            "snippet": "a top portion and bottom portion, a brine-slurry outlet nearer the bottom portion of the second enclosure and a desalinated ice outlet nearer the top portion of the second enclosure; a cooling means coupled to the second enclosure; one or more acoustic pressure shock wave devices including a \u2026",
+            "link": "https://patents.google.com/patent/US10246349B2/en",
+            "relevance_score": 0.3349055349826813,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Sanuwave, Inc.",
+            "priority_date": "2015-08-07"
+          },
+          {
+            "id": "patent/US9677714B2/en",
+            "source_type": "patent",
+            "title": "Cryogenic injection compositions, systems and methods for cryogenically \u2026",
+            "snippet": "4 is a warm return vent. Item 5 is a pump. Items 6 , 8 , 9 and 10 are valves. Item 7 is an evaporator chamber of a refrigeration unit. Items 11 and 12 are pipes or tubing connecting the evaporator chamber 7 to the refrigeration unit 13 . Item 13 is a refrigeration unit. Item 14 in an injector. A. \u2026",
+            "link": "https://patents.google.com/patent/US9677714B2/en",
+            "relevance_score": 0.31991249322891235,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "TW": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Biofilm Ip, Llc",
+            "priority_date": "2011-12-16"
+          },
+          {
+            "id": "patent/JP5927339B2/en",
+            "source_type": "patent",
+            "title": "Dual refrigeration equipment",
+            "snippet": "The binary refrigeration apparatus according to claim 2, wherein hexafluoroethane (R116) is further mixed as a refrigerant in the low temperature side refrigeration circuit. As a refrigerant in the low temperature side refrigeration circuit, difluoroethylene (R1132a) / hexafluoroethane (R116) / \u2026",
+            "link": "https://patents.google.com/patent/JP5927339B2/en",
+            "relevance_score": 0.3131651282310486,
+            "cpc_code": "C09K5/041",
+            "cpc_description": "Materials undergoing a change of physical state when used the change of state being from liquid to vapour or vice versa for compression-type refrigeration systems",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u30d1\u30ca\u30bd\u30cb\u30c3\u30af\u30d8\u30eb\u30b9\u30b1\u30a2\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2013-03-29"
+          },
+          {
+            "id": "patent/US20190246591A1/en",
+            "source_type": "patent",
+            "title": "Insect and cannabis production systems and methods",
+            "snippet": "(d2) after step (d1), compressing the refrigerant with the compressor to produce a superheated vapor refrigerant at a temperature above the condensing point of the refrigerant; (d3) after step (d2), condensing the superheated vapor refrigerant within the condenser into a liquid phase refrigerant at \u2026",
+            "link": "https://patents.google.com/patent/US20190246591A1/en",
+            "relevance_score": 0.29965633153915405,
+            "cpc_code": "B01D11/0203",
+            "cpc_description": "Solvent extraction of solids with a supercritical fluid",
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Insectergy, Llc",
+            "priority_date": "2017-05-31"
+          },
+          {
+            "id": "patent/US10478747B2/en",
+            "source_type": "patent",
+            "title": "Closed loop chilled solvent feed for cannabinoid extraction",
+            "snippet": "Refrigerated solvent is fed through a cooling jacket around an essential element extraction vessel. After circulating through the cooling jacket, the solvent is re-chilled and at least some of the solvent is passed into the extraction vessel, in which essential elements dissolve into the solvent.",
+            "link": "https://patents.google.com/patent/US10478747B2/en",
+            "relevance_score": 0.2968769669532776,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "NextLeaf Solutions Ltd.",
+            "priority_date": "2017-11-10"
+          },
+          {
+            "id": "patent/US12297136B2/en",
+            "source_type": "patent",
+            "title": "Apparatus system and method to extract minerals and metals from water",
+            "snippet": "Steam from water or vapor from fluids is used for many purposes including heating, cooling and to power many devices including steam turbines to produce electricity. One problem with using unpurified water is that impurities in the fluids, usually salt in water, causes corrosion, scaling and other \u2026",
+            "link": "https://patents.google.com/patent/US12297136B2/en",
+            "relevance_score": 0.2923372983932495,
+            "cpc_code": "C02F1/001",
+            "cpc_description": "Processes for the treatment of water whereby the filtration technique is of importance",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Katz Water Tech Llc",
+            "priority_date": "2018-03-29"
+          },
+          {
+            "id": "patent/JP6504172B2/en",
+            "source_type": "patent",
+            "title": "Thermal cycle system",
+            "snippet": "Thermal cycle system includes room air conditioner, store package air conditioner, building package air conditioner, equipment package air conditioner, gas engine heat pump, train air conditioner, car air conditioner, built-in showcase, separate showcase, business refrigeration The thermal cycle \u2026",
+            "link": "https://patents.google.com/patent/JP6504172B2/en",
+            "relevance_score": 0.2919362187385559,
+            "cpc_code": "C09K5/041",
+            "cpc_description": "Materials undergoing a change of physical state when used the change of state being from liquid to vapour or vice versa for compression-type refrigeration systems",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uff21\uff47\uff43\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2014-08-12"
+          },
+          {
+            "id": "patent/US12138333B2/en",
+            "source_type": "patent",
+            "title": "Rheological solid composition for use in personal care compositions",
+            "snippet": "Personal care rheological solid compositions of the present invention can provide both short-term and long-term cooling effects when applied to the skin. This invention includes personal care rheological solid compositions that provide cooling benefits enabling short-term evaporative cooling from \u2026",
+            "link": "https://patents.google.com/patent/US12138333B2/en",
+            "relevance_score": 0.29002225399017334,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "The Procter &amp; Gamble Company",
+            "priority_date": "2020-04-10"
+          },
+          {
+            "id": "patent/US11918038B2/en",
+            "source_type": "patent",
+            "title": "Shisha device with active cooling for enhanced aerosol characteristics",
+            "snippet": "a cooling element along the airflow channel between the aerosol-generating element and the vessel, the cooling element configured to cool aerosol in the airflow channel that flows through the cooling element and couplable to a power source to provide active cooling to transfer heat away rom the \u2026",
+            "link": "https://patents.google.com/patent/US11918038B2/en",
+            "relevance_score": 0.269733190536499,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "ES": "ACTIVE",
+              "IL": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Philip Morris Products S.A.",
+            "priority_date": "2018-01-15"
+          },
+          {
+            "id": "scholar/6706837897548111787",
+            "source_type": "scholar",
+            "title": "Effects of evaporative cooling on efficiency of photovoltaic modules",
+            "snippet": "\u2026 the utilization of a passive evaporative cooling technique to \u2026 between evaporation and the thickness of the clay layer. Also\u2026 does not reach the clay and either evaporates or drips away. \u2026",
+            "link": "https://patents.google.com/scholar/6706837897548111787",
+            "relevance_score": 0.2582283616065979,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US10060296B2/en",
+            "source_type": "patent",
+            "title": "Quintuple-effect generation multi-cycle hybrid renewable energy system with \u2026",
+            "snippet": "d) Recovering waste heat from said at least one evaporator module using at least one waste-heat recovery loop; e) Wherein said at least one byproduct from said at least one evaporator module is input to at least one vacuum evaporation module; f) Combining said at least one byproduct from said at \u2026",
+            "link": "https://patents.google.com/patent/US10060296B2/en",
+            "relevance_score": 0.2516428232192993,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Kevin Lee Friesth",
+            "priority_date": "2012-11-15"
+          },
+          {
+            "id": "patent/US20250224125A1/en",
+            "source_type": "patent",
+            "title": "High efficiency dehumidification system and method",
+            "snippet": "1 .- 20 . (canceled) 21 . A high efficiency dehumidification system for an air handling unit (AHU), the system comprising: a cooling coil including an inlet to receive chilled liquid at a first temperature from a cooling plant to cool and dehumidify air that passes over the cooling coil, and including \u2026",
+            "link": "https://patents.google.com/patent/US20250224125A1/en",
+            "relevance_score": 0.24832072854042053,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "HEDS Holdings, LLC",
+            "priority_date": "2018-02-23"
+          },
+          {
+            "id": "patent/JP6848977B2/en",
+            "source_type": "patent",
+            "title": "Working media for thermal cycles, compositions for thermal cycle systems and \u2026",
+            "snippet": "The average temperature of the evaporation start temperature and the evaporation completion temperature when the working medium for the thermal cycle is a non-coboous mixture, the evaporation temperature when the working medium for the thermal cycle is a co-boiling mixture, is 0 \u00b0 C. In the case of \u2026",
+            "link": "https://patents.google.com/patent/JP6848977B2/en",
+            "relevance_score": 0.23998576402664185,
+            "cpc_code": "C09K5/041",
+            "cpc_description": "Materials undergoing a change of physical state when used the change of state being from liquid to vapour or vice versa for compression-type refrigeration systems",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uff21\uff47\uff43\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2016-09-07"
+          },
+          {
+            "id": "scholar/16217267457959512599",
+            "source_type": "scholar",
+            "title": "Global lake responses to climate change",
+            "snippet": "\u2026 global annual mean lake evaporation rates are forecast to \u2026 For example, the feedback of evaporative cooling leads to a \u2026 models into advanced machine learning modelling techniques, \u2026",
+            "link": "https://patents.google.com/scholar/16217267457959512599",
+            "relevance_score": 0.2308817207813263,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/2871636150697316960",
+            "source_type": "scholar",
+            "title": "Characteristics, drivers and feedbacks of global greening",
+            "snippet": "\u2026 processes, mainly evaporative cooling. Coupling high \u2026 one- sided green leaf area per unit ground area in broadleaf \u2026 greening can cause the net evaporation to either increase or \u2026",
+            "link": "https://patents.google.com/scholar/2871636150697316960",
+            "relevance_score": 0.21627873182296753,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US20200315103A1/en",
+            "source_type": "patent",
+            "title": "Spray dried tetrahydrocannabinol and cannabidiol powders",
+            "snippet": "(b17) a second solvent separation system (SEPSOL) that is configured to evaporate at least a portion of the second solvent (SOLV 2 ) from the filtered second volatiles and solvent mixture (SVSM) to produce concentrated volatiles (CVOLT); (c) a temperature control unit (TCU), including a refrigerant ( \u2026",
+            "link": "https://patents.google.com/patent/US20200315103A1/en",
+            "relevance_score": 0.2090948224067688,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Insectergy, Llc",
+            "priority_date": "2017-05-20"
+          },
+          {
+            "id": "patent/US8161759B2/en",
+            "source_type": "patent",
+            "title": "\u2026 heat energy between a heat exchanging subsystem above the surface of the earth \u2026",
+            "snippet": "A method of and apparatus for transferring heat energy between a heat exchanging subsystem installed above the surface of the Earth, and material beneath the surface of the Earth, by installing one or more coaxial-flow heat exchanging structures in the material beneath the surface of the Earth.",
+            "link": "https://patents.google.com/patent/US8161759B2/en",
+            "relevance_score": 0.1925191730260849,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Kelix Heat Transfer Systems, Llc",
+            "priority_date": "2005-03-09"
+          },
+          {
+            "id": "patent/US20250354077A1/en",
+            "source_type": "patent",
+            "title": "Ammonia-hydrocarbon fuel compositions, method of use, and systems thereof",
+            "snippet": "41 . The method according to claim 39 , wherein the stabilization agent is chosen from a surfactant, an inorganic clay, a pH-buffering composition, a polymer gelation agent, and combinations thereof. 42 . A method for preparing a fuel product comprising: combining a hydrocarbon, a surfactant, and a co \u2026",
+            "link": "https://patents.google.com/patent/US20250354077A1/en",
+            "relevance_score": 0.16758961975574493,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Mighty Pipeline, Inc.",
+            "priority_date": "2022-01-11"
+          },
+          {
+            "id": "scholar/4388069960462392659",
+            "source_type": "scholar",
+            "title": "Evaporation into the atmosphere: theory, history and applications",
+            "snippet": "\u2026 boundary layer all passive admixtures are transported in a \u2026 with an experiment to determine the evaporative loss from two \u2026 When the evaporating force is the same in different cases, \u2026",
+            "link": "https://patents.google.com/scholar/4388069960462392659",
+            "relevance_score": 0.1493125557899475,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/5062212980134743988",
+            "source_type": "scholar",
+            "title": "Stratocumulus clouds",
+            "snippet": "\u2026 Turbulent eddies and evaporative cooling drives entrainment \u2026 the time scale for evaporation\u2013entrainment interactions and \u2026 negatively buoyant and entrainment evaporates some \u2026",
+            "link": "https://patents.google.com/scholar/5062212980134743988",
+            "relevance_score": 0.13889294862747192,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/12067904287998433750",
+            "source_type": "scholar",
+            "title": "Kepler planets: a tale of evaporation",
+            "snippet": "\u2026 heat capacity; we adopt an Earth-like value (see Nettelmann \u2026 40% of the original mass is evaporated down to an envelope \u2026 If oxygen is present in the evaporative flow at a high enough \u2026",
+            "link": "https://patents.google.com/scholar/12067904287998433750",
+            "relevance_score": 0.13880836963653564,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/8214753098008837358",
+            "source_type": "scholar",
+            "title": "The evaporation valley in the Kepler planets",
+            "snippet": "\u2026 evaporation valley is thus a robust prediction of evaporative-\u2026 envelope is being evaporated faster than cooling contraction. In \u2026 The increased high-energy exposure required to evaporate \u2026",
+            "link": "https://patents.google.com/scholar/8214753098008837358",
+            "relevance_score": 0.12462899088859558,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US20240226075A1/en",
+            "source_type": "patent",
+            "title": "Cannabis production systems and methods",
+            "snippet": "18 . The method according to claim 1 , wherein: the crystallization system includes one or more selected from the group consisting of a draft tube crystallizer, a draft tube and baffle crystallizer, cooling crystallization, evaporative crystallization, and fractional crystallization. 19 . The method \u2026",
+            "link": "https://patents.google.com/patent/US20240226075A1/en",
+            "relevance_score": 0.12427602708339691,
+            "cpc_code": "B01D11/0203",
+            "cpc_description": "Solvent extraction of solids with a supercritical fluid",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Insectergy, Llc.",
+            "priority_date": "2017-05-31"
+          },
+          {
+            "id": "patent/US11528855B2/en",
+            "source_type": "patent",
+            "title": "Cannabis farming methods",
+            "snippet": "said growing medium includes one or more growing mediums selected from the group consisting of rockwool, perlite, amorphous volcanic glass, vermiculite, clay, clay pellets, LECA (lightweight expanded clay aggregate), coco-coir, fibrous coconut husks, soil, dirt, peat, peat moss, sand, soil, compost \u2026",
+            "link": "https://patents.google.com/patent/US11528855B2/en",
+            "relevance_score": 0.1171250268816948,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Insectergy, Llc",
+            "priority_date": "2017-05-31"
+          },
+          {
+            "id": "patent/CN110304994B/en",
+            "source_type": "patent",
+            "title": "Method for extracting high-purity cannabidiol from industrial cannabis sativa",
+            "snippet": "Placing the concentrated solution obtained in the step S3 into a reaction kettle for reduced pressure distillation, gradually reducing the pressure to be below 0.01-0.20 mbar, gradually increasing the temperature to be 130-150 \u2103 until no fraction is evaporated, naturally cooling to be 100-120 \u2103, \u2026",
+            "link": "https://patents.google.com/patent/CN110304994B/en",
+            "relevance_score": 0.1135907918214798,
+            "cpc_code": "B01D11/0203",
+            "cpc_description": "Solvent extraction of solids with a supercritical fluid",
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5434\u5e73",
+            "priority_date": "2019-07-01"
+          },
+          {
+            "id": "scholar/11796564923813550451",
+            "source_type": "scholar",
+            "title": "Strong contributions of local background climate to urban heat islands",
+            "snippet": "\u2026 perturbations to the Earth\u2019s surface \u2026 in evaporative cooling in urban land is the main driver of daytimeDT, because the denser vegetation in wet climate regions has a higher evaporation \u2026",
+            "link": "https://patents.google.com/scholar/11796564923813550451",
+            "relevance_score": 0.10972505062818527,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          }
+        ],
+        "candidate_assessments": [
+          {
+            "result_id": "patent/IT202400000759A1/en",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en",
+            "overlapping_elements": [
+              "porous clay structure",
+              "water reservoir intercapedine",
+              "evaporation cooling"
+            ],
+            "differences": [
+              "use of EM microbial compound in clay",
+              "integration of refrigerant medium",
+              "specific firing temperature range"
+            ],
+            "verdict": "blocking",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN106461279B/en",
+            "title": "Refrigerating circulatory device",
+            "link": "https://patents.google.com/patent/CN106461279B/en",
+            "overlapping_elements": [],
+            "differences": [
+              "uses compressor, condenser, refrigerant gases",
+              "electrical power required",
+              "no porous clay or evaporative mechanism"
+            ],
+            "verdict": "not_relevant",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/EP3102902B1/en",
+            "title": "Building system for cascading flows of matter and energy",
+            "link": "https://patents.google.com/patent/EP3102902B1/en",
+            "overlapping_elements": [],
+            "differences": [
+              "focuses on thermal reservoirs and exergy loops",
+              "no clay or evaporative cooling",
+              "complex building energy management"
+            ],
+            "verdict": "not_relevant",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/US10246349B2/en",
+            "title": "Water desalination using freeze crystallization and acoustic pressure shock \u2026",
+            "link": "https://patents.google.com/patent/US10246349B2/en",
+            "overlapping_elements": [],
+            "differences": [
+              "uses acoustic pressure shock and freeze crystallization",
+              "requires subzero temperatures",
+              "no clay or passive evaporation"
+            ],
+            "verdict": "not_relevant",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/US9677714B2/en",
+            "title": "Cryogenic injection compositions, systems and methods for cryogenically \u2026",
+            "link": "https://patents.google.com/patent/US9677714B2/en",
+            "overlapping_elements": [],
+            "differences": [
+              "cryogenic fluid injection, high\u2011pressure particles",
+              "requires liquid nitrogen or similar",
+              "no porous clay or water reservoir"
+            ],
+            "verdict": "not_relevant",
+            "evidence_source": "claims",
+            "found_via": "search"
+          }
+        ],
+        "overall_novelty_confidence": 0.22,
+        "differentiation_suggestions": [
+          "Add an internal humidity\u2011control layer (e.g., a breathable fabric) to regulate evaporation rate.",
+          "Incorporate antimicrobial additives (e.g., silver nanoparticles) into the clay matrix to extend shelf life.",
+          "Design a modular double\u2011wall clay construction with an insulating air gap to improve temperature stability."
+        ],
+        "citations": [
+          {
+            "claim": "porous clay structure with water reservoir for evaporative cooling",
+            "result_id": "patent/IT202400000759A1/en",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en"
+          },
+          {
+            "claim": "use of compressor and refrigerant gases",
+            "result_id": "patent/CN106461279B/en",
+            "title": "Refrigerating circulatory device",
+            "link": "https://patents.google.com/patent/CN106461279B/en"
+          },
+          {
+            "claim": "thermal reservoirs and exergy loops",
+            "result_id": "patent/EP3102902B1/en",
+            "title": "Building system for cascading flows of matter and energy",
+            "link": "https://patents.google.com/patent/EP3102902B1/en"
+          },
+          {
+            "claim": "acoustic pressure shock freeze crystallization",
+            "result_id": "patent/US10246349B2/en",
+            "title": "Water desalination using freeze crystallization and acoustic pressure shock \u2026",
+            "link": "https://patents.google.com/patent/US10246349B2/en"
+          },
+          {
+            "claim": "cryogenic injection composition",
+            "result_id": "patent/US9677714B2/en",
+            "title": "Cryogenic injection compositions, systems and methods for cryogenically \u2026",
+            "link": "https://patents.google.com/patent/US9677714B2/en"
+          },
+          {
+            "claim": "add internal humidity\u2011control layer",
+            "result_id": "patent/IT202400000759A1/en",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en"
+          },
+          {
+            "claim": "incorporate antimicrobial additives into clay",
+            "result_id": "patent/IT202400000759A1/en",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en"
+          },
+          {
+            "claim": "double\u2011wall clay with insulating air gap",
+            "result_id": "patent/IT202400000759A1/en",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en"
+          }
+        ],
+        "india_status": {
+          "related_active_in_india": 0,
+          "active_elsewhere_only": 2,
+          "india_filings_found": 0
+        },
+        "claim_chart": null,
+        "top_assignees": [
+          {
+            "name": "Inventing Green Srl",
+            "percentage": 100.0
+          }
+        ],
+        "public_domain": {
+          "count": 1,
+          "patents_considered": 21,
+          "entries": [
+            {
+              "id": "patent/US20190246591A1/en",
+              "title": "Insect and cannabis production systems and methods",
+              "link": "https://patents.google.com/patent/US20190246591A1/en",
+              "priority_date": "2017-05-31",
+              "assignee": "Insectergy, Llc",
+              "relevance_score": 0.29965633153915405,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 9
+            }
+          ]
+        },
+        "search_strategy": {
+          "core_concepts": [
+            "clay refrigerator",
+            "evaporative cooling",
+            "water reservoir",
+            "porous clay walls"
+          ],
+          "suggested_cpc": "F24F1/00",
+          "queries": [
+            {
+              "type": "major_markets",
+              "query": "(\"clay refrigerator\" OR \"clay fridge\") (\"evaporative cooling\" OR \"evaporation cooling\") (\"water reservoir\" OR \"top water tank\")",
+              "rationale": "Uses the most specific nouns from the invention to locate exact prior art in major patent databases.",
+              "country": null,
+              "result_count": 1,
+              "failed": false
+            },
+            {
+              "type": "india_specific",
+              "query": "(clay OR earthenware) (refrigerator OR fridge) (evaporative OR cooling)",
+              "rationale": "Fewer, broader groups with generous synonyms suitable for the smaller Indian corpus.",
+              "country": "IN",
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "broad_recall",
+              "query": "(earthen OR clay) (cooling device OR refrigeration) (passive cooling OR evaporation)",
+              "rationale": "Broad parent terms and many OR options to maximize recall of related prior art, accepting more noise.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "refined",
+              "query": "(\"earthen pot refrigerator\" OR \"pot-in-pot cooler\" OR \"zeer pot\") (\"adiabatic cooling\" OR \"passive evaporative cooling\") (clay OR earthenware)",
+              "rationale": "Prior art refers to this as an \"earthen pot refrigerator\" or \"pot\u2011in\u2011pot cooler\" using \"adiabatic\" or \"passive evaporative\" cooling, not just clay fridge.",
+              "country": null,
+              "result_count": 0,
+              "failed": false
+            }
+          ],
+          "market_query": "clay refrigerator evaporative cooling water reservoir porous clay walls",
+          "trends_keyword": null,
+          "serpapi_calls": {
+            "google_patents": 5,
+            "google": 1,
+            "google_patents_details": 6
+          },
+          "refinement_observation": "Prior art refers to this as an \"earthen pot refrigerator\" or \"pot\u2011in\u2011pot cooler\" using \"adiabatic\" or \"passive evaporative\" cooling, not just clay fridge.",
+          "refinement_terms": [
+            "earthen pot refrigerator",
+            "pot\u2011in\u2011pot cooler",
+            "adiabatic cooling",
+            "passive evaporative cooling",
+            "zeer pot"
+          ]
+        },
+        "citation_network": {
+          "discoveries": [
+            {
+              "id": "patent/US1781778A/en",
+              "title": "Refrigerating unit of fired ceramic material",
+              "link": "https://patents.google.com/patent/US1781778A/en",
+              "assignee": "Copeman Lab Co",
+              "priority_date": "1928-02-29",
+              "referenced_by": [
+                "patent/IT202400000759A1/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": true
+            },
+            {
+              "id": "patent/GB480076A/en",
+              "title": "Improvements in or relating to the construction of refrigerating cabinets or cold conserving chambers",
+              "link": "https://patents.google.com/patent/GB480076A/en",
+              "assignee": "Robert John Le Heron",
+              "priority_date": "1936-06-11",
+              "referenced_by": [
+                "patent/IT202400000759A1/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": true
+            },
+            {
+              "id": "patent/US20180187960A1/en",
+              "title": "Inner cabinet for regrigerator and refrigerator including the same",
+              "link": "https://patents.google.com/patent/US20180187960A1/en",
+              "assignee": "Samsung Electronics Co., Ltd",
+              "priority_date": "2017-01-03",
+              "referenced_by": [
+                "patent/IT202400000759A1/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": false
+            }
+          ],
+          "edges": [],
+          "references_scanned": 251
+        },
+        "market_trend": null,
+        "plain_summary": "You already have a very close prior art document that describes a porous clay container with a top water tank that cools by evaporation \u2013 it even uses the same basic mechanism you propose. The other patents you listed are unrelated (they rely on compressors, cryogenics, or complex energy loops). To stand out, consider adding features like a humidity\u2011control liner, antimicrobial additives in the clay, or a double\u2011wall design with an insulating air gap. Those tweaks would give your clay refrigerator distinct technical advantages over the existing clay\u2011evaporative designs.",
+        "original_idea_text": null,
+        "language_code": "en",
+        "language_name": "English",
+        "localized": null,
+        "examined_documents": [
+          {
+            "id": "patent/IT202400000759A1/en",
+            "source_type": "patent",
+            "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+            "link": "https://patents.google.com/patent/IT202400000759A1/en",
+            "text": "Search snippet: [0013] [0007] Also known is a natural evaporative cooling system, otherwise known as evaporative or adiabatic cooling, which does not use refrigeration circuits or other electrical or chemical cooling devices, but rather exploits the physical principle of water evaporation under specific conditions \u2026\n\nClaim 1: 1. RIVENDICAZIONI\n\nClaim 2: 1. Un metodo per ottenere allo stato solido un composto di microrganismi effettivi detti EM, con cui realizzare un dispositivo (10) per la conservazione di alimenti, caratterizzato dal fatto che il detto composto ? ottenuto preparando preliminarmente una miscela comprendente batteri della fotosintesi, batteri dell?acido lattico, fermenti, enzimi, lieviti e attinomiceti, sia aerobi sia anaerobi, tutti in polvere ed attivati in acqua tiepida per formare una miscela attivata di microrganismi effettivi, la quale ? poi unita ed amalgamata ad argilla naturale in forma liquida, controllandone la temperatura, l?omogeneit? e la viscosit? di modo tale da farla fermentare e formare un impasto ceramico attivo comprendente microrganismi effettivi, denominato composto EM; e dove il detto dispositivo ? una cella di conservazione (10) per alimenti, limitando la proliferazione batterica ed il loro deterioramento, la quale cella (10) comprende un involucro strutturale (100) monoblocco e poroso che ? realizzato con solo il detto composto EM, immesso in uno stampo di formatura e cotto ad una temperatura compresa tra 950?C e 1080?C, essendo esso (100) a guisa d?un contenitore scatolare rigido in terracotta; e dove la detta cella di conservazione (10) integra un sistema di raffrescamento evaporativo attuato dal detto involucro strutturale (100) che incorpora un?intercapedine (101) fungente da serbatoio per acqua (102) riempibile, e che ha una porosit? aperta che consente\n\nClaim 3: l?evaporazione della medesima acqua verso l?esterno, sottraendo calore all?interno della cella (10, 100).\n\nClaim 4: 2. Un metodo secondo la rivendicazione precedente, caratterizzato dal fatto che il detto involucro strutturale (100) ha un?apertura d?accesso frontale ed una porta di chiusura (104) ad esso incernierata (105), la quale ha una struttura monoblocco realizzata con il detto composto EM immesso in uno stampo di formatura e cotto ad una temperatura compresa tra 950?C e 1080?C.\n\nClaim 5: 3. Un metodo secondo la rivendicazione precedente, caratterizzato dal fatto che la detta cella di conservazione (10) ? un frigorifero, dotato d?un mezzo refrigerante (111, 111a) inserito nel detto involucro strutturale (100, 112) in corrispondenza di almeno una porzione (108b) del vano interno della detta cella; e dove, in corrispondenza di detta porzione refrigerata (108b), l?intercapedine (101) ? alternativamente: separata dal serbatoio d?acqua (102) e riempita con materiale isolante come un?intercapedine di isolamento (103), oppure unita ad esso (102) in continuit? fluidica.\n\nClaim 6: 4. Un metodo secondo la rivendicazione 1 o 2 o 3, caratterizzato dal fatto che il detto composto EM ? cotto ad una temperatura inferiore a 1000?C, per favorire la detta evaporazione.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Search snippet",
+                "source": "snippet",
+                "text": "[0013] [0007] Also known is a natural evaporative cooling system, otherwise known as evaporative or adiabatic cooling, which does not use refrigeration circuits or other electrical or chemical cooling devices, but rather exploits the physical principle of water evaporation under specific conditions \u2026",
+                "original_chars": 301,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. RIVENDICAZIONI",
+                "original_chars": 17,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "1. Un metodo per ottenere allo stato solido un composto di microrganismi effettivi detti EM, con cui realizzare un dispositivo (10) per la conservazione di alimenti, caratterizzato dal fatto che il detto composto ? ottenuto preparando preliminarmente una miscela comprendente batteri della fotosintesi, batteri dell?acido lattico, fermenti, enzimi, lieviti e attinomiceti, sia aerobi sia anaerobi, tutti in polvere ed attivati in acqua tiepida per formare una miscela attivata di microrganismi effettivi, la quale ? poi unita ed amalgamata ad argilla naturale in forma liquida, controllandone la temperatura, l?omogeneit? e la viscosit? di modo tale da farla fermentare e formare un impasto ceramico attivo comprendente microrganismi effettivi, denominato composto EM; e dove il detto dispositivo ? una cella di conservazione (10) per alimenti, limitando la proliferazione batterica ed il loro deterioramento, la quale cella (10) comprende un involucro strutturale (100) monoblocco e poroso che ? realizzato con solo il detto composto EM, immesso in uno stampo di formatura e cotto ad una temperatura compresa tra 950?C e 1080?C, essendo esso (100) a guisa d?un contenitore scatolare rigido in terracotta; e dove la detta cella di conservazione (10) integra un sistema di raffrescamento evaporativo attuato dal detto involucro strutturale (100) che incorpora un?intercapedine (101) fungente da serbatoio per acqua (102) riempibile, e che ha una porosit? aperta che consente",
+                "original_chars": 1473,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "l?evaporazione della medesima acqua verso l?esterno, sottraendo calore all?interno della cella (10, 100).",
+                "original_chars": 105,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "2. Un metodo secondo la rivendicazione precedente, caratterizzato dal fatto che il detto involucro strutturale (100) ha un?apertura d?accesso frontale ed una porta di chiusura (104) ad esso incernierata (105), la quale ha una struttura monoblocco realizzata con il detto composto EM immesso in uno stampo di formatura e cotto ad una temperatura compresa tra 950?C e 1080?C.",
+                "original_chars": 373,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "3. Un metodo secondo la rivendicazione precedente, caratterizzato dal fatto che la detta cella di conservazione (10) ? un frigorifero, dotato d?un mezzo refrigerante (111, 111a) inserito nel detto involucro strutturale (100, 112) in corrispondenza di almeno una porzione (108b) del vano interno della detta cella; e dove, in corrispondenza di detta porzione refrigerata (108b), l?intercapedine (101) ? alternativamente: separata dal serbatoio d?acqua (102) e riempita con materiale isolante come un?intercapedine di isolamento (103), oppure unita ad esso (102) in continuit? fluidica.",
+                "original_chars": 584,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "4. Un metodo secondo la rivendicazione 1 o 2 o 3, caratterizzato dal fatto che il detto composto EM ? cotto ad una temperatura inferiore a 1000?C, per favorire la detta evaporazione.",
+                "original_chars": 182,
+                "truncated": false
+              }
+            ],
+            "total_claims": 39
+          },
+          {
+            "id": "patent/CN106461279B/en",
+            "source_type": "patent",
+            "title": "Refrigerating circulatory device",
+            "link": "https://patents.google.com/patent/CN106461279B/en",
+            "text": "Abstract: The present invention provides a kind of refrigerating circulatory device, has the refrigeration cycle for connecting compressor (2), condenser (3), expansion valve (4), evaporator (5).In addition, using refrigerant of the working fluid of 1,1,2- trifluoro-ethylene (R1123) and difluoromethane (R32) as refrigeration cycle is contained.Moreover, the aperture of expansion valve (4) is controlled in such a way that the sucting of compressor (2) becomes two-phase by refrigerant.Not being homogenized for R1123 is inhibited to react the refrigerating circulatory device (1), it can be achieved that reliability with higher as a result,.\n\nClaim 1: 1. a kind of refrigerating circulatory device, it is characterised in that:\n\nClaim 2: Have the refrigeration cycle for connecting compressor, condenser, expansion valve, evaporator,\n\nClaim 3: Use the working fluid that contains 1,1,2- trifluoro-ethylene (R1123) and difluoromethane (R32) as the refrigeration cycle\nRefrigerant,\n\nClaim 4: The aperture of the expansion valve is controlled in such a way that the sucting of the compressor becomes two-phase by refrigerant.\n\nClaim 5: 2. refrigerating circulatory device according to claim 1, it is characterised in that:\n\nClaim 6: Have the condensation temperature test section set on the condenser,",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention provides a kind of refrigerating circulatory device, has the refrigeration cycle for connecting compressor (2), condenser (3), expansion valve (4), evaporator (5).In addition, using refrigerant of the working fluid of 1,1,2- trifluoro-ethylene (R1123) and difluoromethane (R32) as refrigeration cycle is contained.Moreover, the aperture of expansion valve (4) is controlled in such a way that the sucting of compressor (2) becomes two-phase by refrigerant.Not being homogenized for R1123 is inhibited to react the refrigerating circulatory device (1), it can be achieved that reliability with higher as a result,.",
+                "original_chars": 635,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. a kind of refrigerating circulatory device, it is characterised in that:",
+                "original_chars": 75,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "Have the refrigeration cycle for connecting compressor, condenser, expansion valve, evaporator,",
+                "original_chars": 95,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "Use the working fluid that contains 1,1,2- trifluoro-ethylene (R1123) and difluoromethane (R32) as the refrigeration cycle\nRefrigerant,",
+                "original_chars": 135,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "The aperture of the expansion valve is controlled in such a way that the sucting of the compressor becomes two-phase by refrigerant.",
+                "original_chars": 132,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "2. refrigerating circulatory device according to claim 1, it is characterised in that:",
+                "original_chars": 86,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "Have the condensation temperature test section set on the condenser,",
+                "original_chars": 68,
+                "truncated": false
+              }
+            ],
+            "total_claims": 41
+          },
+          {
+            "id": "patent/EP3102902B1/en",
+            "source_type": "patent",
+            "title": "Building system for cascading flows of matter and energy",
+            "link": "https://patents.google.com/patent/EP3102902B1/en",
+            "text": "Search snippet: . This patent's major innovation is tapping previously unused thermal reservoirs such as swimming pools and reservoirs for fire suppression in order to reduce air conditioning expenses. It goes on to discuss how to do a heat exchange so that the fluid within the reservoir doesn't mix with the \u2026\n\nClaim 1: A system for regulating an engineered ecosystem with information indicating the availability, quantities, and qualities of matter and energy for subsequent processing, analysis, storage, and utilization by creating entropy production limits realized through linking together selfsustaining circular flow feedback loops utilizing a cascading process of addition or removal to maximize exergy to create a dissipative structure capable of all aspects of environmental control utilizing, the system comprising:\na thermal management system comprised of thermal flux reservoirs in communication with exergy carriers;\nan atmospheric management system comprised from the group of gas processors, gas distributors, gas concentrators, exergy carrier movers, active agents, segregation and filters;\na radiation processes controller, optimizing solar and artificial radiation usage of direct and concentrated light;\na hydrological cycles management system;\na material cycles operator_comprised of gas, fluid, or solid handlers;\nan energy prime mover system;\na supervisory management system; and\na building system comprised of the homeostatic regulator of cascading flows of matter and energy, manager of energy and mass exchanges over time.\n\nClaim 2: The system of Claim 1, wherein a plurality of reservoirs, each with an assigned temperature range for storing thermal exergy whose temperature gradients are in communication with heat sources and sinks.\n\nClaim 3: The system of Claim 1, wherein thermal reservoirs contain thermal storage material type from the group of sensible, latent.\n\nClaim 4: The system of Claim 1, wherein gas processors comprise molecular sieves whose materials are from the group consisting of active carbon, Zeolite process gas in the steps of absorption, enrichment, distribution, concentration and separation wherein the gases are CO2, SO2, H2O, oxygen, nitrogen.\n\nClaim 5: The system of Claim 1, wherein gas processors comprise photo-catalysts and catalytic hydrophilic surfaces selected from the catalytic group consisting of titanium dioxide TiO2, organic, metallic.\n\nClaim 6: The system of Claim 1, wherein exergy carrier movers, comprising a convective fluid loop that flows said exergy carriers past active agents from the group consisting of catalysts, bacteria, microbes, autotrophs.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Search snippet",
+                "source": "snippet",
+                "text": ". This patent's major innovation is tapping previously unused thermal reservoirs such as swimming pools and reservoirs for fire suppression in order to reduce air conditioning expenses. It goes on to discuss how to do a heat exchange so that the fluid within the reservoir doesn't mix with the \u2026",
+                "original_chars": 295,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "A system for regulating an engineered ecosystem with information indicating the availability, quantities, and qualities of matter and energy for subsequent processing, analysis, storage, and utilization by creating entropy production limits realized through linking together selfsustaining circular flow feedback loops utilizing a cascading process of addition or removal to maximize exergy to create a dissipative structure capable of all aspects of environmental control utilizing, the system comprising:\na thermal management system comprised of thermal flux reservoirs in communication with exergy carriers;\nan atmospheric management system comprised from the group of gas processors, gas distributors, gas concentrators, exergy carrier movers, active agents, segregation and filters;\na radiation processes controller, optimizing solar and artificial radiation usage of direct and concentrated light;\na hydrological cycles management system;\na material cycles operator_comprised of gas, fluid, or solid handlers;\nan energy prime mover system;\na supervisory management system; and\na building system comprised of the homeostatic regulator of cascading flows of matter and energy, manager of energy and mass exchanges over time.",
+                "original_chars": 1228,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "The system of Claim 1, wherein a plurality of reservoirs, each with an assigned temperature range for storing thermal exergy whose temperature gradients are in communication with heat sources and sinks.",
+                "original_chars": 202,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "The system of Claim 1, wherein thermal reservoirs contain thermal storage material type from the group of sensible, latent.",
+                "original_chars": 123,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "The system of Claim 1, wherein gas processors comprise molecular sieves whose materials are from the group consisting of active carbon, Zeolite process gas in the steps of absorption, enrichment, distribution, concentration and separation wherein the gases are CO2, SO2, H2O, oxygen, nitrogen.",
+                "original_chars": 293,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "The system of Claim 1, wherein gas processors comprise photo-catalysts and catalytic hydrophilic surfaces selected from the catalytic group consisting of titanium dioxide TiO2, organic, metallic.",
+                "original_chars": 195,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "The system of Claim 1, wherein exergy carrier movers, comprising a convective fluid loop that flows said exergy carriers past active agents from the group consisting of catalysts, bacteria, microbes, autotrophs.",
+                "original_chars": 211,
+                "truncated": false
+              }
+            ],
+            "total_claims": 19
+          },
+          {
+            "id": "patent/US10246349B2/en",
+            "source_type": "patent",
+            "title": "Water desalination using freeze crystallization and acoustic pressure shock \u2026",
+            "link": "https://patents.google.com/patent/US10246349B2/en",
+            "text": "Abstract: A method of desalinating water through application of acoustic pressure shock waves to a slush to separate ice crystals from brine and recovering desalinated water from the separated ice crystals.\n\nClaim 1: 1. A method of desalinating salt water provided into an enclosure comprising cooling the salt water to produce a slush, applying acoustic pressure shock waves directed by a reflector in an upward direction away from a bottom of the enclosure and against gravity to provide unidirectional movement of the shock waves to the slush to cause ice crystals to move toward a top of the enclosure and brine to settle at the bottom of the enclosure, recovering ice crystals separately from the brine, and thawing the ice crystals to obtain desalinated water.\n\nClaim 2: 2. The method of claim 1, further comprising recovering the desalinated water in a water collection chamber separately from the brine.\n\nClaim 3: 3. The method of claim 2, wherein cooling the salt water includes the use of hollow cold seeds.\n\nClaim 4: 4. The method of claim 3 wherein the water collection chamber includes a porous membrane and further comprising applying acoustic pressure shock waves to the membrane to prevent clogging by residual salt particles as water is recovered through the membrane.\n\nClaim 5: 5. The method of claim 2 wherein the water collection chamber includes a porous membrane and further comprising applying acoustic pressure shock waves to the membrane to prevent clogging by residual salt particles as water is recovered through the membrane.\n\nClaim 6: 6. The method of claim 1, wherein cooling the salt water includes the use of hollow cold seeds.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A method of desalinating water through application of acoustic pressure shock waves to a slush to separate ice crystals from brine and recovering desalinated water from the separated ice crystals.",
+                "original_chars": 196,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A method of desalinating salt water provided into an enclosure comprising cooling the salt water to produce a slush, applying acoustic pressure shock waves directed by a reflector in an upward direction away from a bottom of the enclosure and against gravity to provide unidirectional movement of the shock waves to the slush to cause ice crystals to move toward a top of the enclosure and brine to settle at the bottom of the enclosure, recovering ice crystals separately from the brine, and thawing the ice crystals to obtain desalinated water.",
+                "original_chars": 549,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The method of claim 1, further comprising recovering the desalinated water in a water collection chamber separately from the brine.",
+                "original_chars": 134,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The method of claim 2, wherein cooling the salt water includes the use of hollow cold seeds.",
+                "original_chars": 95,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The method of claim 3 wherein the water collection chamber includes a porous membrane and further comprising applying acoustic pressure shock waves to the membrane to prevent clogging by residual salt particles as water is recovered through the membrane.",
+                "original_chars": 257,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The method of claim 2 wherein the water collection chamber includes a porous membrane and further comprising applying acoustic pressure shock waves to the membrane to prevent clogging by residual salt particles as water is recovered through the membrane.",
+                "original_chars": 257,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The method of claim 1, wherein cooling the salt water includes the use of hollow cold seeds.",
+                "original_chars": 95,
+                "truncated": false
+              }
+            ],
+            "total_claims": 13
+          },
+          {
+            "id": "patent/US9677714B2/en",
+            "source_type": "patent",
+            "title": "Cryogenic injection compositions, systems and methods for cryogenically \u2026",
+            "link": "https://patents.google.com/patent/US9677714B2/en",
+            "text": "Abstract: Provided are cryogenic injection compositions, methods and systems to introduce a cryogenic injection composition into a fluid within a conduit such that at least a portion of the temperature of the fluid is reduced to a temperature below which at least a portion of the fluid becomes a solid thereby reversibly plugging the conduit. Also provided are methods and systems for cooling or freezing a conduit and a fluid therein using a pressurized fluid cryogen as a thermal transfer fluid for controlled removal of thermal energy from a thermal conducting metal conduit and a fluid contained therein.\n\nClaim 1: 1. A cryogenic injection composition, comprising:\na fluid cryogen selected from among liquid nitrogen, liquid oxygen, liquid helium, liquid neon, liquid methane, liquid natural gas, liquid argon, liquid nitrous oxide, liquid carbon dioxide, liquid chlorofluorocarbons and combinations thereof;\na material selected from among carbon fibers, carbon nanostructures, graphite, fused silica, ground granite, aluminum silicon carbide, aluminum graphite, aluminum nitride, silicon nitride ceramic, and polyacetylene fibers and combinations thereof having a size of 100 \u03bcm or less in an amount of at or about 0.05% to at or about 90% based on the weight of the injection composition;\na plurality of particles having a diameter of 1 \u03bcm or greater in an amount of at or about 0.05% to at or about 90% based on the weight of the injection composition, wherein the particles comprise a material having a specific heat capacity (cp) from about 0.25 J\u00b7g\u22121K\u22121 to about 2.5 J\u00b7g\u22121K\u22121; and\nfrozen particles of solvent in an amount from at or about 0.05% to at or about 85% based on the weight of the injection composition.\n\nClaim 2: 2. The cryogenic injection composition of claim 1, further comprising particles that comprise a material that has a specific heat capacity (cp) of at or about 1 J\u00b7g\u22121K\u22121 to at or about 3 J\u00b7g\u22121K\u22121.\n\nClaim 3: 3. The cryogenic injection composition of claim 1, wherein:\n(a) the particles comprise or are coated with frozen water or solid carbon dioxide; or\n(b) the particles comprise a thermally conductive material selected from among copper, brass, beryllium, cobalt, chrome nickel steel, iron, magnesium, molybdenum, nickel, zinc, carbon steel, stainless steel and any combination or alloy thereof; or\n(c) both (a) and (b).\n\nClaim 4: 4. The cryogenic injection composition of claim 1, wherein the particles are of a material or contain a material selected from among paraffin wax, frozen water, solid polyethylene, beryllium, aluminum, glass, silica, titanium, chromium, chrome nickel steel, iridium, lead, magnesium, molybdenum, nickel, carbon steel, stainless steel, zinc, copper, and iron and a combination thereof.\n\nClaim 5: 5. The cryogenic injection composition of claim 1, wherein:\n(a) the particles are hollow; or\n(b) the particles contain entrapped gas.\n\nClaim 6: 6. The cryogenic injection composition of claim 1, wherein:\nthe particles have a diameter between 1 \u03bcm and 10 \u03bcm; or\nthe particles have a diameter less than 100 \u03bcm.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "Provided are cryogenic injection compositions, methods and systems to introduce a cryogenic injection composition into a fluid within a conduit such that at least a portion of the temperature of the fluid is reduced to a temperature below which at least a portion of the fluid becomes a solid thereby reversibly plugging the conduit. Also provided are methods and systems for cooling or freezing a conduit and a fluid therein using a pressurized fluid cryogen as a thermal transfer fluid for controlled removal of thermal energy from a thermal conducting metal conduit and a fluid contained therein.",
+                "original_chars": 599,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A cryogenic injection composition, comprising:\na fluid cryogen selected from among liquid nitrogen, liquid oxygen, liquid helium, liquid neon, liquid methane, liquid natural gas, liquid argon, liquid nitrous oxide, liquid carbon dioxide, liquid chlorofluorocarbons and combinations thereof;\na material selected from among carbon fibers, carbon nanostructures, graphite, fused silica, ground granite, aluminum silicon carbide, aluminum graphite, aluminum nitride, silicon nitride ceramic, and polyacetylene fibers and combinations thereof having a size of 100 \u03bcm or less in an amount of at or about 0.05% to at or about 90% based on the weight of the injection composition;\na plurality of particles having a diameter of 1 \u03bcm or greater in an amount of at or about 0.05% to at or about 90% based on the weight of the injection composition, wherein the particles comprise a material having a specific heat capacity (cp) from about 0.25 J\u00b7g\u22121K\u22121 to about 2.5 J\u00b7g\u22121K\u22121; and\nfrozen particles of solvent in an amount from at or about 0.05% to at or about 85% based on the weight of the injection composition.",
+                "original_chars": 1104,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The cryogenic injection composition of claim 1, further comprising particles that comprise a material that has a specific heat capacity (cp) of at or about 1 J\u00b7g\u22121K\u22121 to at or about 3 J\u00b7g\u22121K\u22121.",
+                "original_chars": 196,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The cryogenic injection composition of claim 1, wherein:\n(a) the particles comprise or are coated with frozen water or solid carbon dioxide; or\n(b) the particles comprise a thermally conductive material selected from among copper, brass, beryllium, cobalt, chrome nickel steel, iron, magnesium, molybdenum, nickel, zinc, carbon steel, stainless steel and any combination or alloy thereof; or\n(c) both (a) and (b).",
+                "original_chars": 416,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The cryogenic injection composition of claim 1, wherein the particles are of a material or contain a material selected from among paraffin wax, frozen water, solid polyethylene, beryllium, aluminum, glass, silica, titanium, chromium, chrome nickel steel, iridium, lead, magnesium, molybdenum, nickel, carbon steel, stainless steel, zinc, copper, and iron and a combination thereof.",
+                "original_chars": 384,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The cryogenic injection composition of claim 1, wherein:\n(a) the particles are hollow; or\n(b) the particles contain entrapped gas.",
+                "original_chars": 133,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The cryogenic injection composition of claim 1, wherein:\nthe particles have a diameter between 1 \u03bcm and 10 \u03bcm; or\nthe particles have a diameter less than 100 \u03bcm.",
+                "original_chars": 164,
+                "truncated": false
+              }
+            ],
+            "total_claims": 35
+          }
+        ],
+        "feature_findings": [
+          {
+            "id": "F1",
+            "feature": "porous clay walls",
+            "evidence": [
+              {
+                "result_id": "patent/IT202400000759A1/en",
+                "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+                "link": "https://patents.google.com/patent/IT202400000759A1/en",
+                "quote": "un involucro strutturale (100) monoblocco e poroso",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 2",
+                  "source": "claims",
+                  "text": "1. Un metodo per ottenere allo stato solido un composto di microrganismi effettivi detti EM, con cui realizzare un dispositivo (10) per la conservazione di alimenti, caratterizzato dal fatto che il detto composto ? ottenuto preparando preliminarmente una miscela comprendente batteri della fotosintesi, batteri dell?acido lattico, fermenti, enzimi, lieviti e attinomiceti, sia aerobi sia anaerobi, tutti in polvere ed attivati in acqua tiepida per formare una miscela attivata di microrganismi effettivi, la quale ? poi unita ed amalgamata ad argilla naturale in forma liquida, controllandone la temperatura, l?omogeneit? e la viscosit? di modo tale da farla fermentare e formare un impasto ceramico attivo comprendente microrganismi effettivi, denominato composto EM; e dove il detto dispositivo ? una cella di conservazione (10) per alimenti, limitando la proliferazione batterica ed il loro deterioramento, la quale cella (10) comprende un involucro strutturale (100) monoblocco e poroso che ? realizzato con solo il detto composto EM, immesso in uno stampo di formatura e cotto ad una temperatura compresa tra 950?C e 1080?C, essendo esso (100) a guisa d?un contenitore scatolare rigido in terracotta; e dove la detta cella di conservazione (10) integra un sistema di raffrescamento evaporativo attuato dal detto involucro strutturale (100) che incorpora un?intercapedine (101) fungente da serbatoio per acqua (102) riempibile, e che ha una porosit? aperta che consente",
+                  "original_chars": 1473,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F2",
+            "feature": "water reservoir positioned on top",
+            "evidence": [
+              {
+                "result_id": "patent/IT202400000759A1/en",
+                "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+                "link": "https://patents.google.com/patent/IT202400000759A1/en",
+                "quote": "incorpora un?intercapedine (101) fungente da serbatoio per acqua (102) riempibile",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 2",
+                  "source": "claims",
+                  "text": "1. Un metodo per ottenere allo stato solido un composto di microrganismi effettivi detti EM, con cui realizzare un dispositivo (10) per la conservazione di alimenti, caratterizzato dal fatto che il detto composto ? ottenuto preparando preliminarmente una miscela comprendente batteri della fotosintesi, batteri dell?acido lattico, fermenti, enzimi, lieviti e attinomiceti, sia aerobi sia anaerobi, tutti in polvere ed attivati in acqua tiepida per formare una miscela attivata di microrganismi effettivi, la quale ? poi unita ed amalgamata ad argilla naturale in forma liquida, controllandone la temperatura, l?omogeneit? e la viscosit? di modo tale da farla fermentare e formare un impasto ceramico attivo comprendente microrganismi effettivi, denominato composto EM; e dove il detto dispositivo ? una cella di conservazione (10) per alimenti, limitando la proliferazione batterica ed il loro deterioramento, la quale cella (10) comprende un involucro strutturale (100) monoblocco e poroso che ? realizzato con solo il detto composto EM, immesso in uno stampo di formatura e cotto ad una temperatura compresa tra 950?C e 1080?C, essendo esso (100) a guisa d?un contenitore scatolare rigido in terracotta; e dove la detta cella di conservazione (10) integra un sistema di raffrescamento evaporativo attuato dal detto involucro strutturale (100) che incorpora un?intercapedine (101) fungente da serbatoio per acqua (102) riempibile, e che ha una porosit? aperta che consente",
+                  "original_chars": 1473,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F3",
+            "feature": "water seeps through clay and evaporates",
+            "evidence": [
+              {
+                "result_id": "patent/IT202400000759A1/en",
+                "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, \u2026",
+                "link": "https://patents.google.com/patent/IT202400000759A1/en",
+                "quote": "l?evaporazione della medesima acqua verso l?esterno, sottraendo calore all?interno",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 3",
+                  "source": "claims",
+                  "text": "l?evaporazione della medesima acqua verso l?esterno, sottraendo calore all?interno della cella (10, 100).",
+                  "original_chars": 105,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F4",
+            "feature": "evaporative cooling without electricity",
+            "evidence": []
+          },
+          {
+            "id": "F5",
+            "feature": "internal storage chamber for vegetables and milk",
+            "evidence": []
+          }
+        ],
+        "citation_followups": [],
+        "recheck": null,
+        "report_id": "2d0337b1fb4cc9fc"
+      }
+    }
+  ]
+}

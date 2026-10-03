@@ -1,0 +1,1598 @@
+{
+  "idea_text": "\u090f\u0915 \u0938\u094c\u0930 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u091a\u0932\u0928\u0947 \u0935\u093e\u0932\u093e \u092b\u0938\u0932 \u0938\u0941\u0916\u093e\u0928\u0947 \u0915\u093e \u092f\u0902\u0924\u094d\u0930, \u091c\u093f\u0938\u092e\u0947\u0902 \u0915\u093e\u0932\u0947 \u0930\u0902\u0917 \u0915\u0940 \u091f\u093f\u0928 \u0915\u0940 \u091a\u093e\u0926\u0930 \u0939\u0935\u093e \u0915\u094b \u0917\u0930\u094d\u092e \u0915\u0930\u0924\u0940 \u0939\u0948 \u0914\u0930 \u090f\u0915 \u091b\u094b\u091f\u093e \u092a\u0902\u0916\u093e \u0917\u0930\u094d\u092e \u0939\u0935\u093e \u0915\u094b \u091c\u093e\u0932\u0940 \u0935\u093e\u0932\u0940 \u091f\u094d\u0930\u0947 \u0915\u0947 \u090a\u092a\u0930 \u0938\u0947 \u0917\u0941\u091c\u093c\u093e\u0930\u0924\u093e \u0939\u0948, \u0924\u093e\u0915\u093f \u0915\u093f\u0938\u093e\u0928 \u091f\u092e\u093e\u091f\u0930 \u0914\u0930 \u092e\u093f\u0930\u094d\u091a \u092c\u093f\u0928\u093e \u092c\u093f\u091c\u0932\u0940 \u0915\u0947 \u0938\u0941\u0916\u093e \u0938\u0915\u0947\u0902\u0964",
+  "parent_report_id": null,
+  "events": [
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Extracting core concepts and generating search queries...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Understood your idea in Hindi \u2014 translating it into patent-search English and extracting its core concepts...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_patents",
+      "message": "Searching patents across 3 query angles, including Indian Patent Office filings...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_scholar",
+      "message": "Reviewing academic literature matches...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "checking_market_availability",
+      "message": "Checking whether a similar product already exists commercially...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "ranking_results",
+      "message": "Ranking and deduplicating results by relevance to your idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Reading the first results to learn the terminology patents use for this idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Patents refer to the heating element as a \"metal absorber plate\" or \"solar air heater\" rather than a black tin sheet.",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Pulling full claims and citations for top candidates and scoring novelty...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Writing your report in Hindi...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "done",
+      "message": "Analysis complete.",
+      "replayed": false
+    },
+    {
+      "type": "result",
+      "data": {
+        "idea_text": "A solar-powered crop drying device, in which a black tin sheet heats the air and a small fan passes the heated air over a mesh tray, allowing a farmer to dry tomatoes and chilies without electricity.",
+        "ranked_results": [
+          {
+            "id": "https://www.youtube.com/watch?v=pZiAnvMHXVI",
+            "source_type": "product",
+            "title": "Multi crop solar dryer",
+            "snippet": "Solar dryer is a system that uses solar energy to dry substances especially Fruits and Vegetables. It protects fresh products from UV radiation ...",
+            "link": "https://www.youtube.com/watch?v=pZiAnvMHXVI",
+            "relevance_score": 0.7236058712005615,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN218722679U/en",
+            "source_type": "patent",
+            "title": "A mobile solar drying device",
+            "snippet": "1. A mobile solar drying apparatus, comprising: the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter and provides electric energy for the mobile solar drying device; the drying unit is used for drying the materials in \u2026",
+            "link": "https://patents.google.com/patent/CN218722679U/en",
+            "relevance_score": 0.7020806074142456,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u65b0\u7586\u519c\u57a6\u79d1\u5b66\u9662",
+            "priority_date": "2022-07-28"
+          },
+          {
+            "id": "https://es.scribd.com/document/585809194/Solar-drying-system-11",
+            "source_type": "product",
+            "title": "Solar Drying System for Agriculture | PDF",
+            "snippet": "The system uses solar energy collected by a flat plate solar collector to heat air and dry grains or foods. The main components of the collector include a black ...",
+            "link": "https://es.scribd.com/document/585809194/Solar-drying-system-11",
+            "relevance_score": 0.6917833089828491,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.youtube.com/watch?v=APllj07vzAY",
+            "source_type": "product",
+            "title": "Solar Dehydrator | Solar Food Dryer | Solar Drying Machine",
+            "snippet": "Our small mobile solar dryer is a new product suitable for families, individuals and small producers. Its temperature can be automatically ...",
+            "link": "https://www.youtube.com/watch?v=APllj07vzAY",
+            "relevance_score": 0.6904889345169067,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/12012223741057511475",
+            "source_type": "scholar",
+            "title": "The application of solar-driven technologies for the sustainable development of agriculture farming: a comprehensive review",
+            "snippet": "\u2026 In order to meet the energy demands of different agricultural operations, solar PV systems could \u2026 functioning of a solar dryer. Solar drying techniques are primarily classified as open sun-\u2026",
+            "link": "https://patents.google.com/scholar/12012223741057511475",
+            "relevance_score": 0.6452623605728149,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN102177964B/en",
+            "source_type": "patent",
+            "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+            "snippet": "1. greenhouse heat accumulation type solar energy hot blast grain drying device; It is characterized in that subsurface is provided with underground heat accumulation tank (13) in greenhouse drying shed (1) room; Air channel division wall (14) is set in underground heat accumulation tank (13), and \u2026",
+            "link": "https://patents.google.com/patent/CN102177964B/en",
+            "relevance_score": 0.6442896723747253,
+            "cpc_code": "Y02P60/85",
+            "cpc_description": "Food storage or conservation, e.g. cooling or drying",
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5eb7\u6811\u4eba",
+            "priority_date": "2011-03-01"
+          },
+          {
+            "id": "patent/CN208520117U/en",
+            "source_type": "patent",
+            "title": "Solar agricultural product drying system",
+            "snippet": "The utility model discloses a solar energy agricultural product drying system belongs to the agricultural product processing field. It includes heat storage chamber and drying chamber, the heat storage chamber includes solar collector and heat reservoir, solar collector passes through the heat \u2026",
+            "link": "https://patents.google.com/patent/CN208520117U/en",
+            "relevance_score": 0.640647292137146,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5c71\u4e1c\u7701\u5b8f\u798f\u6167\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2018-06-28"
+          },
+          {
+            "id": "patent/CN210960220U/en",
+            "source_type": "patent",
+            "title": "Solar tea dryer",
+            "snippet": "The utility model relates to an agricultural product stoving technical field, concretely relates to solar energy tealeaves drying-machine. The drying machine comprises a shell and a transmission device, wherein a rotatable drying roller is arranged in the shell, a spiral guide piece is arranged in \u2026",
+            "link": "https://patents.google.com/patent/CN210960220U/en",
+            "relevance_score": 0.6353129744529724,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2019-09-11"
+          },
+          {
+            "id": "patent/CN104011490A/en",
+            "source_type": "patent",
+            "title": "An improved solar dryer with enhanced efficiency of drying",
+            "snippet": "It is yet another object of the present invention to provide a foldable reflector on a dry box which allows the unit to operate in direct mode or indirect mode. Yet another object of the present invention is to provide forced air convection by direct flow fans at the inlet and outlet locations. Yet \u2026",
+            "link": "https://patents.google.com/patent/CN104011490A/en",
+            "relevance_score": 0.6327675580978394,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "AP": "UNKNOWN"
+            },
+            "query_types": [
+              "refined"
+            ],
+            "assignee": "\u79d1\u5b66\u4e0e\u5de5\u4e1a\u7814\u7a76\u4f1a",
+            "priority_date": "2011-05-16"
+          },
+          {
+            "id": "patent/CA3010933C/en",
+            "source_type": "patent",
+            "title": "Solar grain drying system and method",
+            "snippet": "base including a thermally insulative material, an aggregate floor above the base, a perforated floor spaced above the aggregate floor by an air plenum, the air plenum being in fluid communication with the air inlet, wherein the air inlet supplies the drying air to the air plenum, and a radiant \u2026",
+            "link": "https://patents.google.com/patent/CA3010933C/en",
+            "relevance_score": 0.6317315697669983,
+            "cpc_code": "F26B25/06",
+            "cpc_description": "Chambers, containers, or receptacles",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Barry R. Thompson",
+            "priority_date": "2010-06-02"
+          },
+          {
+            "id": "scholar/10288505653582850140",
+            "source_type": "scholar",
+            "title": "Solar drying of fruits\u2013A comprehensive review",
+            "snippet": "\u2026 a solar dryer with both a natural and a forced convection solar \u2026 to dry agricultural products required a great deal of energy \u2026 that the solar dry sample is harder than the sun-dried sample \u2026",
+            "link": "https://patents.google.com/scholar/10288505653582850140",
+            "relevance_score": 0.6293686628341675,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN205448635U/en",
+            "source_type": "patent",
+            "title": "Solar drying system",
+            "snippet": "Solar drying system the most according to claim 1, it is characterised in that described solar energy air heat collector (1) is provided with the second temperature sensor (83), described second temperature sensor (83) is connected with the input of described controller (8). Solar drying system the \u2026",
+            "link": "https://patents.google.com/patent/CN205448635U/en",
+            "relevance_score": 0.6183065176010132,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5e38\u5dde\u82f1\u6cca\u7d22\u5c14\u65b0\u80fd\u6e90\u6709\u9650\u516c\u53f8",
+            "priority_date": "2016-03-18"
+          },
+          {
+            "id": "patent/CN202050849U/en",
+            "source_type": "patent",
+            "title": "Greenhouse thermal storage type solar hot air drying device for grains",
+            "snippet": "A greenhouse thermal storage type solar hot air drying device for grains belongs to renewable energy source utilization technology. An underground thermal storage pond is arranged under the ground in a greenhouse drying room, a solar air heat collector is assembled on the upper portion of the \u2026",
+            "link": "https://patents.google.com/patent/CN202050849U/en",
+            "relevance_score": 0.6173628568649292,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5eb7\u6811\u4eba",
+            "priority_date": "2011-03-01"
+          },
+          {
+            "id": "patent/CN210980578U/en",
+            "source_type": "patent",
+            "title": "Solar edible fresh flower dryer",
+            "snippet": "1. The utility model provides a solar energy edible fresh flower drying-machine, includes casing (1), separates for stoving storehouse (2) and heat transfer storehouse (4) through baffle (3) in casing (1), its characterized in that: also comprises a control panel (11) arranged outside the heat \u2026",
+            "link": "https://patents.google.com/patent/CN210980578U/en",
+            "relevance_score": 0.6144052743911743,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2019-09-11"
+          },
+          {
+            "id": "https://www.youtube.com/playlist?list=PLGKIV3MrBiqOUpAM905wE4NM1qciT9xnf",
+            "source_type": "product",
+            "title": "Solar Food Dryer(Dehydrator)",
+            "snippet": "Solar Food Dryer(Dehydrator) Continuous Double Flow Grain Dryer. DIY Solar Air Heater! - Solar Thermal STEEL \"DOWN-SPOUT\" Air Heater! - Easy DIY. Solar Thermal ...",
+            "link": "https://www.youtube.com/playlist?list=PLGKIV3MrBiqOUpAM905wE4NM1qciT9xnf",
+            "relevance_score": 0.6106855869293213,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/2389998622743369930",
+            "source_type": "scholar",
+            "title": "Efficient solar drying techniques: a review",
+            "snippet": "\u2026 The use of solar energy in the drying process of agriculture \u2026 of solar dryer are open sun drying, indirect sun drying, green \u2026 the drying time; this is due to generation of hot and dry air. &amp; \u2026",
+            "link": "https://patents.google.com/scholar/2389998622743369930",
+            "relevance_score": 0.5956229567527771,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/AU2020101226A4/en",
+            "source_type": "patent",
+            "title": "A Multifunctional Automatic Drying Room for Agricultural Products with Coupling \u2026",
+            "snippet": "1. A multifunctional automatic drying room for agricultural products with coupling heat supply of solar energy and heat pump, the drying room comprises a drying chamber (1), a solar panel (2), a main air duct (3), a condensation chamber (4), a heating chamber (5) and a control unit, which is \u2026",
+            "link": "https://patents.google.com/patent/AU2020101226A4/en",
+            "relevance_score": 0.5933728814125061,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "AU": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Boen Solar Technology Co., Ltd.",
+            "priority_date": "2020-07-02"
+          },
+          {
+            "id": "patent/CN210980577U/en",
+            "source_type": "patent",
+            "title": "Solar walnut dryer",
+            "snippet": "The utility model relates to an agricultural product stoving technical field, concretely relates to solar energy walnut drying-machine. The dryer comprises a shell, wherein the shell is divided into a drying bin and a heat exchange bin by a return air plate, and further comprises a controller, an \u2026",
+            "link": "https://patents.google.com/patent/CN210980577U/en",
+            "relevance_score": 0.5873230695724487,
+            "cpc_code": "Y02P60/85",
+            "cpc_description": "Food storage or conservation, e.g. cooling or drying",
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2019-09-11"
+          },
+          {
+            "id": "patent/CN104011490B/en",
+            "source_type": "patent",
+            "title": "There is the modified model solar dryer of the drying efficiency of raising",
+            "snippet": "4. modified model solar dryer as claimed in claim 1, wherein, is attached at described solar collector/absorber On described reflector make described insolation amount improve 40-50% and make drying air temperature improve 10-20 DEG C. 5. modified model solar dryer as claimed in claim 1, wherein, \u2026",
+            "link": "https://patents.google.com/patent/CN104011490B/en",
+            "relevance_score": 0.5867113471031189,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "AP": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u79d1\u5b66\u4e0e\u5de5\u4e1a\u7814\u7a76\u4f1a",
+            "priority_date": "2011-05-16"
+          },
+          {
+            "id": "scholar/7222356308296092232",
+            "source_type": "scholar",
+            "title": "Recent developments in greenhouse solar drying: A review",
+            "snippet": "\u2026 of open sun drying various greenhouse solar dryer had been \u2026 potential of dryer so as to dry the high moisture content crops. \u2026 of dryer, 1 kg of grapes were dried in drying area of 108 m 2 \u2026",
+            "link": "https://patents.google.com/scholar/7222356308296092232",
+            "relevance_score": 0.5743743777275085,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN210980679U/en",
+            "source_type": "patent",
+            "title": "Solar coffee bean dryer",
+            "snippet": "1. The utility model provides a solar energy coffee bean drying-machine, includes stoving hopper (7), its characterized in that: the solar hot air device array (1) is connected with an induced draft fan (3) and a heat exchange device (4) through a heat conduction pipe (2), and the heat exchange \u2026",
+            "link": "https://patents.google.com/patent/CN210980679U/en",
+            "relevance_score": 0.5688415765762329,
+            "cpc_code": "Y02P60/85",
+            "cpc_description": "Food storage or conservation, e.g. cooling or drying",
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2019-09-11"
+          },
+          {
+            "id": "scholar/17726055266576502628",
+            "source_type": "scholar",
+            "title": "Experimental energy, exergy, economic and exergoeconomic analyses of batch-type solar-assisted heat pump dryer",
+            "snippet": "\u2026 been dried to remove moisture from 83.5% to 11.5% at an air \u2026 for the drying of the different agricultural products and fruits in \u2026 the solar water heating system, HP system, and the drying air \u2026",
+            "link": "https://patents.google.com/scholar/17726055266576502628",
+            "relevance_score": 0.5611989498138428,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN110030806A/en",
+            "source_type": "patent",
+            "title": "A kind of closed air drying cycles system",
+            "snippet": "1. A closed air drying circulation system, characterized in that, comprising an air closed-circuit circulation unit and a heat pump closed-circuit circulation unit; wherein, The air closed-circuit circulation unit includes a solar collector, a drying chamber and a regenerator; the outlet of the \u2026",
+            "link": "https://patents.google.com/patent/CN110030806A/en",
+            "relevance_score": 0.558429479598999,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5170\u5dde\u7406\u5de5\u5927\u5b66",
+            "priority_date": "2018-09-10"
+          },
+          {
+            "id": "https://www.researchgate.net/figure/The-solar-dryer-with-its-components_fig1_408720839",
+            "source_type": "product",
+            "title": "The solar dryer with its components",
+            "snippet": "solar dryer consists of the solar collector (air heater), the drying chamber, heater, axial fan, temperature sensors, thermostat, and drying trays.",
+            "link": "https://www.researchgate.net/figure/The-solar-dryer-with-its-components_fig1_408720839",
+            "relevance_score": 0.5565611124038696,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN208639568U/en",
+            "source_type": "patent",
+            "title": "Trough solar drier",
+            "snippet": "4. The trough type solar dryer according to claim 1, characterized in that: the middle part of the side wall of the drying box is provided with a uniform air plate, which is used to make the hot air blown by the fan evenly distribute in the box, and the uniform air An electric heating device is \u2026",
+            "link": "https://patents.google.com/patent/CN208639568U/en",
+            "relevance_score": 0.5550551414489746,
+            "cpc_code": "Y02P60/85",
+            "cpc_description": "Food storage or conservation, e.g. cooling or drying",
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u9752\u5c9b\u79d1\u6280\u5927\u5b66",
+            "priority_date": "2017-10-11"
+          },
+          {
+            "id": "patent/CN210960394U/en",
+            "source_type": "patent",
+            "title": "Tobacco drying equipment combining solar energy and air energy",
+            "snippet": "1. The utility model provides a tobacco drying equipment of solar energy union air energy, includes tobacco flue-curing house (1), separates for stoving storehouse (5) and circulation heat transfer storehouse (4), its characterized in that through return air board (7) in tobacco flue-curing house ( \u2026",
+            "link": "https://patents.google.com/patent/CN210960394U/en",
+            "relevance_score": 0.545260488986969,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2019-09-11"
+          },
+          {
+            "id": "scholar/1781033064656050393",
+            "source_type": "scholar",
+            "title": "Design and evaluation of a hybrid solar dryer for postharvesting processing of parchment coffee",
+            "snippet": "\u2026 Due to the extended drying time open-sun and solar drying of \u2026 Employing solar energy to dry coffee brings along several \u2026 energy in a battery so the apparatus could function when the \u2026",
+            "link": "https://patents.google.com/scholar/1781033064656050393",
+            "relevance_score": 0.5407282114028931,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/6208989542065569733",
+            "source_type": "scholar",
+            "title": "Energy and exergy analysis of a mixed-mode greenhouse-type solar dryer, integrated with partially covered N-PVT air collector",
+            "snippet": "\u2026 Singh [20] found that the force convection type solar dryer is appropriate to dry silk \u2026 air and further, heated air is supplied to drying chamber. The solar radiations coming from the sun \u2026",
+            "link": "https://patents.google.com/scholar/6208989542065569733",
+            "relevance_score": 0.5372898578643799,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN206056145U/en",
+            "source_type": "patent",
+            "title": "A kind of flat intelligent dehydrator",
+            "snippet": "The utility model discloses a kind of flat intelligent dehydrator, including casing, and it is arranged on drying chamber in casing, air duct, base plate, solar thermal collector, auxiliary thermal source device and intelligent controller, solar thermal collector is arranged on the top of casing, \u2026",
+            "link": "https://patents.google.com/patent/CN206056145U/en",
+            "relevance_score": 0.5356680154800415,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u897f\u85cf\u5927\u8239\u6295\u8d44\u96c6\u56e2\u6709\u9650\u516c\u53f8",
+            "priority_date": "2016-08-19"
+          },
+          {
+            "id": "scholar/1712695281669739201",
+            "source_type": "scholar",
+            "title": "Performance and economic analyses on solar-assisted heat pump fluidised bed dryer integrated with biomass furnace for rice drying",
+            "snippet": "\u2026 pump dryers and solar energy to dry agricultural products or \u2026 operated dryer features due to limited drying air temperature. \u2026 of solar collectors to absorb (collect) energy from the sun and \u2026",
+            "link": "https://patents.google.com/scholar/1712695281669739201",
+            "relevance_score": 0.5340771675109863,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/11513310950290248215",
+            "source_type": "scholar",
+            "title": "Experimental study of solar photovoltaic/thermal (PV/T) air collector drying performance",
+            "snippet": "\u2026 sun drying is simple, the long drying periods, poor drying \u2026 of the fabricated hybrid PV/T solar dryer were studied. The moisture \u2026 the drying system could not provide enough heat to dry the \u2026",
+            "link": "https://patents.google.com/scholar/11513310950290248215",
+            "relevance_score": 0.5241234302520752,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.pinterest.com/pin/534098837087993299/",
+            "source_type": "product",
+            "title": "Solar Dryer =Secador Solar",
+            "snippet": "\u2022Drying Capacity per batch:20-40kgs \u2022Cover\uff1aPC \u2022Dimension (cm): 210 (L) x95 (W)x 150 (H) \u2022Drying Cabinet:200x95cm \u2022Solar panel ...",
+            "link": "https://www.pinterest.com/pin/534098837087993299/",
+            "relevance_score": 0.513783872127533,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://fr.scribd.com/document/630181042/Simple-Solar-Dryer",
+            "source_type": "product",
+            "title": "Low-Cost Portable Solar Dryer Design | PDF",
+            "snippet": "This document describes a low-cost portable solar dryer designed for domestic use. The dryer uses scrap materials and natural air filtration to provide a ...",
+            "link": "https://fr.scribd.com/document/630181042/Simple-Solar-Dryer",
+            "relevance_score": 0.506064772605896,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN102425919A/en",
+            "source_type": "patent",
+            "title": "Solar fluidized bed type drier",
+            "snippet": "2. solar energy fluidized bed type drier according to claim 1 is characterized in that: porous flat plate solar energy air heat collector (1) links into an integrated entity through blower fan (4) and ventilation shaft (3) with fluidized bed dryer. 3. solar energy multilayer fresh flower drier \u2026",
+            "link": "https://patents.google.com/patent/CN102425919A/en",
+            "relevance_score": 0.47104382514953613,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u9547\u6c5f\u65b0\u68a6\u6eaa\u80fd\u6e90\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2011-09-09"
+          },
+          {
+            "id": "patent/CN203731829U/en",
+            "source_type": "patent",
+            "title": "Movable multi-energy air-dried red meat processing device",
+            "snippet": "2. according to the air-dry beef and mutton processing unit (plant) of the removable multiple-energy-source described in claim 1, it is characterized in that: air inlet comprises Fan Regulation plate and servomotor, servomotor is by regulating Fan Regulation plate to realize the control to intake;",
+            "link": "https://patents.google.com/patent/CN203731829U/en",
+            "relevance_score": 0.43073758482933044,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u4e2d\u56fd\u519c\u4e1a\u79d1\u5b66\u9662\u519c\u4ea7\u54c1\u52a0\u5de5\u7814\u7a76\u6240",
+            "priority_date": "2013-12-06"
+          },
+          {
+            "id": "https://www.alibaba.com/solar-meat-dryer-suppliers.html",
+            "source_type": "product",
+            "title": "solar meat dryer Suppliers",
+            "snippet": "Find variety Solar Meat Dryer Suppliers, Manufacturers, Trays Hot Air Drying Oven Machine. US$1 Million - US$2.5. Total Revenue: US$2.5 Million - US$5 Million",
+            "link": "https://www.alibaba.com/solar-meat-dryer-suppliers.html",
+            "relevance_score": 0.43026289343833923,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/2854989701157621971",
+            "source_type": "scholar",
+            "title": "Experimental evaluation of beef drying kinetics in a solar tunnel dryer",
+            "snippet": "\u2026 sun drying, the surface of the drying material absorbs solar \u2026 and 9.56% (dry weight basis/dwb) after 11 h of drying in the \u2026 with drying time using the Page model for sun and solar dried \u2026",
+            "link": "https://patents.google.com/scholar/2854989701157621971",
+            "relevance_score": 0.4292498230934143,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN103651737A/en",
+            "source_type": "patent",
+            "title": "Removable multi-energy air-dried mutton and beef processing apparatus",
+            "snippet": "5. according to the air-dry beef and mutton processing unit (plant) of the removable multiple-energy-source described in claim 1, according to the air-dry beef and mutton processing unit (plant) of above-mentioned removable multiple-energy-source, wherein apparatus main body also includes battery;",
+            "link": "https://patents.google.com/patent/CN103651737A/en",
+            "relevance_score": 0.4007355570793152,
+            "cpc_code": "Y02P60/85",
+            "cpc_description": "Food storage or conservation, e.g. cooling or drying",
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u4e2d\u56fd\u519c\u4e1a\u79d1\u5b66\u9662\u519c\u4ea7\u54c1\u52a0\u5de5\u7814\u7a76\u6240",
+            "priority_date": "2013-12-06"
+          },
+          {
+            "id": "https://www.alibaba.com/solar-energy-dryer-suppliers.html",
+            "source_type": "product",
+            "title": "solar energy dryer Suppliers",
+            "snippet": "Find variety Solar Energy Dryer Suppliers, Manufacturers, Main Products: heat pump dryer,heat pump dehydrator,heat",
+            "link": "https://www.alibaba.com/solar-energy-dryer-suppliers.html",
+            "relevance_score": 0.3699524402618408,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN210123222U/en",
+            "source_type": "patent",
+            "title": "A multipurpose heat pump oven",
+            "snippet": "1. a multi-purpose heat pump roasting house, comprising an air energy heat pump and the room body that is divided into a unit room and a hot air chamber, the evaporator case of the air energy heat pump is located in the outdoor, and the condenser is located in the unit room, it is characterized in \u2026",
+            "link": "https://patents.google.com/patent/CN210123222U/en",
+            "relevance_score": 0.34495052695274353,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6cb3\u5357\u519c\u4e1a\u5927\u5b66",
+            "priority_date": "2019-05-31"
+          }
+        ],
+        "candidate_assessments": [
+          {
+            "result_id": "patent/CN218722679U/en",
+            "title": "A mobile solar drying device",
+            "link": "https://patents.google.com/patent/CN218722679U/en",
+            "overlapping_elements": [
+              "solar heat used to dry material",
+              "fan driven by electric energy",
+              "mobile/portable platform"
+            ],
+            "differences": [
+              "uses photovoltaic panel and battery for power",
+              "heat collection via vacuum tubes, not a black tin sheet",
+              "includes electric heating assembly"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN102177964B/en",
+            "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+            "link": "https://patents.google.com/patent/CN102177964B/en",
+            "overlapping_elements": [
+              "solar\u2011air heat collector",
+              "blower/fan to move hot air",
+              "underground heat storage tank"
+            ],
+            "differences": [
+              "focuses on grain drying in a greenhouse",
+              "includes underground thermal storage, not a simple black sheet",
+              "uses multiple valves and air loop system"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN208520117U/en",
+            "title": "Solar agricultural product drying system",
+            "link": "https://patents.google.com/patent/CN208520117U/en",
+            "overlapping_elements": [
+              "solar collector heating air",
+              "forced\u2011draught fan",
+              "drying chamber with mesh or rack"
+            ],
+            "differences": [
+              "includes heat\u2011storage chamber and circulating pumps",
+              "has temperature\u2011humidity control system",
+              "uses photovoltaic panel for fan power"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN210960220U/en",
+            "title": "Solar tea dryer",
+            "link": "https://patents.google.com/patent/CN210960220U/en",
+            "overlapping_elements": [
+              "solar hot\u2011air device",
+              "fan/blower moving heated air",
+              "mesh\u2011like grid plate beneath dryer"
+            ],
+            "differences": [
+              "uses rotating drying drum rather than a static tray",
+              "includes dehumidification barrel and far\u2011infrared heater",
+              "has a more complex mechanical transmission"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN104011490A/en",
+            "title": "An improved solar dryer with enhanced efficiency of drying",
+            "link": "https://patents.google.com/patent/CN104011490A/en",
+            "overlapping_elements": [
+              "black metal plate absorber",
+              "fan powered by photovoltaic panel",
+              "mesh drawer for material"
+            ],
+            "differences": [
+              "includes V\u2011trough reflectors and tracking circuit",
+              "has programmable recirculation and humidity sensor",
+              "uses double\u2011layer glass absorber, not a tin sheet"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          }
+        ],
+        "overall_novelty_confidence": 0.32,
+        "differentiation_suggestions": [
+          "Replace the simple black tin sheet with a patterned selective\u2011coating absorber that raises temperature while keeping weight low.",
+          "Integrate a passive airflow channel (e.g., a chimney effect) so the fan can be omitted or powered by a small solar\u2011thermal turbine.",
+          "Add a removable, insulated back panel that stores excess heat for night\u2011time drying, differentiating from purely instantaneous heating."
+        ],
+        "citations": [
+          {
+            "claim": "solar heat used to dry material",
+            "result_id": "patent/CN218722679U/en",
+            "title": "A mobile solar drying device",
+            "link": "https://patents.google.com/patent/CN218722679U/en"
+          },
+          {
+            "claim": "solar\u2011air heat collector with blower",
+            "result_id": "patent/CN102177964B/en",
+            "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+            "link": "https://patents.google.com/patent/CN102177964B/en"
+          },
+          {
+            "claim": "solar collector heating air via fan",
+            "result_id": "patent/CN208520117U/en",
+            "title": "Solar agricultural product drying system",
+            "link": "https://patents.google.com/patent/CN208520117U/en"
+          },
+          {
+            "claim": "solar hot\u2011air device feeding a grid plate",
+            "result_id": "patent/CN210960220U/en",
+            "title": "Solar tea dryer",
+            "link": "https://patents.google.com/patent/CN210960220U/en"
+          },
+          {
+            "claim": "black metal plate absorber with PV\u2011powered fan",
+            "result_id": "patent/CN104011490A/en",
+            "title": "An improved solar dryer with enhanced efficiency of drying",
+            "link": "https://patents.google.com/patent/CN104011490A/en"
+          },
+          {
+            "claim": "use selective\u2011coating absorber",
+            "result_id": "patent/CN104011490A/en",
+            "title": "An improved solar dryer with enhanced efficiency of drying",
+            "link": "https://patents.google.com/patent/CN104011490A/en"
+          },
+          {
+            "claim": "passive chimney airflow",
+            "result_id": "patent/CN102177964B/en",
+            "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+            "link": "https://patents.google.com/patent/CN102177964B/en"
+          },
+          {
+            "claim": "insulated back panel for heat storage",
+            "result_id": "patent/CN208520117U/en",
+            "title": "Solar agricultural product drying system",
+            "link": "https://patents.google.com/patent/CN208520117U/en"
+          }
+        ],
+        "india_status": {
+          "related_active_in_india": 0,
+          "active_elsewhere_only": 3,
+          "india_filings_found": 0
+        },
+        "claim_chart": {
+          "candidate_result_id": "patent/CN218722679U/en",
+          "candidate_title": "A mobile solar drying device",
+          "candidate_link": "https://patents.google.com/patent/CN218722679U/en",
+          "candidate_text": "Abstract: The utility model discloses a mobile solar drying device, which comprises a photovoltaic power generation unit, a solar drying unit and a solar energy storage unit, wherein the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter; the drying unit is used for drying the materials in the drying chamber by utilizing solar heat; the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, the heat collection manifold is communicated with the plurality of heat collection vacuum tubes, and the heat collection vacuum tubes heat the gas led into the tubes and then convey the gas to the drying unit; the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are all fixed on the upper surface of the supporting plate. The utility model discloses a portable solar drying device has realized solar energy and has united dry all-weather operation, to different weather, different illumination intensity carries out the automatic switch-over of different drying pattern, and is convenient for remove.\n\nClaim 1: 1. A mobile solar drying apparatus, comprising:\n\nClaim 2: the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter and provides electric energy for the mobile solar drying device;\n\nClaim 3: the drying unit is used for drying the materials in the drying chamber by utilizing solar heat;\n\nClaim 4: the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, wherein the upper ends of the plurality of heat collection vacuum tubes are inserted into the heat collection manifold so as to heat the gas flowing through the heat collection manifold;\n\nClaim 5: the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are fixed on the upper surface of the supporting plate.\n\nClaim 6: 2. The mobile solar drying apparatus of claim 1, wherein: the drying unit comprises a thermal circulation fan, a moisture exhaust fan, the drying chamber, an electric heating assembly and a rack; the drying unit is supported and fixed by the rack, the thermal cycle fan is driven by electric energy and is regulated and controlled by the control unit, an air inlet of the thermal cycle fan is connected with an air inlet of the heat collection manifold through a pipeline, an air outlet of the heat collection manifold is connected with an air inlet of the electric heating assembly, and an air outlet of the electric heating assembly is connected with an air inlet of the drying chamber.",
+          "pairs": [
+            {
+              "concept": "solar heating element",
+              "idea_span": "black tin sheet heats the air",
+              "candidate_span": "solar absorber/collector ... metal plate ... to absorb solar radiation and heat air"
+            },
+            {
+              "concept": "fan moving heated air",
+              "idea_span": "small fan passes the heated air over a mesh tray",
+              "candidate_span": "multiple wind fans ... are connected to photovoltaic panels"
+            },
+            {
+              "concept": "mesh tray for produce",
+              "idea_span": "mesh tray, allowing a farmer to dry tomatoes and chilies",
+              "candidate_span": "the drying chamber has a drawer ... metal wire mesh for placing items to be dried"
+            }
+          ]
+        },
+        "top_assignees": [],
+        "public_domain": {
+          "count": 12,
+          "patents_considered": 21,
+          "entries": [
+            {
+              "id": "patent/CN210960220U/en",
+              "title": "Solar tea dryer",
+              "link": "https://patents.google.com/patent/CN210960220U/en",
+              "priority_date": "2019-09-11",
+              "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+              "relevance_score": 0.6353129744529724,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 7
+            },
+            {
+              "id": "patent/CN205448635U/en",
+              "title": "Solar drying system",
+              "link": "https://patents.google.com/patent/CN205448635U/en",
+              "priority_date": "2016-03-18",
+              "assignee": "\u5e38\u5dde\u82f1\u6cca\u7d22\u5c14\u65b0\u80fd\u6e90\u6709\u9650\u516c\u53f8",
+              "relevance_score": 0.6183065176010132,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 10
+            },
+            {
+              "id": "patent/CN202050849U/en",
+              "title": "Greenhouse thermal storage type solar hot air drying device for grains",
+              "link": "https://patents.google.com/patent/CN202050849U/en",
+              "priority_date": "2011-03-01",
+              "assignee": "\u5eb7\u6811\u4eba",
+              "relevance_score": 0.6173628568649292,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 15
+            },
+            {
+              "id": "patent/CN210980578U/en",
+              "title": "Solar edible fresh flower dryer",
+              "link": "https://patents.google.com/patent/CN210980578U/en",
+              "priority_date": "2019-09-11",
+              "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+              "relevance_score": 0.6144052743911743,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 7
+            },
+            {
+              "id": "patent/AU2020101226A4/en",
+              "title": "A Multifunctional Automatic Drying Room for Agricultural Products with Coupling \u2026",
+              "link": "https://patents.google.com/patent/AU2020101226A4/en",
+              "priority_date": "2020-07-02",
+              "assignee": "Boen Solar Technology Co., Ltd.",
+              "relevance_score": 0.5933728814125061,
+              "lapsed_in": [
+                "AU"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 6
+            },
+            {
+              "id": "patent/CN210980577U/en",
+              "title": "Solar walnut dryer",
+              "link": "https://patents.google.com/patent/CN210980577U/en",
+              "priority_date": "2019-09-11",
+              "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+              "relevance_score": 0.5873230695724487,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 7
+            },
+            {
+              "id": "patent/CN210980679U/en",
+              "title": "Solar coffee bean dryer",
+              "link": "https://patents.google.com/patent/CN210980679U/en",
+              "priority_date": "2019-09-11",
+              "assignee": "\u6606\u660e\u51a0\u4e09\u8282\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8",
+              "relevance_score": 0.5688415765762329,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 7
+            },
+            {
+              "id": "patent/CN208639568U/en",
+              "title": "Trough solar drier",
+              "link": "https://patents.google.com/patent/CN208639568U/en",
+              "priority_date": "2017-10-11",
+              "assignee": "\u9752\u5c9b\u79d1\u6280\u5927\u5b66",
+              "relevance_score": 0.5550551414489746,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 8
+            }
+          ]
+        },
+        "search_strategy": {
+          "core_concepts": [
+            "solar-powered crop dryer",
+            "black tin sheet heater",
+            "fan forced airflow",
+            "mesh drying tray"
+          ],
+          "suggested_cpc": "A01B33/00",
+          "queries": [
+            {
+              "type": "major_markets",
+              "query": "(solar OR \"solar powered\") (\"crop dryer\" OR \"agricultural dryer\") (\"tin sheet\" OR \"black tin\") (fan OR \"forced air\")",
+              "rationale": "Uses the most specific elements of the invention\u2014solar power, crop drying function, tin sheet heating element, and fan airflow\u2014to locate strong blocking prior art in major jurisdictions.",
+              "country": null,
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "india_specific",
+              "query": "(solar dryer OR \"sun dryer\") (\"mesh tray\" OR \"drying tray\") (fan OR blower)",
+              "rationale": "A smaller Indian corpus requires broader synonyms; combines solar drying concept, mesh tray for crops, and a fan/blower for airflow.",
+              "country": "IN",
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "broad_recall",
+              "query": "(solar OR \"solar energy\") (drying OR \"drying apparatus\") (air OR \"air heating\") (agricultural OR crop)",
+              "rationale": "Broad parent terms and many OR alternatives increase recall, capturing prior art that describes similar solar drying systems with different terminology.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "refined",
+              "query": "(\"solar air heater\" OR \"metal absorber plate\") (\"forced convection\" OR \"forced air\") (\"crop dryer\" OR \"agricultural dryer\")",
+              "rationale": "Patents refer to the heating element as a \"metal absorber plate\" or \"solar air heater\" rather than a black tin sheet.",
+              "country": null,
+              "result_count": 1,
+              "failed": false
+            }
+          ],
+          "market_query": "solar-powered crop dryer black tin sheet heater fan forced airflow mesh drying tray",
+          "trends_keyword": null,
+          "serpapi_calls": {
+            "google_patents": 5,
+            "google": 1,
+            "google_patents_details": 5
+          },
+          "refinement_observation": "Patents refer to the heating element as a \"metal absorber plate\" or \"solar air heater\" rather than a black tin sheet.",
+          "refinement_terms": [
+            "metal absorber plate",
+            "solar air heater",
+            "forced convection solar dryer"
+          ]
+        },
+        "citation_network": {
+          "discoveries": [],
+          "edges": [],
+          "references_scanned": 14
+        },
+        "market_trend": null,
+        "plain_summary": "You\u2019ve found that several existing solar dryers already use a solar absorber plate, a fan, and a mesh surface to dry food, so the core idea isn\u2019t new. What sets yours apart is the ultra\u2011simple black tin sheet and the fact you want it to run without any electricity at all. To make it stand out, consider adding a selective\u2011coating absorber, a passive chimney\u2011type airflow, or a heat\u2011storage back panel. Those tweaks will give you a clearer inventive edge over the closest prior art.",
+        "original_idea_text": "\u090f\u0915 \u0938\u094c\u0930 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u091a\u0932\u0928\u0947 \u0935\u093e\u0932\u093e \u092b\u0938\u0932 \u0938\u0941\u0916\u093e\u0928\u0947 \u0915\u093e \u092f\u0902\u0924\u094d\u0930, \u091c\u093f\u0938\u092e\u0947\u0902 \u0915\u093e\u0932\u0947 \u0930\u0902\u0917 \u0915\u0940 \u091f\u093f\u0928 \u0915\u0940 \u091a\u093e\u0926\u0930 \u0939\u0935\u093e \u0915\u094b \u0917\u0930\u094d\u092e \u0915\u0930\u0924\u0940 \u0939\u0948 \u0914\u0930 \u090f\u0915 \u091b\u094b\u091f\u093e \u092a\u0902\u0916\u093e \u0917\u0930\u094d\u092e \u0939\u0935\u093e \u0915\u094b \u091c\u093e\u0932\u0940 \u0935\u093e\u0932\u0940 \u091f\u094d\u0930\u0947 \u0915\u0947 \u090a\u092a\u0930 \u0938\u0947 \u0917\u0941\u091c\u093c\u093e\u0930\u0924\u093e \u0939\u0948, \u0924\u093e\u0915\u093f \u0915\u093f\u0938\u093e\u0928 \u091f\u092e\u093e\u091f\u0930 \u0914\u0930 \u092e\u093f\u0930\u094d\u091a \u092c\u093f\u0928\u093e \u092c\u093f\u091c\u0932\u0940 \u0915\u0947 \u0938\u0941\u0916\u093e \u0938\u0915\u0947\u0902\u0964",
+        "language_code": "hi",
+        "language_name": "Hindi",
+        "localized": {
+          "language_code": "hi",
+          "language_name": "Hindi",
+          "plain_summary": "\u0906\u092a\u0928\u0947 \u092a\u093e\u092f\u093e \u0915\u093f \u0915\u0908 \u092e\u094c\u091c\u0942\u0926\u093e \u0938\u094c\u0930 \u0921\u094d\u0930\u093e\u092f\u0930 \u092a\u0939\u0932\u0947 \u0938\u0947 \u0939\u0940 \u0938\u094c\u0930 \u090f\u092c\u094d\u091c\u0949\u0930\u094d\u092c\u0930 \u092a\u094d\u0932\u0947\u091f, \u092a\u0902\u0916\u093e \u0914\u0930 \u091c\u093e\u0932 \u0938\u0924\u0939 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0915\u0947 \u092d\u094b\u091c\u0928 \u0915\u094b \u0938\u0941\u0916\u093e\u0924\u0947 \u0939\u0948\u0902, \u0907\u0938\u0932\u093f\u090f \u092e\u0942\u0932 \u0935\u093f\u091a\u093e\u0930 \u0928\u092f\u093e \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u0906\u092a\u0915\u093e \u0935\u093f\u091a\u093e\u0930 \u0905\u0932\u0917 \u0907\u0938\u0932\u093f\u090f \u0939\u0948 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0907\u0938\u092e\u0947\u0902 \u0905\u0924\u094d\u092f\u0902\u0924 \u0938\u0930\u0932 \u0915\u093e\u0932\u0940 \u091f\u093f\u0928 \u0936\u0940\u091f \u0939\u0948 \u0914\u0930 \u0906\u092a \u0907\u0938\u0947 \u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0938\u0947 \u092c\u093f\u0928\u093e \u092c\u093f\u091c\u0932\u0940 \u0915\u0947 \u091a\u0932\u093e\u0928\u093e \u091a\u093e\u0939\u0924\u0947 \u0939\u0948\u0902\u0964 \u0907\u0938\u0947 \u0905\u0932\u0917 \u0926\u093f\u0916\u093e\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f, \u090f\u0915 \u091a\u092f\u0928\u093e\u0924\u094d\u092e\u0915\u2011\u0915\u094b\u091f\u093f\u0902\u0917 \u090f\u092c\u094d\u091c\u0949\u0930\u094d\u092c\u0930, \u090f\u0915 \u0928\u093f\u0937\u094d\u0915\u094d\u0930\u093f\u092f \u091a\u093f\u092e\u0928\u0940\u2011\u092a\u094d\u0930\u0915\u093e\u0930 \u0935\u093e\u092f\u0941 \u092a\u094d\u0930\u0935\u093e\u0939, \u092f\u093e \u090f\u0915 \u0939\u0940\u091f\u2011\u0938\u094d\u091f\u094b\u0930\u0947\u091c \u092c\u0948\u0915 \u092a\u0948\u0928\u0932 \u091c\u094b\u0921\u093c\u0928\u0947 \u092a\u0930 \u0935\u093f\u091a\u093e\u0930 \u0915\u0930\u0947\u0902\u0964 \u092f\u0947 \u092c\u0926\u0932\u093e\u0935 \u0906\u092a\u0915\u094b \u0938\u092c\u0938\u0947 \u0928\u093f\u0915\u091f\u0924\u092e \u092a\u0942\u0930\u094d\u0935 \u0915\u0932\u093e \u0915\u0940 \u0924\u0941\u0932\u0928\u093e \u092e\u0947\u0902 \u0938\u094d\u092a\u0937\u094d\u091f \u0906\u0935\u093f\u0937\u094d\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915 \u0932\u093e\u092d \u0926\u0947\u0902\u0917\u0947\u0964",
+          "differentiation_suggestions": [
+            "\u0938\u0930\u0932 \u0915\u093e\u0932\u0940 \u091f\u093f\u0928 \u0936\u0940\u091f \u0915\u094b \u090f\u0915 \u092a\u0948\u091f\u0930\u094d\u0928\u092f\u0941\u0915\u094d\u0924 \u091a\u092f\u0928\u093e\u0924\u094d\u092e\u0915\u2011\u0915\u094b\u091f\u093f\u0902\u0917 \u090f\u092c\u094d\u091c\u0949\u0930\u094d\u092c\u0930 \u0938\u0947 \u092c\u0926\u0932\u0947\u0902 \u091c\u094b \u0924\u093e\u092a\u092e\u093e\u0928 \u092c\u0922\u093c\u093e\u090f \u091c\u092c\u0915\u093f \u0935\u091c\u0928 \u0915\u092e \u0930\u0916\u0947\u0964",
+            "\u090f\u0915 \u0928\u093f\u0937\u094d\u0915\u094d\u0930\u093f\u092f \u0935\u093e\u092f\u0941 \u092a\u094d\u0930\u0935\u093e\u0939 \u091a\u0948\u0928\u0932 (\u091c\u0948\u0938\u0947 \u091a\u093f\u092e\u0928\u0940 \u092a\u094d\u0930\u092d\u093e\u0935) \u0915\u094b \u090f\u0915\u0940\u0915\u0943\u0924 \u0915\u0930\u0947\u0902 \u0924\u093e\u0915\u093f \u092a\u0902\u0916\u093e \u0915\u094b \u0939\u091f\u093e\u092f\u093e \u091c\u093e \u0938\u0915\u0947 \u092f\u093e \u091b\u094b\u091f\u0947 \u0938\u094c\u0930\u2011\u0925\u0930\u094d\u092e\u0932 \u091f\u0930\u092c\u093e\u0907\u0928 \u0926\u094d\u0935\u093e\u0930\u093e \u091a\u0932\u093e\u092f\u093e \u091c\u093e \u0938\u0915\u0947\u0964",
+            "\u090f\u0915 \u0939\u091f\u093e\u0928\u0947 \u092f\u094b\u0917\u094d\u092f, \u0907\u0928\u094d\u0938\u0941\u0932\u0947\u091f\u0947\u0921 \u092c\u0948\u0915 \u092a\u0948\u0928\u0932 \u091c\u094b\u0921\u093c\u0947\u0902 \u091c\u094b \u0905\u0924\u093f\u0930\u093f\u0915\u094d\u0924 \u0917\u0930\u094d\u092e\u0940 \u0915\u094b \u0930\u093e\u0924\u2011\u0938\u092e\u092f \u092e\u0947\u0902 \u0938\u0941\u0916\u093e\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0938\u0902\u0917\u094d\u0930\u0939\u0940\u0924 \u0915\u0930\u0947, \u091c\u093f\u0938\u0938\u0947 \u0915\u0947\u0935\u0932 \u0924\u0924\u094d\u0915\u093e\u0932 \u0917\u0930\u094d\u092e\u0940 \u0935\u093e\u0932\u0947 \u092e\u094c\u091c\u0942\u0926\u093e \u0921\u093f\u091c\u093c\u093e\u0907\u0928 \u0938\u0947 \u0905\u0902\u0924\u0930 \u092c\u0928\u0924\u093e \u0939\u0948\u0964"
+          ],
+          "citation_claims": [
+            "\u0938\u094c\u0930 \u0917\u0930\u094d\u092e\u0940 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0915\u0947 \u0938\u093e\u092e\u0917\u094d\u0930\u0940 \u0915\u094b \u0938\u0941\u0916\u093e\u0928\u093e",
+            "\u092c\u094d\u0932\u094b\u0905\u0930 \u0915\u0947 \u0938\u093e\u0925 \u0938\u094c\u0930\u2011\u0939\u0935\u093e \u0917\u0930\u094d\u092e\u0940 \u0915\u0932\u0947\u0915\u094d\u091f\u0930",
+            "\u092a\u0902\u0916\u0947 \u0915\u0947 \u092e\u093e\u0927\u094d\u092f\u092e \u0938\u0947 \u0939\u0935\u093e \u0915\u094b \u0917\u0930\u094d\u092e \u0915\u0930\u0928\u0947 \u0935\u093e\u0932\u093e \u0938\u094c\u0930 \u0915\u0932\u0947\u0915\u094d\u091f\u0930",
+            "\u0917\u094d\u0930\u093f\u0921 \u092a\u094d\u0932\u0947\u091f \u0915\u094b \u092b\u0940\u0921 \u0915\u0930\u0928\u0947 \u0935\u093e\u0932\u093e \u0938\u094c\u0930 \u0939\u0949\u091f\u2011\u090f\u092f\u0930 \u0921\u093f\u0935\u093e\u0907\u0938",
+            "\u092a\u0940\u0935\u0940\u2011\u0938\u0902\u091a\u093e\u0932\u093f\u0924 \u092a\u0902\u0916\u0947 \u0915\u0947 \u0938\u093e\u0925 \u0915\u093e\u0932\u0940 \u0927\u093e\u0924\u0941 \u092a\u094d\u0932\u0947\u091f \u090f\u092c\u094d\u091c\u0949\u0930\u094d\u092c\u0930",
+            "\u091a\u092f\u0928\u093e\u0924\u094d\u092e\u0915\u2011\u0915\u094b\u091f\u093f\u0902\u0917 \u090f\u092c\u094d\u091c\u0949\u0930\u094d\u092c\u0930 \u0915\u093e \u0909\u092a\u092f\u094b\u0917",
+            "\u0928\u093f\u0937\u094d\u0915\u094d\u0930\u093f\u092f \u091a\u093f\u092e\u0928\u0940 \u0935\u093e\u092f\u0941 \u092a\u094d\u0930\u0935\u093e\u0939",
+            "\u0939\u0940\u091f \u0938\u094d\u091f\u094b\u0930\u0947\u091c \u0915\u0947 \u0932\u093f\u090f \u0907\u0928\u094d\u0938\u0941\u0932\u0947\u091f\u0947\u0921 \u092c\u0948\u0915 \u092a\u0948\u0928\u0932"
+          ],
+          "ui_labels": {
+            "novelty_verdict": "\u0928\u0935\u0940\u0928\u0924\u093e \u0928\u093f\u0930\u094d\u0923\u092f",
+            "looks_novel": "\u0928\u0935\u0940\u0928 \u0926\u093f\u0916\u0924\u093e \u0939\u0948",
+            "looks_novel_blurb": "\u0907\u0938 \u0935\u093f\u091a\u093e\u0930 \u0915\u0947 \u0932\u093f\u090f \u0915\u094b\u0908 \u092e\u091c\u092c\u0942\u0924 \u092c\u093e\u0927\u093e \u0909\u0924\u094d\u092a\u0928\u094d\u0928 \u0915\u0930\u0928\u0947 \u0935\u093e\u0932\u0940 \u092a\u0942\u0930\u094d\u0935 \u0915\u0932\u093e \u0928\u0939\u0940\u0902 \u092e\u093f\u0932\u0940\u0964",
+            "partial_overlap": "\u0906\u0902\u0936\u093f\u0915 \u0938\u092e\u093e\u0928\u0924\u093e",
+            "partial_overlap_blurb": "\u0935\u093e\u0938\u094d\u0924\u0935\u093f\u0915 \u092a\u0942\u0930\u094d\u0935 \u0915\u0932\u093e \u0907\u0938 \u0935\u093f\u091a\u093e\u0930 \u0915\u0947 \u0915\u0941\u091b \u0924\u0924\u094d\u0935 \u0938\u093e\u091d\u093e \u0915\u0930\u0924\u0940 \u0939\u0948, \u0932\u0947\u0915\u093f\u0928 \u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0938\u0947 \u092a\u0942\u0930\u094d\u0935\u093e\u0928\u0941\u092e\u093e\u0928\u093f\u0924 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964",
+            "heavy_overlap": "\u092d\u093e\u0930\u0940 \u0938\u092e\u093e\u0928\u0924\u093e",
+            "heavy_overlap_blurb": "\u0915\u094d\u0932\u094b\u091c\u093c \u092e\u0948\u091a \u092a\u0939\u0932\u0947 \u0938\u0947 \u092e\u094c\u091c\u0942\u0926 \u0939\u0948\u0902 \u2014 \u0905\u0902\u0924\u0930 \u092c\u0928\u093e\u0928\u093e \u0906\u0935\u0936\u094d\u092f\u0915 \u0939\u094b\u0917\u093e\u0964",
+            "what_this_means": "\u092f\u0939 \u0906\u092a\u0915\u0947 \u0932\u093f\u090f \u0915\u094d\u092f\u093e \u092e\u0924\u0932\u092c \u0930\u0916\u0924\u093e \u0939\u0948",
+            "differentiate_title": "\u0905\u092a\u0928\u0947 \u0935\u093f\u091a\u093e\u0930 \u0915\u094b \u0905\u0932\u0917 \u0915\u0948\u0938\u0947 \u092c\u0928\u093e\u090f\u0902",
+            "differentiate_subtitle": "\u0935\u093f\u0936\u093f\u0937\u094d\u091f \u092a\u0930\u093f\u0935\u0930\u094d\u0924\u0928 \u091c\u094b \u0907\u0938 \u0935\u093f\u091a\u093e\u0930 \u0915\u094b \u0938\u092c\u0938\u0947 \u0928\u093f\u0915\u091f\u0924\u092e \u092e\u093f\u0932\u093e\u0928\u094b\u0902 \u0938\u0947 \u0926\u0942\u0930 \u0932\u0947 \u091c\u093e\u090f\u0902\u0917\u0947\u0964 \u090f\u0915 \u0915\u094b \u0932\u093e\u0917\u0942 \u0915\u0930\u0947\u0902 \u0914\u0930 \u092b\u093f\u0930 \u0938\u0947 \u091c\u093e\u0901\u091a\u0947\u0902 \u0915\u093f \u0915\u094d\u092f\u093e \u0905\u092d\u0940 \u092d\u0940 \u0913\u0935\u0930\u0932\u0948\u092a \u0939\u0948\u0964",
+            "apply_recheck": "\u0932\u093e\u0917\u0942 \u0915\u0930\u0947\u0902 \u0914\u0930 \u092a\u0941\u0928\u0903 \u091c\u093e\u0901\u091a\u0947\u0902 \u2192",
+            "based_on": "\u0906\u0927\u093e\u0930\u093f\u0924:",
+            "free_to_build": "\u0938\u0902\u092d\u093e\u0935\u093f\u0924 \u0930\u0942\u092a \u0938\u0947 \u0938\u094d\u0935\u0924\u0902\u0924\u094d\u0930 \u0930\u0942\u092a \u0938\u0947 \u0928\u093f\u0930\u094d\u092e\u093f\u0924 \u0915\u093f\u092f\u093e \u091c\u093e \u0938\u0915\u0924\u093e \u0939\u0948",
+            "india_signal": "\u092d\u093e\u0930\u0924 \u092e\u0947\u0902 \u092a\u0947\u091f\u0947\u0902\u091f \u092f\u094b\u0917\u094d\u092f\u0924\u093e \u0938\u0902\u0915\u0947\u0924",
+            "decision_closest": "\u0938\u092c\u0938\u0947 \u0928\u093f\u0915\u091f\u0924\u092e \u092e\u094c\u091c\u0942\u0926\u093e \u0915\u093e\u0930\u094d\u092f",
+            "decision_difference": "\u0906\u092a\u0915\u0947 \u0935\u093f\u091a\u093e\u0930 \u0915\u094b \u0905\u0932\u0917 \u0915\u094d\u092f\u093e \u092c\u0928\u093e\u0924\u093e \u0939\u0948",
+            "decision_difference_note": "\u0938\u092c\u0938\u0947 \u0928\u093f\u0915\u091f\u0924\u092e \u092e\u093f\u0932\u093e\u0928 \u0915\u0947 \u0938\u093e\u0925 \u0924\u0941\u0932\u0928\u093e \u092e\u0947\u0902, \u0916\u094b\u091c\u0947 \u0917\u090f \u092a\u094d\u0930\u092e\u093e\u0923 \u092e\u0947\u0902",
+            "decision_next": "\u0905\u0917\u0932\u093e \u0915\u0926\u092e",
+            "ask_title": "\u0907\u0938 \u0930\u093f\u092a\u094b\u0930\u094d\u091f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u092a\u0942\u091b\u0947\u0902",
+            "ask_subtitle": "\u091c\u0935\u093e\u092c \u0915\u0947\u0935\u0932 \u0907\u0938 \u0916\u094b\u091c \u0938\u0947 \u092e\u093f\u0932\u0947 \u0938\u094d\u0930\u094b\u0924\u094b\u0902 \u0938\u0947 \u0939\u0940 \u0906\u090f\u0901\u0917\u0947\u0964",
+            "ask_placeholder": "\u0905\u092a\u0928\u0947 \u0935\u093f\u091a\u093e\u0930 \u0914\u0930 \u0907\u0938 \u0930\u093f\u092a\u094b\u0930\u094d\u091f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u092a\u094d\u0930\u0936\u094d\u0928 \u092a\u0942\u091b\u0947\u0902...",
+            "ask_button": "\u092a\u0942\u091b\u0947\u0902",
+            "ask_q1": "\u092e\u0947\u0930\u0947 \u0935\u093f\u091a\u093e\u0930 \u0915\u0947 \u0932\u093f\u090f \u0938\u092c\u0938\u0947 \u092c\u0921\u093c\u093e \u091c\u094b\u0916\u093f\u092e \u0915\u094c\u0928 \u0938\u093e \u092a\u0947\u091f\u0947\u0902\u091f \u0939\u0948, \u0914\u0930 \u0915\u094d\u092f\u094b\u0902?",
+            "ask_q2": "\u0915\u094d\u092f\u093e \u092e\u0948\u0902 \u0907\u0938\u0947 \u092d\u093e\u0930\u0924 \u092e\u0947\u0902 \u092c\u0928\u093e \u0914\u0930 \u092c\u0947\u091a \u0938\u0915\u0924\u093e \u0939\u0942\u0901?",
+            "ask_q3": "\u092e\u0948\u0902 \u0915\u093f\u0928 \u091a\u0940\u091c\u093c\u094b\u0902 \u0915\u094b \u092c\u093f\u0928\u093e \u092a\u0947\u091f\u0947\u0902\u091f \u0915\u0940 \u091a\u093f\u0902\u0924\u093e \u0915\u0947 \u0938\u094d\u0935\u0924\u0902\u0924\u094d\u0930 \u0930\u0942\u092a \u0938\u0947 \u092c\u0928\u093e \u0938\u0915\u0924\u093e \u0939\u0942\u0901?"
+          }
+        },
+        "examined_documents": [
+          {
+            "id": "patent/CN218722679U/en",
+            "source_type": "patent",
+            "title": "A mobile solar drying device",
+            "link": "https://patents.google.com/patent/CN218722679U/en",
+            "text": "Abstract: The utility model discloses a mobile solar drying device, which comprises a photovoltaic power generation unit, a solar drying unit and a solar energy storage unit, wherein the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter; the drying unit is used for drying the materials in the drying chamber by utilizing solar heat; the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, the heat collection manifold is communicated with the plurality of heat collection vacuum tubes, and the heat collection vacuum tubes heat the gas led into the tubes and then convey the gas to the drying unit; the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are all fixed on the upper surface of the supporting plate. The utility model discloses a portable solar drying device has realized solar energy and has united dry all-weather operation, to different weather, different illumination intensity carries out the automatic switch-over of different drying pattern, and is convenient for remove.\n\nClaim 1: 1. A mobile solar drying apparatus, comprising:\n\nClaim 2: the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter and provides electric energy for the mobile solar drying device;\n\nClaim 3: the drying unit is used for drying the materials in the drying chamber by utilizing solar heat;\n\nClaim 4: the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, wherein the upper ends of the plurality of heat collection vacuum tubes are inserted into the heat collection manifold so as to heat the gas flowing through the heat collection manifold;\n\nClaim 5: the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are fixed on the upper surface of the supporting plate.\n\nClaim 6: 2. The mobile solar drying apparatus of claim 1, wherein: the drying unit comprises a thermal circulation fan, a moisture exhaust fan, the drying chamber, an electric heating assembly and a rack; the drying unit is supported and fixed by the rack, the thermal cycle fan is driven by electric energy and is regulated and controlled by the control unit, an air inlet of the thermal cycle fan is connected with an air inlet of the heat collection manifold through a pipeline, an air outlet of the heat collection manifold is connected with an air inlet of the electric heating assembly, and an air outlet of the electric heating assembly is connected with an air inlet of the drying chamber.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The utility model discloses a mobile solar drying device, which comprises a photovoltaic power generation unit, a solar drying unit and a solar energy storage unit, wherein the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter; the drying unit is used for drying the materials in the drying chamber by utilizing solar heat; the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, the heat collection manifold is communicated with the plurality of heat collection vacuum tubes, and the heat collection vacuum tubes heat the gas led into the tubes and then convey the gas to the drying unit; the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are all fixed on the upper surface of the supporting plate. The utility model discloses a portable solar drying device has realized solar energy and has united dry all-weather operation, to different weather, different illumination intensity carries out the automatic switch-over of different drying pattern, and is convenient for remove.",
+                "original_chars": 1287,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A mobile solar drying apparatus, comprising:",
+                "original_chars": 47,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter and provides electric energy for the mobile solar drying device;",
+                "original_chars": 198,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "the drying unit is used for drying the materials in the drying chamber by utilizing solar heat;",
+                "original_chars": 95,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, wherein the upper ends of the plurality of heat collection vacuum tubes are inserted into the heat collection manifold so as to heat the gas flowing through the heat collection manifold;",
+                "original_chars": 297,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are fixed on the upper surface of the supporting plate.",
+                "original_chars": 279,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "2. The mobile solar drying apparatus of claim 1, wherein: the drying unit comprises a thermal circulation fan, a moisture exhaust fan, the drying chamber, an electric heating assembly and a rack; the drying unit is supported and fixed by the rack, the thermal cycle fan is driven by electric energy and is regulated and controlled by the control unit, an air inlet of the thermal cycle fan is connected with an air inlet of the heat collection manifold through a pipeline, an air outlet of the heat collection manifold is connected with an air inlet of the electric heating assembly, and an air outlet of the electric heating assembly is connected with an air inlet of the drying chamber.",
+                "original_chars": 688,
+                "truncated": false
+              }
+            ],
+            "total_claims": 13
+          },
+          {
+            "id": "patent/CN102177964B/en",
+            "source_type": "patent",
+            "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+            "link": "https://patents.google.com/patent/CN102177964B/en",
+            "text": "Abstract: A greenhouse heat-storage type solar hot-wind drying device for grains belongs to a utilization technology of renewable energy. An underground heat storage tank is arranged under the ground surface inside a greenhouse drying room; a solar-air heat collector is arranged at the upper part outside the greenhouse drying room; an automatic controller, a blower, a hot wind discharge pipe, a hot wind delivery pipe and a cold air returning pipe are arranged in the greenhouse drying room; two ends of the hot wind delivery pipe with a suction fan and a third valve are respectively communicated with the solar-air heat collector and the underground heat storage tank; two ends of the cold air returning pipe with a first valve are respectively connected on the solar-air heat collector and the underground heat storage tank; two ends of the hot wind discharge pipe with a second valve are respectively communicated with the hot wind delivery pipe and the cold air returning pipe; an exhaust outlet is arranged on the wall of the greenhouse drying room; and the automatic controller is connected with the suction fan, the blower, the first valve, the second valve and the third valve respectively by leads. The greenhouse heat-storage type solar hot-wind drying device fully utilizes solar energy as drying energy and has the characteristics of being simple in structure, low in operation cost and excellent in environment-friendly effect.\n\nClaim 1: 1. greenhouse heat accumulation type solar energy hot blast grain drying device; It is characterized in that subsurface is provided with underground heat accumulation tank (13) in greenhouse drying shed (1) room; Air channel division wall (14) is set in underground heat accumulation tank (13), and heat accumulating (15) is filled in the underground heat accumulation tank (13); The drying shed in the greenhouse (1) outer upper is installed solar energy air heat collector (2); Hot blast conveying pipe (11) and cold air loopback pipe (7) are configured in the greenhouse drying shed (1); The two ends of hot blast conveying pipe (11) are communicated with the air outlet of solar energy air heat collector (2) and the air inlet of underground heat accumulation tank (13) respectively; Induced-draught fan (4) and the 3rd valve (12) are fitted on the hot blast conveying pipe (11), and cold air loopback pipe (7) two ends of equipped first valve (8) are communicated with the air inlet of solar energy air heat collector (2) and the air outlet of underground heat accumulation tank (13) respectively; The hot blast discharge pipe (9) that on tube wall, is provided with vent is configured in the greenhouse drying shed (1); The two ends of hot blast discharge pipe (9) are communicated with hot blast conveying pipe (11) and cold air loopback pipe (7) respectively; The tie point of hot blast discharge pipe (9) and hot blast conveying pipe (11) is positioned between induced-draught fan (4) and the 3rd valve (12); The tie point of hot blast discharge pipe (9) and cold air loopback pipe (7) is po [excerpt ends]\n\nClaim 2: 2. greenhouse according to claim 1 heat accumulation type solar energy hot blast grain drying device is characterized in that heat accumulating (15) comprises cobble, gravel, tile block, cement block.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A greenhouse heat-storage type solar hot-wind drying device for grains belongs to a utilization technology of renewable energy. An underground heat storage tank is arranged under the ground surface inside a greenhouse drying room; a solar-air heat collector is arranged at the upper part outside the greenhouse drying room; an automatic controller, a blower, a hot wind discharge pipe, a hot wind delivery pipe and a cold air returning pipe are arranged in the greenhouse drying room; two ends of the hot wind delivery pipe with a suction fan and a third valve are respectively communicated with the solar-air heat collector and the underground heat storage tank; two ends of the cold air returning pipe with a first valve are respectively connected on the solar-air heat collector and the underground heat storage tank; two ends of the hot wind discharge pipe with a second valve are respectively communicated with the hot wind delivery pipe and the cold air returning pipe; an exhaust outlet is arranged on the wall of the greenhouse drying room; and the automatic controller is connected with the suction fan, the blower, the first valve, the second valve and the third valve respectively by leads. The greenhouse heat-storage type solar hot-wind drying device fully utilizes solar energy as drying energy and has the characteristics of being simple in structure, low in operation cost and excellent in environment-friendly effect.",
+                "original_chars": 1434,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. greenhouse heat accumulation type solar energy hot blast grain drying device; It is characterized in that subsurface is provided with underground heat accumulation tank (13) in greenhouse drying shed (1) room; Air channel division wall (14) is set in underground heat accumulation tank (13), and heat accumulating (15) is filled in the underground heat accumulation tank (13); The drying shed in the greenhouse (1) outer upper is installed solar energy air heat collector (2); Hot blast conveying pipe (11) and cold air loopback pipe (7) are configured in the greenhouse drying shed (1); The two ends of hot blast conveying pipe (11) are communicated with the air outlet of solar energy air heat collector (2) and the air inlet of underground heat accumulation tank (13) respectively; Induced-draught fan (4) and the 3rd valve (12) are fitted on the hot blast conveying pipe (11), and cold air loopback pipe (7) two ends of equipped first valve (8) are communicated with the air inlet of solar energy air heat collector (2) and the air outlet of underground heat accumulation tank (13) respectively; The hot blast discharge pipe (9) that on tube wall, is provided with vent is configured in the greenhouse drying shed (1); The two ends of hot blast discharge pipe (9) are communicated with hot blast conveying pipe (11) and cold air loopback pipe (7) respectively; The tie point of hot blast discharge pipe (9) and hot blast conveying pipe (11) is positioned between induced-draught fan (4) and the 3rd valve (12); The tie point of hot blast discharge pipe (9) and cold air loopback pipe (7) is po",
+                "original_chars": 2094,
+                "truncated": true
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. greenhouse according to claim 1 heat accumulation type solar energy hot blast grain drying device is characterized in that heat accumulating (15) comprises cobble, gravel, tile block, cement block.",
+                "original_chars": 200,
+                "truncated": false
+              }
+            ],
+            "total_claims": 2
+          },
+          {
+            "id": "patent/CN208520117U/en",
+            "source_type": "patent",
+            "title": "Solar agricultural product drying system",
+            "link": "https://patents.google.com/patent/CN208520117U/en",
+            "text": "Abstract: The utility model discloses a solar energy agricultural product drying system belongs to the agricultural product processing field. It includes heat storage chamber and drying chamber, the heat storage chamber includes solar collector and heat reservoir, solar collector passes through the heat absorption circulating line and is connected with the heat reservoir, be equipped with the heat absorption circulating pump on the heat absorption circulating line, the drying chamber includes the roof, the heat preservation wall, the glass wall, floor and radiator, the floor is connected with the heat preservation wall, heat preservation wall upper portion is connected with the glass wall, the roof is connected to the glass wall, be equipped with exhaust fan on the roof, the heat preservation wall is connected with air intake fan, the radiator passes through the heat dissipation circulating line and is connected with the heat reservoir, and in communicating the drying chamber through forced draught blower and supply air duct, be provided with the heat dissipation circulating pump. The utility model discloses a material heating temperature has been guaranteed in the automatically regulated of heat energy storage and temperature, has energy-concerving and environment-protective, the effectual advantage of drying.\n\nClaim 1: 1. a kind of solar energy agricultural product drying system, including heat accumulation room (1) and drying room (12), it is characterised in that: the heat accumulation\nRoom (1) includes solar thermal collector (2) and thermal storage device (7), the solar thermal collector (2) by heat absorption circulating line (4) with\nThermal storage device (7) connection, the heat absorption circulating line (4) are equipped with heat absorption circulating pump (3), and the drying room (12) includes roof\n(17), insulated wall (16), glass wall (15), floor (19) and radiator (11), the floor (19) connect with insulated wall (16),\nInsulated wall (16) top is connect with glass wall (15), and the glass wall (15) connects roof (17), on the roof (17)\nEquipped with air exhauster (18), the insulated wall (16) is connected with ventilating fan (23), and the radiator (11) passes through heat dissipation circulation\nPipeline (8) is connect with thermal storage device (7), and is connected in drying room (12) by pressure fan with air supply duct, the heat dissipation circulation pipe\nHeat dissipation circulating pump (10) is provided on road (8).\n\nClaim 2: 2. solar energy agricultural product drying system according to claim 1, it is characterised in that: further include temperature humidity control system\nSystem, the temperature humidity control system includes controller (5), humidity sensor (13) and temperature inductor (14), the humidity\nInductor (13) and temperature inductor (14) setting are connect, the controller (5) in drying room (12) with controller (5)\nIt is electrically connected air exhauster (18), ventilating fan (23), heat absorption circulating pump (3) and heat dissipation circulating pump (10).\n\nClaim 3: 3. solar energy agricultural product drying system according to claim 2, it is characterised in that: it further include dehumidifier (9), it is described\nDehumidifier (9) passes through in pipeline connection drying room (12).\n\nClaim 4: 4. solar energy agricultural product drying system according to claim 1, it is characterised in that: the solar thermal collector (2)\nFor tracing type solar cooker.\n\nClaim 5: 5. solar energy agricultural product drying system according to claim 4, it is characterised in that: the glass wall (15) is bilayer\nInsulating hollow glass.\n\nClaim 6: 6. solar energy agricultural product drying system according to claim 5, it is characterised in that: below the floor (19) successively\nEquipped with pebble heat storage layer (20) and separation layer (21).",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The utility model discloses a solar energy agricultural product drying system belongs to the agricultural product processing field. It includes heat storage chamber and drying chamber, the heat storage chamber includes solar collector and heat reservoir, solar collector passes through the heat absorption circulating line and is connected with the heat reservoir, be equipped with the heat absorption circulating pump on the heat absorption circulating line, the drying chamber includes the roof, the heat preservation wall, the glass wall, floor and radiator, the floor is connected with the heat preservation wall, heat preservation wall upper portion is connected with the glass wall, the roof is connected to the glass wall, be equipped with exhaust fan on the roof, the heat preservation wall is connected with air intake fan, the radiator passes through the heat dissipation circulating line and is connected with the heat reservoir, and in communicating the drying chamber through forced draught blower and supply air duct, be provided with the heat dissipation circulating pump. The utility model discloses a material heating temperature has been guaranteed in the automatically regulated of heat energy storage and temperature, has energy-concerving and environment-protective, the effectual advantage of drying.",
+                "original_chars": 1322,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. a kind of solar energy agricultural product drying system, including heat accumulation room (1) and drying room (12), it is characterised in that: the heat accumulation\nRoom (1) includes solar thermal collector (2) and thermal storage device (7), the solar thermal collector (2) by heat absorption circulating line (4) with\nThermal storage device (7) connection, the heat absorption circulating line (4) are equipped with heat absorption circulating pump (3), and the drying room (12) includes roof\n(17), insulated wall (16), glass wall (15), floor (19) and radiator (11), the floor (19) connect with insulated wall (16),\nInsulated wall (16) top is connect with glass wall (15), and the glass wall (15) connects roof (17), on the roof (17)\nEquipped with air exhauster (18), the insulated wall (16) is connected with ventilating fan (23), and the radiator (11) passes through heat dissipation circulation\nPipeline (8) is connect with thermal storage device (7), and is connected in drying room (12) by pressure fan with air supply duct, the heat dissipation circulation pipe\nHeat dissipation circulating pump (10) is provided on road (8).",
+                "original_chars": 1140,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. solar energy agricultural product drying system according to claim 1, it is characterised in that: further include temperature humidity control system\nSystem, the temperature humidity control system includes controller (5), humidity sensor (13) and temperature inductor (14), the humidity\nInductor (13) and temperature inductor (14) setting are connect, the controller (5) in drying room (12) with controller (5)\nIt is electrically connected air exhauster (18), ventilating fan (23), heat absorption circulating pump (3) and heat dissipation circulating pump (10).",
+                "original_chars": 567,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. solar energy agricultural product drying system according to claim 2, it is characterised in that: it further include dehumidifier (9), it is described\nDehumidifier (9) passes through in pipeline connection drying room (12).",
+                "original_chars": 227,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. solar energy agricultural product drying system according to claim 1, it is characterised in that: the solar thermal collector (2)\nFor tracing type solar cooker.",
+                "original_chars": 164,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. solar energy agricultural product drying system according to claim 4, it is characterised in that: the glass wall (15) is bilayer\nInsulating hollow glass.",
+                "original_chars": 157,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. solar energy agricultural product drying system according to claim 5, it is characterised in that: below the floor (19) successively\nEquipped with pebble heat storage layer (20) and separation layer (21).",
+                "original_chars": 207,
+                "truncated": false
+              }
+            ],
+            "total_claims": 7
+          },
+          {
+            "id": "patent/CN210960220U/en",
+            "source_type": "patent",
+            "title": "Solar tea dryer",
+            "link": "https://patents.google.com/patent/CN210960220U/en",
+            "text": "Abstract: The utility model relates to an agricultural product stoving technical field, concretely relates to solar energy tealeaves drying-machine. The drying machine comprises a shell and a transmission device, wherein a rotatable drying roller is arranged in the shell, a spiral guide piece is arranged in the drying roller, one end of the drying roller is provided with a feed inlet, the other end of the drying roller is provided with a discharge outlet, the upper part of the drying roller is provided with a moisture discharging barrel, the bottom of the drying roller is installed on a support frame, a heating bin is arranged below the support frame, a grid plate is arranged between the heating bin and the drying roller, the heating bin is connected with a solar hot air device through an air guide pipe, and heat exchange holes are. The utility model provides a current tealeaves drying-machine at the high problem of stoving in-process energy consumption, and dry evenly, work efficiency is high. The utility model discloses a set up solar hot-air system, use solar energy heated air, provide the hot-blast as the stoving heat source, saved a large amount of electric energy, energy saving and emission reduction's effect is showing to the stoving cost has been reduced.\n\nClaim 1: 1. The utility model provides a solar energy tealeaves drying-machine, includes casing (1) and transmission (5), is provided with rotatable drying drum (2) in casing (1), be provided with spiral guide piece (12) in drying drum (2), drying drum (2) one end is provided with feed inlet (10), and the other end is provided with discharge gate (11), its characterized in that: the drying device is characterized in that a dehumidification barrel (3) is arranged at the upper part of the drying roller (2), the bottom of the dehumidification barrel is arranged on a support frame (7), a heating bin (8) is arranged below the support frame (7), a grid plate (9) is arranged between the heating bin (8) and the drying roller (2), the heating bin (8) is connected with a solar hot air device (6) through an air guide pipe (14), and heat exchange holes (23) are densely distributed in the surface of the wall of the drying roller (2).\n\nClaim 2: 2. The solar tea dryer of claim 1, wherein: the solar hot air device comprises a heat-insulating cylinder (61) arranged on a support plate (62) and a plurality of vacuum heat-collecting tubes (63) arranged on the support plate (62) side by side, heat-conducting rods (64) are arranged in the vacuum heat-collecting tubes (63), the heat-insulating cylinder (61) comprises an outer heat-insulating shell (611), an inner container (612), an air-guiding heat-exchanging tube (613) penetrating through the inner container (612) and a plurality of heat-exchanging sleeves (616), and the front ends of the heat-exchanging sleeves (616) are welded with the outer wall of the inner container (612) into a whole; the tail end of each vacuum heat collecting pipe (63) is fixed on the support plate (62), and the opening end of each vacuum heat collecting pipe is fixedly connected with a corresponding heat exchange sleeve (616) in an inserting way through a heat conducting rod (64); one end of the air guide heat exchange tube (613) is provided with an air inlet (614), and the other end of the air guide heat exchange tube is provided with an air outlet (615).\n\nClaim 3: 3. The solar tea dryer according to claim 1 or 2, characterized in that: the front end of the drying roller (2) is provided with a conical roller head (21), the tail end of the drying roller is provided with a rotating shaft (24), the wall of the drying roller (2) is provided with a circular guide rail (22), and the support frame (7) is provided with a roller (13) matched with the circular guide rail (22).\n\nClaim 4: 4. The solar tea dryer of claim 3, wherein: the transmission device (5) comprises a driving motor (51) for driving the small belt wheel (52) to rotate, a large belt wheel (53) and a transmission belt connected between the belt wheels, wherein the large belt wheel (53) is connected with the rotating shaft (24).\n\nClaim 5: 5. The solar tea dryer of claim 1, wherein: and a strong exhaust fan (4) is arranged in the moisture exhaust cylinder (3).\n\nClaim 6: 6. The solar tea dryer of claim 1, wherein: and a far infrared heater (15) is arranged in the heating bin (8).",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The utility model relates to an agricultural product stoving technical field, concretely relates to solar energy tealeaves drying-machine. The drying machine comprises a shell and a transmission device, wherein a rotatable drying roller is arranged in the shell, a spiral guide piece is arranged in the drying roller, one end of the drying roller is provided with a feed inlet, the other end of the drying roller is provided with a discharge outlet, the upper part of the drying roller is provided with a moisture discharging barrel, the bottom of the drying roller is installed on a support frame, a heating bin is arranged below the support frame, a grid plate is arranged between the heating bin and the drying roller, the heating bin is connected with a solar hot air device through an air guide pipe, and heat exchange holes are. The utility model provides a current tealeaves drying-machine at the high problem of stoving in-process energy consumption, and dry evenly, work efficiency is high. The utility model discloses a set up solar hot-air system, use solar energy heated air, provide the hot-blast as the stoving heat source, saved a large amount of electric energy, energy saving and emission reduction's effect is showing to the stoving cost has been reduced.",
+                "original_chars": 1273,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. The utility model provides a solar energy tealeaves drying-machine, includes casing (1) and transmission (5), is provided with rotatable drying drum (2) in casing (1), be provided with spiral guide piece (12) in drying drum (2), drying drum (2) one end is provided with feed inlet (10), and the other end is provided with discharge gate (11), its characterized in that: the drying device is characterized in that a dehumidification barrel (3) is arranged at the upper part of the drying roller (2), the bottom of the dehumidification barrel is arranged on a support frame (7), a heating bin (8) is arranged below the support frame (7), a grid plate (9) is arranged between the heating bin (8) and the drying roller (2), the heating bin (8) is connected with a solar hot air device (6) through an air guide pipe (14), and heat exchange holes (23) are densely distributed in the surface of the wall of the drying roller (2).",
+                "original_chars": 925,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The solar tea dryer of claim 1, wherein: the solar hot air device comprises a heat-insulating cylinder (61) arranged on a support plate (62) and a plurality of vacuum heat-collecting tubes (63) arranged on the support plate (62) side by side, heat-conducting rods (64) are arranged in the vacuum heat-collecting tubes (63), the heat-insulating cylinder (61) comprises an outer heat-insulating shell (611), an inner container (612), an air-guiding heat-exchanging tube (613) penetrating through the inner container (612) and a plurality of heat-exchanging sleeves (616), and the front ends of the heat-exchanging sleeves (616) are welded with the outer wall of the inner container (612) into a whole; the tail end of each vacuum heat collecting pipe (63) is fixed on the support plate (62), and the opening end of each vacuum heat collecting pipe is fixedly connected with a corresponding heat exchange sleeve (616) in an inserting way through a heat conducting rod (64); one end of the air guide heat exchange tube (613) is provided with an air inlet (614), and the other end of the air guide heat exchange tube is provided with an air outlet (615).",
+                "original_chars": 1152,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The solar tea dryer according to claim 1 or 2, characterized in that: the front end of the drying roller (2) is provided with a conical roller head (21), the tail end of the drying roller is provided with a rotating shaft (24), the wall of the drying roller (2) is provided with a circular guide rail (22), and the support frame (7) is provided with a roller (13) matched with the circular guide rail (22).",
+                "original_chars": 409,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The solar tea dryer of claim 3, wherein: the transmission device (5) comprises a driving motor (51) for driving the small belt wheel (52) to rotate, a large belt wheel (53) and a transmission belt connected between the belt wheels, wherein the large belt wheel (53) is connected with the rotating shaft (24).",
+                "original_chars": 311,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The solar tea dryer of claim 1, wherein: and a strong exhaust fan (4) is arranged in the moisture exhaust cylinder (3).",
+                "original_chars": 122,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The solar tea dryer of claim 1, wherein: and a far infrared heater (15) is arranged in the heating bin (8).",
+                "original_chars": 110,
+                "truncated": false
+              }
+            ],
+            "total_claims": 6
+          },
+          {
+            "id": "patent/CN104011490A/en",
+            "source_type": "patent",
+            "title": "An improved solar dryer with enhanced efficiency of drying",
+            "link": "https://patents.google.com/patent/CN104011490A/en",
+            "text": "Abstract: The present invention provides an improved solar dryer with improved. The dryer consists of a solar absorber/collector (9) and a drying chamber (6). One end of the collector is connected to a forced draft fan (10) and the other end connects the drying chamber. The drying chamber has a drawer in which the material to be dried is kept on a wire mesh. The dryer further has the provision for placing color indicative silica gel under the wire mesh when operated in recirculation mode. The other end of the drying chamber has an induced draft fan (11). Both the dc fans operate using a 10 watt photovoltaic panel (3). V- trough reflectors (4,5,7,8) made from anodized aluminum are fixed on the collector and optionally on the drying chamber. A tracking circuit is incorporated to auto -track the dryer. A locking mechanism (14) is also incorporated to help the unit withstand high wind load. The dryer further has the provision of programmable recirculation of the spent air from drying chamber once its humidity drops below a pre -set value which process helps to speed up the rate of drying.\n\nClaim 1: 1.\u4e00\u79cd\u5177\u6709\u63d0\u9ad8\u4e86\u7684\u5e72\u71e5\u6548\u7387\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5305\u62ec\uff1a\u5e72\u71e5\u8154\uff0806\uff09\u548c\u592a\u9633\u80fd\u6536\u96c6\u5668/\u5438\u6536\u5668\uff0809\uff09\uff0c\u6240\u8ff0\u5e72\u71e5\u8154\u548c\u6240\u8ff0\u592a\u9633\u80fd\u6536\u96c6\u5668/\u5438\u6536\u5668\u76f8\u4e92\u8fde\u63a5\u5e76\u901a\u8fc7\u7528\u4e8e\u81ea\u52a8\u9501\u5b9a\u548c\u8ddf\u8e2a\u7684\u65cb\u8f6c\u8f74\uff082\uff09\u548c\u9501\u5b9a\u9500\uff0814\uff09\u653e\u7f6e\u5728\u516c\u5171\u57fa\u5ea7\uff0801\uff09\u4e0a\uff1b\u5176\u4e2d\uff0c\u6240\u8ff0\u5e72\u71e5\u8154\u7531\u62bd\u5c49\u548c\u5e72\u71e5\u5242\u7ec4\u6210\uff0c\u6240\u8ff0\u62bd\u5c49\u5177\u6709\u7528\u4e8e\u653e\u7f6e\u5f85\u5e72\u71e5\u7269\u54c1\u7684\u91d1\u5c5e\u4e1d\u7f51\uff0c\u6240\u8ff0\u5e72\u71e5\u5242\u653e\u7f6e\u5728\u4f4d\u4e8e\u6240\u8ff0\u91d1\u5c5e\u4e1d\u7f51\u4e0b\u65b9\u7684\u91d1\u5c5e\u6258\u76d8\uff0823\uff09\u4e2d\u4ee5\u5e72\u71e5\u6240\u8ff0\u5f85\u5e72\u71e5\u7269\u54c1\uff0c\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7531\u91d1\u5c5e\u677f\u548c\u53cc\u5c42\u73bb\u7483\u7ec4\u6210\u4ee5\u4fbf\u5438\u6536\u592a\u9633\u65e5\u5c04\u5e76\u52a0\u70ed\u7ecf\u8fc7\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7684\u7a7a\u6c14\u6d41\uff1b\u591a\u4e2a\u98ce\u673a\uff0810\u548c11\uff09\uff0c\u6240\u8ff0\u98ce\u673a\u8fde\u63a5\u81f3\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7684\u5165\u53e3\u5904\u548c\u6240\u8ff0\u592a\u9633\u80fd\u5e72\u71e5\u8154\u7684\u51fa\u53e3\u5904\u4ee5\u8bf1\u5bfc\u7a7a\u6c14\u5bf9\u6d41\u901a\u8fc7\u9694\u70ed\u7ba1\uff0812\uff09\uff0c\u6240\u8ff0\u9694\u70ed\u7ba1\u5c06\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7684\u7aef\u90e8\u4e0e\u6240\u8ff0\u5e72\u71e5\u8154\u7684\u7aef\u90e8\u8fde\u63a5\uff0c\u6240\u8ff0\u98ce\u673a\u7531\u8bbe\u7f6e\u5728\u6240\u8ff0\u592a\u9633\u80fd\u5e72\u71e5\u5668\u540e\u4fa7\u7684\u4e00\u4e2a\u6216\u591a\u4e2a\u5149\u4f0fPV\u677f\uff083\uff09\u4f9b\u7535\uff0c\u6240\u8ff0\u98ce\u673a\u7684\u901f\u5ea6\u53ef\u9009\u5730\u7531\u591a\u4e2a\u8c03\u8282\u5668\uff0815\u548c16\uff09\u8c03\u8282\uff1b\u591a\u4e2a\u53cd\u5c04\u5668\uff087\u548c8\uff09\uff0c\u6240\u8ff0\u53cd\u5c04\u5668\u9644\u63a5\u5728\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u4e0a\u4ee5\u63d0\u9ad8\u65e5\u5c04\u91cf\u548c\u5e72\u71e5\u7a7a\u6c14\u6e29\u5ea6\uff1b\u53e6\u5916\u7684\u591a\u4e2a\u53cd\u5c04\u5668\uff084\u548c5\uff09\uff0c\u6240\u8ff0\u53e6\u5916\u7684\u591a\u4e2a\u53cd\u5c04\u5668\u9644\u63a5\u5728\u6240\u8ff0\u5e72\u71e5\u8154\u4e0a\u4ee5\u4fc3\u8fdb\u5e72\u71e5\uff1b\u7535\u78c1\u9600\uff0813\uff09\uff0c\u6240\u8ff0\u7535\u78c1\u9600\u9644\u63a5\u5728\u6240\u8ff0\u9694\u70ed\u7ba1\u7684\u5404\u7aef\u90e8\u5e76\u7531\u53ef\u7f16\u7a0b\u6e7f\u5ea6\u63a7\u5236\u5668\u548c\u6e7f\u5ea6\u4f20\u611f\u5668\u63a7\u5236\uff1b\u4ee5\u53ca\u663e\u793a\u677f\uff0817\uff09\u3002\n\nClaim 2: 2.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u6240\u8ff0\u5e72\u71e5\u5668\u7684\u5bb9\u91cf\u57280.5-1.0kg\u6e7f\u8d28\u91cf\u8303\u56f4\u5185\u3002\n\nClaim 3: 3.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u76f8\u5bf9\u4e8e\u6c34\u5e73\u9762\u572820-26\u00b0\u7684\u8303\u56f4\u5185\u503e\u659c\u3002\n\nClaim 4: 4.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u9644\u63a5\u5728\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u4e0a\u7684\u6240\u8ff0\u53cd\u5c04\u5668\u4f7f\u6240\u8ff0\u65e5\u5c04\u91cf\u63d0\u9ad8\u4e8640-50%\u5e76\u4f7f\u5e72\u71e5\u7a7a\u6c14\u6e29\u5ea6\u63d0\u9ad8\u4e8610-20\u2103\u3002\n\nClaim 5: 5.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u9644\u63a5\u5728\u6240\u8ff0\u5e72\u71e5\u8154\u4e0a\u7684\u6240\u8ff0\u53cd\u5c04\u5668\u5728\u76f4\u63a5\u5e72\u71e5\u671f\u95f4\u63d0\u9ad8\u4e86\u65e5\u5c04\u91cf\uff0c\u5e76\u4e14\u6240\u8ff0\u53cd\u5c04\u5668\u53ef\u9009\u5730\u80fd\u7528\u4e8e\u76d6\u4f4f\u6240\u8ff0\u5e72\u71e5\u8154\u4ece\u800c\u5c06\u76f4\u63a5\u5f0f\u592a\u9633\u80fd\u5e72\u71e5\u5668\u8f6c\u6362\u4e3a\u95f4\u63a5\u5f0f\u592a\u9633\u80fd\u5e72\u71e5\u5668\u3002\n\nClaim 6: 6.\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u6240\u8ff0PV\u677f\u7528\u4e8e\u5411\u6240\u8ff0\u98ce\u673a\u3001\u81ea\u52a8\u8ddf\u8e2a\u7535\u8def\u548c\u6e7f\u5ea6\u63a7\u5236\u5668\u4f9b\u7535\u3002",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention provides an improved solar dryer with improved. The dryer consists of a solar absorber/collector (9) and a drying chamber (6). One end of the collector is connected to a forced draft fan (10) and the other end connects the drying chamber. The drying chamber has a drawer in which the material to be dried is kept on a wire mesh. The dryer further has the provision for placing color indicative silica gel under the wire mesh when operated in recirculation mode. The other end of the drying chamber has an induced draft fan (11). Both the dc fans operate using a 10 watt photovoltaic panel (3). V- trough reflectors (4,5,7,8) made from anodized aluminum are fixed on the collector and optionally on the drying chamber. A tracking circuit is incorporated to auto -track the dryer. A locking mechanism (14) is also incorporated to help the unit withstand high wind load. The dryer further has the provision of programmable recirculation of the spent air from drying chamber once its humidity drops below a pre -set value which process helps to speed up the rate of drying.",
+                "original_chars": 1091,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1.\u4e00\u79cd\u5177\u6709\u63d0\u9ad8\u4e86\u7684\u5e72\u71e5\u6548\u7387\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5305\u62ec\uff1a\u5e72\u71e5\u8154\uff0806\uff09\u548c\u592a\u9633\u80fd\u6536\u96c6\u5668/\u5438\u6536\u5668\uff0809\uff09\uff0c\u6240\u8ff0\u5e72\u71e5\u8154\u548c\u6240\u8ff0\u592a\u9633\u80fd\u6536\u96c6\u5668/\u5438\u6536\u5668\u76f8\u4e92\u8fde\u63a5\u5e76\u901a\u8fc7\u7528\u4e8e\u81ea\u52a8\u9501\u5b9a\u548c\u8ddf\u8e2a\u7684\u65cb\u8f6c\u8f74\uff082\uff09\u548c\u9501\u5b9a\u9500\uff0814\uff09\u653e\u7f6e\u5728\u516c\u5171\u57fa\u5ea7\uff0801\uff09\u4e0a\uff1b\u5176\u4e2d\uff0c\u6240\u8ff0\u5e72\u71e5\u8154\u7531\u62bd\u5c49\u548c\u5e72\u71e5\u5242\u7ec4\u6210\uff0c\u6240\u8ff0\u62bd\u5c49\u5177\u6709\u7528\u4e8e\u653e\u7f6e\u5f85\u5e72\u71e5\u7269\u54c1\u7684\u91d1\u5c5e\u4e1d\u7f51\uff0c\u6240\u8ff0\u5e72\u71e5\u5242\u653e\u7f6e\u5728\u4f4d\u4e8e\u6240\u8ff0\u91d1\u5c5e\u4e1d\u7f51\u4e0b\u65b9\u7684\u91d1\u5c5e\u6258\u76d8\uff0823\uff09\u4e2d\u4ee5\u5e72\u71e5\u6240\u8ff0\u5f85\u5e72\u71e5\u7269\u54c1\uff0c\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7531\u91d1\u5c5e\u677f\u548c\u53cc\u5c42\u73bb\u7483\u7ec4\u6210\u4ee5\u4fbf\u5438\u6536\u592a\u9633\u65e5\u5c04\u5e76\u52a0\u70ed\u7ecf\u8fc7\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7684\u7a7a\u6c14\u6d41\uff1b\u591a\u4e2a\u98ce\u673a\uff0810\u548c11\uff09\uff0c\u6240\u8ff0\u98ce\u673a\u8fde\u63a5\u81f3\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7684\u5165\u53e3\u5904\u548c\u6240\u8ff0\u592a\u9633\u80fd\u5e72\u71e5\u8154\u7684\u51fa\u53e3\u5904\u4ee5\u8bf1\u5bfc\u7a7a\u6c14\u5bf9\u6d41\u901a\u8fc7\u9694\u70ed\u7ba1\uff0812\uff09\uff0c\u6240\u8ff0\u9694\u70ed\u7ba1\u5c06\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u7684\u7aef\u90e8\u4e0e\u6240\u8ff0\u5e72\u71e5\u8154\u7684\u7aef\u90e8\u8fde\u63a5\uff0c\u6240\u8ff0\u98ce\u673a\u7531\u8bbe\u7f6e\u5728\u6240\u8ff0\u592a\u9633\u80fd\u5e72\u71e5\u5668\u540e\u4fa7\u7684\u4e00\u4e2a\u6216\u591a\u4e2a\u5149\u4f0fPV\u677f\uff083\uff09\u4f9b\u7535\uff0c\u6240\u8ff0\u98ce\u673a\u7684\u901f\u5ea6\u53ef\u9009\u5730\u7531\u591a\u4e2a\u8c03\u8282\u5668\uff0815\u548c16\uff09\u8c03\u8282\uff1b\u591a\u4e2a\u53cd\u5c04\u5668\uff087\u548c8\uff09\uff0c\u6240\u8ff0\u53cd\u5c04\u5668\u9644\u63a5\u5728\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u4e0a\u4ee5\u63d0\u9ad8\u65e5\u5c04\u91cf\u548c\u5e72\u71e5\u7a7a\u6c14\u6e29\u5ea6\uff1b\u53e6\u5916\u7684\u591a\u4e2a\u53cd\u5c04\u5668\uff084\u548c5\uff09\uff0c\u6240\u8ff0\u53e6\u5916\u7684\u591a\u4e2a\u53cd\u5c04\u5668\u9644\u63a5\u5728\u6240\u8ff0\u5e72\u71e5\u8154\u4e0a\u4ee5\u4fc3\u8fdb\u5e72\u71e5\uff1b\u7535\u78c1\u9600\uff0813\uff09\uff0c\u6240\u8ff0\u7535\u78c1\u9600\u9644\u63a5\u5728\u6240\u8ff0\u9694\u70ed\u7ba1\u7684\u5404\u7aef\u90e8\u5e76\u7531\u53ef\u7f16\u7a0b\u6e7f\u5ea6\u63a7\u5236\u5668\u548c\u6e7f\u5ea6\u4f20\u611f\u5668\u63a7\u5236\uff1b\u4ee5\u53ca\u663e\u793a\u677f\uff0817\uff09\u3002",
+                "original_chars": 527,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u6240\u8ff0\u5e72\u71e5\u5668\u7684\u5bb9\u91cf\u57280.5-1.0kg\u6e7f\u8d28\u91cf\u8303\u56f4\u5185\u3002",
+                "original_chars": 49,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u76f8\u5bf9\u4e8e\u6c34\u5e73\u9762\u572820-26\u00b0\u7684\u8303\u56f4\u5185\u503e\u659c\u3002",
+                "original_chars": 52,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u9644\u63a5\u5728\u6240\u8ff0\u6536\u96c6\u5668/\u5438\u6536\u5668\u4e0a\u7684\u6240\u8ff0\u53cd\u5c04\u5668\u4f7f\u6240\u8ff0\u65e5\u5c04\u91cf\u63d0\u9ad8\u4e8640-50%\u5e76\u4f7f\u5e72\u71e5\u7a7a\u6c14\u6e29\u5ea6\u63d0\u9ad8\u4e8610-20\u2103\u3002",
+                "original_chars": 76,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5.\u5982\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u9644\u63a5\u5728\u6240\u8ff0\u5e72\u71e5\u8154\u4e0a\u7684\u6240\u8ff0\u53cd\u5c04\u5668\u5728\u76f4\u63a5\u5e72\u71e5\u671f\u95f4\u63d0\u9ad8\u4e86\u65e5\u5c04\u91cf\uff0c\u5e76\u4e14\u6240\u8ff0\u53cd\u5c04\u5668\u53ef\u9009\u5730\u80fd\u7528\u4e8e\u76d6\u4f4f\u6240\u8ff0\u5e72\u71e5\u8154\u4ece\u800c\u5c06\u76f4\u63a5\u5f0f\u592a\u9633\u80fd\u5e72\u71e5\u5668\u8f6c\u6362\u4e3a\u95f4\u63a5\u5f0f\u592a\u9633\u80fd\u5e72\u71e5\u5668\u3002",
+                "original_chars": 98,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6.\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u6539\u8fdb\u578b\u592a\u9633\u80fd\u5e72\u71e5\u5668\uff0c\u5176\u4e2d\uff0c\u6240\u8ff0PV\u677f\u7528\u4e8e\u5411\u6240\u8ff0\u98ce\u673a\u3001\u81ea\u52a8\u8ddf\u8e2a\u7535\u8def\u548c\u6e7f\u5ea6\u63a7\u5236\u5668\u4f9b\u7535\u3002",
+                "original_chars": 51,
+                "truncated": false
+              }
+            ],
+            "total_claims": 14
+          }
+        ],
+        "feature_findings": [
+          {
+            "id": "F1",
+            "feature": "black tin sheet that absorbs solar radiation to heat air",
+            "evidence": [
+              {
+                "result_id": "patent/CN218722679U/en",
+                "title": "A mobile solar drying device",
+                "link": "https://patents.google.com/patent/CN218722679U/en",
+                "quote": "the drying unit is used for drying the materials in the drying chamber by utilizing solar heat",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "The utility model discloses a mobile solar drying device, which comprises a photovoltaic power generation unit, a solar drying unit and a solar energy storage unit, wherein the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter; the drying unit is used for drying the materials in the drying chamber by utilizing solar heat; the heat collection unit comprises a heat collection manifold and a plurality of heat collection vacuum tubes, the heat collection manifold is communicated with the plurality of heat collection vacuum tubes, and the heat collection vacuum tubes heat the gas led into the tubes and then convey the gas to the drying unit; the mobile unit comprises a supporting plate, a plurality of idler wheels suitable for moving are arranged below the supporting plate, and the photovoltaic power generation unit, the drying unit and the heat collection unit are all fixed on the upper surface of the supporting plate. The utility model discloses a portable solar drying device has realized solar energy and has united dry all-weather operation, to different weather, different illumination intensity carries out the automatic switch-over of different drying pattern, and is convenient for remove.",
+                  "original_chars": 1287,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/CN102177964B/en",
+                "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+                "link": "https://patents.google.com/patent/CN102177964B/en",
+                "quote": "solar-air heat collector is arranged at the upper part outside the greenhouse drying room",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "A greenhouse heat-storage type solar hot-wind drying device for grains belongs to a utilization technology of renewable energy. An underground heat storage tank is arranged under the ground surface inside a greenhouse drying room; a solar-air heat collector is arranged at the upper part outside the greenhouse drying room; an automatic controller, a blower, a hot wind discharge pipe, a hot wind delivery pipe and a cold air returning pipe are arranged in the greenhouse drying room; two ends of the hot wind delivery pipe with a suction fan and a third valve are respectively communicated with the solar-air heat collector and the underground heat storage tank; two ends of the cold air returning pipe with a first valve are respectively connected on the solar-air heat collector and the underground heat storage tank; two ends of the hot wind discharge pipe with a second valve are respectively communicated with the hot wind delivery pipe and the cold air returning pipe; an exhaust outlet is arranged on the wall of the greenhouse drying room; and the automatic controller is connected with the suction fan, the blower, the first valve, the second valve and the third valve respectively by leads. The greenhouse heat-storage type solar hot-wind drying device fully utilizes solar energy as drying energy and has the characteristics of being simple in structure, low in operation cost and excellent in environment-friendly effect.",
+                  "original_chars": 1434,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/CN210960220U/en",
+                "title": "Solar tea dryer",
+                "link": "https://patents.google.com/patent/CN210960220U/en",
+                "quote": "the heating bin is connected with a solar hot air device through an air guide pipe",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "The utility model relates to an agricultural product stoving technical field, concretely relates to solar energy tealeaves drying-machine. The drying machine comprises a shell and a transmission device, wherein a rotatable drying roller is arranged in the shell, a spiral guide piece is arranged in the drying roller, one end of the drying roller is provided with a feed inlet, the other end of the drying roller is provided with a discharge outlet, the upper part of the drying roller is provided with a moisture discharging barrel, the bottom of the drying roller is installed on a support frame, a heating bin is arranged below the support frame, a grid plate is arranged between the heating bin and the drying roller, the heating bin is connected with a solar hot air device through an air guide pipe, and heat exchange holes are. The utility model provides a current tealeaves drying-machine at the high problem of stoving in-process energy consumption, and dry evenly, work efficiency is high. The utility model discloses a set up solar hot-air system, use solar energy heated air, provide the hot-blast as the stoving heat source, saved a large amount of electric energy, energy saving and emission reduction's effect is showing to the stoving cost has been reduced.",
+                  "original_chars": 1273,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F2",
+            "feature": "small fan that moves heated air over a mesh tray",
+            "evidence": [
+              {
+                "result_id": "patent/CN218722679U/en",
+                "title": "A mobile solar drying device",
+                "link": "https://patents.google.com/patent/CN218722679U/en",
+                "quote": "the drying unit comprises a thermal circulation fan, a moisture exhaust fan",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 6",
+                  "source": "claims",
+                  "text": "2. The mobile solar drying apparatus of claim 1, wherein: the drying unit comprises a thermal circulation fan, a moisture exhaust fan, the drying chamber, an electric heating assembly and a rack; the drying unit is supported and fixed by the rack, the thermal cycle fan is driven by electric energy and is regulated and controlled by the control unit, an air inlet of the thermal cycle fan is connected with an air inlet of the heat collection manifold through a pipeline, an air outlet of the heat collection manifold is connected with an air inlet of the electric heating assembly, and an air outlet of the electric heating assembly is connected with an air inlet of the drying chamber.",
+                  "original_chars": 688,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/CN102177964B/en",
+                "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+                "link": "https://patents.google.com/patent/CN102177964B/en",
+                "quote": "a blower, a hot wind discharge pipe, a hot wind delivery pipe and a cold air returning pipe are arranged",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "A greenhouse heat-storage type solar hot-wind drying device for grains belongs to a utilization technology of renewable energy. An underground heat storage tank is arranged under the ground surface inside a greenhouse drying room; a solar-air heat collector is arranged at the upper part outside the greenhouse drying room; an automatic controller, a blower, a hot wind discharge pipe, a hot wind delivery pipe and a cold air returning pipe are arranged in the greenhouse drying room; two ends of the hot wind delivery pipe with a suction fan and a third valve are respectively communicated with the solar-air heat collector and the underground heat storage tank; two ends of the cold air returning pipe with a first valve are respectively connected on the solar-air heat collector and the underground heat storage tank; two ends of the hot wind discharge pipe with a second valve are respectively communicated with the hot wind delivery pipe and the cold air returning pipe; an exhaust outlet is arranged on the wall of the greenhouse drying room; and the automatic controller is connected with the suction fan, the blower, the first valve, the second valve and the third valve respectively by leads. The greenhouse heat-storage type solar hot-wind drying device fully utilizes solar energy as drying energy and has the characteristics of being simple in structure, low in operation cost and excellent in environment-friendly effect.",
+                  "original_chars": 1434,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F3",
+            "feature": "mesh tray for placing tomatoes or chilies",
+            "evidence": [
+              {
+                "result_id": "patent/CN210960220U/en",
+                "title": "Solar tea dryer",
+                "link": "https://patents.google.com/patent/CN210960220U/en",
+                "quote": "a grid plate is arranged between the heating bin and the drying roller",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "The utility model relates to an agricultural product stoving technical field, concretely relates to solar energy tealeaves drying-machine. The drying machine comprises a shell and a transmission device, wherein a rotatable drying roller is arranged in the shell, a spiral guide piece is arranged in the drying roller, one end of the drying roller is provided with a feed inlet, the other end of the drying roller is provided with a discharge outlet, the upper part of the drying roller is provided with a moisture discharging barrel, the bottom of the drying roller is installed on a support frame, a heating bin is arranged below the support frame, a grid plate is arranged between the heating bin and the drying roller, the heating bin is connected with a solar hot air device through an air guide pipe, and heat exchange holes are. The utility model provides a current tealeaves drying-machine at the high problem of stoving in-process energy consumption, and dry evenly, work efficiency is high. The utility model discloses a set up solar hot-air system, use solar energy heated air, provide the hot-blast as the stoving heat source, saved a large amount of electric energy, energy saving and emission reduction's effect is showing to the stoving cost has been reduced.",
+                  "original_chars": 1273,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F4",
+            "feature": "entire system operates without external electricity",
+            "evidence": [
+              {
+                "result_id": "patent/CN218722679U/en",
+                "title": "A mobile solar drying device",
+                "link": "https://patents.google.com/patent/CN218722679U/en",
+                "quote": "the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter and provides electric energy for the mobile solar drying device",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 2",
+                  "source": "claims",
+                  "text": "the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter and provides electric energy for the mobile solar drying device;",
+                  "original_chars": 198,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/CN102177964B/en",
+                "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+                "link": "https://patents.google.com/patent/CN102177964B/en",
+                "quote": "fully utilizes solar energy as drying energy and has the characteristics of being simple in structure, low in operation cost",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "A greenhouse heat-storage type solar hot-wind drying device for grains belongs to a utilization technology of renewable energy. An underground heat storage tank is arranged under the ground surface inside a greenhouse drying room; a solar-air heat collector is arranged at the upper part outside the greenhouse drying room; an automatic controller, a blower, a hot wind discharge pipe, a hot wind delivery pipe and a cold air returning pipe are arranged in the greenhouse drying room; two ends of the hot wind delivery pipe with a suction fan and a third valve are respectively communicated with the solar-air heat collector and the underground heat storage tank; two ends of the cold air returning pipe with a first valve are respectively connected on the solar-air heat collector and the underground heat storage tank; two ends of the hot wind discharge pipe with a second valve are respectively communicated with the hot wind delivery pipe and the cold air returning pipe; an exhaust outlet is arranged on the wall of the greenhouse drying room; and the automatic controller is connected with the suction fan, the blower, the first valve, the second valve and the third valve respectively by leads. The greenhouse heat-storage type solar hot-wind drying device fully utilizes solar energy as drying energy and has the characteristics of being simple in structure, low in operation cost and excellent in environment-friendly effect.",
+                  "original_chars": 1434,
+                  "truncated": false
+                }
+              }
+            ]
+          }
+        ],
+        "citation_followups": [],
+        "recheck": null,
+        "report_id": "8c7c9d1ca738bc42"
+      }
+    }
+  ]
+}

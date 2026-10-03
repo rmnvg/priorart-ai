@@ -12,6 +12,11 @@ Revised October 3: blocked on quota until credits arrive (see step 1).
 | Oct 9 | Record the video and submit |
 | Oct 10 | Buffer only — don't plan work for it |
 
+> **Status, October 3:** quota obtained (new account, 250 searches, renews Nov 3).
+> Done: Hindi demo, held-out benchmark (0/5, published as measured), all six
+> gallery reports. 80 searches left for the redesign re-check, the video take and
+> user tests. See [validation status](validation-status.md).
+
 ## 1. Get search quota — blocking
 
 As of October 3 the account has **0 searches left and renews on October 16**, after

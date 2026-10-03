@@ -550,6 +550,62 @@ def test_india_query_is_country_filtered_and_order_preserved(monkeypatch):
     assert bundles[2].search_failed and not bundles[0].search_failed
 
 
+def test_patent_queries_exclude_papers_and_papers_get_their_own_search(monkeypatch):
+    from app.pipeline import search
+    from app.pipeline.query_generator import GeneratedQuery, QueryGenerationResult
+
+    calls = []
+
+    def fake_client_search(**params):
+        calls.append(params)
+        if params.get("patents") is False:
+            return {"organic_results": [{"is_scholar": True, "scholar_id": "1", "title": "Paper"}]}
+        return {"organic_results": [{"patent_id": "patent/US1/en", "title": "Patent"}]}
+
+    monkeypatch.setattr(search._client, "search", fake_client_search)
+    search.search_patents_for_query("q")
+    # Papers crowd patents off a mixed page, so patent queries never ask for them.
+    assert "scholar" not in calls[0] and calls[0]["num"] == search.PATENT_RESULTS_PER_QUERY
+
+    qr = QueryGenerationResult(core_concepts=["x"], queries=[
+        GeneratedQuery(type="major_markets", query="m", rationale=""),
+        GeneratedQuery(type="broad_recall", query="b", rationale=""),
+    ])
+    bundle = search.run_literature_search(qr)
+    assert calls[-1] == {"engine": "google_patents", "q": "b", "scholar": True, "patents": False}
+    assert [r.source_type for r in bundle.results] == ["scholar"]
+    assert search.run_literature_search(QueryGenerationResult(core_concepts=["x"], queries=[])) is None
+
+
+def test_failed_paper_search_is_an_empty_failed_bundle(monkeypatch):
+    from app.pipeline import search
+    from app.pipeline.query_generator import GeneratedQuery, QueryGenerationResult
+
+    def boom(query):
+        raise RuntimeError("quota exhausted api_key=secret")
+
+    monkeypatch.setattr(search, "search_literature", boom)
+    qr = QueryGenerationResult(core_concepts=["x"], queries=[
+        GeneratedQuery(type="broad_recall", query="b", rationale=""),
+    ])
+    bundle = search.run_literature_search(qr)
+    assert bundle.search_failed and bundle.results == []
+
+
+def test_deep_dive_gives_patents_the_detail_slots_first():
+    from app.pipeline.deepdive import select_candidates
+
+    def r(i, kind):
+        return RankedResult(id=i, source_type=kind, title=i, snippet="", link="", relevance_score=0)
+
+    ranked = [r("s1", "scholar"), r("p1", "patent"), r("x", "product"), r("s2", "scholar"),
+              r("p2", "patent"), r("s3", "scholar")]
+    # Patents fill the slots ahead of better-ranked papers; order follows the ranking.
+    assert [c.id for c in select_candidates(ranked, 2)] == ["p1", "p2"]
+    # Leftover slots go to papers, never to products.
+    assert [c.id for c in select_candidates(ranked, 4)] == ["s1", "p1", "s2", "p2"]
+
+
 # --- Report permalinks -----------------------------------------------------
 
 
@@ -716,6 +772,11 @@ def _fake_pipeline(monkeypatch, *, language_code="en", refinement=True):
     monkeypatch.setattr(orch, "generate_queries", lambda idea: _query_result())
     monkeypatch.setattr(orch, "run_queries", fake_run_queries)
     monkeypatch.setattr(orch, "run_market_search", lambda qr: [])
+    monkeypatch.setattr(
+        orch,
+        "run_literature_search",
+        lambda qr: QueryBundle(query_type="broad_recall", query="papers", results=[]),
+    )
     monkeypatch.setattr(orch, "fetch_market_trend", lambda kw: None)
     monkeypatch.setattr(orch, "rank_and_dedupe", fake_rank)
     monkeypatch.setattr(orch, "deep_dive", lambda ranked, n: [])
@@ -769,9 +830,10 @@ def test_pipeline_runs_refinement_round_and_records_it(monkeypatch):
     strategy = result.search_strategy
     assert [q.type for q in strategy.queries] == ["major_markets", "refined"]
     assert strategy.refinement_terms == ["sectional shaft"]
-    assert strategy.serpapi_calls["google_patents"] == 2
-    # Re-ranked over both rounds.
-    assert len(result.ranked_results) == 2
+    # Two patent queries plus the separate papers search.
+    assert strategy.serpapi_calls["google_patents"] == 3
+    # Re-ranked over both rounds, with the papers bundle included.
+    assert len(result.ranked_results) == 3
     assert result.plain_summary == "Plain summary."
     assert result.language_code == "en" and result.localized is None
 
@@ -1840,3 +1902,96 @@ def test_pipeline_counts_followup_lookups_and_records_evidence(monkeypatch):
     assert result.citation_followups[0].changed_conclusion
     assert result.examined_documents[-1].found_via == "citation"
     assert any("changed the conclusion" in e.message for e in events if e.type == "progress")
+
+
+# --- Model-written document ids ----------------------------------------------
+
+
+def test_mangled_document_ids_resolve_to_the_ids_the_model_was_given():
+    from app.pipeline.evidence import resolve_document_id
+
+    known = ["patent/CN205448635U/en", "patent/US4099338A/en", "scholar/123"]
+    assert resolve_document_id("patent/CN205448635U/en", known) == "patent/CN205448635U/en"
+    # Observed from the model: the slash before the language code became a space.
+    assert resolve_document_id("patent/CN205448635U en", known) == "patent/CN205448635U/en"
+    assert resolve_document_id("US4099338A", known) == "patent/US4099338A/en"
+    assert resolve_document_id("patent/EP1/en", known) is None
+    assert resolve_document_id("", known) is None
+    # A fragment matching more than one id is ambiguous, never guessed.
+    assert resolve_document_id("patent", known) is None
+
+
+def test_novelty_keeps_evidence_when_the_model_mangles_an_id(monkeypatch):
+    from app.pipeline import novelty as novelty_mod
+    from app.pipeline.deepdive import CandidateDetail
+
+    text = "A solar air heat collector feeds hot air through a duct into the drying shed."
+    candidate = CandidateDetail(id="patent/CN1/en", source_type="patent", title="Dryer",
+                                link="", summary_text=text, evidence_source="abstract")
+    monkeypatch.setattr(novelty_mod, "complete_json", lambda *a, **k: {
+        "idea_features": [{"id": "F1", "text": "solar air heater"}, {"id": "F2", "text": "tray"}],
+        "candidate_assessments": [{
+            "result_id": "patent/CN1 en", "overlapping_elements": [], "differences": [],
+            "verdict": "partially_overlapping",
+            "feature_evidence": [{"feature": "F1", "quote": "solar air heat collector feeds hot air through a duct"}],
+        }],
+        "overall_novelty_confidence": 0.4, "differentiation_suggestions": [],
+        "citations": [{"claim": "c", "result_id": "CN1"}], "claim_chart_pairs": [], "plain_summary": "s",
+    })
+    out = novelty_mod.assess_novelty("idea", [candidate])
+    assert [a.result_id for a in out.candidate_assessments] == ["patent/CN1/en"]
+    assert [c.result_id for c in out.citations] == ["patent/CN1/en"]
+    assert out.feature_findings[0].evidence[0].result_id == "patent/CN1/en"
+
+
+def test_elided_quote_resolves_to_the_continuous_source_passage():
+    from app.pipeline.evidence import locate_quote
+
+    text = ("The utility model relates to a Solar drying system. The first draught fan (5) "
+            "sends the hot-air of the tuber pipe   into the drying shed (3).")
+    assert locate_quote("first draught fan (5) ... into the drying shed", text) == (
+        "first draught fan (5) sends the hot-air of the tuber pipe   into the drying shed"
+    )
+    # Plain quotes come back with the document's own casing and typography.
+    assert locate_quote("relates to a solar drying system", text) == "relates to a Solar drying system"
+    assert locate_quote("into the drying shed ... first draught fan", text) is None  # out of order
+    assert locate_quote("fan ... drying shed", text) is None  # single-word fragment
+    assert locate_quote("first draught fan (5) ... a missing clause here", text) is None
+    assert locate_quote("blower fan", text) is None
+
+
+def test_stored_evidence_is_the_source_passage_not_the_models_quote():
+    from app.pipeline.evidence import EvidenceSection, IdeaFeature, attach_evidence, empty_findings
+
+    claim = "1. A dryer wherein a first draught fan (5) sends hot air into the drying shed (3)."
+    findings = empty_findings([IdeaFeature(id="F1", text="fan moves hot air")])
+    added = attach_evidence(
+        findings, "F1", "first draught fan (5) … into the drying shed", result_id="d", title="t",
+        link="", document_text=claim, evidence_source="claims",
+        sections=[EvidenceSection(label="Claim 1", source="claims", text=claim, original_chars=len(claim))],
+    )
+    assert added
+    assert findings[0].evidence[0].quote == "first draught fan (5) sends hot air into the drying shed"
+    assert findings[0].evidence[0].section.label == "Claim 1"
+
+
+def test_benchmark_counts_citation_discoveries_only_where_measured():
+    from types import SimpleNamespace
+
+    from benchmark.run import find_discovery_rank
+
+    discoveries = [SimpleNamespace(id="patent/US1/en"), SimpleNamespace(id="patent/US5325765B1/en")]
+    assert find_discovery_rank(discoveries, _case()) == 2  # any kind code
+    assert find_discovery_rank(discoveries[:1], _case()) is None
+
+    base = dict(patent="p", rank_before=None, match_before=None, results_before=1,
+                results_after=1, searches_used=9)
+    results = [
+        CaseResult(id="a", rank_after=None, rank_citations=3, citation_depth=5, **base),
+        CaseResult(id="b", rank_after=4, match_after="exact", citation_depth=5, **base),
+        CaseResult(id="c", rank_after=None, citation_depth=5, **base),
+        CaseResult(id="d", rank_after=None, **base),  # citation chasing not measured
+    ]
+    s = summarize(results)
+    assert s["citation_cases"] == 3
+    assert s["top10_or_citations"] == 2 / 3

@@ -1,11 +1,13 @@
 """Stage 1.2: Search Layer.
 
 Fires the generated queries against SerpApi's google_patents engine
-(scholar=true, clustered=true — this mixes real patents and scholar articles
-into one organic_results list, distinguished by the presence of patent_id vs.
-scholar_id/is_scholar) plus one plain `google` query for a market-availability
-check. Keeps the query-to-result mapping intact for debugging and for the
-landscape graph later.
+(clustered=true, patents only) plus one plain `google` query for a
+market-availability check and one scholar-only google_patents query for
+academic papers. Papers get their own call because mixing them in
+(scholar=true) fills the first page with papers on research-heavy topics: a
+solar crop dryer's broad query returned 19 papers and 1 patent out of 20,
+leaving no claims to quote. Keeps the query-to-result mapping intact for
+debugging and for the landscape graph later.
 """
 import logging
 from concurrent.futures import ThreadPoolExecutor
@@ -124,13 +126,17 @@ def _parse_assignee_stats(raw_response: dict, top_n: int = 6) -> list[AssigneeSt
 # only the country filter does.
 QUERY_COUNTRY_FILTERS: dict[str, str] = {"india_specific": "IN"}
 
+# Results per patent query. SerpApi bills per request, not per result, so a
+# 20-result page doubles what ranking can choose from at no extra cost.
+PATENT_RESULTS_PER_QUERY = 20
+
 
 def search_patents_for_query(
     query: str, country: str | None = None
 ) -> tuple[list[SearchResult], list[AssigneeStat]]:
     """Call google_patents for a single query, returning normalized results
     plus the query-level assignee breakdown."""
-    params = dict(engine="google_patents", q=query, scholar=True, clustered=True)
+    params = dict(engine="google_patents", q=query, clustered=True, num=PATENT_RESULTS_PER_QUERY)
     if country:
         params["country"] = country
     response = _client.search(**params)
@@ -142,6 +148,30 @@ def search_patents_for_query(
         if parsed is not None:
             results.append(parsed)
     return results, _parse_assignee_stats(raw_response)
+
+
+def search_literature(query: str) -> list[SearchResult]:
+    """Academic papers only (scholar=true, patents=false), one search."""
+    response = _client.search(engine="google_patents", q=query, scholar=True, patents=False)
+    raw_results = dict(response).get("organic_results", []) or []
+    return [r for r in map(_parse_patents_organic_result, raw_results) if r is not None]
+
+
+def run_literature_search(query_result: QueryGenerationResult) -> QueryBundle | None:
+    """Papers for the broad-recall angle, kept as a bundle of their own so
+    they rank alongside patents without displacing them. None when there is
+    no broad-recall query; a failed search is an empty bundle, like
+    _run_one_query."""
+    broad = next((q for q in query_result.queries if q.type == "broad_recall"), None)
+    if broad is None:
+        return None
+    query = clean_query(broad.query)
+    try:
+        results, failed = search_literature(query), False
+    except Exception as e:
+        logger.warning("Literature search failed: %s", redact(e))
+        results, failed = [], True
+    return QueryBundle(query_type="broad_recall", query=query, results=results, search_failed=failed)
 
 
 def search_market_availability(query: str) -> list[ProductResult]:
@@ -230,9 +260,12 @@ def run_market_search(query_result: QueryGenerationResult) -> list[ProductResult
 
 
 def run_search_layer(query_result: QueryGenerationResult) -> SearchLayerResult:
-    """Convenience wrapper running both phases in sequence — used by direct
-    pipeline tests. The orchestrator calls the two phases separately so it
+    """Convenience wrapper running the phases in sequence — used by direct
+    pipeline tests. The orchestrator calls the phases separately so it
     can emit progress events between them."""
     bundles = run_patent_scholar_search(query_result)
+    literature = run_literature_search(query_result)
+    if literature is not None:
+        bundles.append(literature)
     market_results = run_market_search(query_result)
     return SearchLayerResult(query_bundles=bundles, market_results=market_results)

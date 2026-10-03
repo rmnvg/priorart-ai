@@ -1,0 +1,2004 @@
+{
+  "idea_text": "A wound-healing paste made by grinding fresh neem leaves with turmeric and honey, applied to cuts and burns to speed healing and prevent infection, packed in single-use sachets for rural first-aid kits.",
+  "parent_report_id": null,
+  "events": [
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Extracting core concepts and generating search queries...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_patents",
+      "message": "Searching patents across 3 query angles, including Indian Patent Office filings...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_scholar",
+      "message": "Reviewing academic literature matches...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "checking_market_availability",
+      "message": "Checking whether a similar product already exists commercially...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "ranking_results",
+      "message": "Ranking and deduplicating results by relevance to your idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Reading the first results to learn the terminology patents use for this idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Patents refer to the product as a \"herbal cream\" or \"topical antiseptic\" using leaf extracts, which your queries missed.",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Pulling full claims and citations for top candidates and scoring novelty...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Following up 1 document(s) the closest matches cite but the keyword search missed...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "done",
+      "message": "Analysis complete.",
+      "replayed": false
+    },
+    {
+      "type": "result",
+      "data": {
+        "idea_text": "A wound-healing paste made by grinding fresh neem leaves with turmeric and honey, applied to cuts and burns to speed healing and prevent infection, packed in single-use sachets for rural first-aid kits.",
+        "ranked_results": [
+          {
+            "id": "https://www.instagram.com/reel/DXhX6vODNGX/",
+            "source_type": "product",
+            "title": "Neem has been used for thousands of years in Ayurveda to ...",
+            "snippet": "Mix neem paste with a pinch of turmeric (anti-inflammatory) turmeric can temporarily stain skin yellow. Honey adds antibacterial and soothing ...",
+            "link": "https://www.instagram.com/reel/DXhX6vODNGX/",
+            "relevance_score": 0.6978533864021301,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.facebook.com/DrSamihaSneha/posts/neem-toner-remove-pimple-magicaltoner-neem-turmaric-glowingskin-dr-samiha-sneha/332399055784435/",
+            "source_type": "product",
+            "title": "Dr Samiha Sneha",
+            "snippet": "Take a handful of fresh neem leaves and grind them into a paste. 2\ufe0f\u20e3 Add 1 teaspoon of turmeric powder to the neem paste.",
+            "link": "https://www.facebook.com/DrSamihaSneha/posts/neem-toner-remove-pimple-magicaltoner-neem-turmaric-glowingskin-dr-samiha-sneha/332399055784435/",
+            "relevance_score": 0.6892999410629272,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.quora.com/Is-the-Neem-herbal-product-beneficial-for-us?no_redirect=1",
+            "source_type": "product",
+            "title": "Is the Neem herbal product beneficial for us?",
+            "snippet": "Wound Healer: Make a paste out of the neem leaves and dab it on your wounds or insect bites a few times a day till it heals.",
+            "link": "https://www.quora.com/Is-the-Neem-herbal-product-beneficial-for-us?no_redirect=1",
+            "relevance_score": 0.685905933380127,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.facebook.com/mohit.bisht.35762/posts/neem-turmeric-a-fresh-gentle-start-to-your-daily-skincare-routineclean-skin-fres/29067362609531286/",
+            "source_type": "product",
+            "title": "Neem + Turmeric \ud83c\udf31 A fresh, gentle start to your daily ...",
+            "snippet": "Mix neem powder and turmeric with yogurt/rose water to create a paste. 2. Apply the paste to your face, avoiding the eye area. 3. Let it sit for ...",
+            "link": "https://www.facebook.com/mohit.bisht.35762/posts/neem-turmeric-a-fresh-gentle-start-to-your-daily-skincare-routineclean-skin-fres/29067362609531286/",
+            "relevance_score": 0.6691881418228149,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.etsy.com/listing/1339786252/exfoliating-body-scrub-organic-turmeric",
+            "source_type": "product",
+            "title": "Exfoliating Body Scrub: Organic Turmeric and Neem",
+            "snippet": "This grapefruit scented scrub leaves skin feeling smooth and exfoliated. It is packed with hydrating and moisturizing butters and oils as well as organic ...",
+            "link": "https://www.etsy.com/listing/1339786252/exfoliating-body-scrub-organic-turmeric",
+            "relevance_score": 0.6453511714935303,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.researchgate.net/publication/366353667_Significant_Natural_Wound_Healing_Agents_Herbs_and_Single_Bioactive_Principles",
+            "source_type": "product",
+            "title": "Significant Natural Wound Healing Agents: Herbs and ...",
+            "snippet": "In 18 rabbits, turmeric paste was compared with honey acting as a topical drug against the control of experimentally produced circular full- ...",
+            "link": "https://www.researchgate.net/publication/366353667_Significant_Natural_Wound_Healing_Agents_Herbs_and_Single_Bioactive_Principles",
+            "relevance_score": 0.631057620048523,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.instagram.com/p/DdtYEgJpnjp/",
+            "source_type": "product",
+            "title": "Homemade Neem Anti-Acne Cream A simple, plant- ...",
+            "snippet": "Mix neem paste with a pinch of turmeric (anti-inflammatory) turmeric can temporarily stain skin. Honey adds antibacterial and soothing effect",
+            "link": "https://www.instagram.com/p/DdtYEgJpnjp/",
+            "relevance_score": 0.6247561573982239,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.facebook.com/groups/2565837333684434/posts/4426428230958659/",
+            "source_type": "product",
+            "title": "Effective wound care tips to speed up healing | Michigan",
+            "snippet": "Some natural remedies for fast healing you can make use of Apply 1\u20132 times daily: Honey + Turmeric , helps heal wound fast. Aloe vera gel: it ...",
+            "link": "https://www.facebook.com/groups/2565837333684434/posts/4426428230958659/",
+            "relevance_score": 0.6105085611343384,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.researchgate.net/publication/366580263_The_Comparative_Efficacy_of_Honey_Turmeric_and_Silver_Sulfadiazine_Dressing_on_the_Healing_of_Burn_Wounds_in_Rabbits",
+            "source_type": "product",
+            "title": "The Comparative Efficacy of Honey, Turmeric and Silver ...",
+            "snippet": "The mean wound healing time was (20.0 \u00b1 2.7) days for the treatment group and (22.1 \u00b1 3.0) days for the control group. The difference between these two groups ...",
+            "link": "https://www.researchgate.net/publication/366580263_The_Comparative_Efficacy_of_Honey_Turmeric_and_Silver_Sulfadiazine_Dressing_on_the_Healing_of_Burn_Wounds_in_Rabbits",
+            "relevance_score": 0.5736507177352905,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/11749220922964153348",
+            "source_type": "scholar",
+            "title": "Therapeutic effects of medicinal plants on cutaneous wound healing in humans: a systematic review",
+            "snippet": "\u2026 Although various pharmaceutical preparations are available, new \u2026 The main constituents of the extract of this plant include \u2026 Ghaskadbi, and TPA Devasagayam, \u201cIndian herbs and herbal \u2026",
+            "link": "https://patents.google.com/scholar/11749220922964153348",
+            "relevance_score": 0.5199906229972839,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/8723144775828819020",
+            "source_type": "scholar",
+            "title": "Formulation and Evaluation of Aloe Inermis Extract for Wound Healing Activity as Antibacterial Naturaceutical Cream Novel Drug Delivery Systems",
+            "snippet": "\u2026 respect to natural herb offer diverse benefits in cream preparations, as \u2026 Plants and their extracts have immense potential for the \u2026 The herbal cream was prepared and subjected to various \u2026",
+            "link": "https://patents.google.com/scholar/8723144775828819020",
+            "relevance_score": 0.5058066844940186,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN110519997B/en",
+            "source_type": "patent",
+            "title": "\u2026 inhibiting and regeneration of tooth Zhou Gu of Moringa oleifera leaf extract \u2026",
+            "snippet": "1. A composition for preventing or improving periodontal disease, comprising Moringa oleifera leaf extract and Eucommia bark extract as active ingredients, Wherein the weight ratio of the Moringa leaf extract to the Eucommia bark extract is 2:1 to 4:1, wherein the Moringa leaf extract is prepared \u2026",
+            "link": "https://patents.google.com/patent/CN110519997B/en",
+            "relevance_score": 0.4778037965297699,
+            "cpc_code": "A23L33/10",
+            "cpc_description": "Modifying nutritive qualities of foods; Dietetic products; Preparation or treatment thereof using additives",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Hl\u79d1\u5b66\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2017-03-24"
+          },
+          {
+            "id": "patent/CN109700753A/en",
+            "source_type": "patent",
+            "title": "A kind of skin care compositions and its application and preparation method \u2026",
+            "snippet": "6. composition according to claim 5, which is characterized in that The Red blood streak dispelling factor includes bigarabe berry extract, sorrel root extract or Astragalus membranacus root extract\uff1b The phytoestrogen include isoflavones, elegant jessamine root extract, polygonum cuspidate root \u2026",
+            "link": "https://patents.google.com/patent/CN109700753A/en",
+            "relevance_score": 0.47273460030555725,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6210\u90fd\u5e02\u8446\u59ff\u5065\u5eb7\u7ba1\u7406\u6709\u9650\u516c\u53f8",
+            "priority_date": "2019-02-14"
+          },
+          {
+            "id": "patent/KR101196113B1/en",
+            "source_type": "patent",
+            "title": "\u2026 and HandWash composition Thereof containing natural oriental plant extracts",
+            "snippet": "Herbal extract extracted using any selected from Gallweed, Eum and Paulownia sinensis, ethanol anhydrous, aloe vera gel, hyaluronic acid, purified water, grapefruit seed extract, peppermint essential oil, lavender essential oil, tea tree essential oil, eucalyptus essential oil Preparing (100) a \u2026",
+            "link": "https://patents.google.com/patent/KR101196113B1/en",
+            "relevance_score": 0.4501710534095764,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uc804\ub77c\ub0a8\ub3c4",
+            "priority_date": "2010-12-07"
+          },
+          {
+            "id": "patent/WO2020054204A1/en",
+            "source_type": "patent",
+            "title": "Antioxidant",
+            "snippet": "An antioxidant containing a Neem tree extract. The antioxidant according to claim 1, wherein the extract of Alnus is an aqueous extract from a plant of an Alnus plant. 3. The antioxidant according to claim 1, wherein the extract of Alnus has an effect of enhancing gene expression of an antioxidant \u2026",
+            "link": "https://patents.google.com/patent/WO2020054204A1/en",
+            "relevance_score": 0.44602125883102417,
+            "cpc_code": "A61K8/9783",
+            "cpc_description": "Angiosperms [Magnoliophyta]",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u6771\u6d0b\u7d21\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2018-09-14"
+          },
+          {
+            "id": "patent/US20060264497A1/en",
+            "source_type": "patent",
+            "title": "Diindolylmethane-based compositions and methods of use thereof for promoting \u2026",
+            "snippet": "wherein the anti-inflammatory compound is resveratrol, an extract of Polygonium cuspidatum , silibinin, an extract of Silybum marianum , curcumin, an extract of Curcuma domestica , aloe extract, terpene, citrus extract, boswellic acid, Evodiamine, ursolic acid, Allyl Disulfide, Andrographolide, \u2026",
+            "link": "https://patents.google.com/patent/US20060264497A1/en",
+            "relevance_score": 0.44092726707458496,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CA": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Zeligs Michael A",
+            "priority_date": "2005-03-28"
+          },
+          {
+            "id": "scholar/8172776196147094425",
+            "source_type": "scholar",
+            "title": "Indonesian traditional herbal drinks: diversity, processing, and health benefits",
+            "snippet": "\u2026 preparation is found in wedang uwuh. This herbal drink is simply prepared by brewing dried herbs \u2026 Turmeric is one of the most important and long-known medicinal plants [81]. Turmeric \u2026",
+            "link": "https://patents.google.com/scholar/8172776196147094425",
+            "relevance_score": 0.43337494134902954,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/JP6077554B2/en",
+            "source_type": "patent",
+            "title": "Wrapping fermentation method using medicinal flowers and skin external \u2026",
+            "snippet": "The skin external preparation composition according to claim 1, wherein the medicinal flower is a lotus flower . The skin external preparation composition according to claim 1, wherein the natural product is black beans . The skin external preparation composition according to claim 1, wherein the \u2026",
+            "link": "https://patents.google.com/patent/JP6077554B2/en",
+            "relevance_score": 0.4327690005302429,
+            "cpc_code": "A61K9/0012",
+            "cpc_description": "Galenical forms characterised by the site of application",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u682a\u5f0f\u4f1a\u793e\u30a2\u30e2\u30fc\u30ec\u30d1\u30b7\u30d5\u30a3\u30c3\u30af\uff21\uff4d\uff4f\uff52\uff45\uff50\uff41\uff43\uff49\uff46\uff49\uff43 \uff23\uff4f\uff52\uff50\uff4f\uff52\uff41\uff54\uff49\uff4f\uff4e",
+            "priority_date": "2011-10-25"
+          },
+          {
+            "id": "patent/KR101805004B1/en",
+            "source_type": "patent",
+            "title": "Fermentation method using medicinal leaf and skin external composition \u2026",
+            "snippet": "The composition for external application for skin according to claim 1, wherein the extraction is performed with water, ethanol or a mixed solvent thereof. [2] The composition for external application for skin according to claim 1, wherein the content of the fermented extract is 0.001 to 30% by \u2026",
+            "link": "https://patents.google.com/patent/KR101805004B1/en",
+            "relevance_score": 0.4315747022628784,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "(\uc8fc)\uc544\ubaa8\ub808\ud37c\uc2dc\ud53d",
+            "priority_date": "2010-04-06"
+          },
+          {
+            "id": "patent/US9511034B1/en",
+            "source_type": "patent",
+            "title": "Method for applying a skin treatment",
+            "snippet": "In an exemplary embodiment, the cleansing solution may comprise all or a combination of: isopropyl alcohol, colloidal silver, a catalyst such as a silicone platinum catalyst, chamomile extract, a curcumin derivative such as tetrahydrocurcuminoid, green tea extract, gotu kola extract, and Boswellia \u2026",
+            "link": "https://patents.google.com/patent/US9511034B1/en",
+            "relevance_score": 0.41608738899230957,
+            "cpc_code": "A61K9/0012",
+            "cpc_description": "Galenical forms characterised by the site of application",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Bio-Silicote, Inc.",
+            "priority_date": "2013-12-09"
+          },
+          {
+            "id": "patent/KR101676601B1/en",
+            "source_type": "patent",
+            "title": "External preparation for skin comprising herbal extracts as an active \u2026",
+            "snippet": "0.1 to 30.0% by weight based on the total weight of each of the white paprika, white pine, ginseng, licorice, papaya, yangjemun, allium, milky white, After sealing, the mixed extract was stored at room temperature for 10 days to 15 days and then filtered with a sieve, Vitamin E, and peppermint in a \u2026",
+            "link": "https://patents.google.com/patent/KR101676601B1/en",
+            "relevance_score": 0.41362035274505615,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uc591\ud615\uc5f4",
+            "priority_date": "2016-04-22"
+          },
+          {
+            "id": "patent/WO2012033422A1/en",
+            "source_type": "patent",
+            "title": "Medical cosmetic herbal composition on the basis of herbal mixture and the \u2026",
+            "snippet": "14. Application of herbal mixture, which contains whole herbs/or their parts, and which is consisted of Comfrey - Symphytum officinale, St. John's Wort - Hypericum perforatum, chamomile - Matricaria chamomilla, nettle - Urtica dioica, calendula - Calendula officinalis, sage - Salvia officinalis, \u2026",
+            "link": "https://patents.google.com/patent/WO2012033422A1/en",
+            "relevance_score": 0.41291868686676025,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "RS": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Aleksandar Pavlov",
+            "priority_date": "2010-09-06"
+          },
+          {
+            "id": "patent/JP7658391B2/en",
+            "source_type": "patent",
+            "title": "Anti-pollution agent and composition for external use on skin",
+            "snippet": "\u2026 cassava, sago palm, pigweed, lily, orchid, carnation, rose, chrysanthemum, petunia, torenia, goldfish These include grass, cyclamen, baby's breath, geranium, sunflower, turfgrass, cotton, enoki mushroom, shimeji mushroom, matsutake mushroom, shiitake mushroom, mushrooms, ginseng, agaricus, turmeric \u2026",
+            "link": "https://patents.google.com/patent/JP7658391B2/en",
+            "relevance_score": 0.40875694155693054,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u6771\u6d0b\u7d21\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2018-02-16"
+          },
+          {
+            "id": "scholar/17076350777509222493",
+            "source_type": "scholar",
+            "title": "Nutraceutical formulations from medicinal plants: A potential therapeutic agent",
+            "snippet": "\u2026 are prepared from herbal extracts by formulating the extract \u2026 capsule is relatively better than the aqueous preparations \u2026 the powdered plant material used in the preparation depends on \u2026",
+            "link": "https://patents.google.com/scholar/17076350777509222493",
+            "relevance_score": 0.4063889682292938,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN103655718B/en",
+            "source_type": "patent",
+            "title": "Traditional Chinese medicine composition, preparation, and floral water and \u2026",
+            "snippet": "The invention relates to the fields of the traditional Chinese medicines and the flavor fragrance cosmetics, and specifically relates to a pure natural plant flower traditional Chinese medicine composition for repelling mosquitoes and relieving itching, a preparation, and floral water and an \u2026",
+            "link": "https://patents.google.com/patent/CN103655718B/en",
+            "relevance_score": 0.40110549330711365,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5317\u4eac\u5999\u5fc3\u5802\u533b\u836f\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2012-08-30"
+          },
+          {
+            "id": "patent/RU2693413C2/en",
+            "source_type": "patent",
+            "title": "Plant-containing product for medical, cosmetic, colouring or dermatological \u2026",
+            "snippet": "1. The use of a product containing the first layer of fibrous vegetable product and one or more layers of plant extract applied on it for cosmetic use, where the product is in the form of a face mask, dressing material, patch or sheet and where at least one of the fibrous the herbal product and \u2026",
+            "link": "https://patents.google.com/patent/RU2693413C2/en",
+            "relevance_score": 0.3989647328853607,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE",
+              "AU": "ACTIVE",
+              "RU": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u0428\u0432\u0430\u0439\u0446\u0435\u0440-\u041c\u0430\u0443\u0434\u0438\u0442 \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0448\u043d\u043b, \u0418\u043d\u043a.",
+            "priority_date": "2013-08-20"
+          },
+          {
+            "id": "scholar/12321414887648970467",
+            "source_type": "scholar",
+            "title": "The industrial potential of herbs and spices? A mini review",
+            "snippet": "\u2026 The usage of medicinal plants to relieve symptoms and treat \u2026 Efficacy of a standardized echinacea preparation (EchinilinTM\u2026 with emphasis on commercially available preparations. Br. J. \u2026",
+            "link": "https://patents.google.com/scholar/12321414887648970467",
+            "relevance_score": 0.39838188886642456,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/KR101233857B1/en",
+            "source_type": "patent",
+            "title": "Cosmetic composition with natural orientalplant extract",
+            "snippet": "The extract is a herbal cosmetic composition, characterized in that the extract is available in at least one solvent selected from water, lower alcohols in the range of 1 to 5 carbon atoms and alcoholic aqueous solution. The method according to claim 1, The extract is a herbal cosmetic composition, \u2026",
+            "link": "https://patents.google.com/patent/KR101233857B1/en",
+            "relevance_score": 0.3896466791629791,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "(\uc8fc)\uc19c\ub2c8\ud5c8\ube0c",
+            "priority_date": "2010-03-18"
+          },
+          {
+            "id": "patent/CN103565679B/en",
+            "source_type": "patent",
+            "title": "A kind of preparation method of fresh ginseng extract and its application in \u2026",
+            "snippet": "The present invention relates to a kind of preparation method of fresh ginseng extract and its application in cosmetics.It is characterized in that using fresh ginseng as raw material, extracted with 0 99% ethanol homogenate extraction device, filter liquor reclaims ethanol below 40 DEG C, freeze- \u2026",
+            "link": "https://patents.google.com/patent/CN103565679B/en",
+            "relevance_score": 0.3839647173881531,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u90d1\u6bc5\u7537",
+            "priority_date": "2012-07-19"
+          },
+          {
+            "id": "patent/CN121443264A/en",
+            "source_type": "patent",
+            "title": "Anti-wrinkle skincare composition containing a stable homogeneous aqueous \u2026",
+            "snippet": "7. The skin care composition according to claim 6, wherein the moisturizer is selected from glycerin, urea, hyaluronic acid, salicylic acid, alpha-hydroxy acid, propylene glycol, honey, sorbitol, butylene glycol, sodium PCA, allantoin, sodium lactate, dicyandiamide, tremella extract, seaweed, aloe \u2026",
+            "link": "https://patents.google.com/patent/CN121443264A/en",
+            "relevance_score": 0.37818434834480286,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE",
+              "AU": "ACTIVE",
+              "IL": "UNKNOWN",
+              "MX": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "11584022\u52a0\u62ff\u5927\u6709\u9650\u516c\u53f8",
+            "priority_date": "2023-02-14"
+          },
+          {
+            "id": "patent/JP7643335B2/en",
+            "source_type": "patent",
+            "title": "Composition containing Almium extract",
+            "snippet": "A cosmetic composition containing an extract of Albizia julibrissin, which is used on any skin cell selected from the group consisting of human epidermal keratinocytes, human dermal fibroblasts, human epidermal melanocytes, human dermal microvascular endothelial cells, human dermal microlymphatic \u2026",
+            "link": "https://patents.google.com/patent/JP7643335B2/en",
+            "relevance_score": 0.3745325803756714,
+            "cpc_code": "A61K8/9783",
+            "cpc_description": "Angiosperms [Magnoliophyta]",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u6771\u6d0b\u7d21\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2019-07-05"
+          },
+          {
+            "id": "patent/KR20070079596A/en",
+            "source_type": "patent",
+            "title": "Functional cosmetic composition for the treatment of skin diseases",
+            "snippet": "3- Claim 4. The auxiliary functional cosmetic liquid composition of claim 6 for treating skin diseases 1. Mix safflower extract, aloe extract and yellowish white extract with alcohol or distilled water to make a mixed solution of aloe extract and safflower extract, 2. Add rosin to alcohol or \u2026",
+            "link": "https://patents.google.com/patent/KR20070079596A/en",
+            "relevance_score": 0.3642045855522156,
+            "cpc_code": "A61K9/0012",
+            "cpc_description": "Galenical forms characterised by the site of application",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uae40\uc120\uc77c",
+            "priority_date": "2007-05-10"
+          },
+          {
+            "id": "scholar/8925813299996764745",
+            "source_type": "scholar",
+            "title": "Applications of tannins in industry",
+            "snippet": "\u2026 Recently, a packaging material was prepared by introducing \u2026 and di-isocyanates were used to prepare more effective coating \u2026 the facilities and support for preparation of this manuscript. \u2026",
+            "link": "https://patents.google.com/scholar/8925813299996764745",
+            "relevance_score": 0.3598576784133911,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US12250949B2/en",
+            "source_type": "patent",
+            "title": "Formulations with colloidal silver",
+            "snippet": "\u2026 silver oxide, wherein at least 75% of the silver particles have diameters between 0.005 micrometers and 0.015 micrometers; the formulation comprises an oil, e.g., an oil selected from coconut oil, hemp seed oil, argan oil, rhea butter, sunflower seed oil, neem oil, jojoba oil, and sweet almond oil;",
+            "link": "https://patents.google.com/patent/US12250949B2/en",
+            "relevance_score": 0.358289510011673,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "American Silver, Llc",
+            "priority_date": "2015-08-18"
+          },
+          {
+            "id": "patent/CN111447923A/en",
+            "source_type": "patent",
+            "title": "solid composition",
+            "snippet": "\u2026 Bladderpod Oil, Bruca Oil, Burdock Oil (Mango Shell Oil), Palm Tree Oil, Chestnut Oil (Macadamia Nut Oil), Carrot Seed Oil (pressed), Castor Oil, Daphne Oil, Cranberry Oil, Croton Oil (Croton Oil), Calyxa Oil, Aso Oil, Night Vegetable Oil, Horsetail Oil, Jojoba Oil, Mango Oil , Basil Seed Oil, Neem \u2026",
+            "link": "https://patents.google.com/patent/CN111447923A/en",
+            "relevance_score": 0.35578978061676025,
+            "cpc_code": "A61K9/0012",
+            "cpc_description": "Galenical forms characterised by the site of application",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "CL": "UNKNOWN",
+              "GB": "NOT_ACTIVE",
+              "PE": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u4e2d\u592e\u5170\u5f00\u590f\u5927\u5b66",
+            "priority_date": "2017-10-06"
+          },
+          {
+            "id": "patent/KR102041995B1/en",
+            "source_type": "patent",
+            "title": "Natural hair shampoo composition powder with rosemary coffee oriental herb for \u2026",
+            "snippet": "Mung bean, Ginseng, Sewao, Aloe, Centella, Cheongung, Eoseongcho, Green Tea, Machihyeon, Angelica, Three hundred Seconds, Licorice and pine needles are prepared in the same quantity, dried with moisture content less than 5%, Second powder 1-10% by weight of the total weight of the natural herbal \u2026",
+            "link": "https://patents.google.com/patent/KR102041995B1/en",
+            "relevance_score": 0.3556599020957947,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uc8fc\uc2dd\ud68c\uc0ac \ubaa8\uc140",
+            "priority_date": "2019-05-31"
+          },
+          {
+            "id": "scholar/16506221709336016643",
+            "source_type": "scholar",
+            "title": "Synthesis and characterization of plant extracts loaded PVA/PVP blend films and evaluate their biological activities",
+            "snippet": "\u2026 flowers are used extensively in culinary preparations. It\u2019sa large wide \u2026 , were prepared by dissolving 1 g of each extract with 10 mL \u2026 Nutrient broth was used to prepare turbid bacterial \u2026",
+            "link": "https://patents.google.com/scholar/16506221709336016643",
+            "relevance_score": 0.3546580970287323,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN105662963B/en",
+            "source_type": "patent",
+            "title": "A kind of multi-effect facial mask based on apple polyphenol and preparation \u2026",
+            "snippet": "(3) In parts by weight, add 2.1-3.6 parts of thickener, 3.7-5.2 parts of humectant and 2.8-3.7 parts of conditioning agent into water respectively, heat up and stir until completely dissolved, then add 1 part of the step ( 1) The prepared apple extract and 0.5-0.8 parts of the plant extract \u2026",
+            "link": "https://patents.google.com/patent/CN105662963B/en",
+            "relevance_score": 0.3492494225502014,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u4e1c\u839e\u5e02\u4f73\u4e7e\u65b0\u6750\u6599\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2016-03-01"
+          },
+          {
+            "id": "patent/EP2038391A1/en",
+            "source_type": "patent",
+            "title": "Washing, cleaning and care products",
+            "snippet": "Compositions of the invention may be in solid, semi-solid, liquid, disperse, emulsified, suspended, aerosol or gel form. Solid and liquid agents may e.g. in sachets or (preferably self-dissolving) sachets (pouches) be packaged, especially in Mehrkammerpouches. For the purposes of the invention, the \u2026",
+            "link": "https://patents.google.com/patent/EP2038391A1/en",
+            "relevance_score": 0.3462868928909302,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "NOT_ACTIVE",
+              "AT": "ACTIVE",
+              "DE": "NOT_ACTIVE",
+              "ES": "ACTIVE",
+              "PL": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Henkel AG &amp; Co. KGaA",
+            "priority_date": "2006-07-07"
+          },
+          {
+            "id": "scholar/10262825014946849890",
+            "source_type": "scholar",
+            "title": "Bio\u2010actives of betel leaf (Piper betle L.): A comprehensive review on extraction, isolation, characterization, and biological activity",
+            "snippet": "\u2026 , known as a traditional herbal medicinal plant and used for \u2026 Depending on the cultivation of betel vine, planting season \u2026 A review on the extraction methods use in medicinal plants, \u2026",
+            "link": "https://patents.google.com/scholar/10262825014946849890",
+            "relevance_score": 0.34619736671447754,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN103054776B/en",
+            "source_type": "patent",
+            "title": "A kind of functional traditional Chinese medicinal stock shampoo and \u2026",
+            "snippet": "3rd step, 30 days dipping expire, separated 350 mesh screens and obtain Chinese medicinal liquor, and will filter Chinese medicinal liquor pours into belt stirrer Container in it is stand-by\uff1b 4th step, equivalent is calculated in the ratio extracted amount of medicinal liquor weight obtained by the \u2026",
+            "link": "https://patents.google.com/patent/CN103054776B/en",
+            "relevance_score": 0.33918941020965576,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u674e\u9e4f",
+            "priority_date": "2013-01-08"
+          },
+          {
+            "id": "patent/US20190015306A1/en",
+            "source_type": "patent",
+            "title": "Pack composition containing illite extract as active ingredient and pack \u2026",
+            "snippet": "1 . A pack composition containing an illite extract as an active ingredient comprising: a first formulation having skin enhancement effect; and a second formulation having skin whitening effect, wherein the first formulation and the second formulation are mixed in the same ratio, wherein the first \u2026",
+            "link": "https://patents.google.com/patent/US20190015306A1/en",
+            "relevance_score": 0.31436872482299805,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "NOT_ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Soung Lyul Park",
+            "priority_date": "2015-12-31"
+          },
+          {
+            "id": "patent/US20170181963A1/en",
+            "source_type": "patent",
+            "title": "Methods for treating skin",
+            "snippet": "\u2026 , 5-\u03b1-reductase inhibitors (linolenic acid, linoleic acid, finasteride, etc.), vitamins (e.g., vitamins A, B, C, E, etc., and C 2-20 esters thereof), PPAR-\u03b3 inhibitors, anti-inflammatories (e.g., TNF-\u03b1 inhibitors), antioxidants (e.g., ascorbic acid, astaxanthin, beta-carotene, catechins, curcumin, \u2026",
+            "link": "https://patents.google.com/patent/US20170181963A1/en",
+            "relevance_score": 0.3114680349826813,
+            "cpc_code": "A61K8/9783",
+            "cpc_description": "Angiosperms [Magnoliophyta]",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "AU": "ACTIVE",
+              "BR": "ACTIVE",
+              "CA": "ACTIVE",
+              "EA": "UNKNOWN",
+              "ES": "ACTIVE",
+              "MX": "ACTIVE",
+              "PH": "UNKNOWN",
+              "PL": "UNKNOWN",
+              "ZA": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Avon Products, Inc.",
+            "priority_date": "2015-03-05"
+          },
+          {
+            "id": "patent/US10123954B1/en",
+            "source_type": "patent",
+            "title": "Methods for treating skin",
+            "snippet": "\u2026 , 5-\u03b1-reductase inhibitors (linolenic acid, linoleic acid, finasteride, etc.), vitamins (e.g., vitamins A, B, C, E, etc., and C 2-20 esters thereof), PPAR-\u03b3 inhibitors, anti-inflammatories (e.g., TNF-\u03b1 inhibitors), antioxidants (e.g., ascorbic acid, astaxanthin, beta-carotene, catechins, curcumin, \u2026",
+            "link": "https://patents.google.com/patent/US10123954B1/en",
+            "relevance_score": 0.3114680349826813,
+            "cpc_code": "A61K8/9783",
+            "cpc_description": "Angiosperms [Magnoliophyta]",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Avon Products, Inc.",
+            "priority_date": "2015-03-05"
+          },
+          {
+            "id": "patent/CN102387819B/en",
+            "source_type": "patent",
+            "title": "Absorbent article comprising an encapsulated plant extract exhibiting an \u2026",
+            "snippet": "1. a disposable absorbent articles, comprise liquid saturable upper slice, absorption core, bottom sheet not saturable with liquid, the natural plant extracts that it is characterized in that wherein showing deinsectization effect is by microencapsulation and be applied to the deinsectization \u2026",
+            "link": "https://patents.google.com/patent/CN102387819B/en",
+            "relevance_score": 0.28556525707244873,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u67f3\u97e9-\u91d1\u4f2f\u5229\u6709\u9650\u516c\u53f8",
+            "priority_date": "2009-04-06"
+          },
+          {
+            "id": "scholar/1484924318703222609",
+            "source_type": "scholar",
+            "title": "Herbal drugs: their collection, preservation, and preparation; evaluation, quality control, and standardization of herbal drugs",
+            "snippet": "\u2026 of herbal preparations made from one herb or more herbs (\u2026 prepare an herb in order for the medicinal properties of that \u2026 out of the plant and into the herbal remedy that is being prepared. \u2026",
+            "link": "https://patents.google.com/scholar/1484924318703222609",
+            "relevance_score": 0.2781142592430115,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/HK1243355A1/en",
+            "source_type": "patent",
+            "title": "Application of preparation containing phenolic component and hydrogen peroxide \u2026",
+            "snippet": "figure 2 shows MIC testing for a composition of 50/50 pomegranate-green tea extract binding system with hydrogen peroxide having a 10:1 hydrogen peroxide to phytochemical (mole weight/dry weight) ratio, compared to the Minimum Inhibitory Concentration (MIC) for other common antimicrobial compounds \u2026",
+            "link": "https://patents.google.com/patent/HK1243355A1/en",
+            "relevance_score": 0.2741234302520752,
+            "cpc_code": "A23L33/10",
+            "cpc_description": "Modifying nutritive qualities of foods; Dietetic products; Preparation or treatment thereof using additives",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "AU": "ACTIVE",
+              "BR": "NOT_ACTIVE",
+              "CA": "NOT_ACTIVE",
+              "CO": "UNKNOWN",
+              "HK": "UNKNOWN",
+              "MX": "UNKNOWN",
+              "MY": "UNKNOWN",
+              "PH": "UNKNOWN",
+              "RU": "UNKNOWN",
+              "SG": "UNKNOWN",
+              "ZA": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Liveleaf, Inc.",
+            "priority_date": "2011-06-24"
+          },
+          {
+            "id": "patent/KR101445776B1/en",
+            "source_type": "patent",
+            "title": "Composition for mask pack comprising culture extract of Edelweiss or Opuntia \u2026",
+            "snippet": "In a composition for a mask pack containing Opuntia humifusa callus extract, The composition for a mask pack comprises 87 to 91 parts by weight of purified water, 0.5 to 1.5 parts by weight of a callus culture extract of Opuntia humifusa, 0.5 to 1.5 parts by weight of an extract of Opuntia humifusa \u2026",
+            "link": "https://patents.google.com/patent/KR101445776B1/en",
+            "relevance_score": 0.2686118483543396,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uc7a5\uc6d0\ud45c",
+            "priority_date": "2013-08-14"
+          },
+          {
+            "id": "patent/CA3063272A1/en",
+            "source_type": "patent",
+            "title": "Compositions of silver and cannabinoids",
+            "snippet": "\u2026 silver oxide, wherein at least 75% of the silver particles have diameters between 0.005 micrometers and 0.015 micrometers; the composition comprises an oil, e.g., an oil selected from coconut oil, hemp seed oil, argan oil, shea butter, sunflower seed oil, neem oil, jojoba oil, and sweet almond oil;",
+            "link": "https://patents.google.com/patent/CA3063272A1/en",
+            "relevance_score": 0.26432350277900696,
+            "cpc_code": "A61K9/0012",
+            "cpc_description": "Galenical forms characterised by the site of application",
+            "country_status": {
+              "US": "NOT_ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "American Silver, Llc",
+            "priority_date": "2018-11-29"
+          },
+          {
+            "id": "patent/TW201532608A/en",
+            "source_type": "patent",
+            "title": "Therapeutic compositions and uses thereof",
+            "snippet": "In one embodiment, the composition has a concentration greater than about 1, 2, 3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 75, 80, 90, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900 or 999 mg/g of high-quality curcumin, and may be selected between any of these \u2026",
+            "link": "https://patents.google.com/patent/TW201532608A/en",
+            "relevance_score": 0.2628915309906006,
+            "cpc_code": "A61K35/00",
+            "cpc_description": "Medicinal preparations containing materials or reaction products thereof with undetermined constitution",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "AU": "ACTIVE",
+              "BR": "NOT_ACTIVE",
+              "CA": "NOT_ACTIVE",
+              "EA": "UNKNOWN",
+              "SG": "UNKNOWN",
+              "TW": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u7d10\u897f\u862d\u9ea5\u8606\u5361\u5065\u5eb7\u6709\u9650\u516c\u53f8",
+            "priority_date": "2013-04-05"
+          },
+          {
+            "id": "patent/CN109153982B/en",
+            "source_type": "patent",
+            "title": "Product analogue or component of analogue and preparation process thereof",
+            "snippet": "The present invention provides a food product derived from a non-animal source, the food product having one or more of the following characteristics: similar to the color, taste, nutritional content, and other qualities of dairy products and/or other types of food products. Also provided by the \u2026",
+            "link": "https://patents.google.com/patent/CN109153982B/en",
+            "relevance_score": 0.24591809511184692,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "CA": "ACTIVE",
+              "DK": "ACTIVE",
+              "ES": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u777f\u666e\u98df\u54c1\u516c\u53f8",
+            "priority_date": "2016-01-07"
+          },
+          {
+            "id": "patent/US11364268B2/en",
+            "source_type": "patent",
+            "title": "Inactivated Bacillus coagulans and uses thereof for increasing physical \u2026",
+            "snippet": "The present subject matter provides, inter alia, compositions and methods comprising inactivated, non-viable, or dead Bacillus coagulans bacteria such as whole dead bacterial spores and/or cells and/or particles that comprise inactivated, non-viable, or dead Bacillus coagulans bacteria.",
+            "link": "https://patents.google.com/patent/US11364268B2/en",
+            "relevance_score": 0.23768404126167297,
+            "cpc_code": "A61K35/00",
+            "cpc_description": "Medicinal preparations containing materials or reaction products thereof with undetermined constitution",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Ganeden Biotech, Inc.",
+            "priority_date": "2017-06-21"
+          },
+          {
+            "id": "patent/JP2015521604A/en",
+            "source_type": "patent",
+            "title": "Mouth rinse emulsion",
+            "snippet": "An oral care mouth rinse composition formulated as a stable oil-in-water emulsion is disclosed. The composition comprises (a) at least 0.025% by weight of a quaternary ammonium antimicrobial active agent, (b) at least about 0.05% by weight of a substantially water-insoluble volatile oil, and (c) \u2026",
+            "link": "https://patents.google.com/patent/JP2015521604A/en",
+            "relevance_score": 0.23687149584293365,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "BR": "NOT_ACTIVE",
+              "CA": "ACTIVE",
+              "ES": "ACTIVE",
+              "MX": "ACTIVE",
+              "PL": "UNKNOWN",
+              "RU": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u30b6 \u30d7\u30ed\u30af\u30bf\u30fc \u30a2\u30f3\u30c9 \u30ae\u30e3\u30f3\u30d6\u30eb\u30ab\u30f3\u30d1\u30cb\u30fc",
+            "priority_date": "2012-06-21"
+          },
+          {
+            "id": "scholar/15675928462489638027",
+            "source_type": "scholar",
+            "title": "Dosage forms of herbal medicinal products and their stability considerations-an overview",
+            "snippet": "\u2026 Determination of the chemical stability of a herbal preparation is \u2026 Finished herbal products or herbal drug preparations are varied \u2026 Herbal suppositories are normally prepared by mixing \u2026",
+            "link": "https://patents.google.com/scholar/15675928462489638027",
+            "relevance_score": 0.23449689149856567,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/GB2614614A/en",
+            "source_type": "patent",
+            "title": "Anti-ageing supplement",
+            "snippet": "\u2026 buckwheat germflour. The anti-aging composition may be in powder form, wherein daily dose may be 2 to 20 grams. The composition may be packaged as a sachet or stick. Claimed is a method of slowing down the ageing of a subject (e.g. mammal) wherein the composition described herein is taken orally.",
+            "link": "https://patents.google.com/patent/GB2614614A/en",
+            "relevance_score": 0.23006489872932434,
+            "cpc_code": "A61K9/0012",
+            "cpc_description": "Galenical forms characterised by the site of application",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "BE": "ACTIVE",
+              "GB": "ACTIVE",
+              "NL": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Zirtui Ltd",
+            "priority_date": "2021-11-26"
+          },
+          {
+            "id": "patent/ES2645257T3/en",
+            "source_type": "patent",
+            "title": "Long chain glycolipids useful to prevent deterioration or microbial \u2026",
+            "snippet": "Use of a compound of the formula I, or a mixture of two or more of said compounds of the formula I ** Formula ** wherein m is 3 to 5, n is 2 to 5, or is 0 or 1, and p is 3 to 17, with the proviso that the sum of m + n + or + p is not less than 14; and wherein R is a carbohydrate moiety linked by \u2026",
+            "link": "https://patents.google.com/patent/ES2645257T3/en",
+            "relevance_score": 0.17881375551223755,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE",
+              "BR": "ACTIVE",
+              "CA": "ACTIVE",
+              "ES": "ACTIVE",
+              "MX": "ACTIVE",
+              "MY": "UNKNOWN",
+              "PL": "UNKNOWN",
+              "SG": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Imd Natural Solutions Gmbh",
+            "priority_date": "2011-06-10"
+          },
+          {
+            "id": "patent/US11298330B2/en",
+            "source_type": "patent",
+            "title": "Magnesium compositions and methods of use",
+            "snippet": "The present invention provides a method of administering magnesium threonate to a subject in need of supplementing magnesium. At least a portion of magnesium (Mg) and threonate (T) is present in a salt form of MgT2. The method may comprise administration of magnesium threonate at two different \u2026",
+            "link": "https://patents.google.com/patent/US11298330B2/en",
+            "relevance_score": 0.1745782345533371,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Neurocentria, Inc.",
+            "priority_date": "2017-04-26"
+          },
+          {
+            "id": "patent/JP2015528473A/en",
+            "source_type": "patent",
+            "title": "Beauty biophotonic composition",
+            "snippet": "The present disclosure provides cosmetic compositions and methods of using the cosmetic compositions. Specifically, the cosmetic compositions of the present disclosure include one or more chromophores associated with a dermatologically acceptable carrier. The cosmetic biophotonic compositions and \u2026",
+            "link": "https://patents.google.com/patent/JP2015528473A/en",
+            "relevance_score": 0.1315820813179016,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "AU": "NOT_ACTIVE",
+              "BR": "NOT_ACTIVE",
+              "CA": "NOT_ACTIVE",
+              "HK": "UNKNOWN",
+              "IL": "UNKNOWN",
+              "IN": "UNKNOWN",
+              "MX": "UNKNOWN",
+              "RU": "NOT_ACTIVE",
+              "ZA": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u30af\u30ed\u30c3\u30af\u30b9 \u30c6\u30af\u30ce\u30ed\u30b8\u30fc\u30ba \u30a4\u30f3\u30b3\u30fc\u30dd\u30ec\u30a4\u30c6\u30c3\u30c9\uff2b\uff4c\uff4f\uff58 \uff34\uff45\uff43\uff48\uff4e\uff4f\uff4c\uff4f\uff47\uff49\uff45\uff53 \uff29\uff4e\uff43\uff0e",
+            "priority_date": "2012-09-14"
+          },
+          {
+            "id": "patent/US20210213083A1/en",
+            "source_type": "patent",
+            "title": "Water soluble cannabinoid powders",
+            "snippet": "Materials and methods for making a water-soluble cannabinoid powder are provided. For example, the present disclosure provides a method for making a water-soluble cannabinoid powder by mixing a cannabinoid with a molten composition of a water soluble carrier, a hydrocolloid, and a surfactant, \u2026",
+            "link": "https://patents.google.com/patent/US20210213083A1/en",
+            "relevance_score": 0.09226509928703308,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Resurgent Biosciences, Inc.",
+            "priority_date": "2020-01-15"
+          }
+        ],
+        "candidate_assessments": [
+          {
+            "result_id": "patent/CN110519997B/en",
+            "title": "\u2026 inhibiting and regeneration of tooth Zhou Gu of Moringa oleifera leaf extract \u2026",
+            "link": "https://patents.google.com/patent/CN110519997B/en",
+            "overlapping_elements": [
+              "use of plant leaf extract for antimicrobial/anti\u2011inflammatory effect"
+            ],
+            "differences": [
+              "different plant species (Moringa, Eucommia)",
+              "target is periodontal disease, not skin wounds",
+              "no sachet packaging",
+              "no turmeric or honey"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN109700753A/en",
+            "title": "A kind of skin care compositions and its application and preparation method \u2026",
+            "link": "https://patents.google.com/patent/CN109700753A/en",
+            "overlapping_elements": [
+              "skin\u2011care composition containing plant extracts for antioxidant/anti\u2011inflammatory purpose"
+            ],
+            "differences": [
+              "multiple synthetic moisturizers and vitamins, no neem, turmeric or honey",
+              "intended as cosmetic moisturizer, not wound\u2011healing paste",
+              "no single\u2011use sachet format"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/KR101196113B1/en",
+            "title": "\u2026 and HandWash composition Thereof containing natural oriental plant extracts",
+            "link": "https://patents.google.com/patent/KR101196113B1/en",
+            "overlapping_elements": [
+              "herbal extract based hand\u2011cleansing composition"
+            ],
+            "differences": [
+              "includes essential oils, ethanol, aloe, hyaluronic acid; no neem, turmeric, honey",
+              "designed for hand washing, not direct wound dressing",
+              "packaged as liquid, not sachet"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/WO2020054204A1/en",
+            "title": "Antioxidant",
+            "link": "https://patents.google.com/patent/WO2020054204A1/en",
+            "overlapping_elements": [
+              "contains neem extract"
+            ],
+            "differences": [
+              "formulated as antioxidant, no turmeric or honey",
+              "intended for systemic oxidative\u2011stress reduction, not topical wound care",
+              "no sachet packaging"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/US20060264497A1/en",
+            "title": "Diindolylmethane-based compositions and methods of use thereof for promoting \u2026",
+            "link": "https://patents.google.com/patent/US20060264497A1/en",
+            "overlapping_elements": [],
+            "differences": [
+              "focuses on diindolylmethane for oral mucosal disorders; no plant extracts, no neem, turmeric, honey, no sachet format"
+            ],
+            "verdict": "not_relevant",
+            "evidence_source": "claims",
+            "found_via": "search"
+          }
+        ],
+        "overall_novelty_confidence": 0.42,
+        "differentiation_suggestions": [
+          "Add a defined ratio of turmeric to honey (e.g., 1:2 w/w) and disclose that specific proportion to create a unique formulation.",
+          "Incorporate a biodegradable, oxygen\u2011barrier sachet material (e.g., PLA with a thin aluminum layer) and claim the packaging as part of the invention.",
+          "Include a wound\u2011healing peptide or growth factor (e.g., epidermal growth factor) together with the neem\u2011turmeric\u2011honey base to provide a synergistic therapeutic effect."
+        ],
+        "citations": [
+          {
+            "claim": "use of plant leaf extract for antimicrobial effect",
+            "result_id": "patent/CN110519997B/en",
+            "title": "\u2026 inhibiting and regeneration of tooth Zhou Gu of Moringa oleifera leaf extract \u2026",
+            "link": "https://patents.google.com/patent/CN110519997B/en"
+          },
+          {
+            "claim": "skin\u2011care composition with plant extracts",
+            "result_id": "patent/CN109700753A/en",
+            "title": "A kind of skin care compositions and its application and preparation method \u2026",
+            "link": "https://patents.google.com/patent/CN109700753A/en"
+          },
+          {
+            "claim": "herbal hand\u2011cleansing composition",
+            "result_id": "patent/KR101196113B1/en",
+            "title": "\u2026 and HandWash composition Thereof containing natural oriental plant extracts",
+            "link": "https://patents.google.com/patent/KR101196113B1/en"
+          },
+          {
+            "claim": "contains neem extract",
+            "result_id": "patent/WO2020054204A1/en",
+            "title": "Antioxidant",
+            "link": "https://patents.google.com/patent/WO2020054204A1/en"
+          },
+          {
+            "claim": "DIM for oral mucosal disorders",
+            "result_id": "patent/US20060264497A1/en",
+            "title": "Diindolylmethane-based compositions and methods of use thereof for promoting \u2026",
+            "link": "https://patents.google.com/patent/US20060264497A1/en"
+          },
+          {
+            "claim": "define turmeric\u2011to\u2011honey ratio",
+            "result_id": "patent/WO2020054204A1/en",
+            "title": "Antioxidant",
+            "link": "https://patents.google.com/patent/WO2020054204A1/en"
+          },
+          {
+            "claim": "biodegradable oxygen\u2011barrier sachet",
+            "result_id": "patent/KR101196113B1/en",
+            "title": "\u2026 and HandWash composition Thereof containing natural oriental plant extracts",
+            "link": "https://patents.google.com/patent/KR101196113B1/en"
+          },
+          {
+            "claim": "add wound\u2011healing peptide",
+            "result_id": "patent/CN109700753A/en",
+            "title": "A kind of skin care compositions and its application and preparation method \u2026",
+            "link": "https://patents.google.com/patent/CN109700753A/en"
+          }
+        ],
+        "india_status": {
+          "related_active_in_india": 0,
+          "active_elsewhere_only": 3,
+          "india_filings_found": 0
+        },
+        "claim_chart": null,
+        "top_assignees": [
+          {
+            "name": "\u6771\u6d0b\u7d21\u682a\u5f0f\u4f1a\u793e",
+            "percentage": 11.4
+          },
+          {
+            "name": "American Silver, Llc",
+            "percentage": 8.5
+          },
+          {
+            "name": "Firmenich Sa",
+            "percentage": 5.7
+          },
+          {
+            "name": "Avon Products, Inc.",
+            "percentage": 5.7
+          },
+          {
+            "name": "\u4e2d\u592e\u5170\u5f00\u590f\u5927\u5b66",
+            "percentage": 2.8
+          },
+          {
+            "name": "Ganeden Biotech, Inc.",
+            "percentage": 2.8
+          }
+        ],
+        "public_domain": {
+          "count": 4,
+          "patents_considered": 40,
+          "entries": [
+            {
+              "id": "patent/US20060264497A1/en",
+              "title": "Diindolylmethane-based compositions and methods of use thereof for promoting \u2026",
+              "link": "https://patents.google.com/patent/US20060264497A1/en",
+              "priority_date": "2005-03-28",
+              "assignee": "Zeligs Michael A",
+              "relevance_score": 0.44092726707458496,
+              "lapsed_in": [
+                "CA",
+                "EP",
+                "US",
+                "WO"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 21
+            },
+            {
+              "id": "patent/WO2012033422A1/en",
+              "title": "Medical cosmetic herbal composition on the basis of herbal mixture and the \u2026",
+              "link": "https://patents.google.com/patent/WO2012033422A1/en",
+              "priority_date": "2010-09-06",
+              "assignee": "Aleksandar Pavlov",
+              "relevance_score": 0.41291868686676025,
+              "lapsed_in": [
+                "WO"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 16
+            },
+            {
+              "id": "patent/KR102041995B1/en",
+              "title": "Natural hair shampoo composition powder with rosemary coffee oriental herb for \u2026",
+              "link": "https://patents.google.com/patent/KR102041995B1/en",
+              "priority_date": "2019-05-31",
+              "assignee": "\uc8fc\uc2dd\ud68c\uc0ac \ubaa8\uc140",
+              "relevance_score": 0.3556599020957947,
+              "lapsed_in": [
+                "KR"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 7
+            },
+            {
+              "id": "patent/US20210213083A1/en",
+              "title": "Water soluble cannabinoid powders",
+              "link": "https://patents.google.com/patent/US20210213083A1/en",
+              "priority_date": "2020-01-15",
+              "assignee": "Resurgent Biosciences, Inc.",
+              "relevance_score": 0.09226509928703308,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 6
+            }
+          ]
+        },
+        "search_strategy": {
+          "core_concepts": [
+            "wound healing paste",
+            "neem leaf extract",
+            "turmeric",
+            "honey",
+            "single-use sachet"
+          ],
+          "suggested_cpc": "A61K31/00",
+          "queries": [
+            {
+              "type": "major_markets",
+              "query": "(wound healing paste OR \"herbal wound paste\") (neem OR \"Azadirachta indica\") (turmeric OR curcumin) (honey) (sachet OR \"single-use sachet\")",
+              "rationale": "Uses the most specific nouns from the invention to locate exact prior art in major patent databases.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "india_specific",
+              "query": "(neem OR \"Azadirachta indica\") (turmeric OR curcumin) (honey OR \"natural sweetener\")",
+              "rationale": "A smaller Indian corpus needs fewer, broader groups; includes the three natural ingredients most likely to appear in Indian filings.",
+              "country": "IN",
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "broad_recall",
+              "query": "(wound dressing OR \"topical antiseptic\") (herbal OR plant) (extract OR preparation) (sachet OR packaging)",
+              "rationale": "Broader parent terms and many synonyms increase recall, capturing prior art that describes similar concepts with different wording.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "refined",
+              "query": "(\"herbal cream\" OR \"topical antiseptic\") (\"neem leaf extract\" OR \"Azadirachta indica extract\") (turmeric OR curcumin) (honey)",
+              "rationale": "Patents refer to the product as a \"herbal cream\" or \"topical antiseptic\" using leaf extracts, which your queries missed.",
+              "country": null,
+              "result_count": 0,
+              "failed": false
+            }
+          ],
+          "market_query": "wound healing paste neem leaf extract turmeric honey",
+          "trends_keyword": null,
+          "serpapi_calls": {
+            "google_patents": 5,
+            "google": 1,
+            "google_patents_details": 6
+          },
+          "refinement_observation": "Patents refer to the product as a \"herbal cream\" or \"topical antiseptic\" using leaf extracts, which your queries missed.",
+          "refinement_terms": [
+            "herbal cream",
+            "topical antiseptic",
+            "leaf extract"
+          ]
+        },
+        "citation_network": {
+          "discoveries": [
+            {
+              "id": "patent/KR20100123423A/en",
+              "title": "Composition of toothpaste for whitening and method of preparing thereof",
+              "link": "https://patents.google.com/patent/KR20100123423A/en",
+              "assignee": "\ud669\ucca0\uc218",
+              "priority_date": "2009-05-15",
+              "referenced_by": [
+                "patent/CN110519997B/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": false
+            },
+            {
+              "id": "patent/KR20130071216A/en",
+              "title": "Food additives comprising extract of skg showing an anti-osteoporosis",
+              "link": "https://patents.google.com/patent/KR20130071216A/en",
+              "assignee": "\uc8fc\uc2dd\ud68c\uc0ac \uc9c4\uc0dd\uc0ac\uc774\uc5b8\uc2a4",
+              "priority_date": "2011-12-20",
+              "referenced_by": [
+                "patent/CN110519997B/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": false
+            },
+            {
+              "id": "patent/CN104013556A/en",
+              "title": "Toothpaste containing moringa oleifera component",
+              "link": "https://patents.google.com/patent/CN104013556A/en",
+              "assignee": "\u5468\u65f6\u654f",
+              "priority_date": "2014-06-25",
+              "referenced_by": [
+                "patent/CN110519997B/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": false
+            }
+          ],
+          "edges": [],
+          "references_scanned": 94
+        },
+        "market_trend": null,
+        "plain_summary": "You already have a lot of prior art that uses plant extracts for skin or oral health, and WO2020054204A1 even discloses a neem extract. However, none of the patents combine fresh neem leaves with turmeric and honey in a single\u2011use sachet for wound care. To stand out, specify the exact turmeric\u2011to\u2011honey ratio, use a special biodegradable sachet, or add a known wound\u2011healing peptide to the mix. Those tweaks will give your formulation a clearer technical edge.",
+        "original_idea_text": null,
+        "language_code": "en",
+        "language_name": "English",
+        "localized": null,
+        "examined_documents": [
+          {
+            "id": "patent/CN110519997B/en",
+            "source_type": "patent",
+            "title": "\u2026 inhibiting and regeneration of tooth Zhou Gu of Moringa oleifera leaf extract \u2026",
+            "link": "https://patents.google.com/patent/CN110519997B/en",
+            "text": "Abstract: The present invention relates to a composition for preventing, improving or treating periodontal disease, which contains Moringa oleifera extract and Eucommia bark extract as active ingredients. More specifically, the composite composition of Moringa oleifera extract and Eucommia bark extract according to the present invention provides a synergistic effect in improving periodontal diseases including gingivitis and periodontitis. In particular, it exhibits the effect of directly preventing or improving periodontal disease by improving alveolar bone loss and regeneration of alveolar bone through antioxidative, antibacterial, or anti-inflammatory effects. Therefore, it can be effectively used as food, medicine, quasi-drug, and the like.\n\nClaim 1: 1.\u4e00\u79cd\u7528\u4e8e\u9884\u9632\u6216\u6539\u5584\u7259\u5468\u75c5\u7684\u7ec4\u5408\u7269\uff0c\u5176\u5305\u542b\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u548c\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u4f5c\u4e3a\u6d3b\u6027\u6210\u5206\uff0c\n\nClaim 2: \u5176\u4e2d\u6240\u8ff0\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u4e0e\u6240\u8ff0\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u7684\u91cd\u91cf\u6bd4\u662f2:1\u81f34:1\uff0c\n\nClaim 3: \u5176\u4e2d\u6240\u8ff0\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u901a\u8fc7\u4f7f\u7528\u6c34\u4f5c\u4e3a\u63d0\u53d6\u6eb6\u5242\u6765\u5236\u5907\uff0c\u5e76\u4e14\u542b\u6709\u57fa\u4e8e\u603b\u7684\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u76841.2mg/g\u81f35mg/g\u7684\u9ec4\u82aa\u7519\uff0c\u5e76\u4e14\n\nClaim 4: \u5176\u4e2d\u6240\u8ff0\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u901a\u8fc7\u4f7f\u7528\u6c34\u4f5c\u4e3a\u63d0\u53d6\u6eb6\u5242\u6765\u5236\u5907\uff0c\u5e76\u4e14\u542b\u6709\u57fa\u4e8e\u603b\u7684\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u76841.0mg/g\u81f315mg/g\u7684\u677e\u8102\u9187\u4e8c\u8461\u8404\u7cd6\u82f7\u3002\n\nClaim 5: 2.\u6839\u636e\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u7ec4\u5408\u7269\uff0c\u5176\u4e2d\u6240\u8ff0\u7ec4\u5408\u7269\u662f\u836f\u7269\u7ec4\u5408\u7269\u3002\n\nClaim 6: 3.\u6839\u636e\u6743\u5229\u8981\u6c421\u62162\u6240\u8ff0\u7684\u7ec4\u5408\u7269\uff0c\u5176\u4e2d\u6240\u8ff0\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u4e0e\u6240\u8ff0\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u7684\u91cd\u91cf\u6bd4\u662f2:1\u62164:1\u3002",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention relates to a composition for preventing, improving or treating periodontal disease, which contains Moringa oleifera extract and Eucommia bark extract as active ingredients. More specifically, the composite composition of Moringa oleifera extract and Eucommia bark extract according to the present invention provides a synergistic effect in improving periodontal diseases including gingivitis and periodontitis. In particular, it exhibits the effect of directly preventing or improving periodontal disease by improving alveolar bone loss and regeneration of alveolar bone through antioxidative, antibacterial, or anti-inflammatory effects. Therefore, it can be effectively used as food, medicine, quasi-drug, and the like.",
+                "original_chars": 743,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1.\u4e00\u79cd\u7528\u4e8e\u9884\u9632\u6216\u6539\u5584\u7259\u5468\u75c5\u7684\u7ec4\u5408\u7269\uff0c\u5176\u5305\u542b\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u548c\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u4f5c\u4e3a\u6d3b\u6027\u6210\u5206\uff0c",
+                "original_chars": 42,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\u5176\u4e2d\u6240\u8ff0\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u4e0e\u6240\u8ff0\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u7684\u91cd\u91cf\u6bd4\u662f2:1\u81f34:1\uff0c",
+                "original_chars": 32,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\u5176\u4e2d\u6240\u8ff0\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u901a\u8fc7\u4f7f\u7528\u6c34\u4f5c\u4e3a\u63d0\u53d6\u6eb6\u5242\u6765\u5236\u5907\uff0c\u5e76\u4e14\u542b\u6709\u57fa\u4e8e\u603b\u7684\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u76841.2mg/g\u81f35mg/g\u7684\u9ec4\u82aa\u7519\uff0c\u5e76\u4e14",
+                "original_chars": 60,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\u5176\u4e2d\u6240\u8ff0\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u901a\u8fc7\u4f7f\u7528\u6c34\u4f5c\u4e3a\u63d0\u53d6\u6eb6\u5242\u6765\u5236\u5907\uff0c\u5e76\u4e14\u542b\u6709\u57fa\u4e8e\u603b\u7684\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u76841.0mg/g\u81f315mg/g\u7684\u677e\u8102\u9187\u4e8c\u8461\u8404\u7cd6\u82f7\u3002",
+                "original_chars": 64,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "2.\u6839\u636e\u6743\u5229\u8981\u6c421\u6240\u8ff0\u7684\u7ec4\u5408\u7269\uff0c\u5176\u4e2d\u6240\u8ff0\u7ec4\u5408\u7269\u662f\u836f\u7269\u7ec4\u5408\u7269\u3002",
+                "original_chars": 30,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "3.\u6839\u636e\u6743\u5229\u8981\u6c421\u62162\u6240\u8ff0\u7684\u7ec4\u5408\u7269\uff0c\u5176\u4e2d\u6240\u8ff0\u8fa3\u6728\u53f6\u63d0\u53d6\u7269\u4e0e\u6240\u8ff0\u675c\u4ef2\u76ae\u63d0\u53d6\u7269\u7684\u91cd\u91cf\u6bd4\u662f2:1\u62164:1\u3002",
+                "original_chars": 50,
+                "truncated": false
+              }
+            ],
+            "total_claims": 11
+          },
+          {
+            "id": "patent/CN109700753A/en",
+            "source_type": "patent",
+            "title": "A kind of skin care compositions and its application and preparation method \u2026",
+            "link": "https://patents.google.com/patent/CN109700753A/en",
+            "text": "Abstract: The present invention relates to a kind of skin care compositions with moisturizing anti-oxidation efficacy and its application and preparation methods.The composition by weight, including allantoin 0.01-1.0 parts by weight\uff1bWrap up retinol 0.01-0.5 parts by weight\uff1bAlgaroba seed extract 0.1-1.0 parts by weight\uff1bStarfish branch tube algae extract 1-5 parts by weight\uff1bPlant Shu Min agent 0.01-1.0 parts by weight\uff1bEfficient moisture-retention agent 0.01-1.0 parts by weight\uff1bPhytoestrogen 0.01-1.0 parts by weight\uff1bLactobacillus-fermented lysate 0.01-2.0 parts by weight\uff1bGlycosaminoglycan 0.01-2.0 parts by weight\uff1bCarnosine 0.01-0.5 parts by weight\uff1bRed blood streak dispelling factor 0.1-3.0 parts by weight etc..The present invention medical mechanism different using each ingredient, give full play to the synergistic function between each ingredient, resulting composition is enabled to resist free radical, inhibit scytitis, improve self maintenance ability of skin immunity and Skin Cell, growth-promoting collagen and elastic fibers enable skin water profit compact bright and clean beautiful.\n\nClaim 1: 1. a kind of composition, which is characterized in that by weight, comprising:\n\nClaim 2: 2. composition according to claim 1, which is characterized in that\n\nClaim 3: The skin conditioning agent be selected from allantoin, package retinol, algaroba seed extract, panthenol, starfish branch tube algae extract,\nPlant Shu Min agent, efficient moisture-retention agent, phytoestrogen, lactobacillus-fermented lysate, glycosaminoglycan, two split yeast fermentation\nOne of product lysis object, carnosine, rose, aurantiamarin methyl chalcone, Wild soybean peptide, Red blood streak dispelling factor are several\nKind\uff1b\n\nClaim 4: The moisturizer is selected from one or more of 1,3- propylene glycol, glycerol, Sodium Hyaluronate, trehalose\uff1b\n\nClaim 5: The emollient is in glycerol three (thylhexoic acid) ester, two heptanoate of neopentyl glycol, saualane, dimethyl silicone polymer\nOne or more\uff1b\n\nClaim 6: The antioxidant is selected from tocopherol acetate.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention relates to a kind of skin care compositions with moisturizing anti-oxidation efficacy and its application and preparation methods.The composition by weight, including allantoin 0.01-1.0 parts by weight\uff1bWrap up retinol 0.01-0.5 parts by weight\uff1bAlgaroba seed extract 0.1-1.0 parts by weight\uff1bStarfish branch tube algae extract 1-5 parts by weight\uff1bPlant Shu Min agent 0.01-1.0 parts by weight\uff1bEfficient moisture-retention agent 0.01-1.0 parts by weight\uff1bPhytoestrogen 0.01-1.0 parts by weight\uff1bLactobacillus-fermented lysate 0.01-2.0 parts by weight\uff1bGlycosaminoglycan 0.01-2.0 parts by weight\uff1bCarnosine 0.01-0.5 parts by weight\uff1bRed blood streak dispelling factor 0.1-3.0 parts by weight etc..The present invention medical mechanism different using each ingredient, give full play to the synergistic function between each ingredient, resulting composition is enabled to resist free radical, inhibit scytitis, improve self maintenance ability of skin immunity and Skin Cell, growth-promoting collagen and elastic fibers enable skin water profit compact bright and clean beautiful.",
+                "original_chars": 1094,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. a kind of composition, which is characterized in that by weight, comprising:",
+                "original_chars": 79,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. composition according to claim 1, which is characterized in that",
+                "original_chars": 67,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "The skin conditioning agent be selected from allantoin, package retinol, algaroba seed extract, panthenol, starfish branch tube algae extract,\nPlant Shu Min agent, efficient moisture-retention agent, phytoestrogen, lactobacillus-fermented lysate, glycosaminoglycan, two split yeast fermentation\nOne of product lysis object, carnosine, rose, aurantiamarin methyl chalcone, Wild soybean peptide, Red blood streak dispelling factor are several\nKind\uff1b",
+                "original_chars": 446,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "The moisturizer is selected from one or more of 1,3- propylene glycol, glycerol, Sodium Hyaluronate, trehalose\uff1b",
+                "original_chars": 111,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "The emollient is in glycerol three (thylhexoic acid) ester, two heptanoate of neopentyl glycol, saualane, dimethyl silicone polymer\nOne or more\uff1b",
+                "original_chars": 144,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "The antioxidant is selected from tocopherol acetate.",
+                "original_chars": 52,
+                "truncated": false
+              }
+            ],
+            "total_claims": 44
+          },
+          {
+            "id": "patent/KR101196113B1/en",
+            "source_type": "patent",
+            "title": "\u2026 and HandWash composition Thereof containing natural oriental plant extracts",
+            "link": "https://patents.google.com/patent/KR101196113B1/en",
+            "text": "Abstract: The present invention is a herbal extract, anhydrous ethanol, aloe vera gel, hyaluronic acid, purified water, grapefruit seed extract, herbal oil cleansing composition consisting of essential oils, and the herbal hand cleansing manufacturing method to prepare a composition Eliminates neuralgia and sleep disturbances of the extract, Bone Tobacco, to alleviate skin diseases and wounds by the insecticidal and disinfectant effect of green tree, the insecticidal and disinfectant effect of paulownia, the sterilizing effect of ethanol and essential oil, and aloe Veragel, hyaluronic acid, and purified water inhibit aging of the skin of the hand while maintaining moisturizing of the skin of the hand. The present invention relates to a hand washing manufacturing method comprising a natural herbal extract for providing a material and a hand cleaning composition thereof.\n\nClaim 1: \uace8\ub2f4\ucd08, \uc74c\ub098\ubb34, \uac1c\uc624\ub3d9\ub098\ubb34 \uc911 \uc120\ud0dd\ub41c \uc5b4\ub290 \ud558\ub098\ub97c \uc774\uc6a9\ud558\uc5ec \ucd94\ucd9c\ud55c \ud55c\ubc29\ucd94\ucd9c\ubb3c\uacfc \ubb34\uc218\uc5d0\ud0c4\uc62c, \uc54c\ub85c\uc5d0\ubca0\ub77c\uac94, \ud788\uc54c\ub8e8\ub860\uc0b0, \uc815\uc81c\uc218, \uc790\ubabd\uc528\ucd94\ucd9c\ubb3c\uacfc \ud398\ud37c\ubbfc\ud2b8 \uc5d0\uc13c\uc15c\uc624\uc77c, \ub77c\ubca4\ub354 \uc5d0\uc13c\uc15c\uc624\uc77c, \ud2f0\ud2b8\ub9ac \uc5d0\uc13c\uc15c\uc624\uc77c, \uc720\uce7c\ub9bd\ud22c\uc2a4 \uc5d0\uc13c\uc15c\uc624\uc77c\uc774 \ud63c\ud569\ub418\uac70\ub098 \uc120\ud0dd\ub41c \uc5b4\ub290\ud558\ub098\uc758  \uc5d0\uc13c\uc158\uc624\uc77c(essential oil)\ub85c \uad6c\uc131\ub418\ub294 \ud55c\ubc29\uc190\uc138\uc815\uc81c\ub97c \uad6c\uc131\uc694\uc18c\ub97c \uc900\ube44\ud558\ub294 \ub2e8\uacc4(100)\uc640;\uc0c1\uae30 \ubb34\uc218\uc5d0\ud0c4\uc62c\uc744 \uacc4\ub7c9\ud558\uc5ec \uc0c1\uae30 \uc5d0\uc13c\uc15c\uc624\uc77c(essential oil)\uacfc \ud63c\ud569\ud558\uc5ec \ubb34\uc218\uc5d0\ud0c4\uc62c \ubc0f \uc5d0\uc13c\uc15c\uc624\uc77c \uc81c 1\ud63c\ud569\uc218\ub97c \uc81c\uc870\ud558\ub294 \ub2e8\uacc4(200)\uc640;\uc0c1\uae30 \ud63c\ud569\uc218\uc5d0 \uc0c1\uae30 \ud55c\ubc29\ucd94\ucd9c\ubb3c, \uc54c\ub85c\uc5d0\ubca0\ub77c\uac94, \ud788\uc54c\ub8e8\ub860\uc0b0, \uc790\ubabd\uc528\ucd94\ucd9c\ubb3c, \uc815\uc81c\uc218\ub97c \ud63c\ud569\ud558\ub294 \uc81c 2\ud63c\ud569\uc218\ub97c \uc81c\uc870\ud558\ub294 \ub2e8\uacc4(300)\uc640;\uc0c1\uae30 \uc81c 2\ud63c\ud569\uc218\ub97c \uc6a9\uae30\uc5d0 \ud3ec\uc7a5\ud558\uc5ec \uc0c1\uc628\uc5d0\uc11c 1 \ub0b4\uc9c0 2\uc77c \ubcf4\uad00\ud558\ub294 \ud3ec\uc7a5 \ubc0f \ubcf4\uad00\ud558\ub294 \ub2e8\uacc4(500)\ub85c \uad6c\uc131\ub418\ub294 \uac83\uc744 \ud2b9\uc9d5\uc73c\ub85c \ud558\ub294 \ucc9c\uc5f0\ud55c\ubc29\ucd94\ucd9c\ubb3c\uc744 \ud3ec\ud568\ud558\ub294 \uc190\uc138\uc815\uc81c \uc81c\uc870\ubc29\ubc95.\n\nClaim 2: \uc81c 1\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \uc81c 2\ud63c\ud569\uc218\ub97c \uc81c\uc870\ud558\ub294 \ub2e8\uacc4(300)\uc640, \uc0c1\uae30 \ud3ec\uc7a5 \ubc0f \ubcf4\uad00\ud558\ub294 \ub2e8\uacc4(500) \uc0ac\uc774\uc5d0  \uc0c1\uae30 \uc81c 2\ud63c\ud569\uc218\uc5d0 \uc0c1\uc5d0 \ubd80\uc720\ub41c \uc624\uc77c\uc744 \uc81c\uac70\ud558\uae30 \uc704\ud558\uc5ec \uc720\ud654\uc81c\ub97c \ud22c\uc785\ud558\ub294 \ub2e8\uacc4(350)\uac00 \ub354 \uad6c\uc131\ub418\ub294 \uac83\uc744 \ud2b9\uc9d5\uc73c\ub85c \ud558\ub294 \ucc9c\uc5f0\ud55c\ubc29\ucd94\ucd9c\ubb3c\uc744 \ud3ec\ud568\ud558\ub294 \uc190\uc138\uc815\uc81c \uc81c\uc870\ubc29\ubc95.\n\nClaim 3: \uc0ad\uc81c\n\nClaim 4: \uc0ad\uc81c\n\nClaim 5: \uc81c 1\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ud55c\ubc29\uc190\uc138\uc815\uc81c\ub294 \ud55c\ubc29\ucd94\ucd9c\ubb3c 20 \uc911\ub7c9%\uc640, \ubb34\uc218\uc5d0\ud0c4\uc62c 60 \uc911\ub7c9%\uc640, \uc54c\ub85c\uc5d0\ubca0\ub77c\uac94 5 \uc911\ub7c9%\uc640, \ud788\uc54c\ub8e8\ub860\uc0b0 5 \uc911\ub7c9%\uc640, \uc815\uc81c\uc218 8 \uc911\ub7c9%\uc640 \uc790\ubabd\uc528\ucd94\ucd9c\ubb3c 1 \uc911\ub7c9%\uc640, \uc5d0\uc13c\uc15c\uc624\uc77c(essential oil) 1 \uc911\ub7c9%\ub85c \uad6c\uc131\ub418\ub294 \uac83\uc744 \ud2b9\uc9d5\uc73c\ub85c \ud558\ub294 \ucc9c\uc5f0\ud55c\ubc29\ucd94\ucd9c\ubb3c\uc744 \ud3ec\ud568\ud558\ub294 \uc190\uc138\uc815\uc81c \uc81c\uc870\ubc29\ubc95.\n\nClaim 6: \uc0ad\uc81c",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention is a herbal extract, anhydrous ethanol, aloe vera gel, hyaluronic acid, purified water, grapefruit seed extract, herbal oil cleansing composition consisting of essential oils, and the herbal hand cleansing manufacturing method to prepare a composition Eliminates neuralgia and sleep disturbances of the extract, Bone Tobacco, to alleviate skin diseases and wounds by the insecticidal and disinfectant effect of green tree, the insecticidal and disinfectant effect of paulownia, the sterilizing effect of ethanol and essential oil, and aloe Veragel, hyaluronic acid, and purified water inhibit aging of the skin of the hand while maintaining moisturizing of the skin of the hand. The present invention relates to a hand washing manufacturing method comprising a natural herbal extract for providing a material and a hand cleaning composition thereof.",
+                "original_chars": 871,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "\uace8\ub2f4\ucd08, \uc74c\ub098\ubb34, \uac1c\uc624\ub3d9\ub098\ubb34 \uc911 \uc120\ud0dd\ub41c \uc5b4\ub290 \ud558\ub098\ub97c \uc774\uc6a9\ud558\uc5ec \ucd94\ucd9c\ud55c \ud55c\ubc29\ucd94\ucd9c\ubb3c\uacfc \ubb34\uc218\uc5d0\ud0c4\uc62c, \uc54c\ub85c\uc5d0\ubca0\ub77c\uac94, \ud788\uc54c\ub8e8\ub860\uc0b0, \uc815\uc81c\uc218, \uc790\ubabd\uc528\ucd94\ucd9c\ubb3c\uacfc \ud398\ud37c\ubbfc\ud2b8 \uc5d0\uc13c\uc15c\uc624\uc77c, \ub77c\ubca4\ub354 \uc5d0\uc13c\uc15c\uc624\uc77c, \ud2f0\ud2b8\ub9ac \uc5d0\uc13c\uc15c\uc624\uc77c, \uc720\uce7c\ub9bd\ud22c\uc2a4 \uc5d0\uc13c\uc15c\uc624\uc77c\uc774 \ud63c\ud569\ub418\uac70\ub098 \uc120\ud0dd\ub41c \uc5b4\ub290\ud558\ub098\uc758  \uc5d0\uc13c\uc158\uc624\uc77c(essential oil)\ub85c \uad6c\uc131\ub418\ub294 \ud55c\ubc29\uc190\uc138\uc815\uc81c\ub97c \uad6c\uc131\uc694\uc18c\ub97c \uc900\ube44\ud558\ub294 \ub2e8\uacc4(100)\uc640;\uc0c1\uae30 \ubb34\uc218\uc5d0\ud0c4\uc62c\uc744 \uacc4\ub7c9\ud558\uc5ec \uc0c1\uae30 \uc5d0\uc13c\uc15c\uc624\uc77c(essential oil)\uacfc \ud63c\ud569\ud558\uc5ec \ubb34\uc218\uc5d0\ud0c4\uc62c \ubc0f \uc5d0\uc13c\uc15c\uc624\uc77c \uc81c 1\ud63c\ud569\uc218\ub97c \uc81c\uc870\ud558\ub294 \ub2e8\uacc4(200)\uc640;\uc0c1\uae30 \ud63c\ud569\uc218\uc5d0 \uc0c1\uae30 \ud55c\ubc29\ucd94\ucd9c\ubb3c, \uc54c\ub85c\uc5d0\ubca0\ub77c\uac94, \ud788\uc54c\ub8e8\ub860\uc0b0, \uc790\ubabd\uc528\ucd94\ucd9c\ubb3c, \uc815\uc81c\uc218\ub97c \ud63c\ud569\ud558\ub294 \uc81c 2\ud63c\ud569\uc218\ub97c \uc81c\uc870\ud558\ub294 \ub2e8\uacc4(300)\uc640;\uc0c1\uae30 \uc81c 2\ud63c\ud569\uc218\ub97c \uc6a9\uae30\uc5d0 \ud3ec\uc7a5\ud558\uc5ec \uc0c1\uc628\uc5d0\uc11c 1 \ub0b4\uc9c0 2\uc77c \ubcf4\uad00\ud558\ub294 \ud3ec\uc7a5 \ubc0f \ubcf4\uad00\ud558\ub294 \ub2e8\uacc4(500)\ub85c \uad6c\uc131\ub418\ub294 \uac83\uc744 \ud2b9\uc9d5\uc73c\ub85c \ud558\ub294 \ucc9c\uc5f0\ud55c\ubc29\ucd94\ucd9c\ubb3c\uc744 \ud3ec\ud568\ud558\ub294 \uc190\uc138\uc815\uc81c \uc81c\uc870\ubc29\ubc95.",
+                "original_chars": 450,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\uc81c 1\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \uc81c 2\ud63c\ud569\uc218\ub97c \uc81c\uc870\ud558\ub294 \ub2e8\uacc4(300)\uc640, \uc0c1\uae30 \ud3ec\uc7a5 \ubc0f \ubcf4\uad00\ud558\ub294 \ub2e8\uacc4(500) \uc0ac\uc774\uc5d0  \uc0c1\uae30 \uc81c 2\ud63c\ud569\uc218\uc5d0 \uc0c1\uc5d0 \ubd80\uc720\ub41c \uc624\uc77c\uc744 \uc81c\uac70\ud558\uae30 \uc704\ud558\uc5ec \uc720\ud654\uc81c\ub97c \ud22c\uc785\ud558\ub294 \ub2e8\uacc4(350)\uac00 \ub354 \uad6c\uc131\ub418\ub294 \uac83\uc744 \ud2b9\uc9d5\uc73c\ub85c \ud558\ub294 \ucc9c\uc5f0\ud55c\ubc29\ucd94\ucd9c\ubb3c\uc744 \ud3ec\ud568\ud558\ub294 \uc190\uc138\uc815\uc81c \uc81c\uc870\ubc29\ubc95.",
+                "original_chars": 154,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\uc0ad\uc81c",
+                "original_chars": 2,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\uc0ad\uc81c",
+                "original_chars": 2,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "\uc81c 1\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ud55c\ubc29\uc190\uc138\uc815\uc81c\ub294 \ud55c\ubc29\ucd94\ucd9c\ubb3c 20 \uc911\ub7c9%\uc640, \ubb34\uc218\uc5d0\ud0c4\uc62c 60 \uc911\ub7c9%\uc640, \uc54c\ub85c\uc5d0\ubca0\ub77c\uac94 5 \uc911\ub7c9%\uc640, \ud788\uc54c\ub8e8\ub860\uc0b0 5 \uc911\ub7c9%\uc640, \uc815\uc81c\uc218 8 \uc911\ub7c9%\uc640 \uc790\ubabd\uc528\ucd94\ucd9c\ubb3c 1 \uc911\ub7c9%\uc640, \uc5d0\uc13c\uc15c\uc624\uc77c(essential oil) 1 \uc911\ub7c9%\ub85c \uad6c\uc131\ub418\ub294 \uac83\uc744 \ud2b9\uc9d5\uc73c\ub85c \ud558\ub294 \ucc9c\uc5f0\ud55c\ubc29\ucd94\ucd9c\ubb3c\uc744 \ud3ec\ud568\ud558\ub294 \uc190\uc138\uc815\uc81c \uc81c\uc870\ubc29\ubc95.",
+                "original_chars": 174,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "\uc0ad\uc81c",
+                "original_chars": 2,
+                "truncated": false
+              }
+            ],
+            "total_claims": 7
+          },
+          {
+            "id": "patent/WO2020054204A1/en",
+            "source_type": "patent",
+            "title": "Antioxidant",
+            "link": "https://patents.google.com/patent/WO2020054204A1/en",
+            "text": "Abstract: Provided is an antioxidant for safely and efficiently reducing oxidative stress in vivo by promoting the expression of an antioxidative enzyme or a redox-related factor in vivo to thereby maintain good health and prevent various diseases and symptoms caused by oxidative stress. The antioxidant contains an extract of Albizia julibrissin and has, in particular, an effect of promoting the expression of an antioxidative enzyme gene and/or a redox-related factor gene.\n\nClaim 1: \u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u3092\u542b\u6709\u3059\u308b\u6297\u9178\u5316\u5264\u3002\n\nClaim 2: \u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u304c\u30cd\u30e0\u30ce\u30ad\u5c5e\u690d\u7269\u306e\u690d\u7269\u4f53\u304b\u3089\u306e\u6c34\u62bd\u51fa\u7269\u3067\u3042\u308b\u8acb\u6c42\u9805\uff11\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002\n\nClaim 3: \u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u304c\u3001\u6297\u9178\u5316\u95a2\u9023\u9175\u7d20\u304a\u3088\u3073\uff0f\u307e\u305f\u306f\u30ec\u30c9\u30c3\u30af\u30b9\u95a2\u9023\u56e0\u5b50\u306e\u907a\u4f1d\u5b50\u767a\u73fe\u4ea2\u9032\u4f5c\u7528\u3092\u6709\u3059\u308b\u8acb\u6c42\u9805\uff11\u307e\u305f\u306f\uff12\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002\n\nClaim 4: \u6297\u9178\u5316\u95a2\u9023\u9175\u7d20\u304a\u3088\u3073\uff0f\u307e\u305f\u306f\u30ec\u30c9\u30c3\u30af\u30b9\u95a2\u9023\u56e0\u5b50\u304c\u3001\u30b9\u30fc\u30d1\u30fc\u30aa\u30ad\u30b7\u30c9\u30c7\u30a3\u30b9\u30e0\u30bf\u30fc\u30bc\uff08\uff33\uff2f\uff24\uff09\u3001\u30da\u30eb\u30aa\u30ad\u30b7\u30ec\u30c9\u30ad\u30b7\u30f3\uff08\uff30\uff32\uff38\uff09\u3001\u30c1\u30aa\u30ec\u30c9\u30ad\u30b7\u30f3\uff08\uff34\uff38\uff2e\uff09\u3001\u30c1\u30aa\u30ec\u30c9\u30ad\u30b7\u30f3\u30ec\u30c0\u30af\u30bf\u30fc\u30bc\uff08\uff34\uff32\uff24\uff09\u3001\u30b0\u30eb\u30bf\u30c1\u30aa\u30f3\u30ec\u30c0\u30af\u30bf\u30fc\u30bc\uff08\uff27\uff32\uff24\uff09\u304a\u3088\u3073\u30b0\u30eb\u30bf\u30ec\u30c9\u30ad\u30b7\u30f3\uff08\uff27\uff38\uff2e\uff09\u304b\u3089\u306a\u308b\u7fa4\u3088\u308a\u9078\u629e\u3055\u308c\u308b\u5c11\u306a\u304f\u3068\u3082\u3044\u305a\u308c\u304b\uff11\u7a2e\u4ee5\u4e0a\u3067\u3042\u308b\u3001\u8acb\u6c42\u9805\uff11\u304b\u3089\uff13\u306e\u3044\u305a\u308c\u304b\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002\n\nClaim 5: \u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u304c\u3001\u7d30\u80de\u5185\u6d3b\u6027\u9178\u7d20\u4f4e\u6e1b\u4f5c\u7528\u3092\u6709\u3059\u308b\u3053\u3068\u3092\u7279\u5fb4\u3068\u3059\u308b\u8acb\u6c42\u9805\uff11\u304b\u3089\uff14\u306e\u3044\u305a\u308c\u304b\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002\n\nClaim 6: \u8acb\u6c42\u9805\uff11\uff5e\uff15\u306e\u3044\u305a\u308c\u304b\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3092\u914d\u5408\u3055\u308c\u3066\u306a\u308b\u76ae\u819a\u5916\u7528\u5264\u3002",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "Provided is an antioxidant for safely and efficiently reducing oxidative stress in vivo by promoting the expression of an antioxidative enzyme or a redox-related factor in vivo to thereby maintain good health and prevent various diseases and symptoms caused by oxidative stress. The antioxidant contains an extract of Albizia julibrissin and has, in particular, an effect of promoting the expression of an antioxidative enzyme gene and/or a redox-related factor gene.",
+                "original_chars": 467,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "\u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u3092\u542b\u6709\u3059\u308b\u6297\u9178\u5316\u5264\u3002",
+                "original_chars": 17,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u304c\u30cd\u30e0\u30ce\u30ad\u5c5e\u690d\u7269\u306e\u690d\u7269\u4f53\u304b\u3089\u306e\u6c34\u62bd\u51fa\u7269\u3067\u3042\u308b\u8acb\u6c42\u9805\uff11\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002",
+                "original_chars": 42,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u304c\u3001\u6297\u9178\u5316\u95a2\u9023\u9175\u7d20\u304a\u3088\u3073\uff0f\u307e\u305f\u306f\u30ec\u30c9\u30c3\u30af\u30b9\u95a2\u9023\u56e0\u5b50\u306e\u907a\u4f1d\u5b50\u767a\u73fe\u4ea2\u9032\u4f5c\u7528\u3092\u6709\u3059\u308b\u8acb\u6c42\u9805\uff11\u307e\u305f\u306f\uff12\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002",
+                "original_chars": 63,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\u6297\u9178\u5316\u95a2\u9023\u9175\u7d20\u304a\u3088\u3073\uff0f\u307e\u305f\u306f\u30ec\u30c9\u30c3\u30af\u30b9\u95a2\u9023\u56e0\u5b50\u304c\u3001\u30b9\u30fc\u30d1\u30fc\u30aa\u30ad\u30b7\u30c9\u30c7\u30a3\u30b9\u30e0\u30bf\u30fc\u30bc\uff08\uff33\uff2f\uff24\uff09\u3001\u30da\u30eb\u30aa\u30ad\u30b7\u30ec\u30c9\u30ad\u30b7\u30f3\uff08\uff30\uff32\uff38\uff09\u3001\u30c1\u30aa\u30ec\u30c9\u30ad\u30b7\u30f3\uff08\uff34\uff38\uff2e\uff09\u3001\u30c1\u30aa\u30ec\u30c9\u30ad\u30b7\u30f3\u30ec\u30c0\u30af\u30bf\u30fc\u30bc\uff08\uff34\uff32\uff24\uff09\u3001\u30b0\u30eb\u30bf\u30c1\u30aa\u30f3\u30ec\u30c0\u30af\u30bf\u30fc\u30bc\uff08\uff27\uff32\uff24\uff09\u304a\u3088\u3073\u30b0\u30eb\u30bf\u30ec\u30c9\u30ad\u30b7\u30f3\uff08\uff27\uff38\uff2e\uff09\u304b\u3089\u306a\u308b\u7fa4\u3088\u308a\u9078\u629e\u3055\u308c\u308b\u5c11\u306a\u304f\u3068\u3082\u3044\u305a\u308c\u304b\uff11\u7a2e\u4ee5\u4e0a\u3067\u3042\u308b\u3001\u8acb\u6c42\u9805\uff11\u304b\u3089\uff13\u306e\u3044\u305a\u308c\u304b\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002",
+                "original_chars": 177,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "\u30cd\u30e0\u30ce\u30ad\u62bd\u51fa\u7269\u304c\u3001\u7d30\u80de\u5185\u6d3b\u6027\u9178\u7d20\u4f4e\u6e1b\u4f5c\u7528\u3092\u6709\u3059\u308b\u3053\u3068\u3092\u7279\u5fb4\u3068\u3059\u308b\u8acb\u6c42\u9805\uff11\u304b\u3089\uff14\u306e\u3044\u305a\u308c\u304b\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3002",
+                "original_chars": 53,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "\u8acb\u6c42\u9805\uff11\uff5e\uff15\u306e\u3044\u305a\u308c\u304b\u306b\u8a18\u8f09\u306e\u6297\u9178\u5316\u5264\u3092\u914d\u5408\u3055\u308c\u3066\u306a\u308b\u76ae\u819a\u5916\u7528\u5264\u3002",
+                "original_chars": 33,
+                "truncated": false
+              }
+            ],
+            "total_claims": 7
+          },
+          {
+            "id": "patent/US20060264497A1/en",
+            "source_type": "patent",
+            "title": "Diindolylmethane-based compositions and methods of use thereof for promoting \u2026",
+            "link": "https://patents.google.com/patent/US20060264497A1/en",
+            "text": "Abstract: The present invention includes compositions and methods for the treatment and prevention of oral mucosal disorders and for promotion of bone health. In particular, the present invention describes new therapeutic and preventative uses for 3,3\u2032-diindolylmethane (DIM), or a DIM-related indole, alone or in combination with anti-inflammatory agents and/or antibacterial agents, to treat oral mucosal disorders and promote bone health. The compositions of the invention are used to prevent and reverse oral mucosal disorders and bone loss (osteopenia and osteoporosis) associated with aging and chronic inflammation. Oral mucosal disorders include Periodontitis, gingivitis and related oral mucosal inflammation. Formulations of the compositions of the invention include capsules, tablets, toothpastes, oral gels, mouthwashes, mouth rinses, lozenges, chewing gum, dental floss, and dental topical formulations, and fortified foods.\n\nClaim 1: 1. A method for preventing or treating oral mucosal disorders, or a symptom thereof, comprising administering to a subject in need thereof a therapeutically effective amount of Diindolylmethane (DIM) or a DIM-related indole.\n\nClaim 2: 2. The method of claim 1, wherein the administering is by systemic administration\n\nClaim 3: 3. The method of claim 1, wherein the administering is by topical oral administration.\n\nClaim 4: 4. The method of claim 1, wherein the symptom is calculus accumulation, apthous ulcer, oral malodor, gingivitis, periodontitis, alveolar bone loss, or loosening of teeth.\n\nClaim 5: 5. The method of claim 1, wherein the subject is a human.\n\nClaim 6: 6. The method of claim 1, where the DIM-related indole is selected from the group consisting of:",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention includes compositions and methods for the treatment and prevention of oral mucosal disorders and for promotion of bone health. In particular, the present invention describes new therapeutic and preventative uses for 3,3\u2032-diindolylmethane (DIM), or a DIM-related indole, alone or in combination with anti-inflammatory agents and/or antibacterial agents, to treat oral mucosal disorders and promote bone health. The compositions of the invention are used to prevent and reverse oral mucosal disorders and bone loss (osteopenia and osteoporosis) associated with aging and chronic inflammation. Oral mucosal disorders include Periodontitis, gingivitis and related oral mucosal inflammation. Formulations of the compositions of the invention include capsules, tablets, toothpastes, oral gels, mouthwashes, mouth rinses, lozenges, chewing gum, dental floss, and dental topical formulations, and fortified foods.",
+                "original_chars": 927,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A method for preventing or treating oral mucosal disorders, or a symptom thereof, comprising administering to a subject in need thereof a therapeutically effective amount of Diindolylmethane (DIM) or a DIM-related indole.",
+                "original_chars": 224,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The method of claim 1, wherein the administering is by systemic administration",
+                "original_chars": 81,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The method of claim 1, wherein the administering is by topical oral administration.",
+                "original_chars": 86,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The method of claim 1, wherein the symptom is calculus accumulation, apthous ulcer, oral malodor, gingivitis, periodontitis, alveolar bone loss, or loosening of teeth.",
+                "original_chars": 170,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The method of claim 1, wherein the subject is a human.",
+                "original_chars": 57,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The method of claim 1, where the DIM-related indole is selected from the group consisting of:",
+                "original_chars": 96,
+                "truncated": false
+              }
+            ],
+            "total_claims": 82
+          },
+          {
+            "id": "patent/KR20100123423A/en",
+            "source_type": "patent",
+            "title": "Composition of toothpaste for whitening and method of preparing thereof",
+            "link": "https://patents.google.com/patent/KR20100123423A/en",
+            "text": "Abstract: The present invention provides a toothpaste composition and a method for preparing the toothpaste composition for strengthening anti-inflammatory and antimicrobial resistance to tooth whitening, dental caries, oral disease and gum disease.\nThe present invention contains 3.5 ~ 5.0% by weight of dry lettuce powder in order to have a high whitening effect on the total weight of the toothpaste composition, which is mixed with dried herbal medicine consisting of Eochocho, gold and silver, worms and baekbaekpi, white paper, horse riding and donkey By adding 0.10 to 11.72% by weight of powder and alum to 0.01 to 1.21% by weight, anti-inflammatory and antimicrobial properties were added to prevent tooth decay and to have a great effect on oral disease, gum disease, periodontal disease gingivitis and periodontitis.\n\nClaim 1: \uc5f0\ub9c8\uc81c, \ubc1c\ud3ec\uc81c, \uc2b5\uc724\uc81c, \uc810\uacb0\uc81c, \uac10\ubbf8\uc81c, \uc57d\ud6a8\uc131\ubd84, \ucc29\ud5a5\uc81c \ubc0f \ubcf4\uc874\uc81c\uc5d0 \ub300\ud558\uc5ec\uc815\uc81c\uc218\ub97c \uac00\ud558\uc5ec \ub41c \uce58\uc57d \uc870\uc131\ubb3c\uc5d0 \uc788\uc5b4\uc11c,\n\nClaim 2: \uce58\uc57d\uc870\uc131\ubb3c\uc758 \uc804\uccb4 \uc911\ub7c9\uc5d0 \ub300\ud558\uc5ec \uc0c1\uce58 \uac74\uc870\ubd84\ub9d03.5~5.0\uc911\ub7c9%, \uc5b4\uc131\ucd08\uc640 \uae08\uc740\ud654\uc640 \ub450\ucda9\uacfc \uc0c1\ubc31\ud53c\uc640 \ubc31\uc9c0\uc640 \uc2b9\ub9c8\uc640 \ub2f9\uadc0\ub85c \uc774\ub8e8\uc5b4\uc9c4 \uc0dd\uc57d \ud63c\ud569 \uac74\uc870\ubd84\ub9d0 0.10~11.72\uc911\ub7c9% \ubc0f \ubc31\ubc18 0.01 ~1.21\uc911\ub7c9%\ub97c \ucca8\uac00\ud558\uc5ec\ub41c \uce58\uc544\ubbf8\ubc31\uc6a9 \uce58\uc57d \uc870\uc131\ubb3c.\n\nClaim 3: \uce58\uc57d \uc870\uc131\ubb3c\uc758 \uc81c\uc870 \ubc29\ubc95\uc5d0 \uc788\uc5b4\uc11c,\n\nClaim 4: \uc5f0\ub9c8\uc81c, \uc2b5\uc724\uc81c, \uc810\uacb0\uc81c, \uac10\ubbf8\uc81c, \uc57d\ud6a8\uc131\ubd84 \ubc0f \ubcf4\uc874\uc81c\uc5d0 \ub300\ud558\uc5ec \uc815\uc81c\uc218\ub97c \uac00\ud55c\ud6c4 \uae30 \uc900\ube44\ub41c \uad50\ubc18 \ud0f1\ud06c\uc5d0 \ud22c\uc785\ud558\uc5ec 1\uc2dc\uac04 \uc774\uc0c1  10-3Torr\uc758 \uc9c4\uacf5 \ubd84\uc704\uae30\uc5d0\uc11c \uade0\uc9c8\ud558\uac8c \ud63c\ud569\ud558\ub294 1\ucc28 \ud63c\ud569\ub2e8\uacc4;\n\nClaim 5: 1\ucc28 \ud63c\ud569 \ub2e8\uacc4 \ud6c4 \uae30 \uc900\ube44\ub41c \ubc1c\ud3ec\uc81c\ub97c \ud22c\uc785\ud558\uc5ec 1\uc2dc\uac04 \uc774\uc0c1 \uc0c1\uae30\uc640 \uac19\uc740 \uace0 \uc9c4\uacf5\ud558\uc5d0\uc11c 1\ucc28 \ud63c\ud569\ubb3c\uacfc \uade0\uc9c8\ud558\uac8c \ud63c\ud569\ud558\ub294 2\ucc28 \ud63c\ud569 \ub2e8\uacc4; \ubc0f\n\nClaim 6: 2\ucc28 \ud63c\ud569 \ub2e8\uacc4\ud6c4 \uae30 \uc900\ube44\ub41c \ucc29\ud5a5\uc81c\uc640 \uc0c1\uce58 \uac74\uc870\ubd84\ub9d03.5~5.0\uc911\ub7c9%, \uc5b4\uc131\ucd08\uc640 \uae08\uc740\ud654\uc640 \ub450\ucda9\uacfc \uc0c1\ubc31\ud53c\uc640 \ubc31\uc9c0\uc640 \uc2b9\ub9c8\uc640 \ub2f9\uadc0\ub85c \uc774\ub8e8\uc5b4\uc9c4 \uc0dd\uc57d \ud63c\ud569 \uac74\uc870\ubd84\ub9d0 0.10~11.72\uc911\ub7c9% \ubc0f \ubc31\ubc18 0.01 ~1.21\uc911\ub7c9%\uc744 \ud22c\uc785\ud558\uc5ec  10-3Torr\uc758 \uace0 \uc9c4\uacf5\ud558\uc5d0\uc11c \uc801\uc5b4\ub3c4 1\uc2dc\uac04 \uc774\uc0c1 \uade0\uc9c8\ud558\uac8c \ud63c\ud569\ud558\ub294 3\ucc28 \ud63c\ud569 \ub2e8\uacc4\ub97c \ud3ec\ud568\ud558\ub294 \uce58\uc544\ubbf8\ubc31\uc6a9 \uce58\uc57d  \uc870\uc131\ubb3c\uc758 \uc81c\uc870\ubc29\ubc95.",
+            "evidence_source": "claims",
+            "found_via": "citation",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention provides a toothpaste composition and a method for preparing the toothpaste composition for strengthening anti-inflammatory and antimicrobial resistance to tooth whitening, dental caries, oral disease and gum disease.\nThe present invention contains 3.5 ~ 5.0% by weight of dry lettuce powder in order to have a high whitening effect on the total weight of the toothpaste composition, which is mixed with dried herbal medicine consisting of Eochocho, gold and silver, worms and baekbaekpi, white paper, horse riding and donkey By adding 0.10 to 11.72% by weight of powder and alum to 0.01 to 1.21% by weight, anti-inflammatory and antimicrobial properties were added to prevent tooth decay and to have a great effect on oral disease, gum disease, periodontal disease gingivitis and periodontitis.",
+                "original_chars": 817,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "\uc5f0\ub9c8\uc81c, \ubc1c\ud3ec\uc81c, \uc2b5\uc724\uc81c, \uc810\uacb0\uc81c, \uac10\ubbf8\uc81c, \uc57d\ud6a8\uc131\ubd84, \ucc29\ud5a5\uc81c \ubc0f \ubcf4\uc874\uc81c\uc5d0 \ub300\ud558\uc5ec\uc815\uc81c\uc218\ub97c \uac00\ud558\uc5ec \ub41c \uce58\uc57d \uc870\uc131\ubb3c\uc5d0 \uc788\uc5b4\uc11c,",
+                "original_chars": 68,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\uce58\uc57d\uc870\uc131\ubb3c\uc758 \uc804\uccb4 \uc911\ub7c9\uc5d0 \ub300\ud558\uc5ec \uc0c1\uce58 \uac74\uc870\ubd84\ub9d03.5~5.0\uc911\ub7c9%, \uc5b4\uc131\ucd08\uc640 \uae08\uc740\ud654\uc640 \ub450\ucda9\uacfc \uc0c1\ubc31\ud53c\uc640 \ubc31\uc9c0\uc640 \uc2b9\ub9c8\uc640 \ub2f9\uadc0\ub85c \uc774\ub8e8\uc5b4\uc9c4 \uc0dd\uc57d \ud63c\ud569 \uac74\uc870\ubd84\ub9d0 0.10~11.72\uc911\ub7c9% \ubc0f \ubc31\ubc18 0.01 ~1.21\uc911\ub7c9%\ub97c \ucca8\uac00\ud558\uc5ec\ub41c \uce58\uc544\ubbf8\ubc31\uc6a9 \uce58\uc57d \uc870\uc131\ubb3c.",
+                "original_chars": 137,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\uce58\uc57d \uc870\uc131\ubb3c\uc758 \uc81c\uc870 \ubc29\ubc95\uc5d0 \uc788\uc5b4\uc11c,",
+                "original_chars": 19,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\uc5f0\ub9c8\uc81c, \uc2b5\uc724\uc81c, \uc810\uacb0\uc81c, \uac10\ubbf8\uc81c, \uc57d\ud6a8\uc131\ubd84 \ubc0f \ubcf4\uc874\uc81c\uc5d0 \ub300\ud558\uc5ec \uc815\uc81c\uc218\ub97c \uac00\ud55c\ud6c4 \uae30 \uc900\ube44\ub41c \uad50\ubc18 \ud0f1\ud06c\uc5d0 \ud22c\uc785\ud558\uc5ec 1\uc2dc\uac04 \uc774\uc0c1  10-3Torr\uc758 \uc9c4\uacf5 \ubd84\uc704\uae30\uc5d0\uc11c \uade0\uc9c8\ud558\uac8c \ud63c\ud569\ud558\ub294 1\ucc28 \ud63c\ud569\ub2e8\uacc4;",
+                "original_chars": 108,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "1\ucc28 \ud63c\ud569 \ub2e8\uacc4 \ud6c4 \uae30 \uc900\ube44\ub41c \ubc1c\ud3ec\uc81c\ub97c \ud22c\uc785\ud558\uc5ec 1\uc2dc\uac04 \uc774\uc0c1 \uc0c1\uae30\uc640 \uac19\uc740 \uace0 \uc9c4\uacf5\ud558\uc5d0\uc11c 1\ucc28 \ud63c\ud569\ubb3c\uacfc \uade0\uc9c8\ud558\uac8c \ud63c\ud569\ud558\ub294 2\ucc28 \ud63c\ud569 \ub2e8\uacc4; \ubc0f",
+                "original_chars": 78,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "2\ucc28 \ud63c\ud569 \ub2e8\uacc4\ud6c4 \uae30 \uc900\ube44\ub41c \ucc29\ud5a5\uc81c\uc640 \uc0c1\uce58 \uac74\uc870\ubd84\ub9d03.5~5.0\uc911\ub7c9%, \uc5b4\uc131\ucd08\uc640 \uae08\uc740\ud654\uc640 \ub450\ucda9\uacfc \uc0c1\ubc31\ud53c\uc640 \ubc31\uc9c0\uc640 \uc2b9\ub9c8\uc640 \ub2f9\uadc0\ub85c \uc774\ub8e8\uc5b4\uc9c4 \uc0dd\uc57d \ud63c\ud569 \uac74\uc870\ubd84\ub9d0 0.10~11.72\uc911\ub7c9% \ubc0f \ubc31\ubc18 0.01 ~1.21\uc911\ub7c9%\uc744 \ud22c\uc785\ud558\uc5ec  10-3Torr\uc758 \uace0 \uc9c4\uacf5\ud558\uc5d0\uc11c \uc801\uc5b4\ub3c4 1\uc2dc\uac04 \uc774\uc0c1 \uade0\uc9c8\ud558\uac8c \ud63c\ud569\ud558\ub294 3\ucc28 \ud63c\ud569 \ub2e8\uacc4\ub97c \ud3ec\ud568\ud558\ub294 \uce58\uc544\ubbf8\ubc31\uc6a9 \uce58\uc57d  \uc870\uc131\ubb3c\uc758 \uc81c\uc870\ubc29\ubc95.",
+                "original_chars": 201,
+                "truncated": false
+              }
+            ],
+            "total_claims": 6
+          }
+        ],
+        "feature_findings": [
+          {
+            "id": "F1",
+            "feature": "Grinding fresh neem leaves into a paste",
+            "evidence": []
+          },
+          {
+            "id": "F2",
+            "feature": "Adding turmeric as an anti\u2011inflammatory ingredient",
+            "evidence": []
+          },
+          {
+            "id": "F3",
+            "feature": "Adding honey as an antibacterial/s soothing ingredient",
+            "evidence": []
+          },
+          {
+            "id": "F4",
+            "feature": "Topical application to cuts and burns for wound healing",
+            "evidence": []
+          },
+          {
+            "id": "F5",
+            "feature": "Packaging in single\u2011use sachets for rural first\u2011aid kits",
+            "evidence": []
+          }
+        ],
+        "citation_followups": [
+          {
+            "id": "patent/KR20100123423A/en",
+            "title": "Composition of toothpaste for whitening and method of preparing thereof",
+            "link": "https://patents.google.com/patent/KR20100123423A/en",
+            "referenced_by": [
+              "patent/CN110519997B/en"
+            ],
+            "reason": "examiner_cited",
+            "evidence_source": "claims",
+            "verdict": "not_relevant",
+            "features_found": [],
+            "newly_found": [],
+            "explanation": "this document discloses a toothpaste composition with lettuce and other herbs, which does not relate to a neem\u2011turmeric\u2011honey wound\u2011healing paste or its packaging.",
+            "changed_conclusion": false
+          }
+        ],
+        "recheck": null,
+        "report_id": "e374cd0efce39bc5"
+      }
+    }
+  ]
+}

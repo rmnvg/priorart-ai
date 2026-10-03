@@ -27,8 +27,8 @@ SERPAPI_CACHE = os.getenv("SERPAPI_CACHE", "true").lower() != "false"
 # For iterating on prompts and code with no quota at risk.
 SERPAPI_OFFLINE = os.getenv("SERPAPI_OFFLINE", "false").lower() == "true"
 
-# Search budget per analysis. "full" (the default) is up to 16 searches;
-# "lean" is up to 11: fewer full-text lookups, one citation follow-up, no
+# Search budget per analysis. "full" (the default) is up to 17 searches;
+# "lean" is up to 12: fewer full-text lookups, one citation follow-up, no
 # Trends. Each setting below still overrides the profile.
 SEARCH_PROFILE = os.getenv("SEARCH_PROFILE", "full").lower()
 _PROFILE_DEFAULTS = {
@@ -56,8 +56,9 @@ CITATION_FOLLOWUPS = int(_budget("CITATION_FOLLOWUPS"))
 ENABLE_TRENDS = _budget("ENABLE_TRENDS").lower() != "false"
 
 # Most searches one analysis can make: 3 patent queries, the refinement
-# queries, 1 market query, Trends, the deep-dive and the citation follow-ups.
-MAX_SEARCHES_PER_ANALYSIS = 3 + REFINEMENT_QUERIES + 1 + int(ENABLE_TRENDS) + DEEP_DIVE_TOP_N + CITATION_FOLLOWUPS
+# queries, 1 paper query, 1 market query, Trends, the deep-dive and the
+# citation follow-ups.
+MAX_SEARCHES_PER_ANALYSIS = 3 + REFINEMENT_QUERIES + 1 + 1 + int(ENABLE_TRENDS) + DEEP_DIVE_TOP_N + CITATION_FOLLOWUPS
 
 # Where the web app is served, for report links handed out by the MCP server.
 PUBLIC_APP_URL = os.getenv("PUBLIC_APP_URL", "http://localhost:3000").rstrip("/")

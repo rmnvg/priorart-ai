@@ -1,0 +1,158 @@
+{
+  "summary": {
+    "cases": 5,
+    "errors": 0,
+    "top1_before": 0.0,
+    "top10_before": 0.0,
+    "found_before": 0.0,
+    "top1_after": 0.0,
+    "top10_after": 0.0,
+    "found_after": 0.0,
+    "top10_exact_before": 0.0,
+    "top10_exact_after": 0.0,
+    "refinement_improved": 0,
+    "refinement_worsened": 0,
+    "citation_cases": 5,
+    "top10_or_citations": 0.0,
+    "searches_used": 45,
+    "median_seconds": 10.7,
+    "total_seconds": 64.1
+  },
+  "results": [
+    {
+      "id": "hi-snap-bricks",
+      "patent": "US3005282A",
+      "rank_before": null,
+      "rank_after": null,
+      "match_before": null,
+      "match_after": null,
+      "seconds": 23.9,
+      "results_before": 40,
+      "results_after": 60,
+      "refined_queries": [
+        "(\"stud\" OR \"male connector\") (\"recess\" OR \"female cavity\" OR \"tongue and groove\") (plastic OR polymer) (\"toy brick\" OR \"building block\")"
+      ],
+      "refinement_observation": "Patents describe the pieces using \"stud\"/\"male connector\" and \"recess\"/\"female cavity\" (tongue\u2011and\u2011groove) rather than rounded protrusion/knot.",
+      "queries": [
+        "(plastic OR polymer) (brick OR block) (rounded protrusion OR knob) (hollow cavity OR socket) (interlock* OR snap fit)",
+        "(plastic block OR toy brick) (interlock* OR snap) (toy)",
+        "(building toy OR construction toy) (stackable OR snap fit OR interlocking) (child* OR kid*) (plastic OR polymer)",
+        "(\"stud\" OR \"male connector\") (\"recess\" OR \"female cavity\" OR \"tongue and groove\") (plastic OR polymer) (\"toy brick\" OR \"building block\")"
+      ],
+      "searches_used": 9,
+      "error": null,
+      "split": "heldout",
+      "translated_idea": "Small plastic bricks intended for children's play, each featuring a rounded protrusion on the top surface and a hollow cavity on the bottom surface, enabling one brick to be pressed onto another so that they interlock securely yet can be easily separated.",
+      "rank_citations": null,
+      "citation_depth": 5
+    },
+    {
+      "id": "hi-twist-cube",
+      "patent": "US4378116A",
+      "rank_before": null,
+      "rank_after": null,
+      "match_before": null,
+      "match_after": null,
+      "seconds": 8.3,
+      "results_before": 21,
+      "results_after": 21,
+      "refined_queries": [
+        "(\"rotating cube\" OR \"twistable cube\") (\"facelet\" OR \"colored facelet\") (\"slice rotation\" OR \"layered rotation mechanism\")"
+      ],
+      "refinement_observation": "Patents refer to the device as a \"rotating cube\" with \"facelets\" and \"layered rotation mechanism\", not just generic cube puzzle terms.",
+      "queries": [
+        "(\"cube puzzle\" OR \"cube-shaped puzzle\") (\"rotatable layers\" OR \"rotatable face layers\") (\"uniform color\" OR \"single color face\")",
+        "(cube OR block) (puzzle OR game) (rotate OR twist)",
+        "(mechanical puzzle OR twist puzzle) (rotatable OR twistable) (color matching OR color alignment)",
+        "(\"rotating cube\" OR \"twistable cube\") (\"facelet\" OR \"colored facelet\") (\"slice rotation\" OR \"layered rotation mechanism\")"
+      ],
+      "searches_used": 9,
+      "error": null,
+      "split": "heldout",
+      "translated_idea": "A cube-shaped handheld puzzle in which each face consists of layers that can be rotated independently, causing the colors to become scrambled. The player must rotate the layers so that each face returns to a uniform single color.",
+      "rank_citations": null,
+      "citation_depth": 5
+    },
+    {
+      "id": "hi-hook-loop",
+      "patent": "US2717437A",
+      "rank_before": null,
+      "rank_after": null,
+      "match_before": null,
+      "match_after": null,
+      "seconds": 12.1,
+      "results_before": 41,
+      "results_after": 58,
+      "refined_queries": [
+        "(\"hook and loop fastener\" OR \"releasable fastener\") (garment OR bag) (fastening OR closure)"
+      ],
+      "refinement_observation": "Patents refer to your idea as a \"hook and loop fastener\" or \"releasable fastener\" rather than just hook/loop strips.",
+      "queries": [
+        "(\"hook strip\" OR \"hooked strip\") (\"loop strip\" OR \"fuzzy loops\") (fastening OR closure)",
+        "(hooks OR \"hooked fastener\") (loops OR \"fuzzy loops\") (garment OR bag)",
+        "(hook AND loop) (fastener OR closure OR \"velcro\") (textile OR garment OR bag)",
+        "(\"hook and loop fastener\" OR \"releasable fastener\") (garment OR bag) (fastening OR closure)"
+      ],
+      "searches_used": 9,
+      "error": null,
+      "split": "heldout",
+      "translated_idea": "A method for closing a garment or bag comprising a first strip that carries a multitude of very small hooks and a second strip that carries soft, fuzzy loops. When the two strips are pressed together, the hooks engage the loops and adhere, and when pulled apart they disengage. No buttons or zippers are required.",
+      "rank_citations": null,
+      "citation_depth": 5
+    },
+    {
+      "id": "throwing-disc",
+      "patent": "US3359678A",
+      "rank_before": null,
+      "rank_after": null,
+      "match_before": null,
+      "match_after": null,
+      "seconds": 10.7,
+      "results_before": 20,
+      "results_after": 20,
+      "refined_queries": [
+        "(\"circular airfoil\" OR \"convex/concave surface\") (\"peripheral flange\" OR \"edge flange\") (throwable OR hand\u2011throwable) (spin OR rotate)"
+      ],
+      "refinement_observation": "Patents describe the rim as a \"peripheral flange\" or \"edge flange\" and the disc as a \"circular airfoil\" with a \"convex/concave surface\" which were not in earlier searches.",
+      "queries": [
+        "(\"light plastic disc\" OR \"plastic flying disc\") (\"curved rim\") (throw OR flick) (spin OR glide)",
+        "(\"plastic disc\" OR \"toy disc\") (beach OR sand) (throwable OR flick)",
+        "(\"flying toy\" OR \"throwable toy\") (disc OR disk) (spinning OR rotating) (recreational OR play)",
+        "(\"circular airfoil\" OR \"convex/concave surface\") (\"peripheral flange\" OR \"edge flange\") (throwable OR hand-throwable) (spin OR rotate)"
+      ],
+      "searches_used": 9,
+      "error": null,
+      "split": "heldout",
+      "translated_idea": null,
+      "rank_citations": null,
+      "citation_depth": 5
+    },
+    {
+      "id": "sliding-teeth-closure",
+      "patent": "US1219881A",
+      "rank_before": null,
+      "rank_after": null,
+      "match_before": null,
+      "match_after": null,
+      "seconds": 9.1,
+      "results_before": 40,
+      "results_after": 60,
+      "refined_queries": [
+        "(\"interlocking tape\" OR \"interlocking strip\") (\"slide fastener\" OR zipper) (slider OR \"pull tab\" OR actuator)"
+      ],
+      "refinement_observation": "Patents refer to your concept as an \"interlocking tape\" or \"interlocking strip\" within a slide\u2011fastener (zipper) system, not just cloth strips with metal teeth.",
+      "queries": [
+        "(\"cloth strip\" OR \"fabric strip\") (\"metal tooth\" OR \"metal teeth\" OR \"tooth latch\") (slider OR \"pull slider\" OR \"slider actuator\")",
+        "(\"fabric fastener\" OR \"cloth closure\" OR \"strip closure\") (slider OR \"pull tab\" OR \"actuator\")",
+        "(fastener OR closure) (tooth OR \"interlock\" OR \"locking tooth\") (slider OR pull OR \"adjustable strap\")",
+        "(\"interlocking tape\" OR \"interlocking strip\") (\"slide fastener\" OR zipper) (slider OR \"pull tab\" OR actuator)"
+      ],
+      "searches_used": 9,
+      "error": null,
+      "split": "heldout",
+      "translated_idea": null,
+      "rank_citations": null,
+      "citation_depth": 5
+    }
+  ]
+}
