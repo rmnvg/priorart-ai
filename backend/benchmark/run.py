@@ -16,6 +16,7 @@ Usage, from backend/:
     python -m benchmark.run --cases cat-laser,coffee-pod
     python -m benchmark.run --resume         # skip cases already in latest.json
     python -m benchmark.run --split heldout  # only the held-out cases
+    python -m benchmark.run --citations 5    # also measure citation chasing
 
 Cases are split into "development" (available while the search was built and
 tuned) and "heldout" (written afterwards, never used for tuning, some in
@@ -24,6 +25,13 @@ the one to quote.
 
 Cost: 3 google_patents searches per case, plus REFINEMENT_QUERIES (default
 1). No details/market/Trends calls — recall only needs the search half.
+
+--citations N also runs the app's citation chasing: the top N candidates are
+fetched in full (N google_patents_details searches per case) and the target
+counts as found when it is one of the citation discoveries the report would
+show. Old, foundational patents are where keyword search fails — hundreds of
+later patents share their vocabulary — and where the later patents' own
+citations lead back to them.
 Non-English cases also make one LLM translation call, exactly as the app does.
 Results are written after every case, so an interrupted run (quota, network)
 loses nothing: rerun with --resume.
@@ -83,6 +91,10 @@ class CaseResult(BaseModel):
     error: str | None = None
     split: str = "development"
     translated_idea: str | None = None  # the English the search ran on, when translated
+    # 1-based position among citation discoveries; None = not discovered or
+    # not measured (citation_depth == 0).
+    rank_citations: int | None = None
+    citation_depth: int = 0
 
 
 def load_cases() -> list[Case]:
@@ -116,9 +128,16 @@ def find_rank(ranked, case: Case) -> tuple[int | None, MatchKind | None]:
     return None, None
 
 
-def run_case(case: Case) -> CaseResult:
+def find_discovery_rank(discoveries, case: Case) -> int | None:
+    number = re.compile(rf"patent/{re.escape(_base_number(case.patent))}[A-Z]")
+    return next((i for i, d in enumerate(discoveries, start=1) if number.search(d.id)), None)
+
+
+def run_case(case: Case, citation_depth: int = 0) -> CaseResult:
     # Imported here so --dry-run works without the ML/LLM stack or keys.
     from app.config import REFINEMENT_QUERIES
+    from app.pipeline.citation_chase import chase_citations
+    from app.pipeline.deepdive import deep_dive
     from app.pipeline.language import detect_and_translate
     from app.pipeline.query_generator import generate_queries
     from app.pipeline.rank import rank_and_dedupe
@@ -160,6 +179,11 @@ def run_case(case: Case) -> CaseResult:
         )
 
     rank_after, match_after = find_rank(ranked, case)
+    rank_citations = None
+    if citation_depth:
+        details = deep_dive(ranked, citation_depth)
+        searches += len(details)
+        rank_citations = find_discovery_rank(chase_citations(details, ranked).discoveries, case)
     return CaseResult(
         id=case.id,
         patent=case.patent,
@@ -175,6 +199,8 @@ def run_case(case: Case) -> CaseResult:
         searches_used=searches,
         split=case.split,
         translated_idea=translated,
+        rank_citations=rank_citations,
+        citation_depth=citation_depth,
     )
 
 
@@ -219,6 +245,14 @@ def summarize(results: list[CaseResult]) -> dict:
             if r.rank_after is not None and (r.rank_before is None or r.rank_after < r.rank_before)
         ),
         "refinement_worsened": sum(1 for r in scored if worse(r)),
+        # Found by search (top 10 after refinement) or by citation chasing,
+        # over the cases where citation chasing was measured.
+        "citation_cases": sum(1 for r in scored if r.citation_depth),
+        "top10_or_citations": (
+            sum(1 for r in scored if r.citation_depth
+                and (_hit(r.rank_after, TOP_K) or r.rank_citations is not None))
+            / max(1, sum(1 for r in scored if r.citation_depth))
+        ),
         "searches_used": sum(r.searches_used for r in results),
         "median_seconds": sorted(r.seconds for r in scored)[n // 2] if n else 0.0,
         "total_seconds": round(sum(r.seconds for r in results), 1),
@@ -233,6 +267,16 @@ def _summary_table(summary: dict) -> list[str]:
     def pct(x: float) -> str:
         return f"{round(x * 100)}%"
 
+    citations = (
+        [
+            "",
+            f"With citation chasing ({summary['citation_cases']} cases measured): the target is in "
+            f"the top {TOP_K} or among the report's citation discoveries in "
+            f"**{pct(summary['top10_or_citations'])}** of cases.",
+        ]
+        if summary.get("citation_cases")
+        else []
+    )
     return [
         "| | Top 1 | Top 10 | Top 10, exact publication only | Anywhere in results |",
         "|---|---|---|---|---|",
@@ -245,7 +289,7 @@ def _summary_table(summary: dict) -> list[str]:
         f"target up in {summary['refinement_improved']} case(s) and down (or out) in "
         f"{summary['refinement_worsened']}. {summary['searches_used']} SerpApi searches; "
         f"{summary['total_seconds']:.0f}s in total, median {summary['median_seconds']:.0f}s per case.",
-    ]
+    ] + citations
 
 
 def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: dict) -> str:
@@ -274,15 +318,19 @@ def render_markdown(cases: dict[str, Case], results: list[CaseResult], summary: 
     lines += [
         "## Per case",
         "",
-        "| Case | Split | Patent | Rank before | Rank after | Seconds | Searches |",
-        "|---|---|---|---|---|---|---|",
+        "| Case | Split | Patent | Rank before | Rank after | Citation discovery | Seconds | Searches |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for r in results:
         case = cases[r.id]
+        discovery = (
+            "not measured" if not r.citation_depth
+            else f"#{r.rank_citations}" if r.rank_citations else "—"
+        )
         lines.append(
             f"| {r.id} | {r.split} | [{case.patent}](https://patents.google.com/patent/{case.patent}/en) "
             f"{case.patent_title} | {rank(r.rank_before, r.match_before)} | "
-            f"{rank(r.rank_after, r.match_after)} | {r.seconds:.0f} | {r.searches_used} |"
+            f"{rank(r.rank_after, r.match_after)} | {discovery} | {r.seconds:.0f} | {r.searches_used} |"
         )
 
     worsened = [r for r in results if r.error is None and _worsened(r)]
@@ -354,6 +402,10 @@ def main() -> int:
     parser.add_argument(
         "--split", choices=["development", "heldout"], help="run only one split (default: both)"
     )
+    parser.add_argument(
+        "--citations", type=int, default=0, metavar="N",
+        help="also deep-dive the top N candidates and check citation discoveries (N searches per case)",
+    )
     args = parser.parse_args()
 
     all_cases = load_cases()
@@ -378,7 +430,7 @@ def main() -> int:
 
     from app.config import REFINEMENT_QUERIES
 
-    per_case = PATENT_QUERIES_PER_CASE + REFINEMENT_QUERIES
+    per_case = PATENT_QUERIES_PER_CASE + REFINEMENT_QUERIES + args.citations
     print(
         f"{len(selected)} case(s) to run, up to {per_case} SerpApi searches each "
         f"(~{len(selected) * per_case} total)."
@@ -392,7 +444,7 @@ def main() -> int:
     for i, case in enumerate(selected, start=1):
         started = time.time()
         try:
-            result = run_case(case)
+            result = run_case(case, args.citations)
             result.seconds = round(time.time() - started, 1)
         except Exception as e:  # one bad case shouldn't lose the run
             result = CaseResult(

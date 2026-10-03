@@ -48,6 +48,7 @@ from app.pipeline.search import (
     QueryBundle,
     SearchLayerResult,
     build_market_query,
+    run_literature_search,
     run_market_search,
     run_queries,
 )
@@ -64,10 +65,11 @@ NO_LOCALIZATION = {"en", "und"}
 
 
 def _count_serpapi_calls(
-    patent_queries: int, deep_dives: int, used_trends: bool, followups: int = 0
+    patent_queries: int, deep_dives: int, used_trends: bool, followups: int = 0,
+    literature: bool = False,
 ) -> dict[str, int]:
     calls = {
-        "google_patents": patent_queries,
+        "google_patents": patent_queries + int(literature),
         "google": 1,
         "google_patents_details": deep_dives + followups,
     }
@@ -134,6 +136,7 @@ async def run_pipeline(
             "including Indian Patent Office filings...",
         )
         market_task = asyncio.create_task(asyncio.to_thread(run_market_search, query_result))
+        literature_task = asyncio.create_task(asyncio.to_thread(run_literature_search, query_result))
         trend_task = asyncio.create_task(
             asyncio.to_thread(fetch_market_trend, query_result.trends_keyword)
             if ENABLE_TRENDS
@@ -150,9 +153,11 @@ async def run_pipeline(
             stage="searching_scholar",
             message="Reviewing academic literature matches...",
         )
-        # Scholar results arrive bundled with patent results from the same
-        # google_patents call above — this stage is a UI checkpoint, not a
-        # separate network call.
+        # Papers come from their own scholar-only call, started alongside
+        # the patent queries. They stay out of `bundles`, which lines up
+        # one-to-one with the queries in the search strategy.
+        literature = await literature_task
+        paper_bundles = [literature] if literature else []
 
         yield ProgressEvent(
             stage="checking_market_availability",
@@ -167,7 +172,7 @@ async def run_pipeline(
         )
         ranked = await asyncio.to_thread(
             rank_and_dedupe,
-            SearchLayerResult(query_bundles=bundles, market_results=market_results),
+            SearchLayerResult(query_bundles=bundles + paper_bundles, market_results=market_results),
             english_idea,
         )
 
@@ -191,7 +196,7 @@ async def run_pipeline(
                 all_queries += refinement.queries
                 ranked = await asyncio.to_thread(
                     rank_and_dedupe,
-                    SearchLayerResult(query_bundles=bundles, market_results=market_results),
+                    SearchLayerResult(query_bundles=bundles + paper_bundles, market_results=market_results),
                     english_idea,
                 )
 
@@ -320,6 +325,7 @@ async def run_pipeline(
                     len(top_candidates),
                     ENABLE_TRENDS and bool(query_result.trends_keyword),
                     followup.lookups,
+                    literature=literature is not None,
                 ),
                 refinement_observation=refinement.observation if refinement else None,
                 refinement_terms=refinement.new_terms if refinement else [],

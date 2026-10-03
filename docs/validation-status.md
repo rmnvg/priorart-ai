@@ -1,6 +1,6 @@
-# Validation status — October 2, 2026
+# Validation status — October 3, 2026
 
-Branch: `feat/inventor-interview-evidence`.
+Branch: `feat/hackathon-final` (interview work from `feat/inventor-interview-evidence`).
 
 ## Implemented
 
@@ -58,25 +58,53 @@ questions are labelled context-only and every final description is editable.
 No search requests were made by this check. It does not establish legal accuracy
 or validate whether generated questions improve retrieval.
 
-## Retrieval benchmark: blocked by search quota
+## Search fixes found during live runs — October 3
 
-The SerpApi account endpoint reported 0 searches remaining and 250 used this
-month. No retrieval benchmark was attempted after this check, and no retrieval
-accuracy number is claimed. The dry run confirmed five held-out cases requiring
-up to 20 searches at the current configuration.
+New SerpApi quota (250 searches) became available on October 3. The first live
+run of the Hindi crop-dryer demo exposed three defects, all fixed and covered by
+tests on branch `feat/hackathon-final`:
 
-When quota is available:
+1. **Papers crowded out patents.** With `scholar=true` on every query, the three
+   English queries returned 30 papers and 0 patents; a 20-result page with
+   `scholar=true` was 19 papers and 1 patent. Patent queries are now patents-only
+   with 20 results (same cost), and papers come from one separate
+   `scholar=true, patents=false` call. Detail lookups go to patents first.
+2. **Model-written document ids were mangled** (`patent/CN205448635U en` for
+   `patent/CN205448635U/en`), so every assessment and quote was discarded by an
+   exact-match lookup. Ids now resolve tolerantly (punctuation and case ignored;
+   a bare publication number only when unambiguous), in novelty and challenge.
+3. **Elided quotes were rejected.** The model joins fragments with "..." despite
+   instructions. An elided quote now resolves to the continuous source passage
+   from its first fragment to its last (each fragment ≥ 2 words, passage ≤ 60
+   words, in order); the stored quote is copied from the document, never from the
+   model, so strict verification still holds.
 
-```bash
-cd backend
-venv/bin/python -m benchmark.run --split heldout
-venv/bin/python -m benchmark.run --resume
-```
+Hindi crop dryer, before → after: 1 → 21 patents ranked, 0 → 5 assessments kept,
+0 → 4 of 4 features with verified claim/abstract evidence, 0 → 12 public-domain
+patents. Offline re-runs of the novelty step on the same cached documents gave
+3–4 of 4–5 features with evidence per run; some pairings remain weak (a
+controller clause offered for "no external electricity"). Verification checks a
+quote's presence, not the model's interpretation.
 
-Publish `backend/benchmark/results/latest.md`, including failures, exact-publication
-recall, and refinement regressions. Do not substitute interview results for
-retrieval results. The feature changes do not invalidate existing saved reports;
-refresh demo examples to demonstrate new section attribution and review scope.
+## Retrieval benchmark: held-out run, October 3
+
+Held-out (5 cases, 3 in Hindi): **0 of 5** in the top 10, before and after
+refinement, and 0 of 5 among citation discoveries with the top 5 candidates
+deep-dived. 20 searches for the keyword-only run
+([report](../backend/benchmark/results/heldout-keyword-only-2026-10-03.md)) and 42
+for the run with citation chasing
+([report](../backend/benchmark/results/latest.md)). The patent-only search change
+above was made before either run; nothing was tuned on these cases afterwards.
+
+All five targets are 1917–1983 foundational patents. The top candidates were
+mostly recent CN utility models with no backward citations, or US patents citing
+later work. The development split (12 cases, ~48 searches) has not been run.
+
+## Quota used on October 3
+
+170 of 250 searches: the Hindi demo, its re-runs and single-search diagnostic
+probes 45, the held-out benchmark 62, the gallery (5 reports, lean profile) 63.
+80 remain until the November 3 renewal.
 
 ## Human review: still to collect
 

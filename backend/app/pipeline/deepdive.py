@@ -175,12 +175,23 @@ def get_candidate_detail(candidate: RankedResult) -> CandidateDetail:
     )
 
 
+def select_candidates(ranked_results: list[RankedResult], top_n: int) -> list[RankedResult]:
+    """Patents get the detail slots first: a patent lookup returns claims to
+    quote and citations to chase, while a scholar lookup returns only a
+    snippet and keywords for the same search. Scholar articles fill any
+    slots left over. The selection keeps ranking order."""
+    patents = [r for r in ranked_results if r.source_type == "patent"][:top_n]
+    scholars = [r for r in ranked_results if r.source_type == "scholar"][: top_n - len(patents)]
+    chosen = {id(r) for r in patents + scholars}
+    return [r for r in ranked_results if id(r) in chosen]
+
+
 def deep_dive(ranked_results: list[RankedResult], top_n: int = 8) -> list[CandidateDetail]:
-    """Selects the top-ranked patent/scholar candidates (products excluded)
+    """Selects the top-ranked candidates, patents first (products excluded),
     and pulls+condenses their full details. The lookups are independent, so
     they run concurrently; output order still follows the ranking, which
     downstream stages rely on (the first candidate is the closest match)."""
-    candidates = [r for r in ranked_results if r.source_type in ("patent", "scholar")][:top_n]
+    candidates = select_candidates(ranked_results, top_n)
     if not candidates:
         return []
     with ThreadPoolExecutor(max_workers=len(candidates)) as pool:

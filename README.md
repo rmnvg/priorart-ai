@@ -71,7 +71,7 @@ flowchart TD
     subgraph pipeline [" "]
         direction TB
         q["<b>1 · Understand + Query Generator</b> — LLM<br/>translate to technical English if needed, then 3 Google Patents boolean queries<br/><span style='font-size:11px'>major markets · India-specific · broad recall</span>"]
-        s["<b>2 · Search Layer</b> — SerpApi, run concurrently<br/>google_patents (patents + scholar) per query, India query filtered to IN<br/><span style='font-size:11px'>+ google (market availability) + google_trends (market interest)</span>"]
+        s["<b>2 · Search Layer</b> — SerpApi, run concurrently<br/>google_patents per query (patents only, 20 results), India query filtered to IN<br/>+ one papers-only query (scholar)<br/><span style='font-size:11px'>+ google (market availability) + google_trends (market interest)</span>"]
         r["<b>3 · Rank & Dedupe</b><br/>merge, dedupe by id<br/><span style='font-size:11px'>score relevance via sentence-transformer embeddings</span>"]
         a["<b>3b · Refinement Agent</b> — LLM + SerpApi<br/>reads the first results, learns the patents' own vocabulary<br/><span style='font-size:11px'>searches again in their terms, re-ranks everything</span>"]
         d["<b>4 · Deep-Dive</b> — SerpApi, run concurrently<br/>full claims/abstract + citations for top 8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
@@ -122,7 +122,8 @@ citation comes from SerpApi; the LLM only writes the queries and compares texts.
 
 | SerpApi engine | Calls per analysis | What it provides |
 |---|---|---|
-| `google_patents` (`scholar=true`, `clustered=true`) | 3 + 1 refinement | Prior-art patents **and** academic papers in one call per query angle. The India angle adds `country=IN`, so it searches Indian Patent Office filings for real. Each result's `country_status` feeds the India signal and the public-domain finder, and the clustered `summary` feeds the assignee breakdown. |
+| `google_patents` (`clustered=true`, `num=20`) | 3 + 1 refinement | Prior-art patents, 20 per query angle. The India angle adds `country=IN`, so it searches Indian Patent Office filings for real. Each result's `country_status` feeds the India signal and the public-domain finder, and the clustered `summary` feeds the assignee breakdown. |
+| `google_patents` (`scholar=true`, `patents=false`) | 1 | Academic papers for the broad-recall query, in a call of their own. Mixed into the patent queries, papers filled the whole first page on research-heavy topics (a solar crop dryer: 19 papers, 1 patent), leaving no claims to quote. |
 | `google_patents_details` | up to 8 + 2 | Full abstract + claims for the feature evidence and claim chart, plus `patent_citations` / `cited_by` for **citation chasing** and the citation edges in the landscape graph. Up to 2 more calls **follow up** the strongest citation discoveries, so a document keyword search missed can change the conclusion. |
 | `google` | 1 | Market-availability check: is a product like this already sold? |
 | `google_trends` | 1 | Five years of search interest in the product category: does anyone want this? |
@@ -395,9 +396,10 @@ port if that one's taken) and paste in an invention idea.
 
 ### API quota and caching
 
-A single analysis costs **up to 16 SerpApi searches** (3 patent queries + 1
-refinement query + 1 market query + 1 Trends lookup + up to 8 detail lookups + up to 2
-citation follow-ups). SerpApi's free tier allows 250/month, so roughly 15 fresh analyses. The independent calls run concurrently, so
+A single analysis costs **up to 17 SerpApi searches** (3 patent queries + 1
+refinement query + 1 papers query + 1 market query + 1 Trends lookup + up to 8 detail
+lookups + up to 2 citation follow-ups). SerpApi's free tier allows 250/month, so
+roughly 14 fresh analyses (about 20 with `SEARCH_PROFILE=lean`). The independent calls run concurrently, so
 a fresh run takes seconds of search time, not a minute.
 
 Because of that, every completed analysis is cached to `backend/.cache/`, keyed on
@@ -413,7 +415,7 @@ runs fresh. An error response (such as an exhausted quota) is never saved.
 
 | Variable | Default | What it does |
 |---|---|---|
-| `SEARCH_PROFILE` | `full` | `full` is up to 16 searches per analysis; `lean` is up to 11 (5 detail lookups, 1 citation follow-up, no Trends). The individual settings above still override it. |
+| `SEARCH_PROFILE` | `full` | `full` is up to 17 searches per analysis; `lean` is up to 12 (5 detail lookups, 1 citation follow-up, no Trends). The individual settings above still override it. |
 | `SERPAPI_CACHE` | `true` | Save and replay raw SerpApi responses |
 | `SERPAPI_OFFLINE` | `false` | Never call SerpApi: an uncached request fails instead of spending a search |
 
@@ -510,15 +512,36 @@ cd backend
 python -m benchmark.run --dry-run         # cases + SerpApi cost (~68 searches)
 python -m benchmark.run                   # writes benchmark/results/latest.md + latest.json
 python -m benchmark.run --split heldout   # held-out cases only (~20 searches)
+python -m benchmark.run --split heldout --citations 5   # + citation chasing (~45)
 ```
 
 Results are written to `backend/benchmark/results/latest.md` when the benchmark is
 run. It measures retrieval only, not the legal accuracy of any verdict.
 
-As of October 2, the configured SerpApi account has no searches remaining, so no
-live retrieval figures are published. The held-out run requires up to 20 searches.
+### Held-out result (October 3): 0 of 5
+
+**The search did not find the target patent in any of the 5 held-out cases**,
+before or after refinement, and citation chasing over the top 5 candidates didn't
+surface it either. The reports are in
+[`heldout-keyword-only-2026-10-03.md`](backend/benchmark/results/heldout-keyword-only-2026-10-03.md)
+and [`latest.md`](backend/benchmark/results/latest.md), with every query that was run.
+
+All five held-out targets are foundational patents from 1917–1983: the zip
+fastener, hook-and-loop (Velcro), the flying disc, the LEGO brick and the Rubik's
+cube. Each has hundreds of later patents in the same vocabulary, and those are what
+keyword search returns. Citation chasing didn't reach the originals: the closest
+matches were mostly recent Chinese utility models with no recorded backward
+citations, and the US ones cite 1990s–2010s work. We have not tuned anything
+against these cases, so the figure stands as measured. The development set
+(mostly 1990s–2010s patents) has not been run live yet.
+
+What this means for an inventor: the tool is far better at surfacing **recent and
+active** prior art, the kind that blocks a filing today, than at finding the
+original patent behind a decades-old product category. It does not replace a
+professional search.
+
 See [validation status](docs/validation-status.md) for automated checks, live
-interview responses, and the remaining retrieval and human-review work.
+interview responses, and the remaining human-review work.
 
 The interview can be checked independently without SerpApi calls:
 
@@ -586,6 +609,13 @@ technique patent professionals call "claim charting"):
   to what Google Patents reports, which is sometimes incomplete for `IN` filings.
   It is a legal-status count ("related patents reported active in India"), not a
   finding that those patents overlap the idea.
+- **Indian filings in Google Patents are sparse.** Even a query as broad as
+  `(solar) (dryer OR drying)` restricted to `country=IN` returns 7 filings, mostly
+  without titles. The India-only query angle therefore often comes back empty; that
+  reflects Google Patents' coverage of the Indian Patent Office, and the report says
+  "0 results" for that query rather than hiding it.
+- **Old foundational patents are hard to find** (see the benchmark): keyword search
+  surfaces the many later patents in the same field first.
 - **Public-domain status is indicative, not legal advice.** It relies on the legal
   status Google Patents reports, which is incomplete for some jurisdictions, and a
   patent lapsed early for unpaid fees can occasionally be revived. The tool

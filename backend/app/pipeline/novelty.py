@@ -31,6 +31,7 @@ from app.pipeline.evidence import (
     IdeaFeature,
     attach_evidence,
     empty_findings,
+    resolve_document_id,
 )
 from app.pipeline.rank import RankedResult
 
@@ -138,7 +139,10 @@ phrases, empty list if none)
 features), or "not_relevant" (not a real technical match)
    - "feature_evidence": for each idea feature this candidate's summary text actually \
 discloses, {{"feature": "<feature id, e.g. F2>", "quote": "<sentence or clause from \
-the candidate's summary, COPIED EXACTLY, 5-40 words>"}}. Quotes are checked against the \
+the candidate's summary, COPIED EXACTLY, 8-40 words>"}}. Copy the whole clause that \
+describes the element and what it does, not just the element's name ("a fan" or "solar \
+air heat collector" alone is rejected as too short). Copy ONE continuous passage: never \
+join fragments with "..." or skip words. Quotes are checked against the \
 summary text automatically and discarded unless they appear in it word for word, so \
 never paraphrase. Omit features this candidate does not disclose.
 2. Produce ONE overall "overall_novelty_confidence": a float 0.0-1.0 for how novel the \
@@ -312,6 +316,9 @@ def assess_novelty(
             # hurting verdict/suggestion quality.
             raw = complete_json(prompt, system=SYSTEM_PROMPT, temperature=0.1)
             parsed = _RawNoveltyAssessment.model_validate(raw)
+            known_ids = list(lookup)
+            for item in [*parsed.candidate_assessments, *parsed.citations]:
+                item.result_id = resolve_document_id(item.result_id, known_ids) or item.result_id
             return NoveltyAssessment(
                 candidate_assessments=_resolve_assessments(
                     parsed.candidate_assessments,

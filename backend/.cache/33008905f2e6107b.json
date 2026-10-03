@@ -1,0 +1,1571 @@
+{
+  "idea_text": "A battery-swapping station for electric rickshaws where the driver slides out a depleted battery pack and slides in a charged one in under a minute; each pack has an RFID tag so the station tracks its charge cycles and bills the driver per swap.",
+  "parent_report_id": null,
+  "events": [
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Extracting core concepts and generating search queries...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_patents",
+      "message": "Searching patents across 3 query angles, including Indian Patent Office filings...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_scholar",
+      "message": "Reviewing academic literature matches...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "checking_market_availability",
+      "message": "Checking whether a similar product already exists commercially...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "ranking_results",
+      "message": "Ranking and deduplicating results by relevance to your idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Reading the first results to learn the terminology patents use for this idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Patents refer to the concept as a \"battery exchange station\" with \"swap module\", \"smart battery pack\" and \"RFID-enabled charging dock\", not just generic swapping stations.",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Pulling full claims and citations for top candidates and scoring novelty...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Following up 1 document(s) the closest matches cite but the keyword search missed...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "done",
+      "message": "Analysis complete.",
+      "replayed": false
+    },
+    {
+      "type": "result",
+      "data": {
+        "idea_text": "A battery-swapping station for electric rickshaws where the driver slides out a depleted battery pack and slides in a charged one in under a minute; each pack has an RFID tag so the station tracks its charge cycles and bills the driver per swap.",
+        "ranked_results": [
+          {
+            "id": "patent/US8616457B2/en",
+            "source_type": "patent",
+            "title": "RFID display label for battery packs",
+            "snippet": "A smart battery label having an RFID or UHF antenna, sensors to monitor battery environmental data and a bi-state display for displaying battery data.",
+            "link": "https://patents.google.com/patent/US8616457B2/en",
+            "relevance_score": 0.5839505195617676,
+            "cpc_code": "Y02E60/10",
+            "cpc_description": "Energy storage using batteries",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Mark Stanley Krawczewicz",
+            "priority_date": "2010-11-22"
+          },
+          {
+            "id": "patent/CN220483257U/en",
+            "source_type": "patent",
+            "title": "\u2026 management system of light truck battery replacement station based on RFID",
+            "snippet": "1. The battery management system of the light-truck battery replacement station based on the RFID is characterized by comprising a battery replacement actuator RFID reader-writer (1), wherein the battery replacement actuator RFID reader-writer (1) is arranged on a battery pack replacement mechanism \u2026",
+            "link": "https://patents.google.com/patent/CN220483257U/en",
+            "relevance_score": 0.5715576410293579,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5b89\u5fbd\u7eff\u821f\u65b0\u80fd\u6e90\u667a\u80fd\u88c5\u5907\u6709\u9650\u516c\u53f8",
+            "priority_date": "2023-06-29"
+          },
+          {
+            "id": "patent/TW202210325A/en",
+            "source_type": "patent",
+            "title": "Swappable battery system and method, electric vechicles, battery as a service ( \u2026",
+            "snippet": "The battery exchange station terminal device 148 provides management of all battery exchange stations in the network via Internet routers and is configured to facilitate battery exchange transactions (both receipt and return transactions), monitor battery packs (identification and data ), provide \u2026",
+            "link": "https://patents.google.com/patent/TW202210325A/en",
+            "relevance_score": 0.5664124488830566,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "TW": "UNKNOWN"
+            },
+            "query_types": [
+              "refined"
+            ],
+            "assignee": "\u65b0\u52a0\u5761\u5546\u840a\u7dad\u65af\u54c8\u5207\u723e\u79c1\u4eba\u6709\u9650\u516c\u53f8",
+            "priority_date": "2020-07-30"
+          },
+          {
+            "id": "patent/CN114248638B/en",
+            "source_type": "patent",
+            "title": "Modularized rechargeable battery and battery unit for electric automobile",
+            "snippet": "The external dimensions, positioning hole structure (3), and positioning structure (4) of the battery body (1) are standardized to match the battery box and intelligent charging equipment of the intelligent electric vehicle; the chip and/or RFID tag are configured to interact with the intelligent \u2026",
+            "link": "https://patents.google.com/patent/CN114248638B/en",
+            "relevance_score": 0.5627109408378601,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5927\u8fde\u76c8\u6a59\u7f51\u7edc\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2022-01-19"
+          },
+          {
+            "id": "https://www.niti.gov.in/hi/node/751",
+            "source_type": "product",
+            "title": "\u092d\u093e\u0930\u0924 \u092e\u0947\u0902 \u0907\u0932\u0947\u0915\u094d\u091f\u094d\u0930\u093f\u0915 \u092e\u094b\u092c\u093f\u0932\u093f\u091f\u0940 \u0914\u0930 \u0928\u093f\u092e\u094d\u0928 \u0915\u093e\u0930\u094d\u092c\u0928 \u092f\u093e\u0924\u094d\u0930\u0940 \u0938\u0921\u093c\u0915 ...",
+            "snippet": "Battery Swapping Stations act as a battery aggregator and charge batteries by availing electricity connection from either power distribution ...",
+            "link": "https://www.niti.gov.in/hi/node/751",
+            "relevance_score": 0.5602286458015442,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/KR20130118482A/en",
+            "source_type": "patent",
+            "title": "Battery replacement apparatus and method of electric vehicles",
+            "snippet": "The vehicle recognition device, And when the vehicle information is recognized as a code, searching for a database and extracting vehicle information corresponding to the code. 3. The method according to claim 1 or 2, The battery replacement robot, And a vehicle recognition module, wherein the \u2026",
+            "link": "https://patents.google.com/patent/KR20130118482A/en",
+            "relevance_score": 0.55854332447052,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uc7ac\ub2e8\ubc95\uc778\ub300\uad6c\uacbd\ubd81\uacfc\ud559\uae30\uc220\uc6d0",
+            "priority_date": "2012-04-20"
+          },
+          {
+            "id": "patent/CN118769964A/en",
+            "source_type": "patent",
+            "title": "A battery replacement method, system, storage medium and intelligent battery \u2026",
+            "snippet": "5. A battery power conversion method based on the battery power conversion system according to any one of claims 1 to 4, comprising: the user approaches the battery (7) to be replaced to the ultrahigh frequency RFID read-write module (5) of the intelligent electricity replacing cabinet (1), and the \u2026",
+            "link": "https://patents.google.com/patent/CN118769964A/en",
+            "relevance_score": 0.5576987862586975,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u897f\u5b89\u5954\u4e91\u4fe1\u606f\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2024-06-24"
+          },
+          {
+            "id": "patent/KR102240793B1/en",
+            "source_type": "patent",
+            "title": "A method for battery swapping",
+            "snippet": "A user authentication step of checking user information of the first battery; And A battery exchange step of exchanging a battery and the first battery for which user authentication has been completed for the second battery; including, In the battery authentication step, the information obtained \u2026",
+            "link": "https://patents.google.com/patent/KR102240793B1/en",
+            "relevance_score": 0.5499160289764404,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\uc870\ub0a8\uaddc",
+            "priority_date": "2019-01-24"
+          },
+          {
+            "id": "https://www.facebook.com/SeemaJainStockPro/posts/indias-ev-charging-ecosystem-explained-join-stockpros-telegram-channel-join-stoc/2122282554995359/",
+            "source_type": "product",
+            "title": "India's EV Charging Ecosystem, Explained Join StockPro's ...",
+            "snippet": "... battery swapping to wireless charging tech. With a ... The rapid growth of sales of electric vehicles, lithium batteries and electronic ...",
+            "link": "https://www.facebook.com/SeemaJainStockPro/posts/indias-ev-charging-ecosystem-explained-join-stockpros-telegram-channel-join-stoc/2122282554995359/",
+            "relevance_score": 0.5334832072257996,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.researchgate.net/publication/383853739_Advances_in_Electric_Vehicles_for_a_self-reliant_energy_ecosystem_and_powering_a_sustainable_future_in_India",
+            "source_type": "product",
+            "title": "Advances in Electric Vehicles for a self-reliant energy ...",
+            "snippet": "Comparison of charging stations. Parameters Stations. Multi-level. charging. Battery swapping Smart charging Wireless. charging. Fast charging ...",
+            "link": "https://www.researchgate.net/publication/383853739_Advances_in_Electric_Vehicles_for_a_self-reliant_energy_ecosystem_and_powering_a_sustainable_future_in_India",
+            "relevance_score": 0.527753472328186,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US9276418B2/en",
+            "source_type": "patent",
+            "title": "Battery exchange, recharge and recycle apparatus, system and method",
+            "snippet": "wherein the intake port includes a reading means coupled therewith to read identity information associated with either or both of a cartridge or a battery disposed therein, wherein the reading means comprises one or more of a bar code reading device, a radio frequency identification (RFID) reading \u2026",
+            "link": "https://patents.google.com/patent/US9276418B2/en",
+            "relevance_score": 0.5189337730407715,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Green Box Batteries, LLC.",
+            "priority_date": "2011-09-09"
+          },
+          {
+            "id": "https://www.scribd.com/document/513526003/AP-Electric-Vehicle-Policy",
+            "source_type": "product",
+            "title": "Andhra Pradesh Electric Mobility Policy 2023 | PDF",
+            "snippet": "[Link]/Battery Swapping equipment: Equipment that is exclusively used. to charge the battery or swap the battery inside a BEV. These equipment can be installed ...",
+            "link": "https://www.scribd.com/document/513526003/AP-Electric-Vehicle-Policy",
+            "relevance_score": 0.511023759841919,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/JP2011113759A/en",
+            "source_type": "patent",
+            "title": "Device and method for battery management",
+            "snippet": "In a battery that can be attached to and detached from a vehicle, and an electric vehicle or a hybrid vehicle that uses the battery as a power source, A battery information recording device capable of communicating with an information reading device provided on the vehicle side while recording at \u2026",
+            "link": "https://patents.google.com/patent/JP2011113759A/en",
+            "relevance_score": 0.5104309320449829,
+            "cpc_code": "Y02E60/10",
+            "cpc_description": "Energy storage using batteries",
+            "country_status": {
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Diamond Electric Mfg Co Ltd",
+            "priority_date": "2009-11-25"
+          },
+          {
+            "id": "https://www.facebook.com/61582592140593/posts/darvolt-elektryk-22wiek-bluetooth-darvolt/122143532643086404/",
+            "source_type": "product",
+            "title": "Darvolt #elektryk #22wiek #bluetooth ...",
+            "snippet": "exchanging data over short distances. BATTERY CHARGERS FOR E-RICKSHAW AND E-SCOOTY \u2026 booster technology for lead acid batteries in E-Rickshaw ...",
+            "link": "https://www.facebook.com/61582592140593/posts/darvolt-elektryk-22wiek-bluetooth-darvolt/122143532643086404/",
+            "relevance_score": 0.49683529138565063,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN115447437B/en",
+            "source_type": "patent",
+            "title": "Power exchange station vehicle power exchange method and equipment for electric \u2026",
+            "snippet": "The application discloses a battery changing station vehicle battery changing method for an electric automobile, which comprises the following steps of firstly enabling the electric automobile to enter a battery changing station, enabling a battery changing controller to send a battery changing \u2026",
+            "link": "https://patents.google.com/patent/CN115447437B/en",
+            "relevance_score": 0.4816308617591858,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5929\u6d25\u68ee\u666e\u6377\u7535\u5b50\u6709\u9650\u516c\u53f8",
+            "priority_date": "2022-10-28"
+          },
+          {
+            "id": "patent/CN201435612Y/en",
+            "source_type": "patent",
+            "title": "Mobile battery charging exchange device",
+            "snippet": "At least one central battery exchange management device is to provide the wireless battery management module data reading and writing of the rechargeable battery and perform rechargeable battery exchange and place it in each battery storage room of the mobile battery charging storage cabinet or \u2026",
+            "link": "https://patents.google.com/patent/CN201435612Y/en",
+            "relevance_score": 0.4733087420463562,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6731\u4e3d\u534e",
+            "priority_date": "2009-06-01"
+          },
+          {
+            "id": "patent/CN115447417A/en",
+            "source_type": "patent",
+            "title": "Battery pack power change system, and power change control method and device",
+            "snippet": "1. A battery pack recharging system, comprising: the battery pack is provided with an electronic identification tag; the power change bin is provided with a reader-writer, and the reader-writer is used for detecting the electronic identification tag and reading battery data corresponding to the \u2026",
+            "link": "https://patents.google.com/patent/CN115447417A/en",
+            "relevance_score": 0.46974751353263855,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u84dd\u8c37\u667a\u6167(\u5317\u4eac)\u80fd\u6e90\u79d1\u6280\u6709\u9650\u516c\u53f8",
+            "priority_date": "2022-10-14"
+          },
+          {
+            "id": "scholar/10600775491004352517",
+            "source_type": "scholar",
+            "title": "Inter-service provider charging protocol: a solution to address range anxiety of electric vehicle owners",
+            "snippet": "\u2026 by each EV for further planning of smart charging and smart grids. Therefore, in this research we \u2026 \u2022 RFID: While there are two approaches for using RFID tags (data-on-tag and data-on-\u2026",
+            "link": "https://patents.google.com/scholar/10600775491004352517",
+            "relevance_score": 0.4625977873802185,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/8216949865405159359",
+            "source_type": "scholar",
+            "title": "Battery Exchange Charging Initiative-BECI",
+            "snippet": "\u2026 However the electric vehicle is still not a widely successful \u2026 with two position sensors under the car used to transfer the \u2026 time, our system will be \u201esmart\u201f enough to do these operations. \u2026",
+            "link": "https://patents.google.com/scholar/8216949865405159359",
+            "relevance_score": 0.46251586079597473,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/TWI413015B/en",
+            "source_type": "patent",
+            "title": "Battery management method and system",
+            "snippet": "The system of claim 1, wherein each of the tokens has an internet protocol address for wireless communication with the plurality of battery exchange stations adjacent thereto. The system of claim 4, wherein the information recorded in each of the tokens is transmitted to the plurality of battery \u2026",
+            "link": "https://patents.google.com/patent/TWI413015B/en",
+            "relevance_score": 0.4546504020690918,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "TW": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Jonathan M Ross",
+            "priority_date": "2009-09-16"
+          },
+          {
+            "id": "https://www.facebook.com/TheStartupTN/posts/congratulations-to-mooev-technologies-on-securing-4-crore-in-seed-fundingled-by-/872548055052087/",
+            "source_type": "product",
+            "title": "Congratulations to MOOEV Technologies on securing \u20b94 ...",
+            "snippet": "Along with our ecosystem partners, we are working to create a vast network of EV charging stations, in addition to battery recycling & battery ...",
+            "link": "https://www.facebook.com/TheStartupTN/posts/congratulations-to-mooev-technologies-on-securing-4-crore-in-seed-fundingled-by-/872548055052087/",
+            "relevance_score": 0.4429933428764343,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/JP2001023037A/en",
+            "source_type": "patent",
+            "title": "Battery exchanging and selling device",
+            "snippet": "FIG. 2 is an internal structural view of the battery exchange / sales apparatus. As shown in the drawing, the battery exchange / sales apparatus has a battery carrying-out mechanism 1A, a carrying-in mechanism 1B, a battery storage 1C, and a charging mechanism 1D, and further has a main control \u2026",
+            "link": "https://patents.google.com/patent/JP2001023037A/en",
+            "relevance_score": 0.4313706159591675,
+            "cpc_code": "Y02E60/10",
+            "cpc_description": "Energy storage using batteries",
+            "country_status": {
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Akira Otsuka",
+            "priority_date": "1999-07-05"
+          },
+          {
+            "id": "patent/CN111757304A/en",
+            "source_type": "patent",
+            "title": "Method and system for replacing electric vehicle battery based on Internet of \u2026",
+            "snippet": "5 . The method for an electric vehicle battery replacement system based on the Internet of Things according to claim 3 , wherein the Internet of Things platform allocates idle battery cabinets to the electric vehicle batteries to be charged, and then uses a transmission unit to replace the electric \u2026",
+            "link": "https://patents.google.com/patent/CN111757304A/en",
+            "relevance_score": 0.42733028531074524,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6c5f\u82cf\u7406\u5de5\u5b66\u9662",
+            "priority_date": "2020-05-28"
+          },
+          {
+            "id": "patent/CN102273042B/en",
+            "source_type": "patent",
+            "title": "Charging station and method of operation thereof",
+            "snippet": "5. A loading station with a device for controlling the loading and/or unloading process of a storage medium used as a vehicle energy source and for identifying a storage medium device, said loading station comprising a data memory storing information about the storage medium, and, Information about \u2026",
+            "link": "https://patents.google.com/patent/CN102273042B/en",
+            "relevance_score": 0.424622118473053,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE",
+              "DE": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5fb7\u56fd\u90ae\u653f\u80a1\u4efd\u516c\u53f8",
+            "priority_date": "2008-12-31"
+          },
+          {
+            "id": "https://www.linkedin.com/posts/neel-shah-553105178_statiq-activity-7341113086679945216-lOYF",
+            "source_type": "product",
+            "title": "How Statiq's EV campaign is saving you money",
+            "snippet": "Tracking the battery from manufacturing to recycling \u2705 Preventing counterfeit or stolen batteries \u2705 Ensuring safety and performance traceability",
+            "link": "https://www.linkedin.com/posts/neel-shah-553105178_statiq-activity-7341113086679945216-lOYF",
+            "relevance_score": 0.42169344425201416,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/18266594373026188421",
+            "source_type": "scholar",
+            "title": "Charging station of electric vehicle based on IoT: A review",
+            "snippet": "\u2026 , RFID technology is utilized to check-in and out of cars. The \u2026 This suggested smart parking system is based on IoT \u2026 , two types of wireless electric car charging systems, static and \u2026",
+            "link": "https://patents.google.com/scholar/18266594373026188421",
+            "relevance_score": 0.413122296333313,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN202524117U/en",
+            "source_type": "patent",
+            "title": "Universal battery exchange unit for battery packs with different material \u2026",
+            "snippet": "2. The battery exchange device for battery packs with different material properties as claimed in claim 1, wherein the control unit is a computer host or a microcontroller. 3. The universal battery exchange device for battery packs with different material properties as claimed in claim 1, wherein \u2026",
+            "link": "https://patents.google.com/patent/CN202524117U/en",
+            "relevance_score": 0.4000723958015442,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "CN": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u6d2a\u56fd\u4fee",
+            "priority_date": "2012-03-21"
+          },
+          {
+            "id": "patent/TWM482126U/en",
+            "source_type": "patent",
+            "title": "Electric vehicle lease station",
+            "snippet": "An electric vehicle rental station includes: a vehicle locking device for locking at least one body of the electric vehicle; and reading an identification unit disposed on the body of the electric vehicle; and a key locking device for locking At least one electric vehicle key, and an \u2026",
+            "link": "https://patents.google.com/patent/TWM482126U/en",
+            "relevance_score": 0.396049827337265,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "TW": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Kuo-Shiu Hong",
+            "priority_date": "2014-02-26"
+          },
+          {
+            "id": "patent/CN102271957B/en",
+            "source_type": "patent",
+            "title": "Storage medium and loading station with data memory and charging station",
+            "snippet": "The invention relates to a storage medium, in particular for use as a vehicle energy carrier. According to the invention, the storage medium is characterized in that it comprises a data memory for storing information about the charging status of the storage medium. The invention further relates to \u2026",
+            "link": "https://patents.google.com/patent/CN102271957B/en",
+            "relevance_score": 0.36620163917541504,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE",
+              "DE": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u5fb7\u56fd\u90ae\u653f\u80a1\u4efd\u516c\u53f8",
+            "priority_date": "2008-12-31"
+          },
+          {
+            "id": "scholar/14603435284725669247",
+            "source_type": "scholar",
+            "title": "Incorporating institutional and spatial factors in the selection of the optimal locations of public electric vehicle charging facilities: A case study of Beijing, China",
+            "snippet": "\u2026 This paper has two objectives. The first objective is to study \u2026 as the consideration of energy demand from car users and site \u2026 there will be 107 charging/battery swap stations. Because the \u2026",
+            "link": "https://patents.google.com/scholar/14603435284725669247",
+            "relevance_score": 0.3513004183769226,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/6728299866471407152",
+            "source_type": "scholar",
+            "title": "An intelligent IoT emergency vehicle warning system using RFID and Wi-Fi technologies for emergency medical services",
+            "snippet": "\u2026 trigger tag, an RFID system in an emergency vehicle, and an RFID \u2026 trigger tag on a utility pole and provide its own identification \u2026 The energy transmission between the two structures is \u2026",
+            "link": "https://patents.google.com/scholar/6728299866471407152",
+            "relevance_score": 0.3392997980117798,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/10000361206303017693",
+            "source_type": "scholar",
+            "title": "Wireless power transfer in electric vehicles: A review on compensation topologies, coil structures, and safety aspects",
+            "snippet": "\u2026 the various electric vehicle charging technologies in \u2026 separated into two types on the basis of vehicle movement. \u2026 objects, the Radio Frequency Identification (RFID) system can work \u2026",
+            "link": "https://patents.google.com/scholar/10000361206303017693",
+            "relevance_score": 0.321688711643219,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/15511586369425615688",
+            "source_type": "scholar",
+            "title": "Scientific and technical challenges facing the effective implementation of radio frequency identification (RFID)-based systems",
+            "snippet": "\u2026 One of the applications of the RFID in industry is the smart \u2026 RFID tag circuit consists of a control unit and an antenna. It may \u2026 The collision in the RFID system can be classified into two \u2026",
+            "link": "https://patents.google.com/scholar/15511586369425615688",
+            "relevance_score": 0.32147216796875,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://jmkresearch.com/wp-content/uploads/2023/01/Monthly-EV-Update_December-2022.pdf",
+            "source_type": "product",
+            "title": "December 2022",
+            "snippet": "After Hindustan Petroleum Corporation (HPCL) and Honda Power Pack Energy. India (HEID) entered into an arrangement to start 70 swapping stations ...",
+            "link": "https://jmkresearch.com/wp-content/uploads/2023/01/Monthly-EV-Update_December-2022.pdf",
+            "relevance_score": 0.29362261295318604,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/299645552885407285",
+            "source_type": "scholar",
+            "title": "A survey of blockchain applications in the energy sector",
+            "snippet": "\u2026 management to peer-to-peer trading to electric vehicle-related \u2026 Smart contracts can be used for trading and any exchange \u2026 In this project, blockchain has two main functions. One is to act \u2026",
+            "link": "https://patents.google.com/scholar/299645552885407285",
+            "relevance_score": 0.27811670303344727,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/AU2018203462B2/en",
+            "source_type": "patent",
+            "title": "Onboard-Installation for a Vehicle",
+            "snippet": "9. The onboard unit according to claim 8, wherein the configuration data contains one or more of the following elements: user identification, vehicle identification, tolling account identification, axle number, tolling parameters, load designation, account credit or account balance of an electronic \u2026",
+            "link": "https://patents.google.com/patent/AU2018203462B2/en",
+            "relevance_score": 0.2688356041908264,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "ACTIVE",
+              "CL": "UNKNOWN",
+              "DK": "ACTIVE",
+              "ES": "ACTIVE",
+              "PL": "UNKNOWN",
+              "PT": "UNKNOWN",
+              "RU": "NOT_ACTIVE",
+              "SI": "UNKNOWN",
+              "ZA": "UNKNOWN"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Kapsch Trafficcom Ag",
+            "priority_date": "2013-04-19"
+          },
+          {
+            "id": "scholar/14132898682940379778",
+            "source_type": "scholar",
+            "title": "Free-floating electric carsharing-fleets in smart cities: The dawning of a post-private car era in urban environments?",
+            "snippet": "\u2026 focuses on car2go in Ulm for two methodological reasons. First, \u2026 backup) driver behind the steering wheel. However, once the \u2026 may also reduce their private vehicle stock over time. This \u2026",
+            "link": "https://patents.google.com/scholar/14132898682940379778",
+            "relevance_score": 0.2590447664260864,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN113459928A/en",
+            "source_type": "patent",
+            "title": "Unmanned distribution system",
+            "snippet": "1. An unmanned distribution system is provided with: an unmanned distribution machine which autonomously travels on a road without a driver riding in a car and can individually store cargoes into a plurality of storage sections shielded by an openable and closable door section in accordance with a \u2026",
+            "link": "https://patents.google.com/patent/CN113459928A/en",
+            "relevance_score": 0.23276816308498383,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u672c\u7530\u6280\u7814\u5de5\u4e1a\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2020-03-31"
+          },
+          {
+            "id": "scholar/1145416132266019869",
+            "source_type": "scholar",
+            "title": "Improving construction safety with virtual-design construction technologies\u2013a review",
+            "snippet": "\u2026 significant volatility spillovers in the two pairs of markets, \u2026 An active RFID tag contains a battery and transmits signals \u2026 An aerial quadricopter was used in conjunction with a smart device \u2026",
+            "link": "https://patents.google.com/scholar/1145416132266019869",
+            "relevance_score": 0.21975916624069214,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          }
+        ],
+        "candidate_assessments": [
+          {
+            "result_id": "patent/US8616457B2/en",
+            "title": "RFID display label for battery packs",
+            "link": "https://patents.google.com/patent/US8616457B2/en",
+            "overlapping_elements": [
+              "RFID tag on battery",
+              "display of battery status"
+            ],
+            "differences": [
+              "mechanical slide\u2011out/in operation",
+              "time\u2011based swap (<1\u202fmin)",
+              "billing per swap"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN220483257U/en",
+            "title": "\u2026 management system of light truck battery replacement station based on RFID",
+            "link": "https://patents.google.com/patent/CN220483257U/en",
+            "overlapping_elements": [
+              "RFID readers for battery packs",
+              "unmanned battery change",
+              "recording of charge cycles"
+            ],
+            "differences": [
+              "focus on light\u2011truck vehicles",
+              "no explicit sub\u2011minute slide mechanism",
+              "no direct billing model"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/TW202210325A/en",
+            "title": "Swappable battery system and method, electric vechicles, battery as a service ( \u2026",
+            "link": "https://patents.google.com/patent/TW202210325A/en",
+            "overlapping_elements": [
+              "battery\u2011as\u2011a\u2011service platform",
+              "tracking of battery usage",
+              "multiple swap stations"
+            ],
+            "differences": [
+              "covers B2B platform, not a single rickshaw station",
+              "includes GPS\u2011linked mobile app",
+              "no manual slide\u2011in/out description"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CN114248638B/en",
+            "title": "Modularized rechargeable battery and battery unit for electric automobile",
+            "link": "https://patents.google.com/patent/CN114248638B/en",
+            "overlapping_elements": [
+              "RFID\u2011like tag chip for unique ID and cycle count",
+              "modular pull\u2011out battery body"
+            ],
+            "differences": [
+              "emphasizes foldable pull\u2011out structure and standardized positioning holes",
+              "does not specify sub\u2011minute manual swap",
+              "does not mention per\u2011swap billing"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/KR20130118482A/en",
+            "title": "Battery replacement apparatus and method of electric vehicles",
+            "link": "https://patents.google.com/patent/KR20130118482A/en",
+            "overlapping_elements": [
+              "robotic battery exchange",
+              "vehicle identification",
+              "battery\u2011level trigger"
+            ],
+            "differences": [
+              "robotic handling rather than driver\u2011performed slide",
+              "focus on full EVs not rickshaws",
+              "no RFID tag for billing per swap"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          }
+        ],
+        "overall_novelty_confidence": 0.35,
+        "differentiation_suggestions": [
+          "Add an automated guided mechanism that physically slides the pack into place, removing manual handling.",
+          "Integrate a real\u2011time payment module that reads the RFID tag and instantly charges the driver\u2019s account at the moment of swap.",
+          "Implement a sub\u2011minute lock\u2011and\u2011release system with sensors confirming proper seating before billing."
+        ],
+        "citations": [
+          {
+            "claim": "RFID tag on battery for status tracking",
+            "result_id": "patent/US8616457B2/en",
+            "title": "RFID display label for battery packs",
+            "link": "https://patents.google.com/patent/US8616457B2/en"
+          },
+          {
+            "claim": "Unmanned battery change using RFID readers",
+            "result_id": "patent/CN220483257U/en",
+            "title": "\u2026 management system of light truck battery replacement station based on RFID",
+            "link": "https://patents.google.com/patent/CN220483257U/en"
+          },
+          {
+            "claim": "Battery\u2011as\u2011a\u2011service platform tracking swaps",
+            "result_id": "patent/TW202210325A/en",
+            "title": "Swappable battery system and method, electric vechicles, battery as a service ( \u2026",
+            "link": "https://patents.google.com/patent/TW202210325A/en"
+          },
+          {
+            "claim": "Modular pull\u2011out battery with RFID chip",
+            "result_id": "patent/CN114248638B/en",
+            "title": "Modularized rechargeable battery and battery unit for electric automobile",
+            "link": "https://patents.google.com/patent/CN114248638B/en"
+          },
+          {
+            "claim": "Robotic exchange triggered by battery level",
+            "result_id": "patent/KR20130118482A/en",
+            "title": "Battery replacement apparatus and method of electric vehicles",
+            "link": "https://patents.google.com/patent/KR20130118482A/en"
+          },
+          {
+            "claim": "Add automated guided sliding mechanism",
+            "result_id": "patent/CN114248638B/en",
+            "title": "Modularized rechargeable battery and battery unit for electric automobile",
+            "link": "https://patents.google.com/patent/CN114248638B/en"
+          },
+          {
+            "claim": "Integrate instant payment via RFID",
+            "result_id": "patent/US8616457B2/en",
+            "title": "RFID display label for battery packs",
+            "link": "https://patents.google.com/patent/US8616457B2/en"
+          },
+          {
+            "claim": "Sub\u2011minute lock\u2011release sensor verification",
+            "result_id": "patent/KR20130118482A/en",
+            "title": "Battery replacement apparatus and method of electric vehicles",
+            "link": "https://patents.google.com/patent/KR20130118482A/en"
+          }
+        ],
+        "india_status": {
+          "related_active_in_india": 0,
+          "active_elsewhere_only": 5,
+          "india_filings_found": 0
+        },
+        "claim_chart": {
+          "candidate_result_id": "patent/US8616457B2/en",
+          "candidate_title": "RFID display label for battery packs",
+          "candidate_link": "https://patents.google.com/patent/US8616457B2/en",
+          "candidate_text": "Abstract: A smart battery label having an RFID or UHF antenna, sensors to monitor battery environmental data and a bi-state display for displaying battery data.\n\nClaim 1: 1. A smart label for a battery comprising:\na housing;\na processor;\nan antenna;\na bi-state display; and\na sensor for sensing battery environment data;\nwherein said processor receives battery status data from said battery through said antenna and displays said battery status data on said bi-state display.\n\nClaim 2: 2. A smart label for a battery according to claim 1 wherein said battery status data received from said battery comprises one of a number of recharge cycles of said battery, temperature of said battery and percentage of total battery discharge.\n\nClaim 3: 3. A smart label for a battery according to claim 1, wherein said processor is powered by energy received through said antenna and a state of said bi-state display is changed using energy received through said antenna.\n\nClaim 4: 4. A smart label for a battery according to claim 1, wherein said processor is powered by energy received through said antenna and a state of said bi-state display is changed using energy received through said antenna.\n\nClaim 5: 5. A smart label for a battery according to claim 1, further comprising means for receiving power from inside said battery through a sealed casing of said battery.\n\nClaim 6: 6. A smart label for a battery according to claim 5, wherein said means for receiving power comprises a secondary coil for receiving energy from an RFID energy coil inside said battery.",
+          "pairs": [
+            {
+              "concept": "RFID tag on battery",
+              "idea_span": "each pack has an RFID tag",
+              "candidate_span": "the battery pack electronic tag is used for reading the stored information"
+            },
+            {
+              "concept": "Slide\u2011in/out operation",
+              "idea_span": "driver slides out a depleted battery pack and slides in a charged one",
+              "candidate_span": "battery body with a foldable pull\u2011out structure"
+            },
+            {
+              "concept": "Under\u2011one\u2011minute swap",
+              "idea_span": "in under a minute",
+              "candidate_span": "the station control system stores information of all battery packs and vehicles ... for calling, analyzing and inquiring during power exchange"
+            }
+          ]
+        },
+        "top_assignees": [],
+        "public_domain": {
+          "count": 4,
+          "patents_considered": 21,
+          "entries": [
+            {
+              "id": "patent/CN201435612Y/en",
+              "title": "Mobile battery charging exchange device",
+              "link": "https://patents.google.com/patent/CN201435612Y/en",
+              "priority_date": "2009-06-01",
+              "assignee": "\u6731\u4e3d\u534e",
+              "relevance_score": 0.4733087420463562,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 17
+            },
+            {
+              "id": "patent/TWI413015B/en",
+              "title": "Battery management method and system",
+              "link": "https://patents.google.com/patent/TWI413015B/en",
+              "priority_date": "2009-09-16",
+              "assignee": "Jonathan M Ross",
+              "relevance_score": 0.4546504020690918,
+              "lapsed_in": [
+                "TW",
+                "WO"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 17
+            },
+            {
+              "id": "patent/CN202524117U/en",
+              "title": "Universal battery exchange unit for battery packs with different material \u2026",
+              "link": "https://patents.google.com/patent/CN202524117U/en",
+              "priority_date": "2012-03-21",
+              "assignee": "\u6d2a\u56fd\u4fee",
+              "relevance_score": 0.4000723958015442,
+              "lapsed_in": [
+                "CN"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 14
+            },
+            {
+              "id": "patent/TWM482126U/en",
+              "title": "Electric vehicle lease station",
+              "link": "https://patents.google.com/patent/TWM482126U/en",
+              "priority_date": "2014-02-26",
+              "assignee": "Kuo-Shiu Hong",
+              "relevance_score": 0.396049827337265,
+              "lapsed_in": [
+                "TW"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 12
+            }
+          ]
+        },
+        "search_strategy": {
+          "core_concepts": [
+            "battery swapping station",
+            "electric rickshaw",
+            "RFID tag tracking",
+            "rapid battery exchange",
+            "per\u2011swap billing"
+          ],
+          "suggested_cpc": "H02J 7/00",
+          "queries": [
+            {
+              "type": "major_markets",
+              "query": "(\"battery swapping station\" OR \"battery swap station\") (\"electric rickshaw\" OR \"e-rickshaw\") (RFID OR \"radio frequency identification\") (billing OR payment)",
+              "rationale": "Uses the most specific phrasing from the invention to locate blocking prior art in major jurisdictions.",
+              "country": null,
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "india_specific",
+              "query": "(\"battery swap\" OR \"battery exchange\") (rickshaw OR \"e-rickshaw\") (RFID OR tag)",
+              "rationale": "A shorter query with broader synonyms suitable for the smaller Indian patent corpus.",
+              "country": "IN",
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "broad_recall",
+              "query": "(\"battery exchange\" OR \"energy storage swap\") (two-wheeler OR vehicle) (\"identification tag\" OR \"smart tag\" OR RFID)",
+              "rationale": "Broad parent terms and many synonyms to maximize recall of any related prior art, accepting more noise.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "refined",
+              "query": "(\"battery exchange station\" OR \"swap module\") (\"smart battery pack\" OR \"RFID-enabled charging dock\") (rickshaw OR \"e-rickshaw\" OR two-wheeler)",
+              "rationale": "Patents refer to the concept as a \"battery exchange station\" with \"swap module\", \"smart battery pack\" and \"RFID-enabled charging dock\", not just generic swapping stations.",
+              "country": null,
+              "result_count": 1,
+              "failed": false
+            }
+          ],
+          "market_query": "battery swapping station electric rickshaw RFID tag tracking rapid battery exchange",
+          "trends_keyword": null,
+          "serpapi_calls": {
+            "google_patents": 5,
+            "google": 1,
+            "google_patents_details": 6
+          },
+          "refinement_observation": "Patents refer to the concept as a \"battery exchange station\" with \"swap module\", \"smart battery pack\" and \"RFID-enabled charging dock\", not just generic swapping stations.",
+          "refinement_terms": [
+            "battery exchange station",
+            "swap module",
+            "smart battery pack",
+            "RFID-enabled charging dock"
+          ]
+        },
+        "citation_network": {
+          "discoveries": [
+            {
+              "id": "patent/US6014141A/en",
+              "title": "Method and apparatus for selectively displaying a parameter in a separate status panel",
+              "link": "https://patents.google.com/patent/US6014141A/en",
+              "assignee": "Micron Electronics, Inc.",
+              "priority_date": "1997-03-25",
+              "referenced_by": [
+                "patent/US8616457B2/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": true
+            },
+            {
+              "id": "patent/US20090248333A1/en",
+              "title": "Rechargeable \"smart\" battery with cycle status indicator for use in mobile, handheld electrical devices",
+              "link": "https://patents.google.com/patent/US20090248333A1/en",
+              "assignee": "Grosberg Michael E",
+              "priority_date": "2007-11-16",
+              "referenced_by": [
+                "patent/US8616457B2/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": false
+            },
+            {
+              "id": "patent/US20100052908A1/en",
+              "title": "Transient state information display in an rfid tag",
+              "link": "https://patents.google.com/patent/US20100052908A1/en",
+              "assignee": "International Business Machines Corporation",
+              "priority_date": "2008-09-02",
+              "referenced_by": [
+                "patent/US8616457B2/en"
+              ],
+              "direction": "backward",
+              "examiner_cited": true,
+              "reason": "examiner_cited",
+              "likely_expired": false
+            }
+          ],
+          "edges": [],
+          "references_scanned": 53
+        },
+        "market_trend": null,
+        "plain_summary": "You already have systems that read RFID tags on batteries and even manage swap stations, but none describe a driver manually sliding a rickshaw battery in and out in under a minute while the system automatically bills the swap. The closest match is the Chinese utility model (CN220483257U) that uses RFID readers for unmanned swaps, but it lacks the fast manual slide and per\u2011swap payment. To stand out, consider adding an automated sliding guide, a real\u2011time payment link to the RFID tag, and a lock\u2011and\u2011release sensor that confirms the pack is seated before charging the driver.",
+        "original_idea_text": null,
+        "language_code": "en",
+        "language_name": "English",
+        "localized": null,
+        "examined_documents": [
+          {
+            "id": "patent/US8616457B2/en",
+            "source_type": "patent",
+            "title": "RFID display label for battery packs",
+            "link": "https://patents.google.com/patent/US8616457B2/en",
+            "text": "Abstract: A smart battery label having an RFID or UHF antenna, sensors to monitor battery environmental data and a bi-state display for displaying battery data.\n\nClaim 1: 1. A smart label for a battery comprising:\na housing;\na processor;\nan antenna;\na bi-state display; and\na sensor for sensing battery environment data;\nwherein said processor receives battery status data from said battery through said antenna and displays said battery status data on said bi-state display.\n\nClaim 2: 2. A smart label for a battery according to claim 1 wherein said battery status data received from said battery comprises one of a number of recharge cycles of said battery, temperature of said battery and percentage of total battery discharge.\n\nClaim 3: 3. A smart label for a battery according to claim 1, wherein said processor is powered by energy received through said antenna and a state of said bi-state display is changed using energy received through said antenna.\n\nClaim 4: 4. A smart label for a battery according to claim 1, wherein said processor is powered by energy received through said antenna and a state of said bi-state display is changed using energy received through said antenna.\n\nClaim 5: 5. A smart label for a battery according to claim 1, further comprising means for receiving power from inside said battery through a sealed casing of said battery.\n\nClaim 6: 6. A smart label for a battery according to claim 5, wherein said means for receiving power comprises a secondary coil for receiving energy from an RFID energy coil inside said battery.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A smart battery label having an RFID or UHF antenna, sensors to monitor battery environmental data and a bi-state display for displaying battery data.",
+                "original_chars": 150,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A smart label for a battery comprising:\na housing;\na processor;\nan antenna;\na bi-state display; and\na sensor for sensing battery environment data;\nwherein said processor receives battery status data from said battery through said antenna and displays said battery status data on said bi-state display.",
+                "original_chars": 304,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. A smart label for a battery according to claim 1 wherein said battery status data received from said battery comprises one of a number of recharge cycles of said battery, temperature of said battery and percentage of total battery discharge.",
+                "original_chars": 244,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. A smart label for a battery according to claim 1, wherein said processor is powered by energy received through said antenna and a state of said bi-state display is changed using energy received through said antenna.",
+                "original_chars": 218,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. A smart label for a battery according to claim 1, wherein said processor is powered by energy received through said antenna and a state of said bi-state display is changed using energy received through said antenna.",
+                "original_chars": 218,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. A smart label for a battery according to claim 1, further comprising means for receiving power from inside said battery through a sealed casing of said battery.",
+                "original_chars": 163,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. A smart label for a battery according to claim 5, wherein said means for receiving power comprises a secondary coil for receiving energy from an RFID energy coil inside said battery.",
+                "original_chars": 185,
+                "truncated": false
+              }
+            ],
+            "total_claims": 11
+          },
+          {
+            "id": "patent/CN220483257U/en",
+            "source_type": "patent",
+            "title": "\u2026 management system of light truck battery replacement station based on RFID",
+            "link": "https://patents.google.com/patent/CN220483257U/en",
+            "text": "Abstract: The utility model provides a battery management system of a light-card battery replacement station based on RFID, which comprises a battery replacement actuator RFID reader, wherein the battery replacement actuator RFID reader is used for reading and rewriting electronic tag information of a battery pack; the channel RFID reader-writer is used for guiding the vehicle to finish the power change positioning and reading and modifying the information of the electronic tag of the vehicle; the battery pack electronic tag is used for reading the stored information in the hybrid modification tag by the RFID reader of the battery replacement actuator; the vehicle electronic tag is used for detecting whether the vehicle belongs to a battery exchange station registration vehicle or not. According to the utility model, through the two groups of RFID readers and the plurality of groups of electronic tags arranged on the battery pack, the light card can be rapidly guided to complete power change and form a set of reliable battery management system with the station control system, unmanned battery change is realized, the safety of power change operation is improved, the time of the power change operation is shortened, and the service quality of the power change station is improved.\n\nClaim 1: 1. The battery management system of the light-truck battery replacement station based on the RFID is characterized by comprising a battery replacement actuator RFID reader-writer (1), wherein the battery replacement actuator RFID reader-writer (1) is arranged on a battery pack replacement mechanism of the battery replacement actuator and is used for reading and rewriting electronic tag information of a battery pack;\n\nClaim 2: the channel RFID reader-writer (2) is arranged on the side wall of the power-changing channel and used for guiding the vehicle to finish power-changing positioning and reading and modifying the information of the vehicle electronic tag (6);\n\nClaim 3: the battery pack electronic tag is respectively arranged in a battery pack of each bin in the battery exchange station and a battery pack carried by the light truck and used for reading storage information in the hybrid modification tag by the battery exchange executor RFID reader-writer (1);\n\nClaim 4: the vehicle electronic tag (6), vehicle electronic tag (6) installs in vehicle front windshield upper right side, contains model, license plate number, manufacturer, date of production, the supporting battery package model of vehicle for detect whether the vehicle belongs to the battery replacement station registration vehicle.\n\nClaim 5: 2. The battery management system of the light-truck power exchange station based on the RFID according to claim 1, wherein the power exchange executor RFID reader-writer (1) and the channel RFID reader-writer (2) are in data interaction with a station control system (3) through a TCP wired network, and the station control system (3) stores information of all battery packs and vehicles of the power exchange station for calling, analyzing and inquiring during power exchange.\n\nClaim 6: 3. The battery management system of the RFID-based light truck battery replacement station of claim 1, wherein the battery pack electronic tags include in-bin battery pack electronic tags (4) and vehicle-mounted battery pack electronic tags (5), the in-bin battery pack electronic tags (4) are arranged in battery packs of each bin in the battery replacement station, and the vehicle-mounted battery pack electronic tags (5) are arranged in battery packs carried by light trucks.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The utility model provides a battery management system of a light-card battery replacement station based on RFID, which comprises a battery replacement actuator RFID reader, wherein the battery replacement actuator RFID reader is used for reading and rewriting electronic tag information of a battery pack; the channel RFID reader-writer is used for guiding the vehicle to finish the power change positioning and reading and modifying the information of the electronic tag of the vehicle; the battery pack electronic tag is used for reading the stored information in the hybrid modification tag by the RFID reader of the battery replacement actuator; the vehicle electronic tag is used for detecting whether the vehicle belongs to a battery exchange station registration vehicle or not. According to the utility model, through the two groups of RFID readers and the plurality of groups of electronic tags arranged on the battery pack, the light card can be rapidly guided to complete power change and form a set of reliable battery management system with the station control system, unmanned battery change is realized, the safety of power change operation is improved, the time of the power change operation is shortened, and the service quality of the power change station is improved.",
+                "original_chars": 1287,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. The battery management system of the light-truck battery replacement station based on the RFID is characterized by comprising a battery replacement actuator RFID reader-writer (1), wherein the battery replacement actuator RFID reader-writer (1) is arranged on a battery pack replacement mechanism of the battery replacement actuator and is used for reading and rewriting electronic tag information of a battery pack;",
+                "original_chars": 419,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "the channel RFID reader-writer (2) is arranged on the side wall of the power-changing channel and used for guiding the vehicle to finish power-changing positioning and reading and modifying the information of the vehicle electronic tag (6);",
+                "original_chars": 240,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "the battery pack electronic tag is respectively arranged in a battery pack of each bin in the battery exchange station and a battery pack carried by the light truck and used for reading storage information in the hybrid modification tag by the battery exchange executor RFID reader-writer (1);",
+                "original_chars": 293,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "the vehicle electronic tag (6), vehicle electronic tag (6) installs in vehicle front windshield upper right side, contains model, license plate number, manufacturer, date of production, the supporting battery package model of vehicle for detect whether the vehicle belongs to the battery replacement station registration vehicle.",
+                "original_chars": 329,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "2. The battery management system of the light-truck power exchange station based on the RFID according to claim 1, wherein the power exchange executor RFID reader-writer (1) and the channel RFID reader-writer (2) are in data interaction with a station control system (3) through a TCP wired network, and the station control system (3) stores information of all battery packs and vehicles of the power exchange station for calling, analyzing and inquiring during power exchange.",
+                "original_chars": 477,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "3. The battery management system of the RFID-based light truck battery replacement station of claim 1, wherein the battery pack electronic tags include in-bin battery pack electronic tags (4) and vehicle-mounted battery pack electronic tags (5), the in-bin battery pack electronic tags (4) are arranged in battery packs of each bin in the battery replacement station, and the vehicle-mounted battery pack electronic tags (5) are arranged in battery packs carried by light trucks.",
+                "original_chars": 479,
+                "truncated": false
+              }
+            ],
+            "total_claims": 9
+          },
+          {
+            "id": "patent/TW202210325A/en",
+            "source_type": "patent",
+            "title": "Swappable battery system and method, electric vechicles, battery as a service ( \u2026",
+            "link": "https://patents.google.com/patent/TW202210325A/en",
+            "text": "Abstract: Embodiments of the present invention broadly disclose electric vehicles (EVs), and a business to business platform including a swappable battery system and method, and systems and methods providing battery as a service (BaaS). In some embodiments a BaaS system and method are provided that create B2B opportunities to drive widespread, economical adoption of EVs.\n\nClaim 1: \u4e00\u7a2e\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u5305\u62ec\uff1a\n\u4e00\u6216\u591a\u500b\u96fb\u6c60\u6216\u96fb\u6c60\u7d44\uff0c\u5176\u7b49\u7d93\u7d44\u614b\u4ee5\u4f9b\u96fb\u7d66\u4e00\u96fb\u52d5\u8eca\uff1b\n\u4e00\u96fb\u6c60\u66f4\u63db\u7db2\u8def\uff0c\u5176\u5305\u62ec\u7d93\u7d44\u614b\u4ee5\u6536\u5bb9\u5df2\u5145\u96fb\u96fb\u6c60\u4e14\u4ea4\u63db\u5df2\u5145\u96fb\u96fb\u6c60\u8207\u7528\u904e\u7684\u96fb\u6c60\u4e4b\u4e00\u6216\u591a\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\uff1b\u53ca\n\u4e00\u8cc7\u6599\u7ba1\u7406\u7cfb\u7d71\uff0c\u5176\u7d93\u7d44\u614b\u4ee5\u7ba1\u7406\u8a72\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u5305\u542b\u4f46\u4e0d\u9650\u65bc\u8ffd\u8e64\u4f7f\u7528\u4e2d\u53ca\u6536\u5bb9\u65bc\u8a72\u4e00\u6216\u591a\u500b\u670d\u52d9\u7ad9\u4e2d\u6642\u4e4b\u96fb\u6c60\u3001\u7ba1\u7406\u79df\u7528\u3001\u5145\u96fb\u53ca\u66f4\u63db\u4ea4\u6613\u3001\u4e14\u7ba1\u7406\u5176\u4e2d\u4f7f\u7528\u8005\u5b58\u53d6\u8a72\u7cfb\u7d71\u4e4b\u4e00\u884c\u52d5\u61c9\u7528\u7a0b\u5f0f(\u884c\u52d5app)\u5e73\u53f0\u4e4b\u529f\u80fd\u3002\n\nClaim 2: \u5982\u8acb\u6c42\u98051\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u4e00\u6216\u591a\u500b\u96fb\u6c60\u6216\u96fb\u6c60\u7d44\u7d44\u614b\u6709\u80fd\u5920\u900f\u904e\u8a72\u884c\u52d5app\u53ca\u4e00GPS\u7db2\u8def\u4f86\u8ffd\u8e64\u8a72\u96fb\u6c60\u7d44\u4e4b\u4e00\u552f\u4e00\u8b58\u5225\u7b26\u3002\n\nClaim 3: \u5982\u8acb\u6c42\u98052\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u7b49\u96fb\u6c60\u5305\u542b\u7d93\u7d44\u614b\u4ee5\u76e3\u6e2c\u3001\u5132\u5b58\u53ca/\u6216\u50b3\u8f38\u5305\u542b\u6548\u80fd\u3001\u6548\u7387\u3001\u96fb\u91cf\u3001\u6eab\u5ea6\u4e4b\u96fb\u6c60\u8cc7\u6599\u4e4b\u4e00\u6216\u591a\u500b\u611f\u6e2c\u5668\u3002\n\nClaim 4: \u5982\u8acb\u6c42\u98051\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u96fb\u6c60\u66f4\u63db\u7db2\u8def\u5305\u62ec\u5176\u4e2d\u4f7f\u7528\u8005\u53ef\u4ea4\u63db\u7528\u904e\u7684\u96fb\u6c60\u8207\u65b0\u5df2\u5145\u96fb\u96fb\u6c60\u4e4b\u6536\u5bb9\u4e00\u6216\u591a\u500b\u96fb\u6c60\u4e4b\u8907\u6578\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\u3002\n\nClaim 5: \u5982\u8acb\u6c42\u98054\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u8907\u6578\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\u53ef\u70ba\u56fa\u5b9a\u6216\u884c\u52d5\u7684\u6216\u5169\u8005\u4e4b\u7d44\u5408\u3002\n\nClaim 6: \u5982\u8acb\u6c42\u98054\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u8907\u6578\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\u4e4b\u4e00\u6216\u591a\u8005\u5305\u542b\u5171\u540c\u5b9a\u4f4d\u4e4b\u96fb\u6e90\u4e14\u63d0\u4f9b\u7531\u4f7f\u7528\u8005\u6b78\u9084\u4e4b\u7528\u904e\u7684\u96fb\u6c60\u4e4b\u90e8\u5206\u6216\u5b8c\u5168\u5145\u96fb\u3002",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "Embodiments of the present invention broadly disclose electric vehicles (EVs), and a business to business platform including a swappable battery system and method, and systems and methods providing battery as a service (BaaS). In some embodiments a BaaS system and method are provided that create B2B opportunities to drive widespread, economical adoption of EVs.",
+                "original_chars": 363,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "\u4e00\u7a2e\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u5305\u62ec\uff1a\n\u4e00\u6216\u591a\u500b\u96fb\u6c60\u6216\u96fb\u6c60\u7d44\uff0c\u5176\u7b49\u7d93\u7d44\u614b\u4ee5\u4f9b\u96fb\u7d66\u4e00\u96fb\u52d5\u8eca\uff1b\n\u4e00\u96fb\u6c60\u66f4\u63db\u7db2\u8def\uff0c\u5176\u5305\u62ec\u7d93\u7d44\u614b\u4ee5\u6536\u5bb9\u5df2\u5145\u96fb\u96fb\u6c60\u4e14\u4ea4\u63db\u5df2\u5145\u96fb\u96fb\u6c60\u8207\u7528\u904e\u7684\u96fb\u6c60\u4e4b\u4e00\u6216\u591a\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\uff1b\u53ca\n\u4e00\u8cc7\u6599\u7ba1\u7406\u7cfb\u7d71\uff0c\u5176\u7d93\u7d44\u614b\u4ee5\u7ba1\u7406\u8a72\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u5305\u542b\u4f46\u4e0d\u9650\u65bc\u8ffd\u8e64\u4f7f\u7528\u4e2d\u53ca\u6536\u5bb9\u65bc\u8a72\u4e00\u6216\u591a\u500b\u670d\u52d9\u7ad9\u4e2d\u6642\u4e4b\u96fb\u6c60\u3001\u7ba1\u7406\u79df\u7528\u3001\u5145\u96fb\u53ca\u66f4\u63db\u4ea4\u6613\u3001\u4e14\u7ba1\u7406\u5176\u4e2d\u4f7f\u7528\u8005\u5b58\u53d6\u8a72\u7cfb\u7d71\u4e4b\u4e00\u884c\u52d5\u61c9\u7528\u7a0b\u5f0f(\u884c\u52d5app)\u5e73\u53f0\u4e4b\u529f\u80fd\u3002",
+                "original_chars": 189,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\u5982\u8acb\u6c42\u98051\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u4e00\u6216\u591a\u500b\u96fb\u6c60\u6216\u96fb\u6c60\u7d44\u7d44\u614b\u6709\u80fd\u5920\u900f\u904e\u8a72\u884c\u52d5app\u53ca\u4e00GPS\u7db2\u8def\u4f86\u8ffd\u8e64\u8a72\u96fb\u6c60\u7d44\u4e4b\u4e00\u552f\u4e00\u8b58\u5225\u7b26\u3002",
+                "original_chars": 61,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\u5982\u8acb\u6c42\u98052\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u7b49\u96fb\u6c60\u5305\u542b\u7d93\u7d44\u614b\u4ee5\u76e3\u6e2c\u3001\u5132\u5b58\u53ca/\u6216\u50b3\u8f38\u5305\u542b\u6548\u80fd\u3001\u6548\u7387\u3001\u96fb\u91cf\u3001\u6eab\u5ea6\u4e4b\u96fb\u6c60\u8cc7\u6599\u4e4b\u4e00\u6216\u591a\u500b\u611f\u6e2c\u5668\u3002",
+                "original_chars": 62,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\u5982\u8acb\u6c42\u98051\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u96fb\u6c60\u66f4\u63db\u7db2\u8def\u5305\u62ec\u5176\u4e2d\u4f7f\u7528\u8005\u53ef\u4ea4\u63db\u7528\u904e\u7684\u96fb\u6c60\u8207\u65b0\u5df2\u5145\u96fb\u96fb\u6c60\u4e4b\u6536\u5bb9\u4e00\u6216\u591a\u500b\u96fb\u6c60\u4e4b\u8907\u6578\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\u3002",
+                "original_chars": 63,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "\u5982\u8acb\u6c42\u98054\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u8907\u6578\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\u53ef\u70ba\u56fa\u5b9a\u6216\u884c\u52d5\u7684\u6216\u5169\u8005\u4e4b\u7d44\u5408\u3002",
+                "original_chars": 39,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "\u5982\u8acb\u6c42\u98054\u4e4b\u96fb\u6c60\u66f4\u63db\u7cfb\u7d71\uff0c\u5176\u4e2d\u8a72\u8907\u6578\u500b\u7ad9\u6216\u670d\u52d9\u7ad9\u4e4b\u4e00\u6216\u591a\u8005\u5305\u542b\u5171\u540c\u5b9a\u4f4d\u4e4b\u96fb\u6e90\u4e14\u63d0\u4f9b\u7531\u4f7f\u7528\u8005\u6b78\u9084\u4e4b\u7528\u904e\u7684\u96fb\u6c60\u4e4b\u90e8\u5206\u6216\u5b8c\u5168\u5145\u96fb\u3002",
+                "original_chars": 62,
+                "truncated": false
+              }
+            ],
+            "total_claims": 25
+          },
+          {
+            "id": "patent/CN114248638B/en",
+            "source_type": "patent",
+            "title": "Modularized rechargeable battery and battery unit for electric automobile",
+            "link": "https://patents.google.com/patent/CN114248638B/en",
+            "text": "Abstract: A modular rechargeable battery and battery unit for electric vehicles belongs to the field of electric vehicles. It includes a battery body with a foldable pull-out structure; a positioning hole structure located on top of the battery body; and a positioning pin structure located below the battery body. The battery body also has a power interface and a chip and/or RFID-like tag chip interface with unique identification and charge/discharge cycle recording functions. This invention, through the cooperation of the identification chip with a matching intelligent electric vehicle, an intelligent charging and swapping device for modular electric vehicle batteries, and an electric vehicle battery modular management system, can achieve real-time monitoring of battery power, charge/discharge cycles, etc.; complete separation of battery charging and usage scenarios; rapid battery pack replacement and payment settlement; and effective tracking of the entire battery lifecycle. This provides a faster and cheaper user experience than refueling, alleviating range anxiety.\n\nClaim 1: 1.\u4e00\u79cd\u7535\u52a8\u6c7d\u8f66\u7528\u6a21\u5757\u5316\u5145\u7535\u7535\u6c60\uff0c\u5176\u7279\u5f81\u5728\u4e8e\uff0c\u5305\u62ec\uff1a\n\nClaim 2: \u7535\u6c60\u672c\u4f53(1)\uff0c\u5176\u8bbe\u6709\u53ef\u6298\u53e0\u7684\u63d0\u62c9\u7ed3\u6784(2)\uff1b\n\nClaim 3: \u5b9a\u4f4d\u5b54\u7ed3\u6784(3)\uff0c\u8bbe\u4e8e\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u4e0a\u65b9\uff1b\n\nClaim 4: \u5b9a\u4f4d\u7ed3\u6784(4)\uff0c\u8bbe\u4e8e\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u4e0b\u65b9\uff1b\n\nClaim 5: \u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u8fd8\u8bbe\u6709\u7535\u6e90\u63a5\u53e3(5)\u548c\u5177\u5907\u552f\u4e00\u8eab\u4efd\u6807\u8bc6\u53ca\u5145\u653e\u7535\u6b21\u6570\u8bb0\u5f55\u529f\u80fd\u7684\u82af\u7247\u548c/\u6216\u7c7bRFID\u6807\u7b7e\u53ca\u82af\u7247\u63a5\u53e3(6)\uff1b\n\nClaim 6: \u5176\u4e2d\uff0c\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u7684\u5916\u5f62\u5c3a\u5bf8\u3001\u5b9a\u4f4d\u5b54\u7ed3\u6784(3)\u548c\u5b9a\u4f4d\u7ed3\u6784(4)\u7684\u89c4\u683c\u6807\u51c6\u5316\uff0c\u4ee5\u4e0e\u667a\u80fd\u7535\u52a8\u6c7d\u8f66\u7684\u7535\u6c60\u7bb1\u548c\u667a\u80fd\u5145\u7535\u8bbe\u5907\u914d\u5957\uff1b\u6240\u8ff0\u82af\u7247\u548c/\u6216\u7c7bRFID\u6807\u7b7e\u914d\u7f6e\u4e3a\u4e0e\u667a\u80fd\u7535\u52a8\u6c7d\u8f66\u7ba1\u7406\u7cfb\u7edf\u3001\u667a\u80fd\u5145\u653e\u7535\u88c5\u7f6e\u901a\u8fc7\u82af\u7247\u8bfb\u5199\u63a5\u53e3\u5b9e\u65f6\u4ea4\u4e92\uff0c\u5b9e\u73b0\u7535\u6c60\u6570\u636e\u4fe1\u606f\u5168\u7f51\u5171\u4eab\u3001\u6765\u6e90\u53ef\u67e5\u3001\u53bb\u5411\u53ef\u8ffd\u3001\u72b6\u6001\u5b9e\u65f6\u76d1\u63a7\uff0c\u4e14\u6240\u8ff0\u82af\u7247\u8bb0\u5f55\u5145\u653e\u7535\u6b21\u6570\u5e76\u6839\u636e\u5269\u4f59\u7535\u91cf\u52a8\u6001\u66f4\u65b0\uff1a\u5f53\u5269\u4f59\u7535\u91cf\u8d85\u8fc750\uff05\u65f6\u8bb0\u5f550.5\u6b21\uff0c\u4f4e\u4e8e50\uff05\u65f6\u8bb0\u5f551\u6b21\u3002",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A modular rechargeable battery and battery unit for electric vehicles belongs to the field of electric vehicles. It includes a battery body with a foldable pull-out structure; a positioning hole structure located on top of the battery body; and a positioning pin structure located below the battery body. The battery body also has a power interface and a chip and/or RFID-like tag chip interface with unique identification and charge/discharge cycle recording functions. This invention, through the cooperation of the identification chip with a matching intelligent electric vehicle, an intelligent charging and swapping device for modular electric vehicle batteries, and an electric vehicle battery modular management system, can achieve real-time monitoring of battery power, charge/discharge cycles, etc.; complete separation of battery charging and usage scenarios; rapid battery pack replacement and payment settlement; and effective tracking of the entire battery lifecycle. This provides a faster and cheaper user experience than refueling, alleviating range anxiety.",
+                "original_chars": 1074,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1.\u4e00\u79cd\u7535\u52a8\u6c7d\u8f66\u7528\u6a21\u5757\u5316\u5145\u7535\u7535\u6c60\uff0c\u5176\u7279\u5f81\u5728\u4e8e\uff0c\u5305\u62ec\uff1a",
+                "original_chars": 26,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\u7535\u6c60\u672c\u4f53(1)\uff0c\u5176\u8bbe\u6709\u53ef\u6298\u53e0\u7684\u63d0\u62c9\u7ed3\u6784(2)\uff1b",
+                "original_chars": 23,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\u5b9a\u4f4d\u5b54\u7ed3\u6784(3)\uff0c\u8bbe\u4e8e\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u4e0a\u65b9\uff1b",
+                "original_chars": 23,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\u5b9a\u4f4d\u7ed3\u6784(4)\uff0c\u8bbe\u4e8e\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u4e0b\u65b9\uff1b",
+                "original_chars": 22,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u8fd8\u8bbe\u6709\u7535\u6e90\u63a5\u53e3(5)\u548c\u5177\u5907\u552f\u4e00\u8eab\u4efd\u6807\u8bc6\u53ca\u5145\u653e\u7535\u6b21\u6570\u8bb0\u5f55\u529f\u80fd\u7684\u82af\u7247\u548c/\u6216\u7c7bRFID\u6807\u7b7e\u53ca\u82af\u7247\u63a5\u53e3(6)\uff1b",
+                "original_chars": 60,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "\u5176\u4e2d\uff0c\u6240\u8ff0\u7535\u6c60\u672c\u4f53(1)\u7684\u5916\u5f62\u5c3a\u5bf8\u3001\u5b9a\u4f4d\u5b54\u7ed3\u6784(3)\u548c\u5b9a\u4f4d\u7ed3\u6784(4)\u7684\u89c4\u683c\u6807\u51c6\u5316\uff0c\u4ee5\u4e0e\u667a\u80fd\u7535\u52a8\u6c7d\u8f66\u7684\u7535\u6c60\u7bb1\u548c\u667a\u80fd\u5145\u7535\u8bbe\u5907\u914d\u5957\uff1b\u6240\u8ff0\u82af\u7247\u548c/\u6216\u7c7bRFID\u6807\u7b7e\u914d\u7f6e\u4e3a\u4e0e\u667a\u80fd\u7535\u52a8\u6c7d\u8f66\u7ba1\u7406\u7cfb\u7edf\u3001\u667a\u80fd\u5145\u653e\u7535\u88c5\u7f6e\u901a\u8fc7\u82af\u7247\u8bfb\u5199\u63a5\u53e3\u5b9e\u65f6\u4ea4\u4e92\uff0c\u5b9e\u73b0\u7535\u6c60\u6570\u636e\u4fe1\u606f\u5168\u7f51\u5171\u4eab\u3001\u6765\u6e90\u53ef\u67e5\u3001\u53bb\u5411\u53ef\u8ffd\u3001\u72b6\u6001\u5b9e\u65f6\u76d1\u63a7\uff0c\u4e14\u6240\u8ff0\u82af\u7247\u8bb0\u5f55\u5145\u653e\u7535\u6b21\u6570\u5e76\u6839\u636e\u5269\u4f59\u7535\u91cf\u52a8\u6001\u66f4\u65b0\uff1a\u5f53\u5269\u4f59\u7535\u91cf\u8d85\u8fc750\uff05\u65f6\u8bb0\u5f550.5\u6b21\uff0c\u4f4e\u4e8e50\uff05\u65f6\u8bb0\u5f551\u6b21\u3002",
+                "original_chars": 195,
+                "truncated": false
+              }
+            ],
+            "total_claims": 20
+          },
+          {
+            "id": "patent/KR20130118482A/en",
+            "source_type": "patent",
+            "title": "Battery replacement apparatus and method of electric vehicles",
+            "link": "https://patents.google.com/patent/KR20130118482A/en",
+            "text": "Abstract: Disclosed are an electric vehicle battery exchange apparatus and method for replacing a battery used as a power source of an electric vehicle.  In one embodiment, the electric vehicle battery exchange apparatus and method, the electric vehicle is not a long time rapid charging, by replacing the battery itself can not waste unnecessary time to charge, and also solves the problem that the battery life is shortened due to rapid charging In addition, the recovered battery can be fully charged using the cheapest time period, thereby reducing the electricity bill.\n\nClaim 1: \ucda9\uc804\uc18c\uc5d0 \uc9c4\uc785\ud558\ub294 \uc804\uae30\ucc28\ub85c\ubd80\ud130 \ucc28\ub7c9 \uc815\ubcf4\uc640, \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0 \uc7a5\ucc29\ub41c \uc81c1 \ubc30\ud130\ub9ac\uc5d0 \ub300\ud55c \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \uc778\uc2dd\ud558\ub294 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58; \ubc0f\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc774 \uc124\uc815\ub41c \uae30\uc900\uce58 \uc774\ud558\uc77c \uacbd\uc6b0 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc744 \uc0dd\uc131\ud558\uace0, \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc758 \uc0dd\uc131\uc5d0 \ub530\ub77c, \uc0c1\uae30 \ucc28\ub7c9 \uc815\ubcf4\uc5d0 \uae30\ucd08\ud558\uc5ec, \uc0c1\uae30 \uc81c1 \ubc30\ud130\ub9ac\uc758 \uc704\uce58, \uc0c1\ud0dc, \ub610\ub294 \uc6a9\ub7c9 \uc911 \uc801\uc5b4\ub3c4 \ud558\ub098\uc640 \ub300\uc751\ud558\ub294 \uc81c2 \ubc30\ud130\ub9ac\ub97c \uc2dd\ubcc4\ud558\uba70, \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0\uc11c \uc0c1\uae30 \uc81c1 \ubc30\ud130\ub9ac\ub97c \uc81c\uac70\ud55c \ud6c4 \uc0c1\uae30 \uc2dd\ubcc4\ub41c \uc81c2 \ubc30\ud130\ub9ac\ub97c \uc7a5\ucc29\ud558\uc5ec, \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc744 \ud3ec\ud568\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.\n\nClaim 2: \ucda9\uc804\uc18c\uc5d0 \uc9c4\uc785\ud558\ub294 \uc804\uae30\ucc28\ub85c\ubd80\ud130 \ucc28\ub7c9 \uc815\ubcf4\uc640, \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0 \uc7a5\ucc29\ub41c \uc81c1 \ubc30\ud130\ub9ac\uc5d0 \ub300\ud55c \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \uc778\uc2dd\ud558\ub294 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58; \ubc0f\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc774 \uc124\uc815\ub41c \uae30\uc900\uce58 \uc774\ud558\uc77c \uacbd\uc6b0 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc744 \uc0dd\uc131\ud558\uace0, \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc758 \uc0dd\uc131\uc5d0 \ub530\ub77c, \uc0c1\uae30 \ucc28\ub7c9 \uc815\ubcf4\uc5d0 \uae30\ucd08\ud558\uc5ec, \uc0c1\uae30 \uc804\uae30\ucc28\uac00 \uc18d\ud558\ub294 \ucc28\uc885\uc5d0 \uc7a5\ucc29 \uac00\ub2a5\ud55c \uc81c2 \ubc30\ud130\ub9ac\ub97c \ubc30\ud130\ub9ac \uc800\uc7a5\uc18c\ub85c\ubd80\ud130 \uc774\ub3d9\uc2dc\ucf1c, \uc0c1\uae30 \uc81c1 \ubc30\ud130\ub9ac\ub97c \uc81c\uac70\ud55c \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0 \uc7a5\ucc29\ud558\uc5ec, \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc744 \ud3ec\ud568\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.\n\nClaim 3: \uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \uc0c1\uae30 \uc804\uae30\ucc28 \ub0b4 \ub514\uc2a4\ud50c\ub808\uc774 \uc218\ub2e8\uc73c\ub85c \uc1a1\ucd9c\ud558\uc5ec, \uc0c1\uae30 \ub514\uc2a4\ud50c\ub808\uc774 \uc218\ub2e8\uc5d0\uc11c \uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc774 \ud45c\uc2dc\ub418\ub3c4\ub85d \ud558\ub294 \uc794\ub7c9 \ud45c\uc2dc\ubd80\ub97c \ub354 \ud3ec\ud568\ud558\uace0,\uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc740,\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \ud45c\uc2dc\ud55c \uc0c1\uae30 \ub514\uc2a4\ud50c\ub808\uc774 \uc218\ub2e8\uc5d0\uc11c \ubc30\ud130\ub9ac \uad50\ud658\uacfc \uc5f0\uad00\ub41c \uc774\ubca4\ud2b8\uac00 \ubc1c\uc0dd\ud558\uba74, \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc744 \uc0dd\uc131\ud558\ub294, \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.\n\nClaim 4: \uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58\ub294,\uc0c1\uae30 \ucc28\ub7c9 \uc815\ubcf4\uac00 \ucf54\ub4dc \ud615\ud0dc\ub85c \uc778\uc2dd\ub418\ub294 \uacbd\uc6b0, \ub370\uc774\ud130\ubca0\uc774\uc2a4\ub97c \uac80\uc0c9\ud558\uc5ec \uc0c1\uae30 \ucf54\ub4dc\uc5d0 \ub300\uc751\ud558\ub294 \ucc28\ub7c9 \uc815\ubcf4\ub97c \ucd94\ucd9c\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.\n\nClaim 5: \uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc740,\ucc28\ub7c9\uc778\uc2dd\ubaa8\ub4c8\uc744 \ud3ec\ud568\ud558\uace0, \uc0c1\uae30 \ucc28\ub7c9\uc778\uc2dd\ubaa8\ub4c8\uc5d0 \uc758\ud574 \uc778\uc2dd\ub418\ub294 \ucc28\ub7c9 \uc815\ubcf4\uac00, \uc0c1\uae30 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58\uc5d0 \uc758\ud574 \uc778\uc2dd\ub41c \ucc28\ub7c9 \uc815\ubcf4\uc640 \uc77c\uce58\ud560 \uacbd\uc6b0 \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.\n\nClaim 6: \uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \uc804\uae30\ucc28\ub97c \ubc30\ud130\ub9ac\ub97c \uad50\ud658\ud558\ub294 \uc7a5\uc18c\uae4c\uc9c0 \uc774\ub3d9\uc2dc\ud0a4\ub294 \ucc28\ub7c9\uc720\ub3c4\uc2dc\uc2a4\ud15c\ub97c \ub354 \ud3ec\ud568\ud558\uace0,\uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc740,\uc0c1\uae30 \uc7a5\uc18c\uc5d0 \uc704\uce58\ud558\uc5ec \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294, \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "Disclosed are an electric vehicle battery exchange apparatus and method for replacing a battery used as a power source of an electric vehicle.  In one embodiment, the electric vehicle battery exchange apparatus and method, the electric vehicle is not a long time rapid charging, by replacing the battery itself can not waste unnecessary time to charge, and also solves the problem that the battery life is shortened due to rapid charging In addition, the recovered battery can be fully charged using the cheapest time period, thereby reducing the electricity bill.",
+                "original_chars": 564,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "\ucda9\uc804\uc18c\uc5d0 \uc9c4\uc785\ud558\ub294 \uc804\uae30\ucc28\ub85c\ubd80\ud130 \ucc28\ub7c9 \uc815\ubcf4\uc640, \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0 \uc7a5\ucc29\ub41c \uc81c1 \ubc30\ud130\ub9ac\uc5d0 \ub300\ud55c \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \uc778\uc2dd\ud558\ub294 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58; \ubc0f\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc774 \uc124\uc815\ub41c \uae30\uc900\uce58 \uc774\ud558\uc77c \uacbd\uc6b0 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc744 \uc0dd\uc131\ud558\uace0, \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc758 \uc0dd\uc131\uc5d0 \ub530\ub77c, \uc0c1\uae30 \ucc28\ub7c9 \uc815\ubcf4\uc5d0 \uae30\ucd08\ud558\uc5ec, \uc0c1\uae30 \uc81c1 \ubc30\ud130\ub9ac\uc758 \uc704\uce58, \uc0c1\ud0dc, \ub610\ub294 \uc6a9\ub7c9 \uc911 \uc801\uc5b4\ub3c4 \ud558\ub098\uc640 \ub300\uc751\ud558\ub294 \uc81c2 \ubc30\ud130\ub9ac\ub97c \uc2dd\ubcc4\ud558\uba70, \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0\uc11c \uc0c1\uae30 \uc81c1 \ubc30\ud130\ub9ac\ub97c \uc81c\uac70\ud55c \ud6c4 \uc0c1\uae30 \uc2dd\ubcc4\ub41c \uc81c2 \ubc30\ud130\ub9ac\ub97c \uc7a5\ucc29\ud558\uc5ec, \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc744 \ud3ec\ud568\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+                "original_chars": 296,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "\ucda9\uc804\uc18c\uc5d0 \uc9c4\uc785\ud558\ub294 \uc804\uae30\ucc28\ub85c\ubd80\ud130 \ucc28\ub7c9 \uc815\ubcf4\uc640, \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0 \uc7a5\ucc29\ub41c \uc81c1 \ubc30\ud130\ub9ac\uc5d0 \ub300\ud55c \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \uc778\uc2dd\ud558\ub294 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58; \ubc0f\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc774 \uc124\uc815\ub41c \uae30\uc900\uce58 \uc774\ud558\uc77c \uacbd\uc6b0 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc744 \uc0dd\uc131\ud558\uace0, \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc758 \uc0dd\uc131\uc5d0 \ub530\ub77c, \uc0c1\uae30 \ucc28\ub7c9 \uc815\ubcf4\uc5d0 \uae30\ucd08\ud558\uc5ec, \uc0c1\uae30 \uc804\uae30\ucc28\uac00 \uc18d\ud558\ub294 \ucc28\uc885\uc5d0 \uc7a5\ucc29 \uac00\ub2a5\ud55c \uc81c2 \ubc30\ud130\ub9ac\ub97c \ubc30\ud130\ub9ac \uc800\uc7a5\uc18c\ub85c\ubd80\ud130 \uc774\ub3d9\uc2dc\ucf1c, \uc0c1\uae30 \uc81c1 \ubc30\ud130\ub9ac\ub97c \uc81c\uac70\ud55c \uc0c1\uae30 \uc804\uae30\ucc28\uc5d0 \uc7a5\ucc29\ud558\uc5ec, \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc744 \ud3ec\ud568\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+                "original_chars": 272,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "\uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \uc0c1\uae30 \uc804\uae30\ucc28 \ub0b4 \ub514\uc2a4\ud50c\ub808\uc774 \uc218\ub2e8\uc73c\ub85c \uc1a1\ucd9c\ud558\uc5ec, \uc0c1\uae30 \ub514\uc2a4\ud50c\ub808\uc774 \uc218\ub2e8\uc5d0\uc11c \uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc774 \ud45c\uc2dc\ub418\ub3c4\ub85d \ud558\ub294 \uc794\ub7c9 \ud45c\uc2dc\ubd80\ub97c \ub354 \ud3ec\ud568\ud558\uace0,\uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc740,\uc0c1\uae30 \ubc30\ud130\ub9ac \uc794\ub7c9\uc744 \ud45c\uc2dc\ud55c \uc0c1\uae30 \ub514\uc2a4\ud50c\ub808\uc774 \uc218\ub2e8\uc5d0\uc11c \ubc30\ud130\ub9ac \uad50\ud658\uacfc \uc5f0\uad00\ub41c \uc774\ubca4\ud2b8\uac00 \ubc1c\uc0dd\ud558\uba74, \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658 \uba85\ub839\uc744 \uc0dd\uc131\ud558\ub294, \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+                "original_chars": 201,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "\uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58\ub294,\uc0c1\uae30 \ucc28\ub7c9 \uc815\ubcf4\uac00 \ucf54\ub4dc \ud615\ud0dc\ub85c \uc778\uc2dd\ub418\ub294 \uacbd\uc6b0, \ub370\uc774\ud130\ubca0\uc774\uc2a4\ub97c \uac80\uc0c9\ud558\uc5ec \uc0c1\uae30 \ucf54\ub4dc\uc5d0 \ub300\uc751\ud558\ub294 \ucc28\ub7c9 \uc815\ubcf4\ub97c \ucd94\ucd9c\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+                "original_chars": 104,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "\uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc740,\ucc28\ub7c9\uc778\uc2dd\ubaa8\ub4c8\uc744 \ud3ec\ud568\ud558\uace0, \uc0c1\uae30 \ucc28\ub7c9\uc778\uc2dd\ubaa8\ub4c8\uc5d0 \uc758\ud574 \uc778\uc2dd\ub418\ub294 \ucc28\ub7c9 \uc815\ubcf4\uac00, \uc0c1\uae30 \ucc28\ub7c9\uc778\uc2dd\uc7a5\uce58\uc5d0 \uc758\ud574 \uc778\uc2dd\ub41c \ucc28\ub7c9 \uc815\ubcf4\uc640 \uc77c\uce58\ud560 \uacbd\uc6b0 \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294 \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+                "original_chars": 134,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "\uc81c1\ud56d \ub610\ub294 \uc81c2\ud56d\uc5d0 \uc788\uc5b4\uc11c,\uc0c1\uae30 \uc804\uae30\ucc28\ub97c \ubc30\ud130\ub9ac\ub97c \uad50\ud658\ud558\ub294 \uc7a5\uc18c\uae4c\uc9c0 \uc774\ub3d9\uc2dc\ud0a4\ub294 \ucc28\ub7c9\uc720\ub3c4\uc2dc\uc2a4\ud15c\ub97c \ub354 \ud3ec\ud568\ud558\uace0,\uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\ub85c\ubd07\uc740,\uc0c1\uae30 \uc7a5\uc18c\uc5d0 \uc704\uce58\ud558\uc5ec \uc0c1\uae30 \ubc30\ud130\ub9ac \uad50\ud658\uc791\uc5c5\uc744 \uc9c4\ud589\ud558\ub294, \uc804\uae30\ucc28 \ubc30\ud130\ub9ac \uad50\ud658 \uc7a5\uce58.",
+                "original_chars": 119,
+                "truncated": false
+              }
+            ],
+            "total_claims": 11
+          },
+          {
+            "id": "patent/US6014141A/en",
+            "source_type": "patent",
+            "title": "Method and apparatus for selectively displaying a parameter in a separate status panel",
+            "link": "https://patents.google.com/patent/US6014141A/en",
+            "text": "Abstract: The present invention relates to the use of a parameter display region, separate from the display screen, for both the normal display of primary computer parameter(s) and the selective display of a secondary computer parameter under control of a user. A primary parameter, e.g., battery charge level, is normally displayed on a parameter display region with a set of icons, wherein the number or configuration of activated icons corresponds to the relative magnitude or level of the parameter. When a secondary parameter, such as the computer speaker volume, is checked or adjusted by a user, the set of parameter display region icons is then utilized to display the secondary parameter. A controller, by executing a keyboard service program, causes the parameter display region to normally display the primary parameter. In response to a secondary parameter check or adjustment selection command, the controller directly implements the secondary parameter display and causes the parameter display region to replace display of the primary parameter with display of the secondary parameter. After a predefined amount of time has elapsed since the selection command for checking or adjusting the secondary parameter, the controller causes the parameter display region to revert back to displaying the primary parameter.\n\nClaim 1: 1. A method for displaying a secondary parameter on a parameter display region of a computer having a screen display, the method comprising:displaying on a parameter display region that is separate from the screen display a primary parameter by activating icons from a first set of icons; receiving a selection command for a secondary computer parameter; and responsive to the command, displaying on the parameter display region the secondary parameter by activating icons from a second set of icons, wherein the first and second sets of icons have icons in common.\n\nClaim 2: 2. The method of claim 1 further comprising the acts of (1) determining whether the secondary parameter is to be adjusted, (2) if it is to be adjusted, adjusting the secondary parameter, and (3) displaying the secondary parameter as it is being adjusted.\n\nClaim 3: 3. The method of claim 2 further comprising the act of continuing to display the secondary parameter after it has been adjusted.\n\nClaim 4: 4. The method of claim 1, wherein the act of receiving a selection command for a secondary computer parameter occurs without assistance from an executing operating system.\n\nClaim 5: 5. The method of claim 4, further comprising executing a secondary parameter adjustment step by a controller in response to receiving the selection command for a secondary parameter.\n\nClaim 6: 6. The method of claim 5 wherein the selection command comprises user actuation of a predefined keystroke combination.",
+            "evidence_source": "claims",
+            "found_via": "citation",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "The present invention relates to the use of a parameter display region, separate from the display screen, for both the normal display of primary computer parameter(s) and the selective display of a secondary computer parameter under control of a user. A primary parameter, e.g., battery charge level, is normally displayed on a parameter display region with a set of icons, wherein the number or configuration of activated icons corresponds to the relative magnitude or level of the parameter. When a secondary parameter, such as the computer speaker volume, is checked or adjusted by a user, the set of parameter display region icons is then utilized to display the secondary parameter. A controller, by executing a keyboard service program, causes the parameter display region to normally display the primary parameter. In response to a secondary parameter check or adjustment selection command, the controller directly implements the secondary parameter display and causes the parameter display region to replace display of the primary parameter with display of the secondary parameter. After a predefined amount of time has elapsed since the selection command for checking or adjusting the secondary parameter, the controller causes the parameter display region to revert back to displaying the primary parameter.",
+                "original_chars": 1317,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A method for displaying a secondary parameter on a parameter display region of a computer having a screen display, the method comprising:displaying on a parameter display region that is separate from the screen display a primary parameter by activating icons from a first set of icons; receiving a selection command for a secondary computer parameter; and responsive to the command, displaying on the parameter display region the secondary parameter by activating icons from a second set of icons, wherein the first and second sets of icons have icons in common.",
+                "original_chars": 565,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The method of claim 1 further comprising the acts of (1) determining whether the secondary parameter is to be adjusted, (2) if it is to be adjusted, adjusting the secondary parameter, and (3) displaying the secondary parameter as it is being adjusted.",
+                "original_chars": 254,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The method of claim 2 further comprising the act of continuing to display the secondary parameter after it has been adjusted.",
+                "original_chars": 128,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The method of claim 1, wherein the act of receiving a selection command for a secondary computer parameter occurs without assistance from an executing operating system.",
+                "original_chars": 171,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The method of claim 4, further comprising executing a secondary parameter adjustment step by a controller in response to receiving the selection command for a secondary parameter.",
+                "original_chars": 182,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The method of claim 5 wherein the selection command comprises user actuation of a predefined keystroke combination.",
+                "original_chars": 118,
+                "truncated": false
+              }
+            ],
+            "total_claims": 51
+          }
+        ],
+        "feature_findings": [
+          {
+            "id": "F1",
+            "feature": "Slide\u2011out depleted battery pack",
+            "evidence": [
+              {
+                "result_id": "patent/CN114248638B/en",
+                "title": "Modularized rechargeable battery and battery unit for electric automobile",
+                "link": "https://patents.google.com/patent/CN114248638B/en",
+                "quote": "battery body with a foldable pull-out structure",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "A modular rechargeable battery and battery unit for electric vehicles belongs to the field of electric vehicles. It includes a battery body with a foldable pull-out structure; a positioning hole structure located on top of the battery body; and a positioning pin structure located below the battery body. The battery body also has a power interface and a chip and/or RFID-like tag chip interface with unique identification and charge/discharge cycle recording functions. This invention, through the cooperation of the identification chip with a matching intelligent electric vehicle, an intelligent charging and swapping device for modular electric vehicle batteries, and an electric vehicle battery modular management system, can achieve real-time monitoring of battery power, charge/discharge cycles, etc.; complete separation of battery charging and usage scenarios; rapid battery pack replacement and payment settlement; and effective tracking of the entire battery lifecycle. This provides a faster and cheaper user experience than refueling, alleviating range anxiety.",
+                  "original_chars": 1074,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F2",
+            "feature": "Slide\u2011in charged battery pack within one minute",
+            "evidence": []
+          },
+          {
+            "id": "F3",
+            "feature": "RFID tag on each pack for cycle tracking",
+            "evidence": [
+              {
+                "result_id": "patent/US8616457B2/en",
+                "title": "RFID display label for battery packs",
+                "link": "https://patents.google.com/patent/US8616457B2/en",
+                "quote": "A smart label for a battery comprising:\na housing;\na processor;\nan antenna;\na bi-state display; and\na sensor for sensing battery environment data;",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 1",
+                  "source": "claims",
+                  "text": "1. A smart label for a battery comprising:\na housing;\na processor;\nan antenna;\na bi-state display; and\na sensor for sensing battery environment data;\nwherein said processor receives battery status data from said battery through said antenna and displays said battery status data on said bi-state display.",
+                  "original_chars": 304,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/CN220483257U/en",
+                "title": "\u2026 management system of light truck battery replacement station based on RFID",
+                "link": "https://patents.google.com/patent/CN220483257U/en",
+                "quote": "the battery pack electronic tag is used for reading the stored information in the hybrid modification tag by the RFID reader of the battery replacement actuator",
+                "evidence_source": "abstract",
+                "found_via": "search",
+                "section": {
+                  "label": "Abstract",
+                  "source": "abstract",
+                  "text": "The utility model provides a battery management system of a light-card battery replacement station based on RFID, which comprises a battery replacement actuator RFID reader, wherein the battery replacement actuator RFID reader is used for reading and rewriting electronic tag information of a battery pack; the channel RFID reader-writer is used for guiding the vehicle to finish the power change positioning and reading and modifying the information of the electronic tag of the vehicle; the battery pack electronic tag is used for reading the stored information in the hybrid modification tag by the RFID reader of the battery replacement actuator; the vehicle electronic tag is used for detecting whether the vehicle belongs to a battery exchange station registration vehicle or not. According to the utility model, through the two groups of RFID readers and the plurality of groups of electronic tags arranged on the battery pack, the light card can be rapidly guided to complete power change and form a set of reliable battery management system with the station control system, unmanned battery change is realized, the safety of power change operation is improved, the time of the power change operation is shortened, and the service quality of the power change station is improved.",
+                  "original_chars": 1287,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F4",
+            "feature": "Automated billing per swap",
+            "evidence": []
+          }
+        ],
+        "citation_followups": [
+          {
+            "id": "patent/US6014141A/en",
+            "title": "Method and apparatus for selectively displaying a parameter in a separate status panel",
+            "link": "https://patents.google.com/patent/US6014141A/en",
+            "referenced_by": [
+              "patent/US8616457B2/en"
+            ],
+            "reason": "examiner_cited",
+            "evidence_source": "claims",
+            "verdict": "not_relevant",
+            "features_found": [],
+            "newly_found": [],
+            "explanation": "this document describes a method for displaying secondary computer parameters on a separate display region, which is unrelated to battery swapping, RFID tracking, or automated billing.",
+            "changed_conclusion": false
+          }
+        ],
+        "recheck": null,
+        "report_id": "33008905f2e6107b"
+      }
+    }
+  ]
+}

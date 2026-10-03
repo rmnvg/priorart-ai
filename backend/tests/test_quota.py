@@ -85,14 +85,14 @@ def reload_config(monkeypatch):
     importlib.reload(config)
 
 
-def test_full_profile_is_the_documented_16(reload_config):
-    assert reload_config().MAX_SEARCHES_PER_ANALYSIS == 16
+def test_full_profile_is_the_documented_17(reload_config):
+    assert reload_config().MAX_SEARCHES_PER_ANALYSIS == 17
 
 
-def test_lean_profile_costs_11(reload_config):
+def test_lean_profile_costs_12(reload_config):
     cfg = reload_config(SEARCH_PROFILE="lean")
     assert (cfg.DEEP_DIVE_TOP_N, cfg.CITATION_FOLLOWUPS, cfg.ENABLE_TRENDS) == (5, 1, False)
-    assert cfg.MAX_SEARCHES_PER_ANALYSIS == 11
+    assert cfg.MAX_SEARCHES_PER_ANALYSIS == 12
 
 
 def test_explicit_setting_overrides_profile(reload_config):

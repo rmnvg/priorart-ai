@@ -1,0 +1,2036 @@
+{
+  "idea_text": "A low-cost collar for dairy cows with a temperature sensor and a motion sensor that detects early signs of fever or heat, and sends an SMS alert to the farmer's basic feature phone without needing a smartphone app.",
+  "parent_report_id": null,
+  "events": [
+    {
+      "type": "progress",
+      "stage": "generating_queries",
+      "message": "Extracting core concepts and generating search queries...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_patents",
+      "message": "Searching patents across 3 query angles, including Indian Patent Office filings...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "searching_scholar",
+      "message": "Reviewing academic literature matches...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "checking_market_availability",
+      "message": "Checking whether a similar product already exists commercially...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "ranking_results",
+      "message": "Ranking and deduplicating results by relevance to your idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Reading the first results to learn the terminology patents use for this idea...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "refining_search",
+      "message": "Patents refer to the device as a \"wireless sensor network\" or use \"RFID\"/\"IoT\" terminology rather than just collar and sensor.",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Pulling full claims and citations for top candidates and scoring novelty...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "scoring_novelty",
+      "message": "Following up 1 document(s) the closest matches cite but the keyword search missed...",
+      "replayed": false
+    },
+    {
+      "type": "progress",
+      "stage": "done",
+      "message": "Analysis complete.",
+      "replayed": false
+    },
+    {
+      "type": "result",
+      "data": {
+        "idea_text": "A low-cost collar for dairy cows with a temperature sensor and a motion sensor that detects early signs of fever or heat, and sends an SMS alert to the farmer's basic feature phone without needing a smartphone app.",
+        "ranked_results": [
+          {
+            "id": "scholar/3328572341117667377",
+            "source_type": "scholar",
+            "title": "Cattle health monitoring system using wireless sensor network: a survey from innovation perspective",
+            "snippet": "\u2026 tracking animals, assessing conformation in animal's body, \u2026 Additionally, SMS notice service should be given to the users \u2026 to medical and veterinary issues. To quantify temperature of \u2026",
+            "link": "https://patents.google.com/scholar/3328572341117667377",
+            "relevance_score": 0.684974193572998,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/4466941770356209941",
+            "source_type": "scholar",
+            "title": "Context-aware wearable system for animals\u2013an exploration and classification",
+            "snippet": "\u2026 sensors monitored different environmental and medical \u2026 utilized for tracking and monitoring of cattle and pet animals. \u2026 notification to farmer\u2019s phone about 1 hour preceding calving. \u2026",
+            "link": "https://patents.google.com/scholar/4466941770356209941",
+            "relevance_score": 0.6348967552185059,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/18164189171362375787",
+            "source_type": "scholar",
+            "title": "Design of Smart Cattle: Real-Time Health Monitoring System with IoT-Enabled Micro Services",
+            "snippet": "\u2026 Set up a real-time notification system to alert farmers or \u2026 health norms, it automatically sends alerts and notifications to the \u2026 can detect and notify users about abnormal health conditions, \u2026",
+            "link": "https://patents.google.com/scholar/18164189171362375787",
+            "relevance_score": 0.5914427638053894,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://patents.google.com/patent/US20240423163A1/en",
+            "source_type": "product",
+            "title": "Corrective collar for animal behavior training",
+            "snippet": "The current temperature of the collar can be determined by the temperature sensor of the collar, and the local outdoor temperature can be ...",
+            "link": "https://patents.google.com/patent/US20240423163A1/en",
+            "relevance_score": 0.5779788494110107,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.facebook.com/MaraPredatorConservation/videos/ever-wondered-how-a-lion-gps-collar-actually-works-our-senior-programme-scientis/1568839741452594/",
+            "source_type": "product",
+            "title": "Ever wondered how a lion GPS collar actually works? Our ...",
+            "snippet": "Activity & temp sensors: Measures physical activity and environmental conditions to keep tabs on predator health.",
+            "link": "https://www.facebook.com/MaraPredatorConservation/videos/ever-wondered-how-a-lion-gps-collar-actually-works-our-senior-programme-scientis/1568839741452594/",
+            "relevance_score": 0.570783793926239,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/2143232241806356330",
+            "source_type": "scholar",
+            "title": "IoT sensors for smart livestock management",
+            "snippet": "\u2026 estrus by monitoring increasing activity and can notify the farmer \u2026 monitoring is one of the methods to monitor deep body \u2026 Vaginal temperature has been monitored using insertion type \u2026",
+            "link": "https://patents.google.com/scholar/2143232241806356330",
+            "relevance_score": 0.5588927268981934,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://ijrpr.com/uploads/V6ISSUE9/IJRPR52767.pdf",
+            "source_type": "product",
+            "title": "A Review on \u201cIntelligent Animal Health and Location ... - Ijrpr",
+            "snippet": "GSM alerts, and sensor integration for temperature and motion tracking. It further enhances usability through a simple Android app for remote access ...",
+            "link": "https://ijrpr.com/uploads/V6ISSUE9/IJRPR52767.pdf",
+            "relevance_score": 0.541174590587616,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "scholar/6447955247278041736",
+            "source_type": "scholar",
+            "title": "Hardware implementation of health monitoring of domestic animals using RFID",
+            "snippet": "\u2026 notifying an alert, else it falls back to zero.The above Figure 5 shows the alert notifications \u2026 If any abnormality in the recorded temperature was detected, a notification would be sent to \u2026",
+            "link": "https://patents.google.com/scholar/6447955247278041736",
+            "relevance_score": 0.5255370140075684,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US10352759B1/en",
+            "source_type": "patent",
+            "title": "Smart tableware system, apparatus and method",
+            "snippet": "GPS trackers may help track and/or locate people or pets. For pets, these are often bulky, require a collar, and require a monthly fee for the service. Smart-collars have also entered the market. They give real-time status of the dog, if the dog is wearing the collar. For humans, these devices do \u2026",
+            "link": "https://patents.google.com/patent/US10352759B1/en",
+            "relevance_score": 0.5055032968521118,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Obe Inc.",
+            "priority_date": "2015-05-08"
+          },
+          {
+            "id": "patent/ES2951065T3/en",
+            "source_type": "patent",
+            "title": "Surveillance and supervision of animal discomfort by mobile phone",
+            "snippet": "One method for remote animal surveillance and distress monitoring includes detection of biometric and behavioral parameters of the animal, identification of novel events based on comparison of the detected parameters with predefined parameter scores and values; determining whether a composite \u2026",
+            "link": "https://patents.google.com/patent/ES2951065T3/en",
+            "relevance_score": 0.5035293102264404,
+            "cpc_code": "A61B5/0022",
+            "cpc_description": "Monitoring a patient using a global network, e.g. telephone networks, internet",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "ACTIVE",
+              "ES": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Equus Global Holdings Llc",
+            "priority_date": "2014-02-24"
+          },
+          {
+            "id": "scholar/6891006358531015493",
+            "source_type": "scholar",
+            "title": "Healthcare solutions using wearable devices",
+            "snippet": "\u2026 basis, with a detailed notification. It also provides emergency \u2026 In case of emergency, it will notify both the doctor and the \u2026 of pet proprietors, dairy ranchers and animal directors. Veterinary \u2026",
+            "link": "https://patents.google.com/scholar/6891006358531015493",
+            "relevance_score": 0.48889920115470886,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US20200060545A1/en",
+            "source_type": "patent",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "snippet": ", the plurality of sensors comprising one or more of a temperature sensor, an auscultation sensor, an ECG sensor, a movement sensor, an ambient temperature sensor, and an ambient humidity sensor, and wherein the health measurements comprise one or more of ECG, pulse/heart rate, respiratory rate, \u2026",
+            "link": "https://patents.google.com/patent/US20200060545A1/en",
+            "relevance_score": 0.48591431975364685,
+            "cpc_code": "A61B5/02438",
+            "cpc_description": "Measuring pulse rate or heart rate with portable devices, e.g. worn by the patient",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "VetMeasure, Inc.",
+            "priority_date": "2018-08-24"
+          },
+          {
+            "id": "scholar/6741890084878908233",
+            "source_type": "scholar",
+            "title": "An IoT-based Intelligent System for Real-time Monitoring of Animal Health and Geolocation for Enhanced Surveillance and Farm Management",
+            "snippet": "\u2026 , set up real-time notifications, and analyse historical data \u2026 It helps prevent animal mortality by facilitating timely medical \u2026 small-scale pet care to largescale livestock management and \u2026",
+            "link": "https://patents.google.com/scholar/6741890084878908233",
+            "relevance_score": 0.48344725370407104,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US10154655B2/en",
+            "source_type": "patent",
+            "title": "Mobile animal surveillance and distress monitoring",
+            "snippet": "What is claimed is: 1. An electronic device comprising a processor for surveillance and monitoring of an animal: the processor programmed to: detect one or more biometric parameter of the animal, wherein the one or more biometric parameter comprises one or more of a respiratory rate, heart rate, \u2026",
+            "link": "https://patents.google.com/patent/US10154655B2/en",
+            "relevance_score": 0.48332905769348145,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Equus Global Holdings Llc",
+            "priority_date": "2014-02-24"
+          },
+          {
+            "id": "patent/CA3110621A1/en",
+            "source_type": "patent",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "snippet": "and sending, in response to detecting the non-biological temperature rate change, a notification to a user to indicate that the animal core temperature is estimated. 19. The method of claim 18, further comprising: determining that the animal harness is not on the animal when all of the temperature \u2026",
+            "link": "https://patents.google.com/patent/CA3110621A1/en",
+            "relevance_score": 0.48091283440589905,
+            "cpc_code": "A61B5/0022",
+            "cpc_description": "Monitoring a patient using a global network, e.g. telephone networks, internet",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "VetMeasure, Inc.",
+            "priority_date": "2018-08-24"
+          },
+          {
+            "id": "patent/JP2016514961A/en",
+            "source_type": "patent",
+            "title": "Multiple sensors for monitoring animal health or wellness",
+            "snippet": "Systems and methods for monitoring animal health using multiple sensors are described. The wearable device can include one or more sensors, and the resulting signal level can be analyzed within the wearable device or uploaded to a data management server for additional analysis. it can.",
+            "link": "https://patents.google.com/patent/JP2016514961A/en",
+            "relevance_score": 0.4791891872882843,
+            "cpc_code": "A61B5/0022",
+            "cpc_description": "Monitoring a patient using a global network, e.g. telephone networks, internet",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE",
+              "AR": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "NOT_ACTIVE",
+              "HK": "UNKNOWN",
+              "MX": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u30a2\u30a4\u30d5\u30a9\u30fc\u30b7\u30fc \u30a4\u30ce\u30d9\u30fc\u30b7\u30e7\u30f3\u30ba \u30a4\u30f3\u30b3\u30fc\u30dd\u30ec\u30a4\u30c6\u30c3\u30c9",
+            "priority_date": "2013-03-15"
+          },
+          {
+            "id": "patent/CN113347878B/en",
+            "source_type": "patent",
+            "title": "Systems and methods for correlating animal behavior with animal health",
+            "snippet": "1. A method for determining the health status of an animal, comprising: receiving, at a processor, first data from a first sensor device, the first data indicative of an animal event for an animal, the first sensor device being an accelerometer coupled to the animal, the animal event being \u2026",
+            "link": "https://patents.google.com/patent/CN113347878B/en",
+            "relevance_score": 0.47209665179252625,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "MX": "UNKNOWN"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u5e0c\u5c14\u6c0f\u5ba0\u7269\u8425\u517b\u54c1\u516c\u53f8",
+            "priority_date": "2018-12-27"
+          },
+          {
+            "id": "patent/US20250089683A1/en",
+            "source_type": "patent",
+            "title": "Corrective collar utilizing geolocation technology",
+            "snippet": "The disclosed technology includes a collar that can output a first corrective action having a first correction magnitude, detect feedback information, and determine a second correction magnitude based at least in part on the feedback information. The collar can output a second corrective action \u2026",
+            "link": "https://patents.google.com/patent/US20250089683A1/en",
+            "relevance_score": 0.46272575855255127,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Protect Animals with Satellites, LLC",
+            "priority_date": "2021-03-08"
+          },
+          {
+            "id": "https://alarm.com/in-the-news/alarm-com-geolocation-sensors-learning-really-smart-thermostat/",
+            "source_type": "product",
+            "title": "Geolocation + Sensors + Learning = Really Smart Thermostat",
+            "snippet": "In the Precision Comfort ecosystem, discreet temperature sensors are placed in the most-used rooms of the house. Alarm.com uses this information ...",
+            "link": "https://alarm.com/in-the-news/alarm-com-geolocation-sensors-learning-really-smart-thermostat/",
+            "relevance_score": 0.45030221343040466,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN116234440B/en",
+            "source_type": "patent",
+            "title": "Systems and methods for monitoring animal movement",
+            "snippet": "17. The system of claim 11, wherein the sensor is coupled to an article worn by the animal. 18. The system of claim 11, wherein the sensor comprises at least one of an accelerometer, a gyroscope, a magnetometer, or a Global Positioning System (GPS) device. 19. The system of claim 11, wherein at \u2026",
+            "link": "https://patents.google.com/patent/CN116234440B/en",
+            "relevance_score": 0.4465700089931488,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u5e0c\u5c14\u6c0f\u5ba0\u7269\u8425\u517b\u54c1\u516c\u53f8",
+            "priority_date": "2020-09-23"
+          },
+          {
+            "id": "patent/US11771061B2/en",
+            "source_type": "patent",
+            "title": "Corrective collar utilizing geolocation technology",
+            "snippet": "14. The collar of claim 13 , wherein the collar is further configured to: responsive to determining that the current location of collar has deviated from the return path, instruct, via one or more corrective actions, the animal wearing the collar to orient itself in a direction to follow the return \u2026",
+            "link": "https://patents.google.com/patent/US11771061B2/en",
+            "relevance_score": 0.4441308081150055,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Protect Animals with Satellites, LLC",
+            "priority_date": "2019-08-15"
+          },
+          {
+            "id": "patent/WO2019160645A1/en",
+            "source_type": "patent",
+            "title": "Mobile animal surveillance and distress monitoring",
+            "snippet": "10. An enclosure for an animal monitoring sensor suite comprising: a plurality of rigid or semi-rigid articulated segments forming an articulated enclosure; a substantially water impermeable liner disposed on the interior or exterior of the articulated enclosure; electronic sensors disposed within \u2026",
+            "link": "https://patents.google.com/patent/WO2019160645A1/en",
+            "relevance_score": 0.4409559667110443,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "AU": "NOT_ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Equus Global Holdings Llc",
+            "priority_date": "2018-02-19"
+          },
+          {
+            "id": "https://www.ebay.com/itm/298363896425",
+            "source_type": "product",
+            "title": "Temperature Alarm 12VDC GSM 3G 4G RTU For Solar ...",
+            "snippet": "When the current temperature reaches the alarm threshold, the system sends a short message or a phone call to notify the user. 4. Cloud Platform Connecting: ...",
+            "link": "https://www.ebay.com/itm/298363896425",
+            "relevance_score": 0.4189275801181793,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://buildings.honeywell.com/pl/en/products/by-category/sensors/motion-detectors/honeywell-security-passive-infrared-motion-sensor",
+            "source_type": "product",
+            "title": "Honeywell Security Passive Infrared Motion Sensor",
+            "snippet": "Superior Detection and False Alarm Immunity; Selectable Look Down; PIR White Light Immunity; Flashlight Walk Test; Flexible Mountings. Certifications: CE; RoHS.",
+            "link": "https://buildings.honeywell.com/pl/en/products/by-category/sensors/motion-detectors/honeywell-security-passive-infrared-motion-sensor",
+            "relevance_score": 0.4124629497528076,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "https://www.linkedin.com/posts/ketanraval-teleview_building-a-motion-detection-security-alarm-activity-7492618066812407808-ClC0",
+            "source_type": "product",
+            "title": "Motion Detection Alarm with PIR Sensor and Microcontroller",
+            "snippet": "A digital temperature sensor such as DS18B20 measures the surrounding temperature and converts it into digital data. The microcontroller ...",
+            "link": "https://www.linkedin.com/posts/ketanraval-teleview_building-a-motion-detection-security-alarm-activity-7492618066812407808-ClC0",
+            "relevance_score": 0.4010312259197235,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US20200068853A1/en",
+            "source_type": "patent",
+            "title": "Network-based pet tracking and reporting system",
+            "snippet": "wherein the pet is a dog. 4 . The pet wellness tracking system of claim 2 , wherein at least one electronic tracking device attaches to the dog collar and tracks at least motion, time of motion, and elevation. 5 . The pet wellness tracking system of claim 4 , wherein there are two additional tracking \u2026",
+            "link": "https://patents.google.com/patent/US20200068853A1/en",
+            "relevance_score": 0.3926287889480591,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Sergio Radovcic",
+            "priority_date": "2018-09-05"
+          },
+          {
+            "id": "patent/WO2008076464A2/en",
+            "source_type": "patent",
+            "title": "Wireless medical telemetry system and methods using radio-frequency energized \u2026",
+            "snippet": "10. The system of claim 1, wherein the sensing modalities include at least one of an optical sensor, an oximetry sensor, an electrical sensor, a chemical sensor, a mechanical sensor, a MEMS sensor, a nano sensor, a biochemical sensor, an acoustic sensor, an immunologic sensor, a fluidic sensor, and \u2026",
+            "link": "https://patents.google.com/patent/WO2008076464A2/en",
+            "relevance_score": 0.39000532031059265,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Surgisense Corporation",
+            "priority_date": "2006-06-21"
+          },
+          {
+            "id": "https://us.amazon.com/gp/bestsellers/industrial/17728864011/ref=zg_b_bs_17728864011_1/ref=pd_aw_sim_m_sccl_2_4_bsb/000-0000000-0000000?pd_rd_w=CbuqY&content-id=amzn1.sym.96b0c184-d80c-43b8-a4a4-42b8da7b5812&pf_rd_p=96b0c184-d80c-43b8-a4a4-42b8da7b5812&pf_rd_r=WGDN6H182AT8T685AFK9&pd_rd_wg=fKDUe&pd_rd_r=9d90721a-d57d-4242-8847-bd944f2af797&pd_rd_i=B00PUOIDV4",
+            "source_type": "product",
+            "title": "Best Patient Alarms",
+            "snippet": "Motion Sensor Alert with 5 Volume Level,Bed. Wearable Emergency Necklace for Elderly, Wireless Fall Detection & Motion Sensor Alert System for Seniors, ...",
+            "link": "https://us.amazon.com/gp/bestsellers/industrial/17728864011/ref=zg_b_bs_17728864011_1/ref=pd_aw_sim_m_sccl_2_4_bsb/000-0000000-0000000?pd_rd_w=CbuqY&content-id=amzn1.sym.96b0c184-d80c-43b8-a4a4-42b8da7b5812&pf_rd_p=96b0c184-d80c-43b8-a4a4-42b8da7b5812&pf_rd_r=WGDN6H182AT8T685AFK9&pd_rd_wg=fKDUe&pd_rd_r=9d90721a-d57d-4242-8847-bd944f2af797&pd_rd_i=B00PUOIDV4",
+            "relevance_score": 0.38993388414382935,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/WO2016037190A1/en",
+            "source_type": "patent",
+            "title": "Method and system for tracking health in animal populations",
+            "snippet": "comparing the acquired one or more animal characteristics to a set of standardized characteristics to determine a health state of one or more of the members of the animal population. 1 1 . The system of claim 1 , wherein the determining a health state of one or more members of the animal population \u2026",
+            "link": "https://patents.google.com/patent/WO2016037190A1/en",
+            "relevance_score": 0.3870197534561157,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "BR": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Pixobot, Inc.",
+            "priority_date": "2014-09-05"
+          },
+          {
+            "id": "patent/JP7703647B2/en",
+            "source_type": "patent",
+            "title": "Systems and methods for correlating animal movement and activity signatures - \u2026",
+            "snippet": "FIG. 1 is a block diagram of a system having multiple modules configured to collect and analyze animal behavior. FIG. 2 is a perspective view of an exemplary active collar. FIG. 3A is an illustration of an animal wearing the exemplary activity collar of FIG. FIG. 3B is an illustration of an animal \u2026",
+            "link": "https://patents.google.com/patent/JP7703647B2/en",
+            "relevance_score": 0.3786981701850891,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "\u30d2\u30eb\u30ba\u30fb\u30da\u30c3\u30c8\u30fb\u30cb\u30e5\u30fc\u30c8\u30ea\u30b7\u30e3\u30f3\u30fb\u30a4\u30f3\u30b3\u30fc\u30dd\u30ec\u30fc\u30c6\u30c3\u30c9",
+            "priority_date": "2020-10-01"
+          },
+          {
+            "id": "patent/JP6840677B2/en",
+            "source_type": "patent",
+            "title": "High-performance pet monitoring system",
+            "snippet": "The system according to claim 1, further comprising a camera and an audio sensor, wherein the monitoring hub receives video and audio data from the camera and the audio sensor. The learning acceptability model includes the measurement data received from the plurality of pet monitoring systems, and \u2026",
+            "link": "https://patents.google.com/patent/JP6840677B2/en",
+            "relevance_score": 0.3614746630191803,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u30b9\u30de\u30a4\u30e9\u30d6\u30eb\u30ba \u30a4\u30f3\u30b3\u30fc\u30dd\u30ec\u30a4\u30c6\u30c3\u30c9",
+            "priority_date": "2015-04-20"
+          },
+          {
+            "id": "patent/US12588822B2/en",
+            "source_type": "patent",
+            "title": "Remote physiological monitor",
+            "snippet": "25 . The system according to claim 23 , wherein at least one of the sensors is an accelerometer. 26 . The system according to claim 23 , wherein at least one of the sensors is an electrocardiogram. 27 . The system according to claim 23 , wherein at least one of the sensors is a blood pulse sensor. 28 . \u2026",
+            "link": "https://patents.google.com/patent/US12588822B2/en",
+            "relevance_score": 0.359929621219635,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Atlasense Biomed Ltd.",
+            "priority_date": "2014-10-15"
+          },
+          {
+            "id": "patent/US11534104B2/en",
+            "source_type": "patent",
+            "title": "Systems and methods for contraction monitoring and labor detection",
+            "snippet": ", wherein the patch comprises a portable sensor module coupled to the patch or integrated into the patch, wherein the sensor module comprises the at least one physiological sensor, the processor, and the computer-readable medium and further comprises an electronic circuit and a wireless antenna, and \u2026",
+            "link": "https://patents.google.com/patent/US11534104B2/en",
+            "relevance_score": 0.3541647791862488,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Bloom Technologies NV",
+            "priority_date": "2014-10-29"
+          },
+          {
+            "id": "patent/US11457614B2/en",
+            "source_type": "patent",
+            "title": "Animal harness security systems and methods",
+            "snippet": "generating a behavioral model of the animal based upon the changes in the at least one of excitement, agitation, stress, and anxiety; and using the behavioral model to relate the changes in the at least one of excitement, agitation, stress, and anxiety in the animal to events that the animal is \u2026",
+            "link": "https://patents.google.com/patent/US11457614B2/en",
+            "relevance_score": 0.3473087251186371,
+            "cpc_code": "A61B5/0022",
+            "cpc_description": "Monitoring a patient using a global network, e.g. telephone networks, internet",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "VetMeasure, Inc.",
+            "priority_date": "2018-08-24"
+          },
+          {
+            "id": "scholar/3383759613080467834",
+            "source_type": "scholar",
+            "title": "Exploring the potential impacts of wearable technology in reshaping healthcare",
+            "snippet": "\u2026 For real-time monitoring and to notify caretakers, data is sent \u2026 patient health monitoring systems to improve medical care. \u2026 Apps like PetDialog aid pet owners in monitoring health, \u2026",
+            "link": "https://patents.google.com/scholar/3383759613080467834",
+            "relevance_score": 0.34500741958618164,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/AU2013284447B2/en",
+            "source_type": "patent",
+            "title": "Tracking and control of personal effects",
+            "snippet": "7. The apparatus in accordance with claim 6, wherein the one or more environmental sensors is selected from the group of environmental sensors that consists of: a temperature sensor, a humidity sensor, a moisture sensor, a light sensor, a velocity sensor, a movement sensor, an accelerometer, an air \u2026",
+            "link": "https://patents.google.com/patent/AU2013284447B2/en",
+            "relevance_score": 0.3420029282569885,
+            "cpc_code": "G07C9/00174",
+            "cpc_description": "Electronically operated locks; Circuits therefor; Nonmechanical keys therefor, e.g. passive or active electrical keys or other data carriers without mechanical keys",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "NOT_ACTIVE",
+              "MX": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Treefrog Developments, Inc.",
+            "priority_date": "2012-06-27"
+          },
+          {
+            "id": "scholar/17806877160064148930",
+            "source_type": "scholar",
+            "title": "A review on smart health system to monitor people in Covid-19 quarantine",
+            "snippet": "\u2026 members and the her/his doctor as e-mail and twitter notification. The main purpose of the \u2026 twitter notifications. The main purpose of the device is to make provide that they get medical \u2026",
+            "link": "https://patents.google.com/scholar/17806877160064148930",
+            "relevance_score": 0.33884134888648987,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/JP2024095898A/en",
+            "source_type": "patent",
+            "title": "Biometric information management system",
+            "snippet": "The biological information management system according to claim 1, characterized in that the sensor for acquiring vital data of a specific individual is a wearable transmitter in which the sensor is attached to a jacket or harness band that is worn tightly around the waist of the target biological \u2026",
+            "link": "https://patents.google.com/patent/JP2024095898A/en",
+            "relevance_score": 0.338591992855072,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u307e\u3061\u306a\u304b\uff2d\uff45\u30bb\u30f3\u30bf\u30fc\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2022-12-30"
+          },
+          {
+            "id": "patent/US20230110148A1/en",
+            "source_type": "patent",
+            "title": "Shipping package tracking or monitoring system and method",
+            "snippet": "In some cases, the smart package may access and read sensor data from external, networked sensors in proximity to itself. One example is a smart package in a truck where the smart package obtains the temperature over a Bluetooth or Wi-Fi wireless network from a thermometer in the truck itself.",
+            "link": "https://patents.google.com/patent/US20230110148A1/en",
+            "relevance_score": 0.33486348390579224,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Package, Inc.",
+            "priority_date": "2018-08-08"
+          },
+          {
+            "id": "patent/US11676469B2/en",
+            "source_type": "patent",
+            "title": "Modular tracking device",
+            "snippet": "claim 1 , wherein: the tracking subject is a pet; the subject identifier component is a collar worn by the pet; the requirement comprise a daily amount of pet food prescribed to the pet; the action comprises a pet food dispenser dispensing an amount of pet food according to the daily amount of pet \u2026",
+            "link": "https://patents.google.com/patent/US11676469B2/en",
+            "relevance_score": 0.3344116806983948,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "T-Mobile Usa, Inc.",
+            "priority_date": "2020-01-24"
+          },
+          {
+            "id": "patent/US20240315616A1/en",
+            "source_type": "patent",
+            "title": "Wearable devices for monitoring physiological changes and methods of use",
+            "snippet": "1 . A wearable device for use in monitoring physiological changes in the patient, comprising: a housing adapted to being secured to a patient's body, the housing comprising a needle configured for fluid contact with a bodily fluid under a skin surface; a chamber having a cell layer and configured to \u2026",
+            "link": "https://patents.google.com/patent/US20240315616A1/en",
+            "relevance_score": 0.3269076943397522,
+            "cpc_code": "A61M5/14244",
+            "cpc_description": "Pressure infusion, e.g. using pumps adapted to be carried by the patient, e.g. portable on the body",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "AU": "ACTIVE",
+              "CA": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Efferent Labs, Inc.",
+            "priority_date": "2019-08-12"
+          },
+          {
+            "id": "patent/US9410979B2/en",
+            "source_type": "patent",
+            "title": "Hybrid angular motion sensors",
+            "snippet": "14. The portable sensor device of claim 1 , wherein the at least two of the two or more accelerometers are positioned such that the at least two of the two or more accelerometers provide acceleration data regarding accelerations along at least two axes different than the common axis. 15. The \u2026",
+            "link": "https://patents.google.com/patent/US9410979B2/en",
+            "relevance_score": 0.32217544317245483,
+            "cpc_code": "Y10T29/49828",
+            "cpc_description": "Progressively advancing of work assembly station or assembled portion of work",
+            "country_status": {
+              "US": "ACTIVE",
+              "CN": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Fitbit, Inc.",
+            "priority_date": "2014-09-23"
+          },
+          {
+            "id": "patent/US10091972B1/en",
+            "source_type": "patent",
+            "title": "Smart bowl system, apparatus and method",
+            "snippet": "\u2026 including: a processor 201 which can be coupled to various system components including: an input 203 , a tactile output, an accelerometer, light sensor, temperature sensor, motion sensor, sound sensor, a radio frequency (RF) output 205 like a WiFi module or BLE chip set, an audio output 206 , memory",
+            "link": "https://patents.google.com/patent/US10091972B1/en",
+            "relevance_score": 0.31860628724098206,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Obe Inc.",
+            "priority_date": "2015-05-08"
+          },
+          {
+            "id": "patent/US8679013B2/en",
+            "source_type": "patent",
+            "title": "Intravaginal monitoring device",
+            "snippet": "19. The sensor device of claim 12 in which the plurality of applications comprise a non-human female insemination related application. 20. The sensor device of claim 12 in which the plurality of applications comprise a human female insemination related application. 21. The sensor device of claim 12",
+            "link": "https://patents.google.com/patent/US8679013B2/en",
+            "relevance_score": 0.3115890920162201,
+            "cpc_code": "A61B1/00011",
+            "cpc_description": "Operational features of endoscopes characterised by signal transmission",
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "ACTIVE",
+              "CN": "ACTIVE",
+              "EA": "UNKNOWN",
+              "MX": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Witold Andrew Ziarno",
+            "priority_date": "2009-09-28"
+          },
+          {
+            "id": "patent/US20190272725A1/en",
+            "source_type": "patent",
+            "title": "Pharmacovigilance systems and methods",
+            "snippet": "FIG. 1 . In an exemplary embodiment, Monitored Device 110 A is configured to detect physical movement using an accelerometer and/or gyroscope. If physical movement is not detected for a predetermined amount of time, e.g., 15 hours. Then an alert indicating this fact is sent to Monitoring Device 120 A. \u2026",
+            "link": "https://patents.google.com/patent/US20190272725A1/en",
+            "relevance_score": 0.30815091729164124,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "New Sun Technologies, Inc.",
+            "priority_date": "2017-02-15"
+          },
+          {
+            "id": "patent/US9641239B2/en",
+            "source_type": "patent",
+            "title": "Adaptive data transfer using bluetooth",
+            "snippet": ", wherein the apparatus includes at least one motion sensor, the information associated with the one or more sensors includes motion data from the at least one motion sensor, and (e) further comprises selecting the second Bluetooth communications connection to transmit the second data between the \u2026",
+            "link": "https://patents.google.com/patent/US9641239B2/en",
+            "relevance_score": 0.2995229661464691,
+            "cpc_code": "A61B5/02438",
+            "cpc_description": "Measuring pulse rate or heart rate with portable devices, e.g. worn by the patient",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Fitbit, Inc.",
+            "priority_date": "2012-06-22"
+          },
+          {
+            "id": "scholar/11244386439206789493",
+            "source_type": "scholar",
+            "title": "Advances in healthcare wearable devices",
+            "snippet": "\u2026 of a notification for irregular rhythm, were monitored for 90 \u2026 % of irregular rhythm notifications were found in accordance \u2026 or shared with the patientLs medical provider119. Similarly, ZIO \u2026",
+            "link": "https://patents.google.com/scholar/11244386439206789493",
+            "relevance_score": 0.29810404777526855,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/US9237855B2/en",
+            "source_type": "patent",
+            "title": "Wearable heart rate monitor",
+            "snippet": ", wherein adjusting the heart rate monitor's gain and/or light emission intensity for operating in the first mode comprises reducing the emission intensity. 16. The method of claim 1 , wherein the wearable fitness monitoring device comprises a motion detecting sensor. 17. The method of claim 16 ,",
+            "link": "https://patents.google.com/patent/US9237855B2/en",
+            "relevance_score": 0.294321745634079,
+            "cpc_code": "A61B5/02438",
+            "cpc_description": "Measuring pulse rate or heart rate with portable devices, e.g. worn by the patient",
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Fitbit, Inc.",
+            "priority_date": "2012-06-22"
+          },
+          {
+            "id": "patent/US11857350B2/en",
+            "source_type": "patent",
+            "title": "Analyte concentration alert function for analyte sensor system",
+            "snippet": "using a controller of a wearable transceiver to store the analyte data with the acceleration data and date and time information in a memory of the wearable transceiver; using the controller of the wearable transceiver to cause a display device interface of the wearable transceiver to convey the \u2026",
+            "link": "https://patents.google.com/patent/US11857350B2/en",
+            "relevance_score": 0.2914968430995941,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Senseonics, Incorporated",
+            "priority_date": "2012-03-29"
+          },
+          {
+            "id": "patent/US20210274315A1/en",
+            "source_type": "patent",
+            "title": "Tracking device systems",
+            "snippet": "30 . A non-transitory computer-readable medium storing instructions that, when executed by a processor of a network-connectable smart device having an internal motion sensor with motion sensor output, cause the smart device to: a) for each of a plurality of Bluetooth radiotags that define a group of \u2026",
+            "link": "https://patents.google.com/patent/US20210274315A1/en",
+            "relevance_score": 0.28778955340385437,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Pb Inc. (Dba Pebblebee)",
+            "priority_date": "2014-06-10"
+          },
+          {
+            "id": "patent/US20200261027A1/en",
+            "source_type": "patent",
+            "title": "Biometric, physiological or environmental monitoring using a closed chamber",
+            "snippet": "11 . The earphone according to claim 5 where the second sensor is an accelerometer. 12 . The earphone according to claim 10 where the second sensor data is analyzed to determine if the earphone is in a user's ear. 13 . The earphone according to claim 12 where the second sensor is a temperature sensor.",
+            "link": "https://patents.google.com/patent/US20200261027A1/en",
+            "relevance_score": 0.28530997037887573,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Staton Techiya Llc",
+            "priority_date": "2015-05-08"
+          },
+          {
+            "id": "patent/US20250194756A1/en",
+            "source_type": "patent",
+            "title": "Multisensor bracelet",
+            "snippet": "wherein the geolocation sensor comprises a global positioning satellite module. 15 . The bracelet of claim 1 , further comprising one or more of a button that activates the geolocation sensor and/or the one or more physiological sensors, a transmitter that transmits data from the geolocation sensor \u2026",
+            "link": "https://patents.google.com/patent/US20250194756A1/en",
+            "relevance_score": 0.2844533920288086,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Legionarius, Llc",
+            "priority_date": "2023-12-14"
+          },
+          {
+            "id": "patent/WO2024191792A2/en",
+            "source_type": "patent",
+            "title": "Microenvironmental monitoring utilizing different types of sensing devices in a \u2026",
+            "snippet": "8. The apparatus of claim 1, wherein at least one of the second set of sensing devices comprises a dosimeter configured to evaluate exposure to at least one of blast overpressure, noise and radiation. 9. The apparatus of claim 1, wherein at least one of the second set of sensing devices comprises \u2026",
+            "link": "https://patents.google.com/patent/WO2024191792A2/en",
+            "relevance_score": 0.28405481576919556,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Lifelens Technologies, Inc.",
+            "priority_date": "2023-03-13"
+          },
+          {
+            "id": "https://www.automation24.com/infrared-temperature-sensor-kit-optris-ct-3m-catct3mhsfk?srsltid=AU7gw4WYZFKfIy2n1kZQe5cyXKZI3uovhztMY9DVItOAIgbn5gQuduOy",
+            "source_type": "product",
+            "title": "Infrared Temperature Sensor Kit Optris CT 3M - CATCT3M\u2026",
+            "snippet": "The Infrared Temperature Sensor CT 3M measures temperatures of metals within a temperature range from -100 to 600 \u00b0C, measuring head temperature and alarm are ...",
+            "link": "https://www.automation24.com/infrared-temperature-sensor-kit-optris-ct-3m-catct3mhsfk?srsltid=AU7gw4WYZFKfIy2n1kZQe5cyXKZI3uovhztMY9DVItOAIgbn5gQuduOy",
+            "relevance_score": 0.274705708026886,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {},
+            "query_types": [
+              "market_availability"
+            ],
+            "assignee": null,
+            "priority_date": null
+          },
+          {
+            "id": "patent/CN105849788A/en",
+            "source_type": "patent",
+            "title": "Utility gear including conformal sensors",
+            "snippet": "6. The system of claim 5, wherein the plurality of conformal sensors are electromyographic sensors. 7. The system of claim 5, wherein one or more of the plurality of conformal sensors includes a hardwired connection to the central controller such that at least some of the electrical signals pass \u2026",
+            "link": "https://patents.google.com/patent/CN105849788A/en",
+            "relevance_score": 0.27056214213371277,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "WO": "NOT_ACTIVE",
+              "EP": "NOT_ACTIVE",
+              "US": "NOT_ACTIVE",
+              "CN": "ACTIVE",
+              "JP": "ACTIVE",
+              "KR": "NOT_ACTIVE",
+              "CA": "NOT_ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Mc10\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+            "priority_date": "2013-10-09"
+          },
+          {
+            "id": "patent/US12268523B2/en",
+            "source_type": "patent",
+            "title": "Biometric, physiological or environmental monitoring using a closed chamber",
+            "snippet": "The disclosure describes an earphone that include a biometric sensor, where the biometric sensor can detect levels of gas concentration. Where the gas levels are reported to a user if exceeding a threshold value and where the earphone includes a microphone, speaker, memory and a processor.",
+            "link": "https://patents.google.com/patent/US12268523B2/en",
+            "relevance_score": 0.26904070377349854,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "ST R&amp;DTech LLC",
+            "priority_date": "2015-05-08"
+          },
+          {
+            "id": "patent/JP2025106074A/en",
+            "source_type": "patent",
+            "title": "Biometric information management system",
+            "snippet": "3. The biological information management system of claim 2, wherein a photograph or video including the overall image or nose print of each individual organism before admission is pre-registered, and at the time of admission, the photograph or video of the pre-registered animal is automatically \u2026",
+            "link": "https://patents.google.com/patent/JP2025106074A/en",
+            "relevance_score": 0.2677251994609833,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "JP": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "\u307e\u3061\u306a\u304b\uff2d\uff45\u30bb\u30f3\u30bf\u30fc\u682a\u5f0f\u4f1a\u793e",
+            "priority_date": "2023-12-31"
+          },
+          {
+            "id": "patent/US10937407B2/en",
+            "source_type": "patent",
+            "title": "Biometric, physiological or environmental monitoring using a closed chamber",
+            "snippet": "\u2026 . For example, an earpiece attached or inserted into a cow, a dog, or a horse's ear (or other anatomical conduit) will have vastly different shapes or architectures, but can certainly be adapted to form sealed chambers or conduits sufficient to provide isolation in accordance with the embodiments.",
+            "link": "https://patents.google.com/patent/US10937407B2/en",
+            "relevance_score": 0.25468501448631287,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "major_markets"
+            ],
+            "assignee": "Staton Techiya, Llc",
+            "priority_date": "2015-10-26"
+          },
+          {
+            "id": "patent/US12379217B2/en",
+            "source_type": "patent",
+            "title": "Personal monitoring apparatus and method",
+            "snippet": "a smoke detector, a fire detector, or a carbon monoxide (CO) detector, wherein the smoke detector, the fire detector, or the carbon monoxide (CO) detector, is located or situated on an exterior of the wearable device; wherein the smoke detector, the fire detector, or the carbon monoxide (CO) \u2026",
+            "link": "https://patents.google.com/patent/US12379217B2/en",
+            "relevance_score": 0.21141837537288666,
+            "cpc_code": null,
+            "cpc_description": null,
+            "country_status": {
+              "US": "ACTIVE"
+            },
+            "query_types": [
+              "broad_recall"
+            ],
+            "assignee": "Raymond Anthony Joao",
+            "priority_date": "2014-11-30"
+          }
+        ],
+        "candidate_assessments": [
+          {
+            "result_id": "patent/US10352759B1/en",
+            "title": "Smart tableware system, apparatus and method",
+            "link": "https://patents.google.com/patent/US10352759B1/en",
+            "overlapping_elements": [
+              "sensor",
+              "wireless transmitter"
+            ],
+            "differences": [
+              "food container instead of animal collar",
+              "weight sensor not temperature or motion",
+              "notification via mobile app visual display, not SMS",
+              "designed for human feeding, not animal health"
+            ],
+            "verdict": "not_relevant",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/ES2951065T3/en",
+            "title": "Surveillance and supervision of animal discomfort by mobile phone",
+            "link": "https://patents.google.com/patent/ES2951065T3/en",
+            "overlapping_elements": [
+              "motion sensor",
+              "remote notification"
+            ],
+            "differences": [
+              "uses UWB\u2011IR radar for biometric data instead of simple temperature sensor",
+              "requires a mobile computing device for alerts, not basic SMS",
+              "covers multiple biometric parameters beyond temperature"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/US20200060545A1/en",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "link": "https://patents.google.com/patent/US20200060545A1/en",
+            "overlapping_elements": [
+              "temperature sensor",
+              "animal wearable",
+              "wireless transceiver"
+            ],
+            "differences": [
+              "harness form factor, not a collar",
+              "multiple temperature sensors and auscultation sensors",
+              "alerts displayed on a mobile device or server, not SMS",
+              "requires firmware and app processing"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/US10154655B2/en",
+            "title": "Mobile animal surveillance and distress monitoring",
+            "link": "https://patents.google.com/patent/US10154655B2/en",
+            "overlapping_elements": [
+              "temperature sensor",
+              "motion sensor",
+              "remote notification"
+            ],
+            "differences": [
+              "employs complex classification algorithms and frequency\u2011domain processing",
+              "relies on a smartphone or computer interface",
+              "covers broader set of biometric parameters"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/CA3110621A1/en",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "link": "https://patents.google.com/patent/CA3110621A1/en",
+            "overlapping_elements": [
+              "temperature sensor",
+              "animal wearable",
+              "wireless transceiver"
+            ],
+            "differences": [
+              "identical to US20200060545A1 with harness, not collar",
+              "uses app/server for alerts",
+              "more extensive sensor suite"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "search"
+          },
+          {
+            "result_id": "patent/US11950571B2/en",
+            "title": "System and method for associating a signature of an animal movement and an animal activity",
+            "link": "https://patents.google.com/patent/US11950571B2/en",
+            "overlapping_elements": [
+              "motion sensor mounted on the same collar"
+            ],
+            "differences": [
+              "temperature sensor mounted on a collar",
+              "SMS alert sent to a basic feature phone",
+              "low\u2011cost collar construction for dairy cows",
+              "no smartphone app required for notification"
+            ],
+            "verdict": "partially_overlapping",
+            "evidence_source": "claims",
+            "found_via": "citation"
+          }
+        ],
+        "overall_novelty_confidence": 0.35,
+        "differentiation_suggestions": [
+          "Implement a ultra\u2011low\u2011cost GSM module that sends plain\u2011text SMS directly from the collar, eliminating the need for a smartphone or server.",
+          "Integrate a simple on\u2011board threshold circuit that triggers the SMS only when temperature exceeds a preset fever level, reducing firmware complexity.",
+          "Design the collar shape and fastening specifically for dairy\u2011cow neck anatomy to ensure reliable sensor contact and comfort.",
+          "Add a passive solar or kinetic energy harvester to extend battery life without increasing cost."
+        ],
+        "citations": [
+          {
+            "claim": "motion sensor for animal monitoring",
+            "result_id": "patent/ES2951065T3/en",
+            "title": "Surveillance and supervision of animal discomfort by mobile phone",
+            "link": "https://patents.google.com/patent/ES2951065T3/en"
+          },
+          {
+            "claim": "temperature sensor on animal wearable",
+            "result_id": "patent/US20200060545A1/en",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "link": "https://patents.google.com/patent/US20200060545A1/en"
+          },
+          {
+            "claim": "SMS\u2011only GSM alert",
+            "result_id": "https://patents.google.com/patent/US20240423163A1/en",
+            "title": "Corrective collar for animal behavior training",
+            "link": "https://patents.google.com/patent/US20240423163A1/en"
+          },
+          {
+            "claim": "simple threshold circuit on collar",
+            "result_id": "patent/US10154655B2/en",
+            "title": "Mobile animal surveillance and distress monitoring",
+            "link": "https://patents.google.com/patent/US10154655B2/en"
+          },
+          {
+            "claim": "dairy\u2011cow specific collar design",
+            "result_id": "patent/US10352759B1/en",
+            "title": "Smart tableware system, apparatus and method",
+            "link": "https://patents.google.com/patent/US10352759B1/en"
+          },
+          {
+            "claim": "solar/kinetic energy harvester",
+            "result_id": "https://www.facebook.com/MaraPredatorConservation/videos/ever-wondered-how-a-lion-gps-collar-actually-works-our-senior-programme-scientis/1568839741452594/",
+            "title": "Ever wondered how a lion GPS collar actually works? Our ...",
+            "link": "https://www.facebook.com/MaraPredatorConservation/videos/ever-wondered-how-a-lion-gps-collar-actually-works-our-senior-programme-scientis/1568839741452594/"
+          }
+        ],
+        "india_status": {
+          "related_active_in_india": 0,
+          "active_elsewhere_only": 0,
+          "india_filings_found": 0
+        },
+        "claim_chart": null,
+        "top_assignees": [
+          {
+            "name": "Fitbit, Inc.",
+            "percentage": 7.9
+          },
+          {
+            "name": "\uc8fc\uc2dd\ud68c\uc0ac \ud55c\uad6d\uc0b0\uc5c5\uae30\uc220\uc6d0",
+            "percentage": 3.4
+          },
+          {
+            "name": "Welch Allyn, Inc.",
+            "percentage": 3.4
+          },
+          {
+            "name": "New Sun Technologies, Inc.",
+            "percentage": 3.4
+          },
+          {
+            "name": "Protect Animals with Satellites, LLC",
+            "percentage": 3.4
+          },
+          {
+            "name": "Searete Llc, A Limited Liability Corporation Of The State Of Delaware",
+            "percentage": 3.4
+          }
+        ],
+        "public_domain": {
+          "count": 4,
+          "patents_considered": 40,
+          "entries": [
+            {
+              "id": "patent/US20200068853A1/en",
+              "title": "Network-based pet tracking and reporting system",
+              "link": "https://patents.google.com/patent/US20200068853A1/en",
+              "priority_date": "2018-09-05",
+              "assignee": "Sergio Radovcic",
+              "relevance_score": 0.3926287889480591,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 8
+            },
+            {
+              "id": "patent/WO2008076464A2/en",
+              "title": "Wireless medical telemetry system and methods using radio-frequency energized \u2026",
+              "link": "https://patents.google.com/patent/WO2008076464A2/en",
+              "priority_date": "2006-06-21",
+              "assignee": "Surgisense Corporation",
+              "relevance_score": 0.39000532031059265,
+              "lapsed_in": [
+                "US",
+                "WO"
+              ],
+              "reason": "term_expired",
+              "years_since_filing": 20
+            },
+            {
+              "id": "patent/WO2016037190A1/en",
+              "title": "Method and system for tracking health in animal populations",
+              "link": "https://patents.google.com/patent/WO2016037190A1/en",
+              "priority_date": "2014-09-05",
+              "assignee": "Pixobot, Inc.",
+              "relevance_score": 0.3870197534561157,
+              "lapsed_in": [
+                "BR",
+                "WO"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 12
+            },
+            {
+              "id": "patent/US20190272725A1/en",
+              "title": "Pharmacovigilance systems and methods",
+              "link": "https://patents.google.com/patent/US20190272725A1/en",
+              "priority_date": "2017-02-15",
+              "assignee": "New Sun Technologies, Inc.",
+              "relevance_score": 0.30815091729164124,
+              "lapsed_in": [
+                "US"
+              ],
+              "reason": "lapsed_early",
+              "years_since_filing": 9
+            }
+          ]
+        },
+        "search_strategy": {
+          "core_concepts": [
+            "collar",
+            "temperature sensor",
+            "motion sensor",
+            "SMS alert",
+            "dairy cow"
+          ],
+          "suggested_cpc": "A01K73/00",
+          "queries": [
+            {
+              "type": "major_markets",
+              "query": "(collar OR \"cow collar\") (\"temperature sensor\" OR thermometer) (\"motion sensor\" OR accelerometer) (\"SMS alert\" OR \"text message\") (\"dairy cow\" OR cattle)",
+              "rationale": "Uses the most specific nouns from the invention to locate exact prior art in major patent databases.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "india_specific",
+              "query": "(collar OR \"animal collar\") (sensor OR \"temperature sensor\") (SMS OR \"text alert\")",
+              "rationale": "A shorter query with broader synonyms suitable for the smaller Indian patent corpus.",
+              "country": "IN",
+              "result_count": 0,
+              "failed": false
+            },
+            {
+              "type": "broad_recall",
+              "query": "(livestock monitoring OR animal health) (vital sign sensor OR physiological sensor) (wireless alert OR remote notification) (wearable OR \"body worn device\")",
+              "rationale": "Broad parent terms and many synonyms to maximize recall of related technologies, accepting more noise.",
+              "country": null,
+              "result_count": 20,
+              "failed": false
+            },
+            {
+              "type": "refined",
+              "query": "(\"collar\" OR \"animal collar\") (\"wireless sensor network\" OR WSN) (RFID OR \"radio frequency identification\") (\"real-time notification\" OR \"SMS notice\") (\"dairy cattle\" OR livestock)",
+              "rationale": "Patents refer to the device as a \"wireless sensor network\" or use \"RFID\"/\"IoT\" terminology rather than just collar and sensor.",
+              "country": null,
+              "result_count": 0,
+              "failed": false
+            }
+          ],
+          "market_query": "collar temperature sensor motion sensor SMS alert",
+          "trends_keyword": null,
+          "serpapi_calls": {
+            "google_patents": 5,
+            "google": 1,
+            "google_patents_details": 6
+          },
+          "refinement_observation": "Patents refer to the device as a \"wireless sensor network\" or use \"RFID\"/\"IoT\" terminology rather than just collar and sensor.",
+          "refinement_terms": [
+            "wireless sensor network",
+            "RFID",
+            "IoT",
+            "real-time notification"
+          ]
+        },
+        "citation_network": {
+          "discoveries": [
+            {
+              "id": "patent/US11950571B2/en",
+              "title": "System and method for associating a signature of an animal movement and an animal activity",
+              "link": "https://patents.google.com/patent/US11950571B2/en",
+              "assignee": "Hills Pet Nutrition, Inc.",
+              "priority_date": "2020-10-01",
+              "referenced_by": [
+                "patent/US10154655B2/en",
+                "patent/US20200060545A1/en"
+              ],
+              "direction": "forward",
+              "examiner_cited": false,
+              "reason": "shared_reference",
+              "likely_expired": false
+            },
+            {
+              "id": "patent/US12593821B2/en",
+              "title": "Systems and methods for determining data relating to an animal using a rechargeable device",
+              "link": "https://patents.google.com/patent/US12593821B2/en",
+              "assignee": "Hill's Pet Nutrition, Inc.",
+              "priority_date": "2021-11-11",
+              "referenced_by": [
+                "patent/US10154655B2/en",
+                "patent/US20200060545A1/en"
+              ],
+              "direction": "forward",
+              "examiner_cited": false,
+              "reason": "shared_reference",
+              "likely_expired": false
+            }
+          ],
+          "edges": [],
+          "references_scanned": 129
+        },
+        "market_trend": null,
+        "plain_summary": "You already have several patents that put temperature and motion sensors on animals and send remote alerts, but they usually use a harness, multiple sensors, and a smartphone or server interface. Your idea is different because it focuses on a cheap collar that talks directly to a basic phone via SMS and avoids any app. To move forward, concentrate on the ultra\u2011low\u2011cost GSM/SMS module and a simple on\u2011collar threshold logic, and tailor the collar shape for dairy cows.",
+        "original_idea_text": null,
+        "language_code": "en",
+        "language_name": "English",
+        "localized": null,
+        "examined_documents": [
+          {
+            "id": "patent/US10352759B1/en",
+            "source_type": "patent",
+            "title": "Smart tableware system, apparatus and method",
+            "link": "https://patents.google.com/patent/US10352759B1/en",
+            "text": "Abstract: A smart apparatus system includes one or more food and liquid smart tableware apparatuses that each have a processor, memory, and a weight sensor. The smart apparatuses communicate with a cloud server and one or more caretaker computing devices. The caretakers can input physical information for the user including weight. The smart apparatus system can determine the healthy weight range for the user and determine a recommended feeding schedule. The smart apparatus system can remind the caretakers to feed the user, monitor the quantity of food and liquid that are placed in the smart tableware apparatuses and the consumption of the food and water by the user and transmit reports to the caretaker's computing device(s). The smart tableware apparatus system can maintain the recommended feeding schedule to keep the user within the healthy weight range or adjust the feeding schedule to bring the user's weight within the healthy weight range.\n\nClaim 1: 1. A smart tableware apparatus system comprising:\na food container;\na food container base for supporting the food container, the food container having: a food container weight sensor, a food container memory, a food container processor coupled to the food container weight sensor, and a food container radio frequency transmitter; and\nfeeding software running on a mobile computing device having: a visual display, a mobile radio frequency transceiver and a mobile computing processor coupled to the visual display and mobile radio frequency transceiver;\nwherein food weight information is transmitted from the food container radio frequency transmitter to the mobile radio frequency transceiver and the weight information is used to calculate a caloric value, wherein the food container base processor is coupled to the memory for storing a predetermined weight corresponding to a predetermined amount of food, and when the food is placed in the food container, the food container weight sensor detects the weight of the food and the food container processor transmits a signal which actuates an indicator on the visual display of the mobile computing device when the predetermined amount of food is placed on the food container.\n\nClaim 2: 2. The smart apparatus system of claim 1 further comprising:\na server having a processor coupled to a database for storing user information;\nwherein server communications with the food container processor through a network and the food container processor transmits food weight information detected by the food container weight sensor to the server and the food weight information is stored in the database.\n\nClaim 3: 3. The smart apparatus system of claim 1 wherein the caloric value is displayed on the visual display of the mobile computing device.\n\nClaim 4: 4. The smart apparatus system of claim 1 wherein the food container base processor transmits a fed signal through the food container radio frequency transmitter to the mobile radio frequency transceiver and the mobile computing processor displays user feeding information on the visual display.\n\nClaim 5: 5. The smart apparatus system of claim 1 wherein when the food is placed in the food container, the food container weight sensor detects an initial weight of the food and changes in the weight of the food, the food container processor transmits the initial weight of the food and the changes in the weight of the food to the mobile computing device.\n\nClaim 6: 6. The smart apparatus system of claim 5 wherein mobile computing device displays the initial weight of the food and the changes in the weight of the food.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A smart apparatus system includes one or more food and liquid smart tableware apparatuses that each have a processor, memory, and a weight sensor. The smart apparatuses communicate with a cloud server and one or more caretaker computing devices. The caretakers can input physical information for the user including weight. The smart apparatus system can determine the healthy weight range for the user and determine a recommended feeding schedule. The smart apparatus system can remind the caretakers to feed the user, monitor the quantity of food and liquid that are placed in the smart tableware apparatuses and the consumption of the food and water by the user and transmit reports to the caretaker's computing device(s). The smart tableware apparatus system can maintain the recommended feeding schedule to keep the user within the healthy weight range or adjust the feeding schedule to bring the user's weight within the healthy weight range.",
+                "original_chars": 947,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A smart tableware apparatus system comprising:\na food container;\na food container base for supporting the food container, the food container having: a food container weight sensor, a food container memory, a food container processor coupled to the food container weight sensor, and a food container radio frequency transmitter; and\nfeeding software running on a mobile computing device having: a visual display, a mobile radio frequency transceiver and a mobile computing processor coupled to the visual display and mobile radio frequency transceiver;\nwherein food weight information is transmitted from the food container radio frequency transmitter to the mobile radio frequency transceiver and the weight information is used to calculate a caloric value, wherein the food container base processor is coupled to the memory for storing a predetermined weight corresponding to a predetermined amount of food, and when the food is placed in the food container, the food container weight sensor detects the weight of the food and the food container processor transmits a signal which actuates an indicator on the visual display of the mobile computing device when the predetermined amount of food is placed on the food container.",
+                "original_chars": 1230,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The smart apparatus system of claim 1 further comprising:\na server having a processor coupled to a database for storing user information;\nwherein server communications with the food container processor through a network and the food container processor transmits food weight information detected by the food container weight sensor to the server and the food weight information is stored in the database.",
+                "original_chars": 407,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The smart apparatus system of claim 1 wherein the caloric value is displayed on the visual display of the mobile computing device.",
+                "original_chars": 133,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The smart apparatus system of claim 1 wherein the food container base processor transmits a fed signal through the food container radio frequency transmitter to the mobile radio frequency transceiver and the mobile computing processor displays user feeding information on the visual display.",
+                "original_chars": 294,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The smart apparatus system of claim 1 wherein when the food is placed in the food container, the food container weight sensor detects an initial weight of the food and changes in the weight of the food, the food container processor transmits the initial weight of the food and the changes in the weight of the food to the mobile computing device.",
+                "original_chars": 349,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The smart apparatus system of claim 5 wherein mobile computing device displays the initial weight of the food and the changes in the weight of the food.",
+                "original_chars": 155,
+                "truncated": false
+              }
+            ],
+            "total_claims": 28
+          },
+          {
+            "id": "patent/ES2951065T3/en",
+            "source_type": "patent",
+            "title": "Surveillance and supervision of animal discomfort by mobile phone",
+            "link": "https://patents.google.com/patent/ES2951065T3/en",
+            "text": "Abstract: One method for remote animal surveillance and distress monitoring includes detection of biometric and behavioral parameters of the animal, identification of novel events based on comparison of the detected parameters with predefined parameter scores and values; determining whether a composite parameter value exceeds a predefined composite threshold value indicative of possible distress in the animal; and notifying remote caregivers of possible distress in the animal based on the composite value exceeding the predefined composite threshold value. (Automatic translation with Google Translate, without legal value)\n\nClaim 1: 1. Un m\u00e9todo para vigilancia y supervisi\u00f3n remota del malestar de animales que comprende:\n\nClaim 2: detectar uno o m\u00e1s par\u00e1metros biom\u00e9tricos del animal, incluyendo detectar uno o m\u00e1s de una frecuencia respiratoria y frecuencia cardiaca del animal usando datos de un radar de impulso de banda ultraancha (UWB-IR); detectar uno o m\u00e1s par\u00e1metros de comportamiento del animal, que comprende supervisar los datos de movimiento de uno o m\u00e1s de un aceler\u00f3metro, giroscopio, magnet\u00f3metro y sensor de presi\u00f3n barom\u00e9trica durante un periodo de tiempo;\n\nClaim 3: determinar, usando un clasificador de una clase, la aparici\u00f3n de un acontecimiento novedoso basada en la comparaci\u00f3n de los datos de movimiento con un intervalo de valores del par\u00e1metro predefinidos y salvedades contenidos en el modelo que representan los datos de movimiento obtenidos en condiciones normales para el animal, en donde determinar un acontecimiento novedoso comprende:\n\nClaim 4: preprocesar los datos de movimiento para generar un vector de rasgos caracter\u00edsticos para clasificaci\u00f3n, que incluye:\n\nClaim 5: filtrar los datos de movimiento para eliminar el ruido;\n\nClaim 6: transformar los datos de movimiento al dominio de frecuencia para obtener una pluralidad de coeficientes de frecuencia;",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "One method for remote animal surveillance and distress monitoring includes detection of biometric and behavioral parameters of the animal, identification of novel events based on comparison of the detected parameters with predefined parameter scores and values; determining whether a composite parameter value exceeds a predefined composite threshold value indicative of possible distress in the animal; and notifying remote caregivers of possible distress in the animal based on the composite value exceeding the predefined composite threshold value. (Automatic translation with Google Translate, without legal value)",
+                "original_chars": 618,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. Un m\u00e9todo para vigilancia y supervisi\u00f3n remota del malestar de animales que comprende:",
+                "original_chars": 89,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "detectar uno o m\u00e1s par\u00e1metros biom\u00e9tricos del animal, incluyendo detectar uno o m\u00e1s de una frecuencia respiratoria y frecuencia cardiaca del animal usando datos de un radar de impulso de banda ultraancha (UWB-IR); detectar uno o m\u00e1s par\u00e1metros de comportamiento del animal, que comprende supervisar los datos de movimiento de uno o m\u00e1s de un aceler\u00f3metro, giroscopio, magnet\u00f3metro y sensor de presi\u00f3n barom\u00e9trica durante un periodo de tiempo;",
+                "original_chars": 442,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "determinar, usando un clasificador de una clase, la aparici\u00f3n de un acontecimiento novedoso basada en la comparaci\u00f3n de los datos de movimiento con un intervalo de valores del par\u00e1metro predefinidos y salvedades contenidos en el modelo que representan los datos de movimiento obtenidos en condiciones normales para el animal, en donde determinar un acontecimiento novedoso comprende:",
+                "original_chars": 383,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "preprocesar los datos de movimiento para generar un vector de rasgos caracter\u00edsticos para clasificaci\u00f3n, que incluye:",
+                "original_chars": 117,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "filtrar los datos de movimiento para eliminar el ruido;",
+                "original_chars": 55,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "transformar los datos de movimiento al dominio de frecuencia para obtener una pluralidad de coeficientes de frecuencia;",
+                "original_chars": 119,
+                "truncated": false
+              }
+            ],
+            "total_claims": 20
+          },
+          {
+            "id": "patent/US20200060545A1/en",
+            "source_type": "patent",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "link": "https://patents.google.com/patent/US20200060545A1/en",
+            "text": "Abstract: A system and associated methods for round-the-clock monitoring of an animal's health status includes an animal harness that is worn by the animal, and one or both of a mobile device and a remote server. The animal harness includes a plurality of sensors for collecting health measurements of the animal. The animal harness also includes a transceiver that communicates the heath measurements to one or both of the mobile device and the remote server, where a user may view the health measurements. Firmware in the animal harness, an application running in the mobile device, and software in the remote server processes and corrects the health measurements to generate a health status of the animal and notifications are generated when the animal's health is not within a safe range defined by the user.\n\nClaim 1: 1. An animal harness for round-the-clock monitoring of an animal's health status, comprising:\nan electronics module having a processor and memory storing firmware; a plurality of temperature sensors; a plurality of auscultation sensors; at least one flexible panel electrically coupling the temperature sensors and the auscultation sensors to the electronics module; a soft chassis having a main body with a cavity for containing and positioning the flexible panel around a heart girth of the animal, wherein the soft chassis positions the temperature sensors are positioned at axillary areas of the animal and positions the auscultation sensors around a chest of the animal to detect chest movement; and machine readable instructions stored within the memory that, when executed by the processor, control the processor to read health status data from the plurality of temperature sensors and the plurality of auscultation sensors and, at intervals, send the health status data to one or both of a mobile device and a server.\n\nClaim 2: 2. The animal harness of claim 1, the soft chassis further comprising two axillary straps, each positioned towards an opposite end of the soft chassis and each being partially hollow to receive an offshoot of the flexible panel having at least one of the temperature sensors attached thereto, the two axillary straps forcing the temperature sensors against the axillary areas of the animal.\n\nClaim 3: 3. The animal harness of claim 2, each of the two axillary straps further comprising one or both of thermal insulation and a radiation shield positioned on a side of the axillary strap facing away from the animal.\n\nClaim 4: 4. The animal harness of claim 1, each of the auscultation sensors being soldered to the flexible panel.\n\nClaim 5: 5. The animal harness of claim 1, further comprising:\nat least three removable ECG electrodes; at least three snap connectors, a female side of each one of the three snap connectors being attached to a different one of the three removable ECG electrodes, and a male side of each one of the three snap connectors being attached through one of three holes in the flexible panel and electrically connected, through the flexible panel, to the electronics module; and wherein each of the three snap connectors are assembled through three holes in the soft chassis to position the three removable ECG electrodes at a left side of the animal, a right side of the animal, and on a back of the animal.\n\nClaim 6: 6. The animal harness of claim 5, each of the three the removable ECG electrodes being selected from the group comprising a comb-style electrode, and a cup-style electrode.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A system and associated methods for round-the-clock monitoring of an animal's health status includes an animal harness that is worn by the animal, and one or both of a mobile device and a remote server. The animal harness includes a plurality of sensors for collecting health measurements of the animal. The animal harness also includes a transceiver that communicates the heath measurements to one or both of the mobile device and the remote server, where a user may view the health measurements. Firmware in the animal harness, an application running in the mobile device, and software in the remote server processes and corrects the health measurements to generate a health status of the animal and notifications are generated when the animal's health is not within a safe range defined by the user.",
+                "original_chars": 802,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. An animal harness for round-the-clock monitoring of an animal's health status, comprising:\nan electronics module having a processor and memory storing firmware; a plurality of temperature sensors; a plurality of auscultation sensors; at least one flexible panel electrically coupling the temperature sensors and the auscultation sensors to the electronics module; a soft chassis having a main body with a cavity for containing and positioning the flexible panel around a heart girth of the animal, wherein the soft chassis positions the temperature sensors are positioned at axillary areas of the animal and positions the auscultation sensors around a chest of the animal to detect chest movement; and machine readable instructions stored within the memory that, when executed by the processor, control the processor to read health status data from the plurality of temperature sensors and the plurality of auscultation sensors and, at intervals, send the health status data to one or both of a mobile device and a server.",
+                "original_chars": 1025,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The animal harness of claim 1, the soft chassis further comprising two axillary straps, each positioned towards an opposite end of the soft chassis and each being partially hollow to receive an offshoot of the flexible panel having at least one of the temperature sensors attached thereto, the two axillary straps forcing the temperature sensors against the axillary areas of the animal.",
+                "original_chars": 390,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The animal harness of claim 2, each of the two axillary straps further comprising one or both of thermal insulation and a radiation shield positioned on a side of the axillary strap facing away from the animal.",
+                "original_chars": 213,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The animal harness of claim 1, each of the auscultation sensors being soldered to the flexible panel.",
+                "original_chars": 104,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The animal harness of claim 1, further comprising:\nat least three removable ECG electrodes; at least three snap connectors, a female side of each one of the three snap connectors being attached to a different one of the three removable ECG electrodes, and a male side of each one of the three snap connectors being attached through one of three holes in the flexible panel and electrically connected, through the flexible panel, to the electronics module; and wherein each of the three snap connectors are assembled through three holes in the soft chassis to position the three removable ECG electrodes at a left side of the animal, a right side of the animal, and on a back of the animal.",
+                "original_chars": 692,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The animal harness of claim 5, each of the three the removable ECG electrodes being selected from the group comprising a comb-style electrode, and a cup-style electrode.",
+                "original_chars": 172,
+                "truncated": false
+              }
+            ],
+            "total_claims": 22
+          },
+          {
+            "id": "patent/US10154655B2/en",
+            "source_type": "patent",
+            "title": "Mobile animal surveillance and distress monitoring",
+            "link": "https://patents.google.com/patent/US10154655B2/en",
+            "text": "Abstract: A method and system for remote animal surveillance and distress monitoring includes detecting biometric and behavioral parameters of the animal, identifying novel events based on comparison of detected parameters to predefined parameter values and qualifications; determining whether parameter values or a composite parameter value exceeds a predefined value threshold indicative of possible distress in the animal; and notifying remote caretakers of possible distress in the animal based on the composite value exceeding the predefined value threshold.\n\nClaim 1: 1. An electronic device comprising a processor for surveillance and monitoring of an animal:\nthe processor programmed to:\ndetect one or more biometric parameter of the animal, wherein the one or more biometric parameter comprises one or more of a respiratory rate, heart rate, and temperature of the animal;\ndetect one or more behavioral parameter of the animal, wherein detecting the one or more behavioral parameters comprises monitoring data from one or more of an accelerometer, gyroscope, magnetometer, and barometric pressure sensor;\npreprocess the one or more biometric and behavioral parameter to remove noise resulting from movement of the animal;\ntransform the one or more preprocessed biometric and behavioral parameter into the frequency domain to obtain one or more frequency coefficient;\nmultiply the one or more frequency coefficient across a weighted matrix to generate a matrix characterizing components of the one or more preprocessed biometric and behavioral parameter;\ndetermine, using a one-class classifier, occurrence of a novel event based on comparison of the components of the one or more preprocessed biometric and behavioral parameter to a range of predefined personalized historical parameter values;\nnotify one or more remote caretakers of possible distress in the animal based on one or more of the components of the one or more preprocessed biometric and behavioral parameter exceeding the range of predefined personalized historical parameter values.\n\nClaim 2: 2. The device of claim 1, wherein two or more of the preprocessed biometric and behavioral parameters are combined into a composite value before transformation into the one or more frequency coefficient.\n\nClaim 3: 3. The device of claim 1, wherein a Gaussian Mixture Model represents one or more preprocessed biometric and behavioral parameter values under normal conditions.\n\nClaim 4: 4. The device of claim 1, wherein the processor is further programmed to detect one or more biologic function parameter of the animal and to use the preprocessed biologic function parameters for at least one of determining the occurrence of a novel event and computing the one or more frequency coefficient.\n\nClaim 5: 5. The device of claim 2, wherein the processor is further programmed to continuously personalize the range of predefined parameter values to conform to the one or more preprocessed biometric and behavioral parameters specific to the animal over time.\n\nClaim 6: 6. The device of claim 1, wherein the processor is further programmed to use fuzzy logic to aggregate the one or more biometric, biologic, and behavioral parameters to derive a single metric proportional to an animal level of distress, wherein the one or more aggregated biometric, biologic, and behavioral parameters includes at least one of a length of time of a novel event, deviation of a novel event from normality, and a count of surrounding novel events.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A method and system for remote animal surveillance and distress monitoring includes detecting biometric and behavioral parameters of the animal, identifying novel events based on comparison of detected parameters to predefined parameter values and qualifications; determining whether parameter values or a composite parameter value exceeds a predefined value threshold indicative of possible distress in the animal; and notifying remote caretakers of possible distress in the animal based on the composite value exceeding the predefined value threshold.",
+                "original_chars": 553,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. An electronic device comprising a processor for surveillance and monitoring of an animal:\nthe processor programmed to:\ndetect one or more biometric parameter of the animal, wherein the one or more biometric parameter comprises one or more of a respiratory rate, heart rate, and temperature of the animal;\ndetect one or more behavioral parameter of the animal, wherein detecting the one or more behavioral parameters comprises monitoring data from one or more of an accelerometer, gyroscope, magnetometer, and barometric pressure sensor;\npreprocess the one or more biometric and behavioral parameter to remove noise resulting from movement of the animal;\ntransform the one or more preprocessed biometric and behavioral parameter into the frequency domain to obtain one or more frequency coefficient;\nmultiply the one or more frequency coefficient across a weighted matrix to generate a matrix characterizing components of the one or more preprocessed biometric and behavioral parameter;\ndetermine, using a one-class classifier, occurrence of a novel event based on comparison of the components of the one or more preprocessed biometric and behavioral parameter to a range of predefined personalized historical parameter values;\nnotify one or more remote caretakers of possible distress in the animal based on one or more of the components of the one or more preprocessed biometric and behavioral parameter exceeding the range of predefined personalized historical parameter values.",
+                "original_chars": 1483,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The device of claim 1, wherein two or more of the preprocessed biometric and behavioral parameters are combined into a composite value before transformation into the one or more frequency coefficient.",
+                "original_chars": 203,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The device of claim 1, wherein a Gaussian Mixture Model represents one or more preprocessed biometric and behavioral parameter values under normal conditions.",
+                "original_chars": 161,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The device of claim 1, wherein the processor is further programmed to detect one or more biologic function parameter of the animal and to use the preprocessed biologic function parameters for at least one of determining the occurrence of a novel event and computing the one or more frequency coefficient.",
+                "original_chars": 307,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The device of claim 2, wherein the processor is further programmed to continuously personalize the range of predefined parameter values to conform to the one or more preprocessed biometric and behavioral parameters specific to the animal over time.",
+                "original_chars": 251,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The device of claim 1, wherein the processor is further programmed to use fuzzy logic to aggregate the one or more biometric, biologic, and behavioral parameters to derive a single metric proportional to an animal level of distress, wherein the one or more aggregated biometric, biologic, and behavioral parameters includes at least one of a length of time of a novel event, deviation of a novel event from normality, and a count of surrounding novel events.",
+                "original_chars": 461,
+                "truncated": false
+              }
+            ],
+            "total_claims": 9
+          },
+          {
+            "id": "patent/CA3110621A1/en",
+            "source_type": "patent",
+            "title": "Round-the-clock monitoring of an animal's health status",
+            "link": "https://patents.google.com/patent/CA3110621A1/en",
+            "text": "Abstract: A system and associated methods for round-the-clock monitoring of an animal's health status includes an animal harness that is worn by the animal, and one or both of a mobile device and a remote server. The animal harness includes a plurality of sensors for collecting health measurements of the animal. The animal harness also includes a transceiver that communicates the heath measurements to one or both of the mobile device and the remote server, where a user may view the health measurements. Firmware in the animal harness, an application running in the mobile device, and software in the remote server processes and corrects the health measurements to generate a health status of the animal and notifications are generated when the animal's health is not within a safe range defined by the user.\n\nClaim 1: 1.    An animal harness for round-the-clock monitoring of an animal's health status, comprising:an electronics module having a processor and memory storing firmware; a plurality of temperature sensors;a plurality of auscultation sensors;at least one flexible panel electrically coupling the temperature sensors and the auscultation sensors to the electronics module;a soft chassis having a main body with a cavity for containing and positioning the flexible panel around a heart girth of the animal, wherein the soft chassis positions the temperature sensors are positioned at axillary areas of the animal and positions the auscultation sensors around a chest of the animal to detect chest movement; and machine readable instructions stored within the memory that, when executed by the processor, control the processor to read health status data from the plurality of temperature sensors and the plurality of auscultation sensors and, at intervals, send the health status data to one or both of a mobile device and a server.\n\nClaim 2: 2.    The animal harness of claim 1, the soft chassis further comprising two axillary straps, each positioned towards an opposite end of the soft chassis and each being partially hollow to receive an offshoot of the flexible panel having at least one of the temperature sensors attached thereto, the two axillary straps forcing the temperature sensors against the axillary areas of the animal.\n\nClaim 3: 3.    The animal harness of claim 2, each of the two axillary straps further comprising one or both of thermal insulation and a radiation shield positioned on a side of the axillary strap facing away from the animal.\n\nClaim 4: 4.    The animal harness of claim 3, each of the auscultation sensors being soldered to the flexible panel.\n\nClaim 5: 5.    The animal harness of claim 4, further comprising:at least three removable ECG electrodes;   at least three snap connectors, a female side of each one of the three snap connectors being attached to a different one of the three removable ECG electrodes, and a male side of each one of the three snap connectors being attached through one of three holes in the flexible panel and electrically connected, through the flexible panel, to the electronics module; and wherein each of the three snap connectors are assembled through three holes in the soft chassis to position the three removable ECG electrodes at a left side of the animal, a right side of the animal, and on a back of the animal.\n\nClaim 6: 6.    The animal harness of claim 5, each of the three the removable ECG electrodes being selected from the group comprising a comb-style electrode, and a cup-style electrode.",
+            "evidence_source": "claims",
+            "found_via": "search",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A system and associated methods for round-the-clock monitoring of an animal's health status includes an animal harness that is worn by the animal, and one or both of a mobile device and a remote server. The animal harness includes a plurality of sensors for collecting health measurements of the animal. The animal harness also includes a transceiver that communicates the heath measurements to one or both of the mobile device and the remote server, where a user may view the health measurements. Firmware in the animal harness, an application running in the mobile device, and software in the remote server processes and corrects the health measurements to generate a health status of the animal and notifications are generated when the animal's health is not within a safe range defined by the user.",
+                "original_chars": 802,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1.    An animal harness for round-the-clock monitoring of an animal's health status, comprising:an electronics module having a processor and memory storing firmware; a plurality of temperature sensors;a plurality of auscultation sensors;at least one flexible panel electrically coupling the temperature sensors and the auscultation sensors to the electronics module;a soft chassis having a main body with a cavity for containing and positioning the flexible panel around a heart girth of the animal, wherein the soft chassis positions the temperature sensors are positioned at axillary areas of the animal and positions the auscultation sensors around a chest of the animal to detect chest movement; and machine readable instructions stored within the memory that, when executed by the processor, control the processor to read health status data from the plurality of temperature sensors and the plurality of auscultation sensors and, at intervals, send the health status data to one or both of a mobile device and a server.",
+                "original_chars": 1024,
+                "truncated": false
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2.    The animal harness of claim 1, the soft chassis further comprising two axillary straps, each positioned towards an opposite end of the soft chassis and each being partially hollow to receive an offshoot of the flexible panel having at least one of the temperature sensors attached thereto, the two axillary straps forcing the temperature sensors against the axillary areas of the animal.",
+                "original_chars": 393,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3.    The animal harness of claim 2, each of the two axillary straps further comprising one or both of thermal insulation and a radiation shield positioned on a side of the axillary strap facing away from the animal.",
+                "original_chars": 216,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4.    The animal harness of claim 3, each of the auscultation sensors being soldered to the flexible panel.",
+                "original_chars": 107,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5.    The animal harness of claim 4, further comprising:at least three removable ECG electrodes;   at least three snap connectors, a female side of each one of the three snap connectors being attached to a different one of the three removable ECG electrodes, and a male side of each one of the three snap connectors being attached through one of three holes in the flexible panel and electrically connected, through the flexible panel, to the electronics module; and wherein each of the three snap connectors are assembled through three holes in the soft chassis to position the three removable ECG electrodes at a left side of the animal, a right side of the animal, and on a back of the animal.",
+                "original_chars": 696,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6.    The animal harness of claim 5, each of the three the removable ECG electrodes being selected from the group comprising a comb-style electrode, and a cup-style electrode.",
+                "original_chars": 175,
+                "truncated": false
+              }
+            ],
+            "total_claims": 22
+          },
+          {
+            "id": "patent/US11950571B2/en",
+            "source_type": "patent",
+            "title": "System and method for associating a signature of an animal movement and an animal activity",
+            "link": "https://patents.google.com/patent/US11950571B2/en",
+            "text": "Abstract: A system, apparatus, and/or method of identifying an activity of an animal. The activity may include the animal drinking, eating, urination, or defecating. Motion data of a first animal may be received, for example, via a sensor. Predetermined signatures of one or more second animals may be received. The predetermined signatures of the one or more second animals may be associated with one or more activities of the one or more second animals. A signature of an activity of the first animal may be determined based on the motion data of the first animal. Based on the signature of the activity of the first animal and the predetermined signatures of the second animal, the activity of the first animal may be identified. The identified activity of the first animal may be displayed via a display device.\n\nClaim 1: 1. A method comprising:\nreceiving, via a sensor, motion data of a first animal;\nreceiving, from a memory, predetermined signatures of a second animal of one or more second animals, wherein the predetermined signatures of the second animal of the one or more second animals are associated with one or more activities of the second animal of the one or more second animals;\ndetermining, via one or more processors, a signature of an activity of the first animal based on the motion data of the first animal;\nidentifying, based on the signature of the activity of the first animal and at least two of the predetermined signatures of the second animal, the activity of the first animal, wherein the at least two predetermined signatures of the second animal being at least one of: a predetermined signature of a successful urination posture and a predetermined signature of an unsuccessful urination posture, or a predetermined signature of a successful defecation posture and a predetermined signature of an unsuccessful defecation posture;\ncausing the identified activity of the first animal to be displayed via a display device,\nwherein each predetermined signature of the predetermined signatures is associated with a single activity of the second animal;\nwherein the identified activity of the first animal comprises at least one of: a successful urination, an unsuccessful urination, a successful defecation, or an unsuccessful defecation; and\nwherein the signature of the activity of the first animal is at least one of: a successful urination posture, an unsuccessful urination posture, a success [excerpt ends]\n\nClaim 2: 2. The method of claim 1 wherein the motion data of the first animal comprises the motion data in X, Y, and Z directions.\n\nClaim 3: 3. The method of claim 1 wherein the motion data of the first animal comprises at least one of an acceleration of the first animal, a velocity of the first animal, a location of the first animal, or a distance traveled by the first animal.\n\nClaim 4: 4. The method of claim 1 further comprising determining, via the one or more processors, a health condition of the first animal based on the identified activity of the first animal.\n\nClaim 5: 5. The method of claim 4 wherein the determination of the health condition of the first animal is based on a quantity of the identified activity of the first animal or a duration of the identified activity of the first animal.\n\nClaim 6: 6. The method of claim 1 wherein the first animal is a cat or a dog.",
+            "evidence_source": "claims",
+            "found_via": "citation",
+            "sections": [
+              {
+                "label": "Abstract",
+                "source": "abstract",
+                "text": "A system, apparatus, and/or method of identifying an activity of an animal. The activity may include the animal drinking, eating, urination, or defecating. Motion data of a first animal may be received, for example, via a sensor. Predetermined signatures of one or more second animals may be received. The predetermined signatures of the one or more second animals may be associated with one or more activities of the one or more second animals. A signature of an activity of the first animal may be determined based on the motion data of the first animal. Based on the signature of the activity of the first animal and the predetermined signatures of the second animal, the activity of the first animal may be identified. The identified activity of the first animal may be displayed via a display device.",
+                "original_chars": 805,
+                "truncated": false
+              },
+              {
+                "label": "Claim 1",
+                "source": "claims",
+                "text": "1. A method comprising:\nreceiving, via a sensor, motion data of a first animal;\nreceiving, from a memory, predetermined signatures of a second animal of one or more second animals, wherein the predetermined signatures of the second animal of the one or more second animals are associated with one or more activities of the second animal of the one or more second animals;\ndetermining, via one or more processors, a signature of an activity of the first animal based on the motion data of the first animal;\nidentifying, based on the signature of the activity of the first animal and at least two of the predetermined signatures of the second animal, the activity of the first animal, wherein the at least two predetermined signatures of the second animal being at least one of: a predetermined signature of a successful urination posture and a predetermined signature of an unsuccessful urination posture, or a predetermined signature of a successful defecation posture and a predetermined signature of an unsuccessful defecation posture;\ncausing the identified activity of the first animal to be displayed via a display device,\nwherein each predetermined signature of the predetermined signatures is associated with a single activity of the second animal;\nwherein the identified activity of the first animal comprises at least one of: a successful urination, an unsuccessful urination, a successful defecation, or an unsuccessful defecation; and\nwherein the signature of the activity of the first animal is at least one of: a successful urination posture, an unsuccessful urination posture, a success",
+                "original_chars": 1662,
+                "truncated": true
+              },
+              {
+                "label": "Claim 2",
+                "source": "claims",
+                "text": "2. The method of claim 1 wherein the motion data of the first animal comprises the motion data in X, Y, and Z directions.",
+                "original_chars": 121,
+                "truncated": false
+              },
+              {
+                "label": "Claim 3",
+                "source": "claims",
+                "text": "3. The method of claim 1 wherein the motion data of the first animal comprises at least one of an acceleration of the first animal, a velocity of the first animal, a location of the first animal, or a distance traveled by the first animal.",
+                "original_chars": 239,
+                "truncated": false
+              },
+              {
+                "label": "Claim 4",
+                "source": "claims",
+                "text": "4. The method of claim 1 further comprising determining, via the one or more processors, a health condition of the first animal based on the identified activity of the first animal.",
+                "original_chars": 181,
+                "truncated": false
+              },
+              {
+                "label": "Claim 5",
+                "source": "claims",
+                "text": "5. The method of claim 4 wherein the determination of the health condition of the first animal is based on a quantity of the identified activity of the first animal or a duration of the identified activity of the first animal.",
+                "original_chars": 226,
+                "truncated": false
+              },
+              {
+                "label": "Claim 6",
+                "source": "claims",
+                "text": "6. The method of claim 1 wherein the first animal is a cat or a dog.",
+                "original_chars": 68,
+                "truncated": false
+              }
+            ],
+            "total_claims": 14
+          }
+        ],
+        "feature_findings": [
+          {
+            "id": "F1",
+            "feature": "temperature sensor mounted on a collar",
+            "evidence": [
+              {
+                "result_id": "patent/US20200060545A1/en",
+                "title": "Round-the-clock monitoring of an animal's health status",
+                "link": "https://patents.google.com/patent/US20200060545A1/en",
+                "quote": "a plurality of temperature sensors",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 1",
+                  "source": "claims",
+                  "text": "1. An animal harness for round-the-clock monitoring of an animal's health status, comprising:\nan electronics module having a processor and memory storing firmware; a plurality of temperature sensors; a plurality of auscultation sensors; at least one flexible panel electrically coupling the temperature sensors and the auscultation sensors to the electronics module; a soft chassis having a main body with a cavity for containing and positioning the flexible panel around a heart girth of the animal, wherein the soft chassis positions the temperature sensors are positioned at axillary areas of the animal and positions the auscultation sensors around a chest of the animal to detect chest movement; and machine readable instructions stored within the memory that, when executed by the processor, control the processor to read health status data from the plurality of temperature sensors and the plurality of auscultation sensors and, at intervals, send the health status data to one or both of a mobile device and a server.",
+                  "original_chars": 1025,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/US10154655B2/en",
+                "title": "Mobile animal surveillance and distress monitoring",
+                "link": "https://patents.google.com/patent/US10154655B2/en",
+                "quote": "detect one or more biometric parameter of the animal, wherein the one or more biometric parameter comprises one or more of a respiratory rate, heart rate, and temperature of the animal",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 1",
+                  "source": "claims",
+                  "text": "1. An electronic device comprising a processor for surveillance and monitoring of an animal:\nthe processor programmed to:\ndetect one or more biometric parameter of the animal, wherein the one or more biometric parameter comprises one or more of a respiratory rate, heart rate, and temperature of the animal;\ndetect one or more behavioral parameter of the animal, wherein detecting the one or more behavioral parameters comprises monitoring data from one or more of an accelerometer, gyroscope, magnetometer, and barometric pressure sensor;\npreprocess the one or more biometric and behavioral parameter to remove noise resulting from movement of the animal;\ntransform the one or more preprocessed biometric and behavioral parameter into the frequency domain to obtain one or more frequency coefficient;\nmultiply the one or more frequency coefficient across a weighted matrix to generate a matrix characterizing components of the one or more preprocessed biometric and behavioral parameter;\ndetermine, using a one-class classifier, occurrence of a novel event based on comparison of the components of the one or more preprocessed biometric and behavioral parameter to a range of predefined personalized historical parameter values;\nnotify one or more remote caretakers of possible distress in the animal based on one or more of the components of the one or more preprocessed biometric and behavioral parameter exceeding the range of predefined personalized historical parameter values.",
+                  "original_chars": 1483,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/CA3110621A1/en",
+                "title": "Round-the-clock monitoring of an animal's health status",
+                "link": "https://patents.google.com/patent/CA3110621A1/en",
+                "quote": "a plurality of temperature sensors",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 1",
+                  "source": "claims",
+                  "text": "1.    An animal harness for round-the-clock monitoring of an animal's health status, comprising:an electronics module having a processor and memory storing firmware; a plurality of temperature sensors;a plurality of auscultation sensors;at least one flexible panel electrically coupling the temperature sensors and the auscultation sensors to the electronics module;a soft chassis having a main body with a cavity for containing and positioning the flexible panel around a heart girth of the animal, wherein the soft chassis positions the temperature sensors are positioned at axillary areas of the animal and positions the auscultation sensors around a chest of the animal to detect chest movement; and machine readable instructions stored within the memory that, when executed by the processor, control the processor to read health status data from the plurality of temperature sensors and the plurality of auscultation sensors and, at intervals, send the health status data to one or both of a mobile device and a server.",
+                  "original_chars": 1024,
+                  "truncated": false
+                }
+              }
+            ]
+          },
+          {
+            "id": "F2",
+            "feature": "motion sensor mounted on the same collar",
+            "evidence": [
+              {
+                "result_id": "patent/ES2951065T3/en",
+                "title": "Surveillance and supervision of animal discomfort by mobile phone",
+                "link": "https://patents.google.com/patent/ES2951065T3/en",
+                "quote": "supervisar los datos de movimiento de uno o m\u00e1s de un aceler\u00f3metro, giroscopio, magnet\u00f3metro y sensor de presi\u00f3n barom\u00e9trica durante un periodo de tiempo",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 2",
+                  "source": "claims",
+                  "text": "detectar uno o m\u00e1s par\u00e1metros biom\u00e9tricos del animal, incluyendo detectar uno o m\u00e1s de una frecuencia respiratoria y frecuencia cardiaca del animal usando datos de un radar de impulso de banda ultraancha (UWB-IR); detectar uno o m\u00e1s par\u00e1metros de comportamiento del animal, que comprende supervisar los datos de movimiento de uno o m\u00e1s de un aceler\u00f3metro, giroscopio, magnet\u00f3metro y sensor de presi\u00f3n barom\u00e9trica durante un periodo de tiempo;",
+                  "original_chars": 442,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/US10154655B2/en",
+                "title": "Mobile animal surveillance and distress monitoring",
+                "link": "https://patents.google.com/patent/US10154655B2/en",
+                "quote": "monitoring data from one or more of an accelerometer, gyroscope, magnetometer, and barometric pressure sensor",
+                "evidence_source": "claims",
+                "found_via": "search",
+                "section": {
+                  "label": "Claim 1",
+                  "source": "claims",
+                  "text": "1. An electronic device comprising a processor for surveillance and monitoring of an animal:\nthe processor programmed to:\ndetect one or more biometric parameter of the animal, wherein the one or more biometric parameter comprises one or more of a respiratory rate, heart rate, and temperature of the animal;\ndetect one or more behavioral parameter of the animal, wherein detecting the one or more behavioral parameters comprises monitoring data from one or more of an accelerometer, gyroscope, magnetometer, and barometric pressure sensor;\npreprocess the one or more biometric and behavioral parameter to remove noise resulting from movement of the animal;\ntransform the one or more preprocessed biometric and behavioral parameter into the frequency domain to obtain one or more frequency coefficient;\nmultiply the one or more frequency coefficient across a weighted matrix to generate a matrix characterizing components of the one or more preprocessed biometric and behavioral parameter;\ndetermine, using a one-class classifier, occurrence of a novel event based on comparison of the components of the one or more preprocessed biometric and behavioral parameter to a range of predefined personalized historical parameter values;\nnotify one or more remote caretakers of possible distress in the animal based on one or more of the components of the one or more preprocessed biometric and behavioral parameter exceeding the range of predefined personalized historical parameter values.",
+                  "original_chars": 1483,
+                  "truncated": false
+                }
+              },
+              {
+                "result_id": "patent/US11950571B2/en",
+                "title": "System and method for associating a signature of an animal movement and an animal activity",
+                "link": "https://patents.google.com/patent/US11950571B2/en",
+                "quote": "receiving, via a sensor, motion data of a first animal",
+                "evidence_source": "claims",
+                "found_via": "citation",
+                "section": {
+                  "label": "Claim 1",
+                  "source": "claims",
+                  "text": "1. A method comprising:\nreceiving, via a sensor, motion data of a first animal;\nreceiving, from a memory, predetermined signatures of a second animal of one or more second animals, wherein the predetermined signatures of the second animal of the one or more second animals are associated with one or more activities of the second animal of the one or more second animals;\ndetermining, via one or more processors, a signature of an activity of the first animal based on the motion data of the first animal;\nidentifying, based on the signature of the activity of the first animal and at least two of the predetermined signatures of the second animal, the activity of the first animal, wherein the at least two predetermined signatures of the second animal being at least one of: a predetermined signature of a successful urination posture and a predetermined signature of an unsuccessful urination posture, or a predetermined signature of a successful defecation posture and a predetermined signature of an unsuccessful defecation posture;\ncausing the identified activity of the first animal to be displayed via a display device,\nwherein each predetermined signature of the predetermined signatures is associated with a single activity of the second animal;\nwherein the identified activity of the first animal comprises at least one of: a successful urination, an unsuccessful urination, a successful defecation, or an unsuccessful defecation; and\nwherein the signature of the activity of the first animal is at least one of: a successful urination posture, an unsuccessful urination posture, a success",
+                  "original_chars": 1662,
+                  "truncated": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "F3",
+            "feature": "SMS alert sent to a basic feature phone",
+            "evidence": []
+          },
+          {
+            "id": "F4",
+            "feature": "low\u2011cost collar construction for dairy cows",
+            "evidence": []
+          },
+          {
+            "id": "F5",
+            "feature": "no smartphone app required for notification",
+            "evidence": []
+          }
+        ],
+        "citation_followups": [
+          {
+            "id": "patent/US11950571B2/en",
+            "title": "System and method for associating a signature of an animal movement and an animal activity",
+            "link": "https://patents.google.com/patent/US11950571B2/en",
+            "referenced_by": [
+              "patent/US10154655B2/en",
+              "patent/US20200060545A1/en"
+            ],
+            "reason": "shared_reference",
+            "evidence_source": "claims",
+            "verdict": "partially_overlapping",
+            "features_found": [
+              "F2"
+            ],
+            "newly_found": [],
+            "explanation": "this document discloses a motion sensor on an animal but does not disclose temperature sensing, SMS alerts, low\u2011cost collar, or lack of a smartphone app.",
+            "changed_conclusion": false
+          }
+        ],
+        "recheck": null,
+        "report_id": "1acdd59f79beaec1"
+      }
+    }
+  ]
+}
