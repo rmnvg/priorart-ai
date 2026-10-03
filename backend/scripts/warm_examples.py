@@ -8,10 +8,14 @@ Usage, from backend/:
     python -m scripts.warm_examples               # run the ones not cached yet
     python -m scripts.warm_examples --refresh kayak
         # re-run a cached one (e.g. to pick up new pipeline features)
+    python -m scripts.warm_examples --only solar-dryer-hindi
+        # run just these, so scarce quota goes to the demo first
 
 Each fresh analysis costs up to 16 SerpApi searches (3 patent queries, 1
 refinement query, 1 market search, 1 Trends lookup, up to 8 detail lookups,
-up to 2 citation follow-up lookups).
+up to 2 citation follow-up lookups), or up to 11 with SEARCH_PROFILE=lean.
+Searches already in backend/.serpapi-cache/ cost nothing, so a refresh after
+a pipeline change is often free.
 """
 import argparse
 import asyncio
@@ -19,8 +23,7 @@ import sys
 
 from app import service
 from app.cache import evict, get_cached
-
-SEARCHES_PER_ANALYSIS = 16
+from app.config import MAX_SEARCHES_PER_ANALYSIS
 
 # The first two must match frontend/lib/sampleIdea.ts exactly (a test
 # checks), or the sample buttons turn into slow, billable live runs.
@@ -82,21 +85,31 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Fill the examples gallery.")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--refresh", help="comma-separated example names to re-run")
+    parser.add_argument("--only", help="comma-separated example names; skip the rest")
     args = parser.parse_args()
 
     refresh = {n.strip() for n in (args.refresh or "").split(",") if n.strip()}
-    unknown = refresh - EXAMPLES.keys()
+    only = {n.strip() for n in (args.only or "").split(",") if n.strip()}
+    unknown = (refresh | only) - EXAMPLES.keys()
     if unknown:
         print(f"Unknown examples: {', '.join(sorted(unknown))}", file=sys.stderr)
         return 2
 
-    todo = [n for n in EXAMPLES if n in refresh or not _is_cached(EXAMPLES[n])]
+    todo = [
+        n for n in EXAMPLES
+        if (not only or n in only) and (n in refresh or not _is_cached(EXAMPLES[n]))
+    ]
     print(
         f"{len(todo)} of {len(EXAMPLES)} examples to run, up to "
-        f"{len(todo) * SEARCHES_PER_ANALYSIS} SerpApi searches."
+        f"{len(todo) * MAX_SEARCHES_PER_ANALYSIS} SerpApi searches (fewer if already in the response cache)."
     )
     for name in EXAMPLES:
-        state = "to run" if name in todo else "cached"
+        if name in todo:
+            state = "to run"
+        elif only and name not in only:
+            state = "skipped (--only)"
+        else:
+            state = "cached"
         print(f"  {name:20} {state}")
     if args.dry_run or not todo:
         return 0

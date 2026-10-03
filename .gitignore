@@ -15,3 +15,7 @@ frontend/tsconfig.tsbuildinfo
 # Misc
 .DS_Store
 *.log
+
+# Raw SerpApi responses: a local quota saver, not part of the demo data.
+# (backend/.cache/ holds the saved reports and IS committed.)
+backend/.serpapi-cache/
