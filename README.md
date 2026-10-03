@@ -2,6 +2,142 @@
 
 [![CI](https://github.com/rmnvg/priorart-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/rmnvg/priorart-ai/actions/workflows/ci.yml)
 
+**Has my invention already been done? Ask in your own language and get the answer
+with the evidence: the exact patent passages, checked word for word.**
+
+A farmer in Maharashtra, a student in Chennai, a founder in Bengaluru: anyone with an
+idea gets a first-pass prior-art search that normally means a paid search, in English,
+through a patent professional. Describe the idea (typed or spoken, in English, Hindi,
+Tamil, Bengali, Marathi and more). PriorArt AI searches patents, papers and products
+through SerpApi and answers with a decision, not a dashboard:
+
+- **What we found:** "We found overlap in these three features. This fourth wasn't
+  found in the evidence reviewed." Every finding quotes the patent passage, verified
+  against the document's text in code, and says whether it came from the claims or the
+  abstract. "Not found" is always bounded by what was reviewed.
+- **What you could change:** concrete differentiation suggestions, a redesign studio
+  that works under your constraints ("no electricity", "under ₹2,000"), and a re-check
+  that tests the revised idea against the *original* closest patents.
+- **Explore the research:** the patent landscape, citations, India status, timeline,
+  and every query and SerpApi call behind the report.
+
+## Why it's different
+
+1. **Evidence, not a score.** The LLM never gets the last word: a quote that isn't in
+   the patent's text is rejected in code. The novelty estimate is shown, small and
+   labelled as an estimate, below the evidence.
+2. **It searches like a professional.** An agent reads the first results, learns the
+   patents' own vocabulary ("patents call this a *sectional shaft*, not a folding
+   paddle") and searches again. Then it chases citations, which keyword search can't.
+3. **Built for India.** It works in Indian languages end to end, searches Indian Patent
+   Office filings, and previews how an Indian examiner would read the idea
+   (Patents Act s. 3, 2(1)(j), 2(1)(ja)), labelled as a simulation.
+4. **It finds what's free to use.** Patents in your space whose protection is reported
+   as ended, and exactly where. The patent bargain says these are public; this tool
+   makes them findable.
+
+## Try it without API keys
+
+```bash
+cd backend && python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt && uvicorn app.main:app --port 8000
+# second terminal
+cd frontend && npm install && npm run dev
+```
+
+With no keys the backend runs in **demo mode**: every saved report in the examples
+gallery opens fully interactive. Full setup with live search is [below](#setup).
+
+**Hackathon:** SerpApi India Hackathon 2026, **Track 05: Knowledge & Public Interest**.
+Patent information is public data that is locked behind expensive, jargon-heavy tools;
+this project makes that knowledge accessible to anyone who can describe an idea,
+in their own language, which is squarely a "public interest" use of freely searchable
+government/patent-office data. The public-domain finder pushes that further: the
+patent bargain is that inventions become public once protection lapses, but in
+practice almost nobody can find out *which* ones have. This surfaces them.
+
+[How it works](#how-it-works) · [How SerpApi powers it](#how-serpapi-powers-it) ·
+[Everything it does](#everything-it-does) · [Benchmark](#does-it-actually-find-prior-art-the-benchmark) ·
+[MCP server](#use-it-from-claude-desktop-cursor-or-any-mcp-client) · [Limitations](#known-limitations)
+
+---
+
+## How it works
+
+```mermaid
+flowchart TD
+    idea(["💡 Idea<br/><i>typed or spoken, any Indian language</i>"])
+
+    subgraph pipeline [" "]
+        direction TB
+        q["<b>1 · Understand + Query Generator</b> — LLM<br/>translate to technical English if needed, then 3 Google Patents boolean queries<br/><span style='font-size:11px'>major markets · India-specific · broad recall</span>"]
+        s["<b>2 · Search Layer</b> — SerpApi, run concurrently<br/>google_patents (patents + scholar) per query, India query filtered to IN<br/><span style='font-size:11px'>+ google (market availability) + google_trends (market interest)</span>"]
+        r["<b>3 · Rank & Dedupe</b><br/>merge, dedupe by id<br/><span style='font-size:11px'>score relevance via sentence-transformer embeddings</span>"]
+        a["<b>3b · Refinement Agent</b> — LLM + SerpApi<br/>reads the first results, learns the patents' own vocabulary<br/><span style='font-size:11px'>searches again in their terms, re-ranks everything</span>"]
+        d["<b>4 · Deep-Dive</b> — SerpApi, run concurrently<br/>full claims/abstract + citations for top 8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
+        n["<b>5 · Novelty Verdict</b> — LLM<br/>overlap/differences/verdict per candidate<br/><span style='font-size:11px'>+ idea features with verified quotes + differentiation + claim spans</span>"]
+        i["<b>6 · India Signal · Public Domain · Citation Chasing</b><br/><span style='font-size:11px'>computed from data already pulled in steps 2 and 4 — no extra API calls</span>"]
+        f["<b>6a · Citation Follow-up</b> — SerpApi + LLM<br/>fetch the top 2 shared citations, check them against the idea's features<br/><span style='font-size:11px'>a newly shown feature updates the conclusion, with the citation named</span>"]
+        l["<b>6b · Localize</b> — LLM<br/><span style='font-size:11px'>summary, suggestions and labels written back in the inventor's language</span>"]
+        o["<b>7 · Orchestrator</b><br/><span style='font-size:11px'>async generator → staged progress events → one structured result</span>"]
+
+        q --> s --> r --> a --> d --> n --> i --> f --> l --> o
+    end
+
+    api{{"⚡ FastAPI · POST /analyze<br/><i>Server-Sent Events</i>"}}
+
+    mcp["🤖 <b>MCP server</b><br/>the same pipeline inside Claude Desktop / Cursor"]
+    o --> mcp
+    fe["🖥️ <b>Next.js frontend</b><br/>staged progress checklist<br/>ranked result cards<br/>India signal + differentiation<br/>landscape graph with citation edges<br/>filing timeline + market interest<br/>claim chart · shareable report · attorney brief"]
+
+    idea --> q
+    o --> api --> fe
+
+    classDef stage fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#1e1b4b,text-align:left
+    classDef endpoint fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#451a03
+    classDef terminus fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#064e3b
+    classDef ideaNode fill:#fce7f3,stroke:#db2777,stroke-width:1.5px,color:#500724
+
+    class q,s,r,a,d,n,i,l,o stage
+    class api endpoint
+    class fe,mcp terminus
+    class idea ideaNode
+    style pipeline fill:none,stroke:none
+```
+
+**Backend:** Python, FastAPI, Server-Sent Events for streaming progress.
+**Frontend:** Next.js (App Router) + TypeScript + Tailwind, `react-force-graph-2d`
+for the landscape graph.
+**LLM:** Groq (`openai/gpt-oss-120b`, OpenAI-compatible API) — swapped in for Claude
+to keep the project free to run; all LLM calls go through one wrapper
+(`backend/app/llm.py`) so the provider can be swapped again in one file.
+**Search:** SerpApi (`google_patents`, `google_patents_details`, `google`, `google_trends`).
+
+---
+
+## How SerpApi powers it
+
+Nothing in a report is made up by the LLM. Every document, status, date and
+citation comes from SerpApi; the LLM only writes the queries and compares texts.
+
+| SerpApi engine | Calls per analysis | What it provides |
+|---|---|---|
+| `google_patents` (`scholar=true`, `clustered=true`) | 3 + 1 refinement | Prior-art patents **and** academic papers in one call per query angle. The India angle adds `country=IN`, so it searches Indian Patent Office filings for real. Each result's `country_status` feeds the India signal and the public-domain finder, and the clustered `summary` feeds the assignee breakdown. |
+| `google_patents_details` | up to 8 + 2 | Full abstract + claims for the feature evidence and claim chart, plus `patent_citations` / `cited_by` for **citation chasing** and the citation edges in the landscape graph. Up to 2 more calls **follow up** the strongest citation discoveries, so a document keyword search missed can change the conclusion. |
+| `google` | 1 | Market-availability check: is a product like this already sold? |
+| `google_trends` | 1 | Five years of search interest in the product category: does anyone want this? |
+
+The refinement agent's follow-up query goes through the same `google_patents`
+engine, so its extra search is counted in that row.
+
+Every report ends with a **"How this report was built"** panel. It lists the exact
+queries, the result count for each, and the SerpApi calls behind that report, and
+each query opens in Google Patents so the user can keep searching from there.
+
+---
+
+## Everything it does
+
 **AI-powered patent prior-art & novelty checker.** Describe an invention idea in
 plain words (typed or spoken, in English, Hindi or another Indian language) and get
 back ranked prior art (patents, academic papers, and existing
@@ -123,88 +259,6 @@ first read on "has this already been done?" before spending money on a formal pa
 search — patent search tools built for law firms are expensive and not designed for
 someone doing a first-pass sanity check on a raw idea.
 
-**Hackathon:** SerpApi India Hackathon 2026 — **Track 05: Knowledge & Public Interest**.
-Patent information is public data that is locked behind expensive, jargon-heavy tools;
-this project makes that knowledge accessible to anyone who can describe an idea,
-in their own language, which is squarely a "public interest" use of freely searchable
-government/patent-office data. The public-domain finder pushes that further: the
-patent bargain is that inventions become public once protection lapses, but in
-practice almost nobody can find out *which* ones have. This surfaces them.
-
----
-
-## How it works
-
-```mermaid
-flowchart TD
-    idea(["💡 Idea<br/><i>typed or spoken, any Indian language</i>"])
-
-    subgraph pipeline [" "]
-        direction TB
-        q["<b>1 · Understand + Query Generator</b> — LLM<br/>translate to technical English if needed, then 3 Google Patents boolean queries<br/><span style='font-size:11px'>major markets · India-specific · broad recall</span>"]
-        s["<b>2 · Search Layer</b> — SerpApi, run concurrently<br/>google_patents (patents + scholar) per query, India query filtered to IN<br/><span style='font-size:11px'>+ google (market availability) + google_trends (market interest)</span>"]
-        r["<b>3 · Rank & Dedupe</b><br/>merge, dedupe by id<br/><span style='font-size:11px'>score relevance via sentence-transformer embeddings</span>"]
-        a["<b>3b · Refinement Agent</b> — LLM + SerpApi<br/>reads the first results, learns the patents' own vocabulary<br/><span style='font-size:11px'>searches again in their terms, re-ranks everything</span>"]
-        d["<b>4 · Deep-Dive</b> — SerpApi, run concurrently<br/>full claims/abstract + citations for top 8 candidates<br/><span style='font-size:11px'>via google_patents_details, truncated/condensed</span>"]
-        n["<b>5 · Novelty Verdict</b> — LLM<br/>overlap/differences/verdict per candidate<br/><span style='font-size:11px'>+ idea features with verified quotes + differentiation + claim spans</span>"]
-        i["<b>6 · India Signal · Public Domain · Citation Chasing</b><br/><span style='font-size:11px'>computed from data already pulled in steps 2 and 4 — no extra API calls</span>"]
-        f["<b>6a · Citation Follow-up</b> — SerpApi + LLM<br/>fetch the top 2 shared citations, check them against the idea's features<br/><span style='font-size:11px'>a newly shown feature updates the conclusion, with the citation named</span>"]
-        l["<b>6b · Localize</b> — LLM<br/><span style='font-size:11px'>summary, suggestions and labels written back in the inventor's language</span>"]
-        o["<b>7 · Orchestrator</b><br/><span style='font-size:11px'>async generator → staged progress events → one structured result</span>"]
-
-        q --> s --> r --> a --> d --> n --> i --> f --> l --> o
-    end
-
-    api{{"⚡ FastAPI · POST /analyze<br/><i>Server-Sent Events</i>"}}
-
-    mcp["🤖 <b>MCP server</b><br/>the same pipeline inside Claude Desktop / Cursor"]
-    o --> mcp
-    fe["🖥️ <b>Next.js frontend</b><br/>staged progress checklist<br/>ranked result cards<br/>India signal + differentiation<br/>landscape graph with citation edges<br/>filing timeline + market interest<br/>claim chart · shareable report · attorney brief"]
-
-    idea --> q
-    o --> api --> fe
-
-    classDef stage fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#1e1b4b,text-align:left
-    classDef endpoint fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#451a03
-    classDef terminus fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#064e3b
-    classDef ideaNode fill:#fce7f3,stroke:#db2777,stroke-width:1.5px,color:#500724
-
-    class q,s,r,a,d,n,i,l,o stage
-    class api endpoint
-    class fe,mcp terminus
-    class idea ideaNode
-    style pipeline fill:none,stroke:none
-```
-
-**Backend:** Python, FastAPI, Server-Sent Events for streaming progress.
-**Frontend:** Next.js (App Router) + TypeScript + Tailwind, `react-force-graph-2d`
-for the landscape graph.
-**LLM:** Groq (`openai/gpt-oss-120b`, OpenAI-compatible API) — swapped in for Claude
-to keep the project free to run; all LLM calls go through one wrapper
-(`backend/app/llm.py`) so the provider can be swapped again in one file.
-**Search:** SerpApi (`google_patents`, `google_patents_details`, `google`, `google_trends`).
-
----
-
-## How SerpApi powers it
-
-Nothing in a report is made up by the LLM. Every document, status, date and
-citation comes from SerpApi; the LLM only writes the queries and compares texts.
-
-| SerpApi engine | Calls per analysis | What it provides |
-|---|---|---|
-| `google_patents` (`scholar=true`, `clustered=true`) | 3 + 1 refinement | Prior-art patents **and** academic papers in one call per query angle. The India angle adds `country=IN`, so it searches Indian Patent Office filings for real. Each result's `country_status` feeds the India signal and the public-domain finder, and the clustered `summary` feeds the assignee breakdown. |
-| `google_patents_details` | up to 8 + 2 | Full abstract + claims for the feature evidence and claim chart, plus `patent_citations` / `cited_by` for **citation chasing** and the citation edges in the landscape graph. Up to 2 more calls **follow up** the strongest citation discoveries, so a document keyword search missed can change the conclusion. |
-| `google` | 1 | Market-availability check: is a product like this already sold? |
-| `google_trends` | 1 | Five years of search interest in the product category: does anyone want this? |
-
-The refinement agent's follow-up query goes through the same `google_patents`
-engine, so its extra search is counted in that row.
-
-Every report ends with a **"How this report was built"** panel. It lists the exact
-queries, the result count for each, and the SerpApi calls behind that report, and
-each query opens in Google Patents so the user can keep searching from there.
-
 ---
 
 ## Project structure
@@ -217,7 +271,7 @@ priorart-ai/
 │   │   ├── llm.py                # Groq LLM wrapper (all model calls go through here)
 │   │   ├── cache.py              # memory + on-disk cache keyed on idea text
 │   │   ├── models.py             # SSE event / result Pydantic models
-│   │   ├── serpapi_client.py     # shared SerpApi client (+ API-key redaction)
+│   │   ├── serpapi_client.py     # shared SerpApi client: response cache, offline mode, key redaction
 │   │   ├── service.py            # cache + demo-mode + pipeline, shared by API and MCP
 │   │   ├── mcp_server.py         # MCP server (Claude Desktop, Cursor, ...)
 │   │   ├── report_markdown.py    # report → Markdown for AI assistants
@@ -244,7 +298,9 @@ priorart-ai/
 │   ├── tests/test_pipeline.py    # pure-logic tests (no keys/network needed)
 │   ├── benchmark/                # search-recall benchmark on 17 real patents (12 dev + 5 held-out)
 │   ├── scripts/warm_examples.py  # fills the examples gallery
+│   ├── scripts/quota.py          # searches left and what they buy (free to run)
 │   ├── .cache/                   # persisted analyses — survives restarts
+│   ├── .serpapi-cache/           # raw SerpApi responses, each search paid once (not committed)
 │   └── requirements.txt
 └── frontend/
     ├── app/page.tsx               # top-level view state machine
@@ -349,6 +405,20 @@ a hash of the idea text. The cache is **persistent across restarts** — re-runn
 the same idea replays the saved result instantly and costs nothing, which is what
 makes a demo reproducible without live quota. Delete a file from `backend/.cache/`
 to force a fresh run of that idea.
+
+Underneath that, every raw SerpApi response is saved to `backend/.serpapi-cache/`,
+keyed on the request's parameters, so **each search is paid for once**. Re-running an
+idea after a prompt or code change replays the same search data while every LLM step
+runs fresh. An error response (such as an exhausted quota) is never saved.
+
+| Variable | Default | What it does |
+|---|---|---|
+| `SEARCH_PROFILE` | `full` | `full` is up to 16 searches per analysis; `lean` is up to 11 (5 detail lookups, 1 citation follow-up, no Trends). The individual settings above still override it. |
+| `SERPAPI_CACHE` | `true` | Save and replay raw SerpApi responses |
+| `SERPAPI_OFFLINE` | `false` | Never call SerpApi: an uncached request fails instead of spending a search |
+
+Check what's left, and what it buys, without spending a search:
+`python -m scripts.quota`.
 
 Every analysis gets a **shareable report link** (`/?report=<id>`), served from this
 cache by `GET /report/{id}`. Opening a link never triggers a new (billable) run.
