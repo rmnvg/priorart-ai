@@ -1,0 +1,157 @@
+{
+  "features": [
+    {
+      "id": "E1",
+      "text": "black tin sheet that absorbs solar energy to heat air"
+    },
+    {
+      "id": "E2",
+      "text": "small fan that moves heated air over the tray"
+    },
+    {
+      "id": "E3",
+      "text": "mesh tray for placing crops during drying"
+    },
+    {
+      "id": "E4",
+      "text": "solar-powered energy source for the system"
+    }
+  ],
+  "locked_features": [
+    "E1",
+    "E3"
+  ],
+  "constraints": [
+    "No electricity",
+    "Target cost under ₹2,000 per unit"
+  ],
+  "alternatives": [
+    {
+      "title": "सौर‑वायुमंडलीय सर्किट ड्रायर",
+      "how_it_works": "एक परावर्तक धातु की बॉक्स में काली टिन शीट रखी जाती है जो सूर्य की रोशनी को अवशोषित कर हवा को गर्म करती है। गर्म हवा को एक प्राकृतिक वेंटिलेशन ट्यूब के माध्यम से ऊपर उठाया जाता है और फिर एक छोटे पंखे द्वारा मेष ट्रे के ऊपर प्रवाहित किया जाता है।",
+      "what_changes": "The design replaces the direct fan‑driven airflow with a buoyancy‑driven natural draft assisted by a small fan, eliminating the need for a powered blower as in the existing design.",
+      "keeps": [
+        "E1",
+        "E3"
+      ],
+      "drops_locked": [],
+      "constraint_notes": [
+        {
+          "constraint": "No electricity",
+          "approach": "पंखे को सौर‑ऊर्जा से चलने वाले छोटे मोटर से चलाया जाता है, जिससे बाहरी बिजली की आवश्यकता नहीं होती।"
+        },
+        {
+          "constraint": "Target cost under ₹2,000 per unit",
+          "approach": "स्थानीय रूप से उपलब्ध काली टिन, बांस की फ्रेम और साधारण पंखे का उपयोग करके लागत कम रखी जाती है।"
+        }
+      ],
+      "avoids": [
+        {
+          "document_id": "patent/CN218722679U/en",
+          "title": "A mobile solar drying device",
+          "link": "https://patents.google.com/patent/CN218722679U/en",
+          "mechanism": "Use of photovoltaic panels, batteries and inverter for electric power",
+          "quote": "the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter"
+        },
+        {
+          "document_id": "patent/CN102177964B/en",
+          "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+          "link": "https://patents.google.com/patent/CN102177964B/en",
+          "mechanism": "Underground heat storage tank for thermal mass",
+          "quote": "An underground heat storage tank is arranged under the ground surface inside a greenhouse drying room"
+        }
+      ],
+      "revised_idea": "The revised invention consists of a black tin sheet mounted inside a reflective metal enclosure that captures solar energy to heat passing air. Heated air rises naturally through a vertical duct and is assisted by a small solar‑powered fan to flow uniformly over a mesh tray where tomatoes or chilies are spread for drying, eliminating the need for photovoltaic panels, batteries, or underground heat storage.",
+      "change_summary": "Replaces electric blower and PV components with a buoyancy‑driven airflow assisted by a solar‑powered fan, removing reliance on photovoltaic panels and underground storage."
+    },
+    {
+      "title": "प्लास्टिक‑कंक्रीट सौर ड्रायर",
+      "how_it_works": "काली टिन शीट को एक हल्के कंक्रीट‑प्लास्टिक मिश्रण के ऊपर रखा जाता है जो सूर्य की गर्मी को संग्रहीत करता है। गर्म हवा को एक सौर‑ऊर्जा पवन टरबाइन चलाती है जो छोटे पंखे को घुमाती है, जिससे हवा मेष ट्रे के ऊपर बहती है।",
+      "what_changes": "The design uses a solar‑powered wind turbine to drive the fan instead of a direct electric motor, and adds a low‑cost concrete‑plastic thermal mass, differing from the existing design.",
+      "keeps": [
+        "E1",
+        "E3"
+      ],
+      "drops_locked": [],
+      "constraint_notes": [
+        {
+          "constraint": "No electricity",
+          "approach": "सौर‑ऊर्जा पवन टरबाइन पंखे को चलाती है, जिससे बाहरी बिजली नहीं चाहिए।"
+        },
+        {
+          "constraint": "Target cost under ₹2,000 per unit",
+          "approach": "स्थानीय कंक्रीट, प्लास्टिक और काली टिन का उपयोग करके सामग्री की लागत कम रखी जाती है।"
+        }
+      ],
+      "avoids": [
+        {
+          "document_id": "patent/CN218722679U/en",
+          "title": "A mobile solar drying device",
+          "link": "https://patents.google.com/patent/CN218722679U/en",
+          "mechanism": "Use of a photovoltaic panel and storage battery for power",
+          "quote": "the photovoltaic power generation unit consists of a photovoltaic panel, a photovoltaic controller, a storage battery and an inverter"
+        },
+        {
+          "document_id": "patent/CN208520117U/en",
+          "title": "Solar agricultural product drying system",
+          "link": "https://patents.google.com/patent/CN208520117U/en",
+          "mechanism": "Circulating pumps for heat transfer",
+          "quote": "be equipped with the heat absorption circulating pump on the heat absorption circulating line"
+        }
+      ],
+      "revised_idea": "The invention features a black tin sheet placed atop a low‑cost concrete‑plastic composite slab that stores solar heat. A small wind turbine powered solely by solar heat rotates a fan, drawing the warmed air over a mesh tray where crops are dried, thereby avoiding photovoltaic panels, batteries, and any circulating pumps.",
+      "change_summary": "Introduces a solar‑driven wind turbine and thermal mass slab, eliminating PV panels, batteries, and pump mechanisms."
+    },
+    {
+      "title": "वायुरोधी सौर बक्सा ड्रायर",
+      "how_it_works": "काली टिन शीट को एक इन्सुलेटेड बॉक्स के भीतर रखा जाता है जिसमें दो छिद्र होते हैं; सूर्य की रोशनी से हवा गर्म होती है और बॉक्स के नीचे के छिद्र से प्रवेश करती है, फिर ऊपर के छिद्र से निकलते समय एक छोटा पंखा द्वारा मेष ट्रे के ऊपर धकेली जाती है।",
+      "what_changes": "The design encloses the heating element in an insulated box with passive airflow channels, avoiding the open‑air fan arrangement of the existing design.",
+      "keeps": [
+        "E1",
+        "E3"
+      ],
+      "drops_locked": [],
+      "constraint_notes": [
+        {
+          "constraint": "No electricity",
+          "approach": "पंखे को सीधे सौर‑ऊर्जा से चलाने वाले सरल मोटर से संचालित किया जाता है, जिससे ग्रिड बिजली नहीं चाहिए।"
+        },
+        {
+          "constraint": "Target cost under ₹2,000 per unit",
+          "approach": "स्थानीय इन्सुलेशन सामग्री (जैसे बांस या रीसाइक्ल्ड फाइबर) और काली टिन का उपयोग करके लागत नियंत्रित रखी जाती है।"
+        }
+      ],
+      "avoids": [
+        {
+          "document_id": "patent/CN102177964B/en",
+          "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+          "link": "https://patents.google.com/patent/CN102177964B/en",
+          "mechanism": "Complex valve network and underground storage for hot‑air circulation",
+          "quote": "two ends of the hot wind delivery pipe with a suction fan and a third valve are respectively communicated with the solar-air heat collector and the underground heat storage tank"
+        }
+      ],
+      "revised_idea": "The revised device encloses the black tin sheet inside an insulated wooden box with two strategically placed openings; solar‑heated air enters through the lower opening, rises naturally, and a small solar‑powered fan pushes it across a mesh tray for drying, eliminating the need for extensive valve networks, underground tanks, and multiple electronic fans.",
+      "change_summary": "Encases the heating element in an insulated box with passive airflow and a single solar‑powered fan, removing complex valve systems and multiple fan arrangements."
+    }
+  ],
+  "matches_considered": [
+    {
+      "id": "patent/CN218722679U/en",
+      "title": "A mobile solar drying device",
+      "link": "https://patents.google.com/patent/CN218722679U/en"
+    },
+    {
+      "id": "patent/CN102177964B/en",
+      "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+      "link": "https://patents.google.com/patent/CN102177964B/en"
+    },
+    {
+      "id": "patent/CN208520117U/en",
+      "title": "Solar agricultural product drying system",
+      "link": "https://patents.google.com/patent/CN208520117U/en"
+    }
+  ],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 1,
+  "language_name": "Hindi"
+}
