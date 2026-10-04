@@ -1,0 +1,90 @@
+{
+  "outcome": "no_objection_found",
+  "elements": [
+    {
+      "id": "E1",
+      "text": "Battery swapping station for electric rickshaws"
+    },
+    {
+      "id": "E2",
+      "text": "Sliding mechanism allowing a depleted battery pack to be removed and a charged one inserted in under a minute"
+    },
+    {
+      "id": "E3",
+      "text": "RFID tag on each battery pack for tracking charge cycles and automated billing"
+    }
+  ],
+  "documents": [
+    {
+      "key": "D1",
+      "id": "patent/US8616457B2/en",
+      "title": "RFID display label for battery packs",
+      "link": "https://patents.google.com/patent/US8616457B2/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D2",
+      "id": "patent/CN220483257U/en",
+      "title": "… management system of light truck battery replacement station based on RFID",
+      "link": "https://patents.google.com/patent/CN220483257U/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D3",
+      "id": "patent/TW202210325A/en",
+      "title": "Swappable battery system and method, electric vechicles, battery as a service ( …",
+      "link": "https://patents.google.com/patent/TW202210325A/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D4",
+      "id": "patent/CN114248638B/en",
+      "title": "Modularized rechargeable battery and battery unit for electric automobile",
+      "link": "https://patents.google.com/patent/CN114248638B/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D5",
+      "id": "patent/KR20130118482A/en",
+      "title": "Battery replacement apparatus and method of electric vehicles",
+      "link": "https://patents.google.com/patent/KR20130118482A/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D6",
+      "id": "patent/US6014141A/en",
+      "title": "Method and apparatus for selectively displaying a parameter in a separate status panel",
+      "link": "https://patents.google.com/patent/US6014141A/en",
+      "source_type": "patent"
+    }
+  ],
+  "coverage": [
+    {
+      "element": "E2",
+      "document": "D2",
+      "status": "partial",
+      "quote": "battery replacement actuator RFID reader-writer (1) is arranged on a battery pack replacement mechanism"
+    },
+    {
+      "element": "E3",
+      "document": "D1",
+      "status": "disclosed",
+      "quote": "battery status data received from said battery comprises one of a number of recharge cycles of said battery"
+    },
+    {
+      "element": "E3",
+      "document": "D2",
+      "status": "disclosed",
+      "quote": "battery pack electronic tag is respectively arranged in a battery pack of each bin in the battery exchange station"
+    }
+  ],
+  "novelty_objections": [],
+  "inventive_step_objections": [],
+  "uncovered_elements": [
+    "E1",
+    "E2"
+  ],
+  "section3_flags": [],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 4
+}

@@ -1,0 +1,92 @@
+{
+  "outcome": "no_objection_found",
+  "elements": [
+    {
+      "id": "E1",
+      "text": "low-cost collar for dairy cows"
+    },
+    {
+      "id": "E2",
+      "text": "integrated temperature sensor"
+    },
+    {
+      "id": "E3",
+      "text": "integrated motion sensor"
+    },
+    {
+      "id": "E4",
+      "text": "SMS alert transmitted to a basic feature phone"
+    }
+  ],
+  "documents": [
+    {
+      "key": "D1",
+      "id": "patent/US10352759B1/en",
+      "title": "Smart tableware system, apparatus and method",
+      "link": "https://patents.google.com/patent/US10352759B1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D2",
+      "id": "patent/ES2951065T3/en",
+      "title": "Surveillance and supervision of animal discomfort by mobile phone",
+      "link": "https://patents.google.com/patent/ES2951065T3/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D3",
+      "id": "patent/US20200060545A1/en",
+      "title": "Round-the-clock monitoring of an animal's health status",
+      "link": "https://patents.google.com/patent/US20200060545A1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D4",
+      "id": "patent/US10154655B2/en",
+      "title": "Mobile animal surveillance and distress monitoring",
+      "link": "https://patents.google.com/patent/US10154655B2/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D5",
+      "id": "patent/CA3110621A1/en",
+      "title": "Round-the-clock monitoring of an animal's health status",
+      "link": "https://patents.google.com/patent/CA3110621A1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D6",
+      "id": "patent/US11950571B2/en",
+      "title": "System and method for associating a signature of an animal movement and an animal activity",
+      "link": "https://patents.google.com/patent/US11950571B2/en",
+      "source_type": "patent"
+    }
+  ],
+  "coverage": [
+    {
+      "element": "E2",
+      "document": "D3",
+      "status": "disclosed",
+      "quote": "a plurality of temperature sensors;"
+    }
+  ],
+  "novelty_objections": [],
+  "inventive_step_objections": [],
+  "uncovered_elements": [
+    "E1",
+    "E3",
+    "E4"
+  ],
+  "section3_flags": [
+    {
+      "clause": "3(k)",
+      "title": "Software, business method or algorithm as such",
+      "law_summary": "A mathematical or business method, a computer programme per se, or algorithms.",
+      "risk": "possible",
+      "reason": "The invention includes a control routine that processes sensor data and triggers an SMS, which may be viewed as a computer programme or algorithm.",
+      "how_to_address": "Claim the invention as a hardware‑controlled system that produces a technical effect (real‑time health monitoring and alerting) rather than as a pure software algorithm."
+    }
+  ],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 1
+}

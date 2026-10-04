@@ -51,6 +51,8 @@ the kind that blocks a filing today, and it does not replace a professional sear
 | **A visible pipeline.** Each stage checks off live, including the agent's own note on the patents' vocabulary. Saved runs say they are replays. | **Free to build on.** Patents in the space reported as lapsed or expired, and where. |
 | ![Patent landscape graph](docs/screenshots/landscape-graph.png) | ![Every query and SerpApi call behind the report](docs/screenshots/search-strategy.png) |
 | **Patent landscape.** Results sized and placed by relevance, colored by classification, with real citation edges. | **How this report was built.** Every query, its result count and every SerpApi call, each query reopenable in Google Patents. |
+| ![Re-check of a redesign against the original closest patents](docs/screenshots/recheck-comparison.png) | ![Simulated Indian examination: Section 3 screen and element-by-element check](docs/screenshots/examination-preview.png) |
+| **Re-check against the same patents.** The redesign is searched again and compared with the original closest matches: is the change in them, and what is still shared, with quotes. | **Examination preview.** How an Indian examiner might read it: Section 3 exclusions (here, admixture and traditional knowledge) and an element-by-element check. Labelled a simulation. |
 
 ## Try it without API keys
 

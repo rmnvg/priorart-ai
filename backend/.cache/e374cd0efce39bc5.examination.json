@@ -1,0 +1,96 @@
+{
+  "outcome": "no_objection_found",
+  "elements": [
+    {
+      "id": "E1",
+      "text": "Grinding fresh neem leaves with turmeric and honey to form a paste"
+    },
+    {
+      "id": "E2",
+      "text": "Applying the paste to cuts and burns for wound care"
+    },
+    {
+      "id": "E3",
+      "text": "Packaging the paste in single‑use sachets for rural first‑aid kits"
+    }
+  ],
+  "documents": [
+    {
+      "key": "D1",
+      "id": "patent/CN110519997B/en",
+      "title": "… inhibiting and regeneration of tooth Zhou Gu of Moringa oleifera leaf extract …",
+      "link": "https://patents.google.com/patent/CN110519997B/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D2",
+      "id": "patent/CN109700753A/en",
+      "title": "A kind of skin care compositions and its application and preparation method …",
+      "link": "https://patents.google.com/patent/CN109700753A/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D3",
+      "id": "patent/KR101196113B1/en",
+      "title": "… and HandWash composition Thereof containing natural oriental plant extracts",
+      "link": "https://patents.google.com/patent/KR101196113B1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D4",
+      "id": "patent/WO2020054204A1/en",
+      "title": "Antioxidant",
+      "link": "https://patents.google.com/patent/WO2020054204A1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D5",
+      "id": "patent/US20060264497A1/en",
+      "title": "Diindolylmethane-based compositions and methods of use thereof for promoting …",
+      "link": "https://patents.google.com/patent/US20060264497A1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D6",
+      "id": "patent/KR20100123423A/en",
+      "title": "Composition of toothpaste for whitening and method of preparing thereof",
+      "link": "https://patents.google.com/patent/KR20100123423A/en",
+      "source_type": "patent"
+    }
+  ],
+  "coverage": [
+    {
+      "element": "E2",
+      "document": "D3",
+      "status": "partial",
+      "quote": "alleviate skin diseases and wounds by the insecticidal and disinfectant effect"
+    }
+  ],
+  "novelty_objections": [],
+  "inventive_step_objections": [],
+  "uncovered_elements": [
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "section3_flags": [
+    {
+      "clause": "3(e)",
+      "title": "Mere admixture",
+      "law_summary": "A substance obtained by a mere admixture resulting only in the aggregation of the properties of its components, or a process for producing such a substance.",
+      "risk": "high",
+      "reason": "The invention is an admixture of known natural substances whose combined effect is merely the aggregation of the individual properties of neem, turmeric and honey.",
+      "how_to_address": "Demonstrate a synergistic or unexpected therapeutic effect that is not predictable from the separate components, or include a novel processing step that creates a new chemical entity."
+    },
+    {
+      "clause": "3(p)",
+      "title": "Traditional knowledge",
+      "law_summary": "An invention which, in effect, is traditional knowledge, or an aggregation or duplication of known properties of traditionally known components.",
+      "risk": "possible",
+      "reason": "Neem, turmeric and honey are traditional medicinal ingredients, and their combined use in a paste may be considered traditional knowledge.",
+      "how_to_address": "Provide experimental data showing a non‑obvious improvement over traditional formulations, such as enhanced stability, faster healing, or a unique delivery mechanism."
+    }
+  ],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 1
+}
