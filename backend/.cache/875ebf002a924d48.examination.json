@@ -1,0 +1,77 @@
+{
+  "outcome": "no_objection_found",
+  "elements": [
+    {
+      "id": "E1",
+      "text": "Paddle split into four interlocking segments"
+    },
+    {
+      "id": "E2",
+      "text": "Each segment is hollow and buoyant"
+    },
+    {
+      "id": "E3",
+      "text": "Segments interlock to form a functional paddle"
+    },
+    {
+      "id": "E4",
+      "text": "Disassembled segments function as an emergency flotation device"
+    }
+  ],
+  "documents": [
+    {
+      "key": "D1",
+      "id": "patent/US20080057802A1/en",
+      "title": "Buoyant safety paddle and method of manufacture thereof",
+      "link": "https://patents.google.com/patent/US20080057802A1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D2",
+      "id": "patent/US10259535B2/en",
+      "title": "Collapsible kayak with large cockpit",
+      "link": "https://patents.google.com/patent/US10259535B2/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D3",
+      "id": "patent/CA2546927C/en",
+      "title": "Portable self-rescue device for kayakers",
+      "link": "https://patents.google.com/patent/CA2546927C/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D4",
+      "id": "patent/CN108883812A/en",
+      "title": "Transparent and adjustable kayak with shade system",
+      "link": "https://patents.google.com/patent/CN108883812A/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D5",
+      "id": "patent/US4751889A/en",
+      "title": "Collapsible canoe",
+      "link": "https://patents.google.com/patent/US4751889A/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D6",
+      "id": "patent/US6615762B1/en",
+      "title": "Foldable boat with light weight hull construction system",
+      "link": "https://patents.google.com/patent/US6615762B1/en",
+      "source_type": "patent"
+    }
+  ],
+  "coverage": [],
+  "novelty_objections": [],
+  "inventive_step_objections": [],
+  "uncovered_elements": [
+    "E1",
+    "E2",
+    "E3",
+    "E4"
+  ],
+  "section3_flags": [],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 0
+}

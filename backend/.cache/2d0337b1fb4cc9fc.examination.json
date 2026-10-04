@@ -1,0 +1,90 @@
+{
+  "outcome": "no_objection_found",
+  "elements": [
+    {
+      "id": "E1",
+      "text": "clay body forming the refrigerator"
+    },
+    {
+      "id": "E2",
+      "text": "porous clay walls allowing water seepage"
+    },
+    {
+      "id": "E3",
+      "text": "water reservoir positioned on top of the unit"
+    },
+    {
+      "id": "E4",
+      "text": "capillary action that draws water through the walls"
+    },
+    {
+      "id": "E5",
+      "text": "evaporative cooling of the interior storage chamber"
+    }
+  ],
+  "documents": [
+    {
+      "key": "D1",
+      "id": "patent/IT202400000759A1/en",
+      "title": "\"METHOD FOR OBTAINING IN A SOLID STATE A COMPOUND OF EFFECTIVE MICROORGANISMS, …",
+      "link": "https://patents.google.com/patent/IT202400000759A1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D2",
+      "id": "patent/CN106461279B/en",
+      "title": "Refrigerating circulatory device",
+      "link": "https://patents.google.com/patent/CN106461279B/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D3",
+      "id": "patent/EP3102902B1/en",
+      "title": "Building system for cascading flows of matter and energy",
+      "link": "https://patents.google.com/patent/EP3102902B1/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D4",
+      "id": "patent/US10246349B2/en",
+      "title": "Water desalination using freeze crystallization and acoustic pressure shock …",
+      "link": "https://patents.google.com/patent/US10246349B2/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D5",
+      "id": "patent/US9677714B2/en",
+      "title": "Cryogenic injection compositions, systems and methods for cryogenically …",
+      "link": "https://patents.google.com/patent/US9677714B2/en",
+      "source_type": "patent"
+    }
+  ],
+  "coverage": [
+    {
+      "element": "E5",
+      "document": "D1",
+      "status": "disclosed",
+      "quote": "sistema di raffrescamento evaporativo"
+    }
+  ],
+  "novelty_objections": [],
+  "inventive_step_objections": [],
+  "uncovered_elements": [
+    "E1",
+    "E2",
+    "E3",
+    "E4"
+  ],
+  "section3_flags": [
+    {
+      "clause": "3(p)",
+      "title": "Traditional knowledge",
+      "law_summary": "An invention which, in effect, is traditional knowledge, or an aggregation or duplication of known properties of traditionally known components.",
+      "risk": "possible",
+      "reason": "The use of clay and evaporative cooling is traditional knowledge in many cultures, and the invention may be seen as an aggregation of known traditional components",
+      "how_to_address": "Emphasize any novel structural features or specific performance improvements that are not disclosed in the prior traditional knowledge"
+    }
+  ],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 2
+}

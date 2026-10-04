@@ -1,0 +1,92 @@
+{
+  "outcome": "no_objection_found",
+  "elements": [
+    {
+      "id": "E1",
+      "text": "black tin sheet that absorbs solar heat"
+    },
+    {
+      "id": "E2",
+      "text": "small fan that moves heated air"
+    },
+    {
+      "id": "E3",
+      "text": "mesh tray for placing produce"
+    },
+    {
+      "id": "E4",
+      "text": "solar-powered heating of air"
+    },
+    {
+      "id": "E5",
+      "text": "airflow over mesh tray to dry produce"
+    }
+  ],
+  "documents": [
+    {
+      "key": "D1",
+      "id": "patent/CN218722679U/en",
+      "title": "A mobile solar drying device",
+      "link": "https://patents.google.com/patent/CN218722679U/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D2",
+      "id": "patent/CN102177964B/en",
+      "title": "Greenhouse heat-storage type solar hot-wind drying device for grains",
+      "link": "https://patents.google.com/patent/CN102177964B/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D3",
+      "id": "patent/CN208520117U/en",
+      "title": "Solar agricultural product drying system",
+      "link": "https://patents.google.com/patent/CN208520117U/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D4",
+      "id": "patent/CN210960220U/en",
+      "title": "Solar tea dryer",
+      "link": "https://patents.google.com/patent/CN210960220U/en",
+      "source_type": "patent"
+    },
+    {
+      "key": "D5",
+      "id": "patent/CN104011490A/en",
+      "title": "An improved solar dryer with enhanced efficiency of drying",
+      "link": "https://patents.google.com/patent/CN104011490A/en",
+      "source_type": "patent"
+    }
+  ],
+  "coverage": [
+    {
+      "element": "E2",
+      "document": "D1",
+      "status": "disclosed",
+      "quote": "the drying unit comprises a thermal circulation fan, a moisture exhaust fan"
+    },
+    {
+      "element": "E2",
+      "document": "D2",
+      "status": "disclosed",
+      "quote": "Induced-draught fan (4) and the 3rd valve (12) are fitted on the hot blast conveying pipe"
+    },
+    {
+      "element": "E3",
+      "document": "D5",
+      "status": "disclosed",
+      "quote": "the drying chamber has a drawer in which the material to be dried is kept on a wire mesh"
+    }
+  ],
+  "novelty_objections": [],
+  "inventive_step_objections": [],
+  "uncovered_elements": [
+    "E1",
+    "E4",
+    "E5"
+  ],
+  "section3_flags": [],
+  "evidence_basis": "full_text",
+  "unverified_quotes_dropped": 2
+}
