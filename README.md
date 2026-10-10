@@ -5,10 +5,8 @@
 **Has my invention already been done? Ask in your own language and get the answer
 with the evidence: the exact patent passages, checked word for word.**
 
-**▶ [Demo video (3 min)](TODO-VIDEO-LINK)** · **[Try it live, no sign-up](TODO-LIVE-LINK)** ·
+**▶ [Demo video (3 min)](https://www.youtube.com/watch?v=X9Xi8agymDw)** ·
 SerpApi India Hackathon 2026, Track 05: Knowledge & Public Interest
-
-<!-- TODO: one real user's quote goes here, e.g. > "..." — name, role. Never invent one. -->
 
 ![A Hindi crop-dryer idea: every feature backed by a quoted, verified patent passage](docs/screenshots/evidence-findings.png)
 
